@@ -1,0 +1,40 @@
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: 'Arial', sans-serif; /* Changer pour la police désirée */
+}
+
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px; /* Ajuster selon la maquette */
+}
+
+.search-section {
+    position: relative;
+    width: 48%; /* Ajuster la largeur selon la maquette */
+    height: 500px; /* Ajuster la hauteur selon la maquette */
+}
+
+.search-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.search-section h2 {
+    position: absolute;
+    top: 20%; /* Ajuster selon la maquette */
+    left: 10%; /* Ajuster selon la maquette */
+    color: #FFFFFF; /* Ajuster la couleur du texte selon la maquette */
+    font-size: 2em; /* Ajuster la taille du texte selon la maquette */
+}
+
+.search-section p {
+    position: absolute;
+    top: 30%; /* Ajuster selon la maquette */
+    left: 10%; /* Ajuster selon la maquette */
+    color: #FFFFFF; /* Ajuster la couleur du texte selon la maquette */
+    font-size: 1em; /* Ajuster la taille du texte selon la maquette */
+    width: 80%; /* Ajuster la largeur du texte selon la maquette */
+}
