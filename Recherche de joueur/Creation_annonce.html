@@ -34,12 +34,22 @@
         <h1>Création de l'annonce</h1>
         <section>
             <input type="text" placeholder="Nom de l'annonce">
-            <input type="text" placeholder="Nom du jeu">
+            <div>
+                <input type="text" placeholder="Nom du jeu">
+                <select name="Nom du jeu" id="nom_du_jeu">
+                    <!-- <option value="nom_du_jeu">Nom du jeu</option> a ajouté en bdd -->
+                </select>
+            </div>
             <select name="Nombre de joueurs">
                 <option value="2">2</option>
                 <option value="3">3</option>
-                
+                <!-- ajouté via js des options -->
             </select>
+            <button>Publier l'annonce</button>
+            <button>Supprimer l'annonce</button>
+        </section>
+        <section>
+            <textarea name="Description de l'annonce" placeholder="Description de l'annonce" id="description_annonce" cols="30" rows="10"></textarea>
         </section>
     </main>
     <footer>
