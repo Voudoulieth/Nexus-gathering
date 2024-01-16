@@ -4,7 +4,7 @@ body {
     background-color: #733790;
     background: linear-gradient(to bottom, #733790, #572d70, #3e2351, #271833, #120917);
 }
-header,footer ul li a {
+header,footer, ul, li, a {
     color: #f7f1f9;
     font-family: "Changa", sans-serif;
     font-size: 27px;
@@ -12,6 +12,7 @@ header,footer ul li a {
     font-weight: 500;
     line-height: normal;
     display: flex;
+    flex-direction: row;
 }
 
 /* ---header--- */

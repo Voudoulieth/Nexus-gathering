@@ -12,11 +12,16 @@
     justify-content: center;
     align-items: center;
     height: 44.07vh;
+    margin-bottom: 10vh;
+
 }
 #imagequizz{
     width: 44.06vw;
     height: 44.07vh;
     object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #titlequizz{
     display: flex;
@@ -28,4 +33,46 @@ figcaption{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#ligne{
+    border-style: solid;
+    border-color: #F45A01;
+    width: 56.25vw;
+    border-top: 2.77vh;
+    margin-top: 20vh;
+    margin-bottom: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+h1{
+    color: #F45A01;
+    font-family: Changa;
+    font-size: 72px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+h2{
+    color: #F45A01;
+    font-family: Changa;
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+h3{
+    color: #F7F1F9;
+    font-family: Changa;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding: 0%;
+    margin-bottom: 2.77vh;
+}
+#titlecarousel{
+    margin-left: 8vw;
+}
+.arrow{
+
 }
