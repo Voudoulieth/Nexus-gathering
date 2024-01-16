@@ -1,18 +1,31 @@
-.carousel{
-    width: 468px;
-    height: 468px;
+.carouselimg{
+    width: 24.37vw;
+    height: 43.33vh;
+    object-fit: cover;
+}
+#carousel{
+    display: flex;
+    justify-content: space-around;
 }
 .image-container{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 476px;
+    height: 44.07vh;
 }
 #imagequizz{
-    width: 846;
-    height: 476px;
+    width: 44.06vw;
+    height: 44.07vh;
+    object-fit: cover;
 }
 #titlequizz{
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+figcaption{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
