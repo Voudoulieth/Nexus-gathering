@@ -17,6 +17,51 @@ main {
     height: 100vh;
 }
 
+.search {
+    display: flex;
+  transition: 0.2s ease-in;
+  box-sizing: content-box;
+  background: #2f3640;
+  height: 40px;
+  border-radius: 40px;
+  padding: 10px;
+    width: 17%;
+}
+input:not(:placeholder-shown),
+.search:hover > input {
+    width: 240px;
+    padding: 0 6px;
+}
+
+input:not(:placeholder-shown) + button,
+.search:hover > #search {
+  background: #f0b23a;
+}
+input {
+    font-size: 20px;
+  outline:none;
+  color: white;
+  border:none;
+  background: none;
+  padding: 0;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0px;
+}
+
+#search {
+    font-size: 20px;
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #2f3640;
+  transition: 0.4s;
+}
+
+
 .container {
     background-color: aliceblue;
     border-radius: 30px;
