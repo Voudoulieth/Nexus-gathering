@@ -1,0 +1,18 @@
+.carousel{
+    width: 468px;
+    height: 468px;
+}
+.image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 476px;
+}
+#imagequizz{
+    width: 846;
+    height: 476px;
+}
+#titlequizz{
+    display: flex;
+    justify-content: center;
+}

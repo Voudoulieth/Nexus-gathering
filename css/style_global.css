@@ -1,0 +1,29 @@
+/* ---global--- */
+* {
+    font-family: "Changa", sans-serif;
+    font-family: "Open Sans", sans-serif;
+}
+
+body {
+    background-color: #733790;
+    background: linear-gradient(to bottom, #733790, #572d70, #3e2351, #271833, #120917);
+}
+
+
+/* ---header--- */
+header {
+    background: linear-gradient(to left, #733790, #572d70, #3e2351, #271833, #120917);
+}
+.logoh {
+    
+}
+/* ---main--- */
+
+
+/* ---footer--- */
+footer {
+    background-color: #120917;
+}
+.logof {
+    
+}
