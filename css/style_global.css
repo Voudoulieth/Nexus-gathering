@@ -17,6 +17,9 @@ header {
 .logoh {
     width: 10vw;
 }
+header ul li a {
+    color: #f7f1f9;
+}
 /* ---main--- */
 
 
@@ -28,6 +31,6 @@ footer {
     width: 10vw;
 }
 
-footer ul li a {
-    co
+footer ul li a, p {
+    color: #f7f1f9;
 }
