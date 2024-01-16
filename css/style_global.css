@@ -1,34 +1,43 @@
 /* ---global--- */
-* {
-    font-family: "Changa", sans-serif;
-    font-family: "Open Sans", sans-serif;
-}
 
 body {
     background-color: #733790;
     background: linear-gradient(to bottom, #733790, #572d70, #3e2351, #271833, #120917);
 }
-
+header,footer ul li a {
+    color: #f7f1f9;
+    font-family: "Changa", sans-serif;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    display: flex;
+}
 
 /* ---header--- */
+
 header {
     background: linear-gradient(to left, #733790, #572d70, #3e2351, #271833, #120917);
 }
 .logoh {
     width: 10vw;
 }
-header ul li a {
-    color: #f7f1f9;
-}
 
 /* ---footer--- */
+
 footer {
     background-color: #120917;
 }
+
 .logof {
     width: 10vw;
 }
 
-footer ul li a, p {
+footer p {
     color: #f7f1f9;
+    font-family: "Changa", sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
