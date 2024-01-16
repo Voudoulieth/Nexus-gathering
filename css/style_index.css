@@ -2,17 +2,18 @@
     width: 24.37vw;
     height: 43.33vh;
     object-fit: cover;
+    color: #F45A01;
 }
 #carousel{
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 .image-container{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 44.07vh;
-    margin-bottom: 10vh;
 
 }
 #imagequizz{
@@ -34,6 +35,12 @@ figcaption{
     justify-content: center;
     align-items: center;
 }
+figure{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 #ligne{
     border-style: solid;
     border-color: #F45A01;
@@ -47,15 +54,16 @@ figcaption{
 h1{
     color: #F45A01;
     font-family: Changa;
-    font-size: 72px;
+    font-size: 4.5em;
     font-style: normal;
     font-weight: 800;
     line-height: normal;
+    padding-bottom: 0px;
 }
 h2{
     color: #F45A01;
     font-family: Changa;
-    font-size: 44px;
+    font-size: 2.75em;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -63,16 +71,25 @@ h2{
 h3{
     color: #F7F1F9;
     font-family: Changa;
-    font-size: 27px;
+    font-size: 1.68em;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-    padding: 0%;
+    margin-left: 2.8px;
     margin-bottom: 2.77vh;
 }
 #titlecarousel{
-    margin-left: 8vw;
+    margin-left: 6.3vw;
+    margin-bottom: 8vh;
 }
 .arrow{
-
+    width: 2vw;
+}
+#imgspotlight{
+    width: 30.78vw;
+    height: 54.25vh;
+    font-size: 2.75em;
+}
+main{
+    margin-bottom: 10vh;
 }
