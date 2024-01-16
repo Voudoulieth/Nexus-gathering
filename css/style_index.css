@@ -8,6 +8,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    padding-top: 8vh;
 }
 .image-container{
     display: flex;
@@ -23,8 +24,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 2.77vh;
 }
 #titlequizz{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+figure{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,12 +43,6 @@ figcaption{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-figure{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 }
 #ligne{
     border-style: solid;
@@ -58,7 +61,6 @@ h1{
     font-style: normal;
     font-weight: 800;
     line-height: normal;
-    padding-bottom: 0px;
 }
 h2{
     color: #F45A01;
@@ -75,12 +77,13 @@ h3{
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-    margin-left: 2.8px;
-    margin-bottom: 2.77vh;
 }
 #titlecarousel{
-    margin-left: 6.3vw;
-    margin-bottom: 8vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+    padding-left: 6.5vw;
 }
 .arrow{
     width: 2vw;
