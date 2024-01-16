@@ -15,7 +15,7 @@ header {
     background: linear-gradient(to left, #733790, #572d70, #3e2351, #271833, #120917);
 }
 .logoh {
-    
+    width: 10vw;
 }
 /* ---main--- */
 
@@ -25,5 +25,5 @@ footer {
     background-color: #120917;
 }
 .logof {
-    
+    width: 10vw;
 }
