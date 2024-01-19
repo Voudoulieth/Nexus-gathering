@@ -9,15 +9,17 @@
     />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <title>Recherche de joueurs</title>
     <link rel="shortcut icon" href="assets/logo/favicon.svg" />
     <script defer src=""></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <header>
-        <a href="index.html"
-        ><img src="assets/logo/logo_nexus.svg" title="Accueil" alt="Logo Nexus"
-        /></a>
+        <a href="index.html"><img src="../assets/logo/logo_nexus_white.svg" title="Accueil" alt="Logo Nexus"/></a>
         <nav>
             <ul>
             <li><a href="acceuil_biblio.html">Bibliothèque</a></li>
@@ -31,17 +33,26 @@
         </nav>
     </header>
     <main>
-        <div>
-            <section>
-                <img src="../assets/Image/recherche rapide.png" alt="Recherche rapide" /> <!-- Placeholder for background image -->
-                <h1>Recherche rapide</h1>
-                <p>Faire une recherche rapide pour trouver des coéquipiers sur votre jeu préféré, jamais aussi facile. Choisissez votre jeu, et en un instant, découvrez des joueurs à votre niveau.</p>
+        <div class="flex">
+            <section class="w-1/2 relative">
+                <img src="../assets/Image/recherche rapide.png" alt="Recherche rapide" />
+                <div class="bg-[#F45A01] absolute top-20 left-10 w-1/2 h-20 rounded-full">
+                    <h1 class="text-[2.75em] font-['Changa'] font-bold text-[#f1f7f9] text-center">Recherche rapide</h1>
+                </div>
+                <div class="bg-[#F45A01] absolute bottom-20 right-20 rounded-full">
+                    <p class="font-['Open_Sans']">Faire une recherche rapide pour trouver des coéquipiers sur votre jeu préféré, jamais aussi facile. Choisissez votre jeu, et en un instant, découvrez des joueurs à votre niveau.</p>
+                </div>
             </section>
         
-            <section>
-                <img src="../assets/Image/recherche par annonce.png" alt="Recherche par annonce" /> <!-- Placeholder for background image -->
-                <h1>Recherche par annonce</h1>
-                <p>Créer ou de rejoindre des groupes grâce à des annonces personnalisées. Vous cherchez des coéquipiers pour des missions spécifiques dans votre jeu? Publiez une annonce détaillée et trouvez les joueurs parfaits pour votre équipe.</p>
+            <section class="w-1/2 relative">
+                <img src="../assets/Image/recherche par annonce.png" alt="Recherche par annonce" />
+                <div class="bg-[#F45A01] absolute top-20 left-20 rounded-full">
+                <h1 >Recherche par annonce</h1>
+            </div>
+            <div class="bg-[#F45A01] absolute bottom-20 right-20 rounded-full">
+                <p class="font-['Open_Sans']">Créer ou de rejoindre des groupes grâce à des annonces personnalisées. Vous cherchez des coéquipiers pour des missions spécifiques dans votre jeu? Publiez une annonce détaillée et trouvez les joueurs parfaits pour votre équipe.</p>
+            </div>
+
             </section>
         </div>
     </main>
