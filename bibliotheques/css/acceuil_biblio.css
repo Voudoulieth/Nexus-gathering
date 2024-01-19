@@ -1,5 +1,55 @@
 /* ---global--- */
 
-/* ---header--- */
+
 /* ---main--- */
-/* ---footer--- */
+.main-container {
+    display: flex;
+}
+h2 {
+    color: #f7f1f9;
+    font-family: "changa", sans-serif;
+    font-size: 27px;
+}
+p{
+    color: #f7f1f9;
+    font-family: "Open Sans", sans-serif;
+    font-size: 17px;
+}
+.biblio-g {
+    background-color: #f45a01;
+    border-radius: 2rem 2rem 2rem 2rem;;
+    position: absolute;
+    top: 8rem;
+    left: 1rem;
+    max-width: 20rem; 
+    padding: 1rem;
+}
+.descr-g {
+    background-color: #f45a01;
+    border-radius: 2rem 2rem 2rem 2rem;;
+    position: absolute;
+    top: 50rem;
+    left: 35rem;
+    max-width: 20rem; 
+    padding: 1rem;
+}
+
+.biblio-p {
+    background-color: #f45a01;
+    border-radius: 2rem 2rem 2rem 2rem;;
+    position: absolute;
+    top: 8rem;
+    left: 62rem;
+    max-width: 20rem; 
+    padding: 1rem;
+}
+
+.descr-p {
+    background-color: #f45a01;
+    border-radius: 2rem 2rem 2rem 2rem;;
+    position: absolute;
+    top: 50rem;
+    left: 95rem;
+    max-width: 20rem; 
+    padding: 1rem;
+}
