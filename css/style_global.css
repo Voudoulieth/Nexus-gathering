@@ -18,8 +18,7 @@ header,footer, ul, li, a {
 /* ---header--- */
 
 header {
-    background: linear-gradient(to left, #733790, #572d70, #3e2351, #271833, #120917);
-}
+    background-image: linear-gradient(to right, #361a3d, #36193d, #35193e, #35183e, #34183f, #391a46, #3d1d4c, #421f53, #4e2562, #5a2b71, #663180, #733790);}
 .logoh {
     width: 10vw;
 }
