@@ -7,9 +7,7 @@ main {
 header,footer, ul, li, a {
     color: #f7f1f9;
     font-family: "Changa", sans-serif;
-    font-size: 27px;
     font-style: normal;
-    font-weight: 500;
     line-height: normal;
     display: flex;
     flex-direction: row;
@@ -21,6 +19,12 @@ header {
     background-image: linear-gradient(to right, #361a3d, #36193d, #35193e, #35183e, #34183f, #391a46, #3d1d4c, #421f53, #4e2562, #5a2b71, #663180, #733790);}
 .logoh {
     width: 10vw;
+}
+.nav, ul, li {
+display: flex;
+justify-content: space-between;
+font-size: 1.68em;
+font-weight: medium;
 }
 
 /* ---footer--- */
