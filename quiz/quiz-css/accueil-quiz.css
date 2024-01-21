@@ -12,8 +12,7 @@ body{
     line-height: normal;
 }
 
-
-/* spécifique */
+/* header */
 .navbar{
     background: linear-gradient(to right, #361a3d, #36193d, #35193e, #35183e, #34183f, #391a46, #3d1d4c, #421f53, #4e2562, #5a2b71, #663180, #733790);
 }
@@ -26,4 +25,12 @@ body{
 .connexion{
     background-color: #f45a01;
     border-radius: 90px;
+}
+
+/* footer */
+.footer{
+    background-color: #120917;
+}
+.copyright{
+    font-size: 0.75rem;
 }
