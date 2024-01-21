@@ -1,7 +1,29 @@
+/* général */
+body{
+    background: linear-gradient(to bottom, #733790, #572d70, #3e2351, #271833, #120917);
+}
+
+.texte-basique{
+    color: #f7f1f9;
+    font-family: "Changa", sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+
+/* spécifique */
 .navbar{
     background: linear-gradient(to right, #361a3d, #36193d, #35193e, #35183e, #34183f, #391a46, #3d1d4c, #421f53, #4e2562, #5a2b71, #663180, #733790);
 }
-
-.texte-couleur{
+.texte-basique::placeholder{
     color: #f7f1f9;
+}
+.active{
+    color: #f45a01 !important;
+}
+.connexion{
+    background-color: #f45a01;
+    border-radius: 90px;
 }
