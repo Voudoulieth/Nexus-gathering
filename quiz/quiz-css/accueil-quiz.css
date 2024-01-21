@@ -26,11 +26,18 @@ body{
     background-color: #f45a01;
     border-radius: 90px;
 }
+.menu-burger{
+    border-color: #f7f1f9 !important;
+}
+/* TODO .menu-burger{
+    border-color: #f7f1f9 !important;
+} */ 
 
 /* footer */
 .footer{
     background-color: #120917;
 }
 .copyright{
-    font-size: 0.75rem;
+    font-size: 6px;
+    font-style: italic;
 }
