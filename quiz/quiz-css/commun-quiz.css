@@ -1,0 +1,29 @@
+/* 
+    CSS commun aux pages : 
+    Les autres pages sont en bootstrap
+*/
+
+body {
+    background: linear-gradient(to bottom, #733790, #572d70, #3e2351, #271833, #120917);
+    color: #f7f1f9;
+    font-family: "Changa", sans-serif;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;  
+}
+
+.logo {
+    width: 10vw;
+}
+
+header {
+    background: linear-gradient(to right, #361a3d, #36193d, #35193e, #35183e, #34183f, #391a46, #3d1d4c, #421f53, #4e2562, #5a2b71, #663180, #733790);}
+.logo {
+    width: 10vw;
+}
+
+footer {
+    background-color: #120917;
+    font-size: 17px;
+}
