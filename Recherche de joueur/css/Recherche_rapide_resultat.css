@@ -1,0 +1,62 @@
+main{
+    height: 85vh;
+}
+h1{
+    margin-left: 6vw;
+}
+.tokenplace{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tokenjoueur{
+    width: 75vw;
+    height: 6.66vh;
+    border-radius: 90px;
+    background: #361A3D;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6.66vh;
+}
+.tokenjoueur ul{
+    display: flex;
+    justify-content: space-between;
+    width: 48vw;
+    margin-right: 6vw;
+}
+.tokenjoueur ul li{
+    color: #F7F1F9;
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.5em;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.tokenjoueur a{
+    background-color: #F45A01;
+    width: 6.66vh;
+    height: 6.66vh;
+    border-radius: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tokenjoueur img{
+    width: 1.8vw;
+    margin-bottom: 0.5vh;
+}
+.contact{
+    background: #F45A01;
+    color: #F7F1F9;
+    font-family: Changa;
+    font-size: 0.875em;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 90px;
+    height: 3.33vh;
+    width: 8vw;
+    text-align: center;
+    margin-right: 1vw;
+}
