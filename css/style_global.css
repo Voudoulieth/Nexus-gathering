@@ -1,5 +1,29 @@
 /* ---global--- */
-
+h1{
+    color: #F45A01;
+    font-family: Changa;
+    font-size: 4.5em;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+h2{
+    color: #F7F1F9;
+    font-family: Changa;
+    font-size: 2.75em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+h3{
+    color: #F7F1F9;
+    font-family: Changa;
+    font-size: 1.68em;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+/* ---main--- */
 main {
     background-color: #733790;
     background: linear-gradient(to bottom, #733790, #572d70, #3e2351, #271833, #120917);
