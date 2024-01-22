@@ -19,26 +19,21 @@
 
     <!-- 
       A l'attention de Dominique : 
-      * Tout ce qui se trouve dans le dossier "quiz" est réalisé par Océane
-      * Les pages réalisées en CSS avec des médias queries pour le responsive sont :
-      * Les pages réalisées en Bootstrap sont : 
-      * Une page est réalisée en SASS : 
+      * La page d'accueil des quiz est réalisée en Bootstrap
+      * Les autres pages sont réalisées en CSS avec médias queries pour le responsive
     -->
   </head>
   <body>
   <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        
         <a class="navbar-brand" href="../index.html">
           <img src="../assets/logo/logo_nexus_white.svg" alt="Bootstrap" width="60rem" title="Accueil" alt="Logo Nexus">
         </a>
-        
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon menu-burger"></span>
+          <span class="navbar-toggler-icon navbar-dark"></span>
         </button> <!-- menu burger -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent"> <!-- responsive -->
-          
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link texte-basique"  href="../bibliotheques/acceuil_biblio.html">Bibliothèque</a>
@@ -53,23 +48,20 @@
               <a class="nav-link texte-basique" href="../Recherche de joueur/Messagerie.html">Messagerie</a>
             </li>
           </ul>
-
           <form class="d-flex" role="search">
             <input class="form-control me-2 bg-transparent texte-basique" type="search" placeholder="Rechercher" aria-label="Search">
             <button type="submit" class="btn">
               <img width="30rem" src="../assets/Icone/magnifying-glass-solid blanc.svg">
             </button>
           </form>
-          
-          <button type="button" class="btn connexion texte-basique">Connexion</button>
+          <button type="button" class="btn pt-1 pb-1 connexion texte-basique mt-1">Connexion</button>
         </div>
       </div>
     </nav>
   </header>
-
   <main>
-
-    <!-- début carousel bootstrap -->
+    <h1 class="d-flex justify-content-center mt-3 texte-basique titre1">Découvrez les quiz les plus populaires !</h1>
+    <!-- début carousel quiz récents bootstrap -->
     <div id="carouselExampleCaptions" class="carousel slide mx-auto col-6 mt-4 mb-4">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -78,39 +70,58 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="quiz-assets/quiz-communautaires.png" class="d-block w-100" alt="...">
+          <a href="quiz-participer.html">
+            <img src="quiz-assets/couverture-quiz/genshin.jpeg" class="d-block w-100" alt="quiz officiel genshin impact">
+          </a>
           <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Some representative placeholder content for the first slide.</p>
+            <h5 class="text-shadow">Genshin Impact</h5>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="quiz-assets/quiz-communautaires.png" class="d-block w-100" alt="...">
+          <a href="quiz-participer.html">
+            <img src="quiz-assets/couverture-quiz/baldur.jpg" class="d-block w-100" alt="quiz officiel baldur's gate 3">
+          </a>
           <div class="carousel-caption d-none d-md-block">
-            <h5>Second slide label</h5>
-            <p>Some representative placeholder content for the second slide.</p>
+            <h5>Baldur's gate 3</h5>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="quiz-assets/quiz-communautaires.png" class="d-block w-100" alt="...">
+          <a href="quiz-participer.html">
+            <img src="quiz-assets/couverture-quiz/lol.jpg" class="d-block w-100" alt="quiz officiel league of legends">
+          </a>
           <div class="carousel-caption d-none d-md-block">
-            <h5>Third slide label</h5>
-            <p>Some representative placeholder content for the third slide.</p>
+            <h5>League of legends</h5>
           </div>
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
       </button>
       <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
       </button>
     </div>
-    <!-- fin carousel bootstrap -->
+    <!-- fin carousel quiz récents bootstrap -->
+    <span class="d-flex justify-content-center">
+      <hr class="text-light tailleligne">
+    </span>
 
-
+    <div class="container">
+    <div class="row">
+      <figure class="col-12 col-md-6 d-flex flex-column align-items-center">
+        <figcaption class="texte-basique d-flex justify-content-center my-2">Quiz officiels</figcaption>
+        <a class="d-flex justify-content-center" href="quiz-officiels.html">
+          <img width="90%" src="quiz-assets/quiz-officiels.png" alt="Lien vers les quiz officiels">
+        </a>
+      </figure>
+      <figure class="col-12 col-md-6 d-flex flex-column align-items-center">
+        <figcaption class="texte-basique d-flex justify-content-center my-2">Quiz communautaires</figcaption>
+        <a class="d-flex justify-content-center" href="quiz-communautaires.html">
+          <img width="90%" src="quiz-assets/quiz-communautaires.png" alt="Lien vers les quiz communautaires">
+        </a>
+      </figure>
+    </div>
+    </div>
 
 
   </main>
@@ -120,11 +131,11 @@
         <a class="col-3" href="../index.html">
           <img src="../assets/logo/logo_long_nexus_white.svg" width="70rem" title="Accueil" alt="Logo Nexus">
         </a>
-        <a class="col-4 col-md-2 nav-link texte-basique fs-7"  href="../cgu.html">CGU</a>
-        <a class="col-5 col-md-3 nav-link texte-basique texte-footer fs-7" href="../mention_legale.html">Mention légale</a>
-        <a class="col-4 col-md-3 nav-link texte-basique texte-footer fs-7" aria-current="page" href="../confidentialite.html">Politique de confidentialité</a>
-        <a class="col-5 col-md-1 nav-link texte-basique texte-footer fs-md-6" href="../contact.html">Contact</a>
-        <p class="texte-basique mx-auto mt-2 mb-2 col-4 mt-2 copyright">COPYRIGHT @ 2024 TOUS DROITS RESERVES</p>
+        <a class="col-4 col-md-2 nav-link texte-basique"  href="../cgu.html">CGU</a>
+        <a class="col-5 col-md-3 nav-link texte-basique" href="../mention_legale.html">Mention légale</a>
+        <a class="col-4 col-md-3 nav-link texte-basique" aria-current="page" href="../confidentialite.html">Politique de confidentialité</a>
+        <a class="col-5 col-md-1 nav-link texte-basique" href="../contact.html">Contact</a>
+        <p class="texte-basique mx-auto mt-2 mb-2 col-12 d-flex justify-content-center mt-2 copyright">COPYRIGHT @ 2024 TOUS DROITS RESERVES</p>
       </div>
   </footer>
   </body>

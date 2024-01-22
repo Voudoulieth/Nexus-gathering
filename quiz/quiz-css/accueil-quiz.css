@@ -1,17 +1,23 @@
+/* Fichier CSS lié à l'accueil, en complément de Bootstrap */
+
 /* général */
 body{
     background: linear-gradient(to bottom, #733790, #572d70, #3e2351, #271833, #120917);
 }
-
 .texte-basique{
     color: #f7f1f9;
     font-family: "Changa", sans-serif;
-    font-size: 17px;
-    font-style: normal;
+    font-size: 1.06em;
     font-weight: 500;
     line-height: normal;
 }
-
+.titre1{
+    font-size: 1.69em;
+    font-weight: 800;
+}
+.tailleligne{
+    width: 60%;
+}
 /* header */
 .navbar{
     background: linear-gradient(to right, #361a3d, #36193d, #35193e, #35183e, #34183f, #391a46, #3d1d4c, #421f53, #4e2562, #5a2b71, #663180, #733790);
@@ -29,15 +35,25 @@ body{
 .menu-burger{
     border-color: #f7f1f9 !important;
 }
-/* TODO .menu-burger{
-    border-color: #f7f1f9 !important;
-} */ 
-
+.navbar-toggler {
+    background-color: #733790;
+}
 /* footer */
 .footer{
     background-color: #120917;
 }
 .copyright{
-    font-size: 6px;
+    font-size: 0.815em;
     font-style: italic;
+}
+@media screen and (max-width: 768px){ /* on donne des tailles précises en complément des tailles par défaut de bootstrap pour respecter le cdc */
+    .texte-basique{
+        font-size: 0.875em;
+    }
+    .titre1{
+        font-size: 1em;
+    }
+    .copyright{
+        font-size: 0.5em;
+    }
 }
