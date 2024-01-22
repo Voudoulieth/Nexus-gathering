@@ -1,5 +1,29 @@
 /* ---global--- */
-
+h1{
+    color: #F45A01;
+    font-family: Changa;
+    font-size: 4.5em;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+h2{
+    color: #F7F1F9;
+    font-family: Changa;
+    font-size: 2.75em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+h3{
+    color: #F7F1F9;
+    font-family: Changa;
+    font-size: 1.68em;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+/* ---main--- */
 main {
     background-color: #733790;
     background: linear-gradient(to bottom, #733790, #572d70, #3e2351, #271833, #120917);
@@ -16,7 +40,9 @@ header,footer, ul, li, a {
 /* ---header--- */
 
 header {
-    background-image: linear-gradient(to right, #361a3d, #36193d, #35193e, #35183e, #34183f, #391a46, #3d1d4c, #421f53, #4e2562, #5a2b71, #663180, #733790);}
+    background-image: linear-gradient(to right, #361a3d, #36193d, #35193e, #35183e, #34183f, #391a46, #3d1d4c, #421f53, #4e2562, #5a2b71, #663180, #733790);
+    height: 15vh;
+}
 .logoh {
     width: 10vw;
 }
@@ -30,7 +56,10 @@ font-weight: medium;
 /* ---footer--- */
 
 footer {
+    height: 16vh;
     background-color: #120917;
+    color: #f7f1f9;
+    font-family: "Changa", sans-serif;
 }
 
 .logof {
@@ -38,10 +67,14 @@ footer {
 }
 
 footer p {
-    color: #f7f1f9;
-    font-family: "Changa", sans-serif;
-    font-size: 17px;
+    font-size: 0.87em;
     font-style: normal;
     font-weight: 500;
+    line-height: normal;
+}
+
+footer ul {
+    font-size: 0.94em;
+    font-style: normal;
     line-height: normal;
 }

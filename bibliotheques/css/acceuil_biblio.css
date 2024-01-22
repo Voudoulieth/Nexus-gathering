@@ -28,11 +28,6 @@
     transition: transform 0.3s ease;
 }
 
-img {
-    width: 100%;
-    height: auto;
-}
-
 .text {
     position: absolute;
     top: 1%;
