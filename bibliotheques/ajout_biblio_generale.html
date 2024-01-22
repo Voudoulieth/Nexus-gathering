@@ -53,11 +53,11 @@
       <h1>Ajoutez un jeu a la bibliothèque générale !</h1>
       <p>Remplissez ce formulaire et apportez votre contribution!</p>
       <form action="" method="get">
-        <div class="grid grid-cols-3 gap-1 place-content-center">
+        <div class="grid grid-cols-2 gap-1 place-content-center">
           <div
-            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[50%] text-center"
+            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[60%] text-center text-[0.87em] font-['Open_Sans'] font-semibold"
           >
-            <label for="imageJeu">Image du Jeu :</label>
+            <label for="imageJeu">Image du Jeu :</label><br>
             <input
               type="file"
               id="imageJeu"
@@ -68,60 +68,60 @@
           </div>
 
           <div
-            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[30%] text-center"
+            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[50%] text-center text-[0.87em] font-['Open_Sans'] font-semibold"
           >
-            <label for="nomJeu">Nom du Jeu :</label>
+            <label for="nomJeu">Nom du Jeu :</label><br>
             <input type="text" id="nomJeu" name="nomJeu" required />
-          </div>
-
-          <div
-            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[20%] text-center"
-          >
-            <label for="resume">Résumé :</label>
-            <textarea id="resume" name="resume" required></textarea>
           </div>
         </div>
 
+          <div
+            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[50%] text-center text-[0.87em] font-['Open_Sans'] font-semibold"
+          >
+            <label for="resume">Résumé :</label><br>
+            <textarea id="resume" name="resume" required></textarea>
+          </div>
+
         <aside class="flex flex-col">
           <div
-            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[20%] text-center"
+            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[20%] text-center text-[0.87em] font-['Open_Sans'] font-semibold"
           >
-            <label for="editeur">Éditeur :</label>
+            <label for="editeur">Éditeur :</label><br>
             <input type="text" id="editeur" name="editeur" />
           </div>
 
           <div
-            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[20%] text-center"
+            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[20%] text-center text-[0.87em] font-['Open_Sans'] font-semibold"
           >
-            <label for="studio">Studio :</label>
+            <label for="studio">Studio :</label><br>
             <input type="text" id="studio" name="studio" />
           </div>
 
           <div
-            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[20%] text-center"
+            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[20%] text-center text-[0.87em] font-['Open_Sans'] font-semibold"
           >
-            <label for="dateDebutDev">Date de début du développement :</label>
+            <label for="dateDebutDev">Date de début du développement :</label><br>
             <input type="date" id="dateDebutDev" name="dateDebutDev" />
           </div>
 
           <div
-            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[20%] text-center"
+            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[20%] text-center text-[0.87em] font-['Open_Sans'] font-semibold"
           >
-            <label for="dateSortie">Date de sortie :</label>
+            <label for="dateSortie">Date de sortie :</label><br>
             <input type="date" id="dateSortie" name="dateSortie" />
           </div>
 
           <div
-            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[20%] text-center"
+            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[20%] text-center text-[0.87em] font-['Open_Sans'] font-semibold"
           >
-            <label for="consoles">Consoles disponibles :</label>
+            <label for="consoles">Consoles disponibles :</label><br>
             <input type="text" id="consoles" name="consoles" />
           </div>
 
           <div
-            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[20%] text-center"
+            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[20%] text-center text-[0.87em] font-['Open_Sans'] font-semibold"
           >
-            <label for="multijoueur">Multijoueur :</label>
+            <label for="multijoueur">Multijoueur :</label><br>
             <select id="multijoueur" name="multijoueur">
               <option value="true">Oui</option>
               <option value="false">non</option>
@@ -129,9 +129,9 @@
           </div>
 
           <div
-            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[20%] text-center"
+            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[20%] text-center text-[0.87em] font-['Open_Sans'] font-semibold"
           >
-            <label for="crossPlatform">Cross-Platform :</label>
+            <label for="crossPlatform">Cross-Platform :</label><br>
             <select id="crossPlatform" name="crossPlatform">
               <option value="true">Oui</option>
               <option value="false">non</option>
@@ -139,9 +139,9 @@
           </div>
 
           <div
-            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[20%] text-center"
+            class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] p-2 m-2 w-[20%] text-center text-[0.87em] font-['Open_Sans'] font-semibold"
           >
-            <label for="format">Format physique/dématérialisé:</label>
+            <label for="format">Format physique/dématérialisé:</label><br>
             <select id="format" name="format">
               <option value="physique">Physique</option>
               <option value="dematerialise">Dématérialisé</option>
@@ -152,14 +152,14 @@
 
         <section class="">
           <button
-            class="font-['Changa'] text-[#f1f7f9] p-2 m-2 bg-[#f45a01]/95 rounded-full w-[10%] text-center"
+            class="font-['Changa'] text-[#f1f7f9] p-2 m-2 bg-[#f45a01]/95 rounded-full w-[10%] text-center text-[1.06em]"
             type="reset"
             name="reset"
           >
             Effacer
           </button>
           <button
-            class="font-['Changa'] text-[#f1f7f9] p-2 m-2 bg-[#f45a01]/95 rounded-full w-[10%] text-center"
+            class="font-['Changa'] text-[#f1f7f9] p-2 m-2 bg-[#f45a01]/95 rounded-full w-[10%] text-center text-[1.06em]"
             type="submit"
             name="submit"
           >
