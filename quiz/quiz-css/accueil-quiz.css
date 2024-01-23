@@ -21,6 +21,7 @@ body{
 /* header */
 .navbar{
     background: linear-gradient(to right, #361a3d, #36193d, #35193e, #35183e, #34183f, #391a46, #3d1d4c, #421f53, #4e2562, #5a2b71, #663180, #733790);
+    height: 15vh;
 }
 .texte-basique::placeholder{
     color: #f7f1f9;
@@ -28,6 +29,10 @@ body{
 .active{
     color: #f45a01 !important;
 }
+.nav-link:hover{
+    color: #f45a01;
+}
+/* TODO couleur placeholder + padding orange de la loupe */
 .connexion{
     background-color: #f45a01;
     border-radius: 90px;
@@ -41,6 +46,7 @@ body{
 /* footer */
 .footer{
     background-color: #120917;
+    height: 16vh;
 }
 .copyright{
     font-size: 0.815em;
