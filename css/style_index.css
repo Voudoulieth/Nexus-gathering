@@ -1,6 +1,13 @@
 main{
     padding-bottom: 10vh;
 }
+#titlecarousel{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+    padding-left: 6.5vw;
+}
 #carousel{
     display: flex;
     justify-content: space-around;
@@ -8,6 +15,8 @@ main{
     padding-top: 8vh;
 }
 .carouselimg{
+    display: flex;
+    justify-content: center;
     width: 24.37vw;
     height: 43.33vh;
     object-fit: cover;
@@ -23,13 +32,7 @@ figcaption{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-#titlecarousel{
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: flex-start;
-    padding-left: 6.5vw;
+    font-size: 1.68em;
 }
 .arrow{
     width: 2vw;
@@ -49,6 +52,12 @@ figcaption{
     margin-left: auto;
     margin-right: auto;
 }
+#titlequizz{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 .image-container{
     display: flex;
     justify-content: center;
@@ -63,10 +72,4 @@ figcaption{
     justify-content: center;
     align-items: center;
     padding-top: 2.77vh;
-}
-#titlequizz{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 }
