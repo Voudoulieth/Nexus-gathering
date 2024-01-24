@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev" : "tailwindcss -i ./css/style_tailwind.css -o ./dist/output.css --watch"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
