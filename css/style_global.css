@@ -4,13 +4,15 @@
 
 /* GENERAL */
 body{
-    background: linear-gradient(to bottom, #733790, #572d70, #3e2351, #271833, #120917);
     /* typo de base du doc  */
     color: #f7f1f9;
     font-family: 'Open sans', sans-serif;
     font-size: 1em; 
     font-style: normal;
     line-height: normal;
+}
+main{
+    background: linear-gradient(to bottom, #733790, #572d70, #3e2351, #271833, #120917);   
 }
 .titres{ /* points communs des titres, DRY */
     font-family: 'Changa', sans-serif;
