@@ -1,6 +1,3 @@
-main{
-    padding-bottom: 10vh;
-}
 #titlecarousel{
     display: flex;
     flex-direction: column;
@@ -34,7 +31,6 @@ figcaption{
     justify-content: center;
     align-items: center;
     font-family: 'Changa', sans-serif;
-    font-size: 1.68em;
 }
 .arrow{
     width: 2vw;
