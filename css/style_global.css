@@ -7,7 +7,7 @@ body{
     /* typo de base du doc  */
     color: #f7f1f9;
     font-family: 'Open sans', sans-serif;
-    font-size: 1em; 
+    font-size: 0.875em; 
     font-style: normal;
     line-height: normal;
 }
@@ -36,7 +36,7 @@ h3{
 
 /* COMMUN HEADER + FOOTER */
 .logo{
-    width: 8vw;
+    width: 5em;
     margin: 0em 1em;
 }
 nav ul{
@@ -57,13 +57,18 @@ nav ul{
 header{
     background: linear-gradient(to right, #361a3d, #36193d, #35193e, #35183e, #34183f, #391a46, #3d1d4c, #421f53, #4e2562, #5a2b71, #663180, #733790);
     height: 15vh;
-    /* placement flexbox des 2 moitiés de header */
+
+    display: flex;
+    align-items: center;
+}
+#menuburger{
+    width: 100vw;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .header-moitie{
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
     /* styles de la search bar et du bouton connexion */
@@ -120,12 +125,53 @@ footer nav ul li{
     align-self: center;
 }
 
-/* TODO responsive */
+/* responsive */
 
-@media screen and (min-width: 425px) and (max-width: 768px) {
+@media screen and (max-width: 768px) {
 
+/* HEADER */
+    header{
+        justify-content: space-between;
+    }
+    #menuburger{
+        display: none;
+    }
+    #openMenuBurger{
+        border-style: solid;
+        border-color: #f7f1f9;
+        border-radius: 0.5em;
+        border-width: 0.1em;
+        margin: 2em;
+    }
+    .burger-icon span {
+        display: block;
+        width: 1.5em;
+        height: 0.1em;
+        background-color: #f7f1f9;
+        margin: 0.5em;
+    }
+
+/* FOOTER */
+
+    footer{
+        font-size: 0.625em;
+    }
+    .copyright{
+        font-size: 0.5em;
+    }
 }
 
-@media screen and (max-width: 768px){ 
-
+@media screen and (max-width: 425px){ 
+    body{
+        font-size: 0.625em;
+    }
+    h1{
+        font-size: 2.625em;
+    }
+    h2{
+        font-size: 1.625em;
+    }
+    h3{
+        font-size: 1em;
+    }
 }
