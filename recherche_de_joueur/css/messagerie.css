@@ -1,3 +1,98 @@
 main{
     height: 85vh;
 }
+.titres{
+    font-size: 1.68em;
+    text-align: center;
+    padding-top: 1.3vh;
+    margin-bottom: 0.5vh;
+}
+#messagerieContainer{
+    display: flex;
+}
+#contactContainer{
+    flex-direction: column;
+    width: 26vw;
+}
+.contact{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #361A3D;
+    border-radius: 9999px;
+    width: 23.4vw;
+    height: 7.5vh;
+    margin-left: 1vw;
+    margin-bottom: 1vh;
+}
+.contact a{
+    background-color: #F45A01;
+    width: 7.5vh;
+    height: 7.5vh;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contact img{
+    width: 2vw;
+    margin-bottom: 0.7vh;
+}
+.contact button{
+    background-color: #F45A01;
+    font-family: 'Changa', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    width: 7vw;
+    height: 3.75vh;
+    border-radius: 9999px;
+    margin-right: 1vw;
+}
+#affichageMessage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#contactEnCour{
+    display: flex;
+    align-items: center;
+    border-radius: 0px 30px 0px 0px;
+    background: linear-gradient(90deg, #361A3D 15.9%, #120917 100%);
+    width: 69vw;
+    height: 7.5vh;
+}
+#contactEnCour a{
+    background-color: #F45A01;
+    width: 7.5vh;
+    height: 7.5vh;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1vw;
+}
+#contactEnCour img{
+    width: 2vw;
+    margin-bottom: 0.7vh;
+}
+#contactEnCour p{
+    margin-left: 2.2vw;
+}
+#blockMessage{
+    display: flex;
+    background-color: #361A3D;
+    width: 69vw;
+    height: 63vh;
+    border-radius: 0px 0px 30px 30px;
+    margin-bottom: 1vh;
+}
+#saisieMessage{
+    display: flex;
+    align-items: baseline;
+    background: rgba(115, 55, 144, 0.40);
+    width: 61vw;
+    height: 12.5vh;
+    border-radius: 30px;
+    padding-left: 2vw;
+    padding-top: 1vh;
+}
