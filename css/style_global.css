@@ -36,7 +36,7 @@ h3{
 
 /* COMMUN HEADER + FOOTER */
 .logo{
-    width: 5em;
+    width: 7em;
     margin: 0em 1em;
 }
 nav ul{
@@ -46,8 +46,8 @@ nav ul{
 .navlink{
     color: #f7f1f9;
     font-family: "Changa", sans-serif;
-    font-size: 1em;
-    margin: 0.5em;
+    font-size: 1.1em;
+    margin: 2em;
 }
 .navlink:hover{
     color: #F45A01;
