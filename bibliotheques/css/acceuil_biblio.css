@@ -73,6 +73,10 @@ main p{
         width: 50%;
     }
 
+    .liens img {
+        width: 100%;
+    }
+
     .text {
         top: 5%; 
         left: 5%; 
@@ -83,4 +87,23 @@ main p{
         top: 80%;
         left: 60%;
     }
+}
+
+@media screen and (max-width: 768px) {
+
+.main-container{
+    flex-direction: column;
+}
+.biblio-g, .biblio-p{
+    font-size: 26px;
+}
+.descr-g, .descr-p{
+    font-size: 14px;
+    width: 40%;
+    top: 70%;
+    }
+}
+
+@media screen and (max-width: 425px){
+
 }
