@@ -10,9 +10,12 @@ body{
     font-size: 0.875em; 
     font-style: normal;
     line-height: normal;
+    height: 100vh;
 }
 main{
-    background: linear-gradient(to bottom, #733790, #572d70, #3e2351, #271833, #120917);   
+    background: linear-gradient(to bottom, #733790, #572d70, #3e2351, #271833, #120917);
+    min-height: 100%;
+    
 }
 .titres{ /* points communs des titres, DRY */
     font-family: 'Changa', sans-serif;
