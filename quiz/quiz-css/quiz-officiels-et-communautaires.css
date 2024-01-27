@@ -11,12 +11,13 @@ main{
     border-radius: 3em;
     margin: 1em;
     font-family: changa,sans-serif;
+    text-align: center;
 }
 
 /* Galerie des quiz (style en commun entre les 2 pages) */
 .galerie{
     width: 95%;
-    margin: 3rem auto 3rem auto;
+    margin: 2rem auto 2rem auto;
 }
 figcaption{
     display: flex;
@@ -24,8 +25,4 @@ figcaption{
 }
 time{
     margin-left: 0.3em;
-}
-
-@media screen and (max-width: 885px){
-    
 }
