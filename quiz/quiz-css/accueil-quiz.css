@@ -19,6 +19,9 @@ body{
     width: 60%;
 }
 /* header */
+.logo{
+    width: 7em;
+}
 .navbar{
     background: linear-gradient(to right, #361a3d, #36193d, #35193e, #35183e, #34183f, #391a46, #3d1d4c, #421f53, #4e2562, #5a2b71, #663180, #733790);
     height: 15vh;
@@ -52,7 +55,15 @@ body{
     font-size: 0.815em;
     font-style: italic;
 }
+@media screen and (max-width: 1400px){
+    .logo{
+        width: 5em;
+    }
+}
 @media screen and (max-width: 768px){ /* on donne des tailles précises en complément des tailles par défaut de bootstrap pour respecter le cdc */
+    .logo{
+        width: 3em;
+    }
     .texte-basique{
         font-size: 0.875em;
     }
