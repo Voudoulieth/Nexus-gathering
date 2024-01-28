@@ -89,6 +89,14 @@ main p{
     }
 }
 
+@media screen and (max-width: 1440px) {
+.descr-g, .descr-p{
+    font-size: 14px;
+    width: 40%;
+    top: 70%;
+    }
+}
+
 @media screen and (max-width: 768px) {
 
 .main-container{
@@ -105,5 +113,9 @@ main p{
 }
 
 @media screen and (max-width: 425px){
-
+.descr-g, .descr-p{
+    font-size: 10px;
+    width: 40%;
+    top: 70%;
+    }
 }
