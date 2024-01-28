@@ -42,6 +42,7 @@ body{
     background-color: #F45A01;
     padding: 0.5em;
     border-radius: 50%;
+    width: 3em;
 }
 .connexion{
     background-color: #f45a01;
@@ -82,6 +83,11 @@ body{
     }
     .titre1{
         font-size: 1em;
+    }
+    .imageQuiz{
+        width: 40em;
+        height: 10em;
+        object-fit: cover;
     }
     .copyright{
         font-size: 0.5em;
