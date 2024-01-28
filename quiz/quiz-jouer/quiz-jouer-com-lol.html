@@ -11,7 +11,8 @@
     <!-- Feuilles de style CSS -->
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/style_global.css">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../quiz-css/creer-quiz.css">
+    <link rel="stylesheet" href="../quiz-css/jouer-quiz.css">
     <!-- <script defer src=""></script> -->
     <link rel="shortcut icon" href="../../assets/logo/favicon.svg">
     <title>Quiz League of Legends - Nexus Gathering</title>
@@ -24,31 +25,65 @@
         <div id="menuburger">
             <nav>
               <ul>
-                <li><a class="navlink" href="../bibliotheques/acceuil_biblio.html">Bibliothèque</a></li>
-                <li><a class="navlink" href="../recherche_de_joueur/recherche_rapide.html">Joueurs</a></li>
-                <li><a class="navlink" href="quiz-accueil.html">Quiz</a></li>
-                <li><a class="navlink" href="../recherche_de_joueur/messagerie.html">Messagerie</a></li>
+                <li><a class="navlink" href="../../bibliotheques/acceuil_biblio.html">Bibliothèque</a></li>
+                <li><a class="navlink" href="../../recherche_de_joueur/recherche_rapide.html">Joueurs</a></li>
+                <li><a class="navlink active" href="../quiz-accueil.html">Quiz</a></li>
+                <li><a class="navlink" href="../../recherche_de_joueur/messagerie.html">Messagerie</a></li>
               </ul>
             </nav>
             <div class="header-moitie">
                 <div class="rechercher">
                     <input class="FormulaireRechercher navlink" type="text" placeholder="Rechercher">
-                    <button class="SubmitRecherche" type="submit"><img src="../../assets/Icone/magnifying-glass-solid blanc.svg"></button>
+                    <button class="SubmitRecherche" type="submit"><img src="../../assets/Icone/magnifying-glass-solid-blanc.svg"></button>
                 </div>
                 <button class="BoutonConnexion navlink">Connexion</button>
             </div>
         </div>
         <a href="#" id="openMenuBurger">
-            <span class="burger-icon">
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
+          <span class="burger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
         </a>
     </header>
     <main>
-
-      
+      <div class="auteur">
+        <p>Vous êtes l'auteur de ce quiz, que souhaitez vous en faire ?</p>
+        <button class="bouton">Modifier</button>
+        <button class="bouton">Supprimer</button>
+      </div>
+      <h1 class="titres">League of legends</h1>
+      <img src="../quiz-assets/couverture-quiz/lol.jpg" alt="Image de couverture du quiz League of legeds">
+      <form action="#" method="post" enctype="multipart/form-data">
+        <!--début d'une question-->
+        <div class="question">
+          <h2>Qui ne fait pas partie de K/DA ?</h2>
+          <div class="reponses">
+              <span><input type="radio" name="reponse1">Ahri</span>
+              <span><input type="radio" name="reponse1">Akali</span>
+              <span><input type="radio" name="reponse1">Gragas</span>
+          </div>
+        </div>
+        <!--fin d'une question-->
+        <div class="question">
+          <h2>Parmi les champions suivants, lesquels ont une compétence de camouflage ? </h2>
+          <div class="reponses">
+              <span><input type="checkbox" name="reponse2">Evelyn</span>
+              <span><input type="checkbox" name="reponse2">Fiddlesticks</span>
+              <span><input type="checkbox" name="reponse2">Shaco</span>
+          </div>
+        </div>
+        <div class="question">
+          <h2>Quel est le rôle de Jarvan IV dans l'histoire de Demacia ?</h2>
+          <div class="reponses">
+              <span><input type="checkbox" name="reponse3">Commandant en chef des armées</span>
+              <span><input type="checkbox" name="reponse3">Membre du Haut Conseil</span>
+              <span><input type="checkbox" name="reponse3">Prince héritier</span>
+          </div>
+        </div>
+        <input class="bouton" type="submit" value="Soumettre des réponses au quiz">
+      </form>
     </main>
     <footer>
       <div>

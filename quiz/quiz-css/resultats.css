@@ -1,0 +1,48 @@
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.resultats{
+    margin: 2em 0;
+    background-color: rgba(249, 237, 255, 0.09);
+    padding: 3em;
+    width: 90%;
+}
+.stats{
+    height: 7em;
+    display: flex;
+    align-items: center;
+}
+.barre{
+    background: linear-gradient(to right, #361a3d,#733790);
+    border-style: solid;
+    border-color: #120917;
+    border-width: 1px;
+    margin: 0 1em;
+    height: 100%;
+}
+
+/* ATTENTION les pourcentages de personnes ayant répondu x bonnes réponses est ici donné en static en CSS
+    cela devra être remplacé par du dynamisme, en utilisant les id, tout en utilisant la même syntaxe (le pourcentage de width est visuellement représentatif du poucentage de réponses) */
+#barre1{
+    width: 20%;
+}
+#barre2{
+    width: 50%;
+}
+#barre3{
+    width: 20%;
+}
+#barre4{
+    width: 10%;
+}
+.resultat{
+    background: linear-gradient(to right, #361a3d,#F45A01);
+}
+
+@media screen and (max-width: 768px){
+    .resultats{
+        width: 99%;
+    }
+}
