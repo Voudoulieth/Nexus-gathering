@@ -1,0 +1,93 @@
+/* mise en page globale de la page */
+main{
+    display: flex;
+    justify-content: center;
+}
+form{
+    width: 90%;
+}
+
+/* mise en page de l'identité du quiz */
+.couverture{
+    margin: 2em 0;
+    background-color: rgba(249, 237, 255, 0.09);
+    padding: 0.5em;
+}
+
+/* mise en page d'une question et de ses réponses */
+.question{
+    background-color: rgba(249, 237, 255, 0.09);
+    margin: 3rem;
+    padding: 2rem;
+}
+.reponses{
+    display: flex;
+    justify-content: center;
+}
+.reponsePossible{
+    margin: 3em 1em 1em 1em;
+    width: 80%;
+}
+.formulaireQuiz{
+    margin: 1em;
+    width: 100%;
+}
+.reponseVraie{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: 0.5em 2em 2em 2em;
+    width: 20%;
+}
+input[type="radio"] { /* sert à faire apparaître le radio que le reset.css a modifié */
+    appearance: radio;
+    margin: 1.7em;
+}
+input[type="checkbox"] { /* sert à faire apparaître le radio que le reset.css a modifié */
+    appearance: radio;
+    margin: 1.6em;
+}
+/* les 2 boutons de fin de formulaire */
+.boutonFin{
+    display: flex;
+    justify-content: space-between;
+    margin: 1em;
+}
+@media screen and (max-width: 1024px) {
+    form{
+        width: 100%;
+    }
+    form>input{
+        margin: 1em;
+    }
+    .couverture{
+        margin: 1em;
+    }
+    .reponseVraie{
+        margin: 0.5em 0em 0em 0em;
+    }
+}
+@media screen and (max-width: 800px) {
+    .question{
+        margin: 1em;
+        padding: 1em 0.5em;
+    }
+    .reponsePossible{
+        margin: 3em 0em 0em 0em;
+    }
+    .reponses{
+        width: 100%;
+    }
+    .reponseVraie{
+        font-size: 0.625em;
+        margin: 2em 0em 1em 0em;
+    }
+    input[type="radio"] {
+        appearance: radio;
+        margin: 2.6em;
+    }
+    input[type="checkbox"] {
+        appearance: radio;
+        margin: 2.6em;
+    }
+}

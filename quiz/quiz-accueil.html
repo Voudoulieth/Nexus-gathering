@@ -19,7 +19,7 @@
 
     <!-- 
       A l'attention de Dominique : 
-      * Dossier quiz réalisé par Océane
+      * Le dossier quiz est réalisé par Océane
       * La page d'accueil des quiz est réalisée en Bootstrap
       * Les autres pages sont réalisées en CSS avec médias queries pour le responsive
     -->
@@ -35,24 +35,26 @@
           <span class="navbar-toggler-icon navbar-dark"></span>
         </button> <!-- menu burger -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent"> <!-- responsive -->
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link texte-basique"  href="../bibliotheques/acceuil_biblio.html">Bibliothèque</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link texte-basique" href="../recherche_de_joueur/recherche_rapide.html">Joueurs</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active texte-basique" aria-current="page" href="quiz-accueil.html">Quiz</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link texte-basique" href="../recherche_de_joueur/messagerie.html">Messagerie</a>
-            </li>
-          </ul>
+          <div class="largeurnav me-auto">
+              <ul class="navbar-nav mb-2 mb-lg-0 d-flex justify-content-around">
+              <li class="nav-item">
+                <a class="nav-link texte-basique"  href="../bibliotheques/acceuil_biblio.html">Bibliothèque</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link texte-basique" href="../recherche_de_joueur/recherche_rapide.html">Joueurs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active texte-basique" aria-current="page" href="quiz-accueil.html">Quiz</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link texte-basique" href="../recherche_de_joueur/messagerie.html">Messagerie</a>
+              </li>
+            </ul>
+          </div>
           <form class="d-flex" role="search">
             <input class="form-control me-2 bg-transparent texte-basique" type="search" placeholder="Rechercher" aria-label="Search">
-            <button type="submit" class="btn">
-              <img width="30rem" src="../assets/Icone/magnifying-glass-solid-blanc.svg">
+            <button type="submit" class="btn ml-5">
+              <img class="SubmitRecherche" width="30rem" src="../assets/Icone/magnifying-glass-solid-blanc.svg">
             </button>
           </form>
           <button type="button" class="btn pt-1 pb-1 connexion texte-basique mt-1">Connexion</button>
@@ -61,6 +63,10 @@
     </nav>
   </header>
   <main>
+    <!--bouton pour accéder au panneau admin, visible pour les administrateurs, display:none pour le reste des utiliateurs-->
+    <a href="quiz-panneau-admin.html">
+      <button type="button" class="btn pt-1 pb-1 connexion texte-basique m-3">Page de gestion administrateur</button>
+    </a>
     <h1 class="d-flex justify-content-center mt-3 texte-basique titre1">Découvrez les quiz les plus populaires !</h1>
     <!-- début carousel quiz récents bootstrap -->
     <div id="carouselExampleCaptions" class="carousel slide mx-auto col-6 mt-4 mb-4">
@@ -106,7 +112,7 @@
     <span class="d-flex justify-content-center">
       <hr class="text-light tailleligne">
     </span>
-
+    <!--Catégories de quiz, officiels ou communautaires, redirection vers leurs pages respectives-->
     <div class="container">
     <div class="row">
       <figure class="col-12 col-md-6 d-flex flex-column align-items-center">

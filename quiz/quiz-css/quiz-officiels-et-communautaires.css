@@ -1,17 +1,11 @@
 /* CSS commun à la page des quiz communautaires et la page des quiz officiels */
-
 main{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .boutonCreer{
-    background-color: #F45A01;
     padding: 0.5em 7em 0.5em 7em;
-    border-radius: 3em;
-    margin: 1em;
-    font-family: changa,sans-serif;
-    text-align: center;
 }
 
 /* Galerie des quiz (style en commun entre les 2 pages) */

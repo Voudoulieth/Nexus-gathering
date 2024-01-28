@@ -1,0 +1,37 @@
+.panneauAdmin{
+    font-family: "changa", sans-serif;
+}
+input[type="radio"] { /* sert à faire apparaître le radio que le reset.css a modifié */
+    appearance: radio;
+    margin: 2em 0.5em 2em 2em;
+}
+figcaption{
+    display: flex;
+    flex-direction: column;
+}
+p{
+    display: flex;
+    flex-direction: column;
+}
+time{
+    margin: 0;
+}
+
+@media screen and (max-width:900px) {
+    h1{
+        font-size: 2.75em;
+    }
+}
+@media screen and (max-width:545px) {
+    h1{
+        font-size: 1.6875em;
+        margin: 1em;
+    }
+    fieldset{
+        display: flex;
+        flex-direction: column;
+    }
+    fieldset>span{
+        height: 2em;
+    }
+}
