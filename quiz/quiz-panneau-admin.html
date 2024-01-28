@@ -11,7 +11,9 @@
     <!-- Feuilles de style CSS -->
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/style_global.css">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="quiz-css/quiz-officiels-et-communautaires.css">
+    <link rel="stylesheet" href="quiz-css/quiz-communautaires.css">
+    <link rel="stylesheet" href="quiz-css/panneau-admin-quiz.css">
     <!-- <script defer src=""></script> -->
     <link rel="shortcut icon" href="../assets/logo/favicon.svg">
     <title>Accueil Quiz - Nexus Gathering</title>
@@ -26,14 +28,14 @@
               <ul>
                 <li><a class="navlink" href="../bibliotheques/acceuil_biblio.html">Bibliothèque</a></li>
                 <li><a class="navlink" href="../recherche_de_joueur/recherche_rapide.html">Joueurs</a></li>
-                <li><a class="navlink" href="quiz-accueil.html">Quiz</a></li>
+                <li><a class="navlink active" href="quiz-accueil.html">Quiz</a></li>
                 <li><a class="navlink" href="../recherche_de_joueur/messagerie.html">Messagerie</a></li>
               </ul>
             </nav>
             <div class="header-moitie">
                 <div class="rechercher">
                     <input class="FormulaireRechercher navlink" type="text" placeholder="Rechercher">
-                    <button class="SubmitRecherche" type="submit"><img src="../assets/Icone/magnifying-glass-solid blanc.svg"></button>
+                    <button class="SubmitRecherche" type="submit"><img src="../assets/Icone/magnifying-glass-solid-blanc.svg"></button>
                 </div>
                 <button class="BoutonConnexion navlink">Connexion</button>
             </div>
@@ -47,8 +49,73 @@
         </a>
     </header>
     <main>
-
-      
+      <h1>Panneau Administrateur</h1>
+      <div class="panneauAdmin">
+        <form>
+          <fieldset>
+            <legend>Sélectionnez les types de quiz que vous souhaitez visualiser :</legend> 
+            <span><input type="radio" name="typeQuiz">Quiz communautaires</span>
+            <span><input type="radio" name="typeQuiz">Quiz officiels</span>
+            <span><input type="radio" name="typeQuiz" checked>Tous les quiz</span>
+            </fieldset>
+        </form>
+      </div>
+      <div class="galerie">
+        <figure>
+          <figcaption>
+            <p>League of Legends - créé par Océane - <span>Quiz communautaire</span></p>
+            <time datetime="2024-01-07">5 janvier 2024</time>
+          </figcaption>
+          <a href="./quiz-jouer/quiz-jouer-com-lol.html">
+            <img src="./quiz-assets/couverture-quiz/lol.jpg" alt="Quiz communautaire League of Legends">
+          </a>
+        </figure>
+        <figure>
+          <figcaption>
+            <p>Baldur's Gate 3<span>Quiz officiel</span></p>
+            <time datetime="2024-01-07">7 janvier 2024</time>
+          </figcaption>
+          <a href="./quiz-jouer/quiz-jouer-off-baldur.html">
+            <img src="./quiz-assets/couverture-quiz/baldur.jpg" alt="Quiz officiel Baldur's Gate 3">
+          </a>
+        </figure>
+        <figure>
+          <figcaption>
+            <p>Genshin Impact<span>Quiz officiel</span></p>
+            <time datetime="2024-01-07">9 janvier 2024</time>
+          </figcaption>
+          <a href="./quiz-jouer/quiz-jouer-off-genshin.html">
+            <img src="./quiz-assets/couverture-quiz/genshin.jpeg" alt="Quiz offciel Genshin Impact">
+          </a>
+        </figure>
+        <figure>
+          <figcaption>
+            <p>Titre - créé par pseudonyme - <span>Quiz communautaire</span></p>
+            <time datetime="2024-01-01">Date</time>
+          </figcaption>
+          <a href="#">
+            <img src="quiz-assets/couverture-quiz/exemple.png" alt="Quiz communautaire Leaugue of Legends">
+          </a>
+        </figure>
+        <figure>
+          <figcaption>
+            <p>Titre<span>Quiz officiel</span></p>
+            <time datetime="2024-01-01">Date</time>
+          </figcaption>
+          <a href="#">
+            <img src="quiz-assets/couverture-quiz/exemple.png" alt="Quiz communautaire Leaugue of Legends">
+          </a>
+        </figure>
+        <figure>
+          <figcaption>
+            <p>Titre<span>Quiz officiel</span></p>
+            <time datetime="2024-01-01">Date</time>
+          </figcaption>
+          <a href="#">
+            <img src="quiz-assets/couverture-quiz/exemple.png" alt="Quiz communautaire Leaugue of Legends">
+          </a>
+        </figure>
+      </div>
     </main>
     <footer>
       <div>
