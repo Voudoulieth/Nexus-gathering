@@ -1,7 +1,8 @@
 /* mise en page globale de la page */
 main{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 form{
     width: 90%;

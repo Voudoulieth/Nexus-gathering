@@ -1,0 +1,47 @@
+h2{
+    font-size: 1.6875em;
+}
+img{
+    width: 50%;
+    margin: 1em;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.question{
+    width: 90%;
+    margin: 1em 0;
+}
+.reponses{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: 0.5em 2em;
+}
+input[type="radio"] { 
+    margin: 1em;
+}
+input[type="checkbox"] { 
+    margin: 1em;
+}
+.bouton{
+    margin: 1em 0 2em 0;
+    width: 50%;
+}
+
+@media screen and (max-width: 1024px) {
+    h1{
+        font-size: 2.75em;
+    }
+}
+@media screen and (max-width: 800px) {
+    h1{
+        font-size: 1.6875em;
+        margin: 1em;
+    }
+    h2{
+        font-size: 1em;
+    }
+}

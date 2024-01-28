@@ -11,7 +11,8 @@
     <!-- Feuilles de style CSS -->
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/style_global.css">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../quiz-css/creer-quiz.css">
+    <link rel="stylesheet" href="../quiz-css/jouer-quiz.css">
     <!-- <script defer src=""></script> -->
     <link rel="shortcut icon" href="../../assets/logo/favicon.svg">
     <title>Quiz Genshin Impact - Nexus Gathering</title>
@@ -26,14 +27,14 @@
               <ul>
                 <li><a class="navlink" href="../bibliotheques/acceuil_biblio.html">Bibliothèque</a></li>
                 <li><a class="navlink" href="../recherche_de_joueur/recherche_rapide.html">Joueurs</a></li>
-                <li><a class="navlink" href="quiz-accueil.html">Quiz</a></li>
+                <li><a class="navlink active" href="quiz-accueil.html">Quiz</a></li>
                 <li><a class="navlink" href="../recherche_de_joueur/messagerie.html">Messagerie</a></li>
               </ul>
             </nav>
             <div class="header-moitie">
                 <div class="rechercher">
                     <input class="FormulaireRechercher navlink" type="text" placeholder="Rechercher">
-                    <button class="SubmitRecherche" type="submit"><img src="../../assets/Icone/magnifying-glass-solid blanc.svg"></button>
+                    <button class="SubmitRecherche" type="submit"><img src="../../assets/Icone/magnifying-glass-solid-blanc.svg"></button>
                 </div>
                 <button class="BoutonConnexion navlink">Connexion</button>
             </div>
@@ -47,8 +48,37 @@
         </a>
     </header>
     <main>
-
-      
+      <h1>Genshin Impact</h1>
+      <img src="../quiz-assets/couverture-quiz/genshin.jpeg" alt="Image de couverture du quiz Genshin Impact">
+      <form action="#" method="post" enctype="multipart/form-data">
+        <!--début d'une question-->
+        <div class="question">
+          <h2>Qui n'est pas originaire de Liyue ?</h2>
+          <div class="reponses">
+              <span><input type="radio" name="reponse1">Ganyu</span>
+              <span><input type="radio" name="reponse1">Xiao</span>
+              <span><input type="radio" name="reponse1">Fischl</span>
+          </div>
+        </div>
+        <!--fin d'une question-->
+        <div class="question">
+          <h2>Quelle est l'arme signature de Hu tao ?</h2>
+          <div class="reponses">
+              <span><input type="checkbox" name="reponse2">Lance de Jade ailée</span>
+              <span><input type="checkbox" name="reponse2">Baton de Homa</span>
+              <span><input type="checkbox" name="reponse2">Berge de la voûte d'azur</span>
+          </div>
+        </div>
+        <div class="question">
+          <h2>Quelle stat le set de 2 pièces de l'Ombre de la verte chasseuse buff ?</h2>
+          <div class="reponses">
+              <span><input type="checkbox" name="reponse3">Dégats physiques</span>
+              <span><input type="checkbox" name="reponse3">Maîtrise élémentaire</span>
+              <span><input type="checkbox" name="reponse3">Dégats Anemo</span>
+          </div>
+        </div>
+        <input class="bouton" type="submit" value="Soumettre des réponses au quiz">
+      </form>
     </main>
     <footer>
       <div>
