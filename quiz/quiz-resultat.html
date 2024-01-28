@@ -11,10 +11,10 @@
     <!-- Feuilles de style CSS -->
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/style_global.css">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="quiz-css/resultats.css">
     <!-- <script defer src=""></script> -->
     <link rel="shortcut icon" href="../assets/logo/favicon.svg">
-    <title>Accueil Quiz - Nexus Gathering</title>
+    <title>Resultats du quiz - Nexus Gathering</title>
   </head>
   <body>
     <header>
@@ -26,14 +26,14 @@
               <ul>
                 <li><a class="navlink" href="../bibliotheques/acceuil_biblio.html">Bibliothèque</a></li>
                 <li><a class="navlink" href="../recherche_de_joueur/recherche_rapide.html">Joueurs</a></li>
-                <li><a class="navlink" href="quiz-accueil.html">Quiz</a></li>
+                <li><a class="navlink active" href="quiz-accueil.html">Quiz</a></li>
                 <li><a class="navlink" href="../recherche_de_joueur/messagerie.html">Messagerie</a></li>
               </ul>
             </nav>
             <div class="header-moitie">
                 <div class="rechercher">
                     <input class="FormulaireRechercher navlink" type="text" placeholder="Rechercher">
-                    <button class="SubmitRecherche" type="submit"><img src="../assets/Icone/magnifying-glass-solid blanc.svg"></button>
+                    <button class="SubmitRecherche" type="submit"><img src="../assets/Icone/magnifying-glass-solid-blanc.svg"></button>
                 </div>
                 <button class="BoutonConnexion navlink">Connexion</button>
             </div>
@@ -47,8 +47,25 @@
         </a>
     </header>
     <main>
-
-      
+      <h1 class="titres">Titre du quiz</h1>
+      <h2 class="titres">Voici votre score : <span>2/3</span></h2>
+      <div class="resultats">
+        <div class="stats">
+          <span>3/3</span><span id="barre1" class="barre"></span><span>20% des joueurs</span>
+        </div>
+        <div class="stats">
+          <span>2/3</span><span id="barre2" class="barre resultat"></span><span>50% des joueurs, dont vous</span>
+        </div>
+        <div class="stats">
+          <span>1/3</span><span id="barre3" class="barre"></span><span>20% des joueurs</span>
+        </div>
+        <div class="stats">
+          <span>0/3</span><span id="barre4" class="barre"></span><span>10% des joueurs</span>
+        </div>
+      </div>
+      <a href="#">
+        <button class="bouton">Envie de rejoindre la communauté ?</button>
+      </a>
     </main>
     <footer>
       <div>
