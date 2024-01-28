@@ -1,0 +1,74 @@
+/* CSS de la page des quiz communautaires */
+
+/* Bandeau de la création de quiz */
+.creerQuizCommu{
+    width: 50%;
+    padding: 1em;
+    margin: 1em;
+    background-color: rgba(51, 24, 63, 0.32);
+    border-radius: 0 0 1em 1em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.creerQuizCommu p{
+    text-align: center;
+    margin: 1.5em;
+    font-family: changa,sans-serif;
+}
+
+/* Galerie des quiz communautaires */
+figure{
+    margin: 0.5rem;
+}
+.galerie{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.galerie figure a img{
+    width: 25rem;
+    height: 14rem;
+    object-fit: cover;
+}
+
+/* responsive */
+
+@media screen and (max-width: 885px) and (min-width: 545px) {
+/* banderole créer quiz */
+    .creerQuizCommu{
+        width: 80%;
+    }
+    .boutonCreer{
+        padding: 0.5em 1em 0.5em 1em;
+        font-size: 0.875em;
+    }
+/* galerie */
+    .galerie figure a img{
+        width: 15rem;
+        height: 10rem;
+    }
+    figcaption{
+        flex-direction: column;
+    }
+    time{
+        margin-left: 0em;
+    }
+    }
+    
+@media screen and (max-width: 545px){ 
+/* banderole créer quiz */
+    .creerQuizCommu{
+        width: 90%;
+    }
+    .boutonCreer{
+        padding: 0.5em 1em 0.5em 1em;
+        font-size: 0.875em;
+    }
+/* galerie */
+    .galerie figure a img{
+        width: 25rem;
+        height: 10rem;
+    }
+    }
