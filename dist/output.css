@@ -612,6 +612,10 @@ video {
   top: 2.5rem;
 }
 
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
 .m-3 {
   margin: 0.75rem;
 }
@@ -758,6 +762,10 @@ video {
   width: 66.666667%;
 }
 
+.w-20 {
+  width: 5rem;
+}
+
 .w-\[2\.6vw\] {
   width: 2.6vw;
 }
@@ -802,8 +810,16 @@ video {
   width: 8vw;
 }
 
+.w-\[90\%\] {
+  width: 90%;
+}
+
 .w-full {
   width: 100%;
+}
+
+.grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -826,6 +842,16 @@ video {
   justify-content: space-between;
 }
 
+.place-self-center {
+  place-self: center;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .text-pretty {
   text-wrap: pretty;
 }
@@ -841,6 +867,10 @@ video {
 .bg-\[\#120917\] {
   --tw-bg-opacity: 1;
   background-color: rgb(18 9 23 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#733790\]\/95 {
+  background-color: rgb(115 55 144 / 0.95);
 }
 
 .bg-\[\#F45A01\] {
@@ -928,6 +958,10 @@ video {
   text-align: center;
 }
 
+.indent-10 {
+  text-indent: 2.5rem;
+}
+
 .font-\[\'Changa\'\] {
   font-family: 'Changa';
 }
@@ -940,8 +974,8 @@ video {
   font-size: 0.75em;
 }
 
-.text-\[0\.85em\] {
-  font-size: 0.85em;
+.text-\[0\.875em\] {
+  font-size: 0.875em;
 }
 
 .text-\[0\.87em\] {
@@ -962,10 +996,6 @@ video {
 
 .text-\[2\.75em\] {
   font-size: 2.75em;
-}
-
-.text-\[2\.75rem\] {
-  font-size: 2.75rem;
 }
 
 .text-\[4\.5em\] {
