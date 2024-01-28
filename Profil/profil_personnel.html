@@ -18,7 +18,7 @@
     />
     <link rel="stylesheet" href="" />
     <title>Votre profil</title>
-    <link rel="shortcut icon" href="assets/logo/favicon.svg" />
+    <link rel="shortcut icon" href="../assets/logo/favicon.png" />
     <script defer src=""></script>
   </head>
   <body>
@@ -67,23 +67,32 @@
           <button class="btnprincipal_hero"  type="button" action="#"">Gestion de compte</button>
         </div>
         <div class="container">
-              <div class="container_btn">
+            <div class="container_btn">
                 <button class="container_btn_ajout" type="button" action="#">Ajout</button>
                 <button class="container_btn_sup" type="button" action="#" >Suppression</button>
+            </div>
+            <div class="container_perso">
+                <div class="container_perso_bio">
+                  <p>Biographie</p>
+                  <textarea name="" id="" cols="50" rows="10">Lorem ipsum dolor sit amet consectetur adipisicing elit. A similique autem possimus itaque, quod placeat esse animi, nam vero nisi blanditiis numquam in omnis ad? Provident sed ad aperiam fugit quam aspernatur asperiores necessitatibus, voluptas, rem eligendi velit tenetur qui similique ratione. Non dignissimos dicta quibusdam eaque velit asperiores modi!
+                  </textarea>
               </div>
-            <div>
-                <p>Bio</p>
-                <p>Centre d'intérêt</p>
+              <div class="container_perso_interet">
+                  <p>Centre d'intérêt</p>
+                  <textarea name="" id="" cols="50" rows="10">Lorem ipsum dolor sit amet consectetur adipisicing elit. A similique autem possimus itaque, quod placeat esse animi, nam vero nisi blanditiis numquam in omnis ad? Provident sed ad aperiam fugit quam aspernatur asperiores necessitatibus, voluptas, rem eligendi velit tenetur qui similique ratione. Non dignissimos dicta quibusdam eaque velit asperiores modi!
+                </textarea>
+              </div>
             </div>
-            <div>
-                <a href="#"><img src="" alt=""></a>
-                <a href="#"><img src="" alt=""></a>
-                <a href="#"><img src="" alt=""></a>
-                <a href="#"><img src="" alt=""></a>
+            <div class="container_img">
+                <a href="#"><img src="../assets/Image/jeux mmorpg.png" alt="Un groupe d'aventurier, composé de trois archers, deux mages ainsi que d'un guerrier armé d'un bouclier, affronte un balrog"></a>
+                <a href="#"><img src="../assets/Image/jeux de tir.png" alt="Un tirer d'élite prends position sur un toit afin de viser une cible au loin, hors cadre"></a>
+                <a href="#"><img src="../assets/Image/jeux de survie.png" alt="Un rescapé portant des vêtements chaud ainsi qu'un sac à dos bien rempli, rejoint une femme un peu plus loin, en marchant sur un bord de falaise enneigé. On peut apercevoir un pic de montagne en fond."></a>
+                <a href="#"><img src="../assets/Image/jeux moba.png" alt="Un mage de glace ainsi qu'un mage de feu se livre bataille sur fond d'affrontement entre divinités draconique"></a>
             </div>
-            <div>
-                <form action="">
+            <div class="container_jeux">
+                <div class="container_jeux_temps">
                     <!-- valeur à prendre en paramètre : Rarement, occasionnellement, toutes les semaines, quotidiennement -->
+                    <p>Votre temps de jeux</p>
                     <input type="radio" name="temps" id="rarely">
                     <label for="rarely">Rarement</label>
                     <input type="radio" name="temps" id="often">
@@ -92,16 +101,15 @@
                     <label for="weekly">Toutes les semaines</label>
                     <input type="radio" name="temps" id="daily">
                     <label for="daily">Quotidiennement</label>
-                </form>
-                <Div>
+                </div>
+                <Div class="container_jeux_level">
                     <p>
                         Niveau de jeux (récupéré via API)
                     </p>
                 </Div>
             </div>
-            <div>
-                <form action="#" method="get">
-                    <div>
+            <div class="container_type">
+                <div class="container_type_jeux">
                         <details>
                             <summary>Action</summary>
                             <input type="checkbox" name="combat" id="combat">
@@ -156,7 +164,7 @@
                             <label for="maze">Labyrinthe</label>
                             <input type="checkbox" name="puzzle" id="puzzle">
                             <label for="puzzle">Puzzle</label>
-                            </details>
+                        </details>
                         <details>
                             <summary>Simulation</summary>
                             <input type="checkbox" name="gestion" id="gestion">
@@ -191,8 +199,8 @@
                             <label for="programming">Jeux de programmation</label>
                         </details>
                                             
-                    </div>
-                    <div>
+                </div>
+                <div class="container_type_joueur">
                         <input type="radio" name="mode" id="chill">
                         <label for="chill">Chill</label>
                         <input type="radio" name="mode" id="tryhard">
@@ -203,8 +211,7 @@
                         <label for="coach">Coach</label>
                         <input type="radio" name="mode" id="pro">
                         <label for="pro">Pro</label>
-                    </div>
-                </form>
+                </div>
             </div>
             
         </div>

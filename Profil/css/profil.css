@@ -73,6 +73,7 @@
     display: flex;
     flex-direction: row;
     width: 100%;
+    margin-bottom: 5%;
     
 
     & .container_btn_ajout {
@@ -96,3 +97,100 @@
         text-align: center;
     }
 }
+
+
+.container_perso{
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    text-align: center;
+    margin-bottom: 5%;
+
+    & .container_perso_bio {
+        justify-content: flex-start;
+        background-color: rgb(54, 26, 61, .5);
+        border-radius: 5px;
+        width: 40%;
+    }
+
+    & .container_perso_interet {
+        margin-left: auto;
+        background-color: rgb(54, 26, 61, .5);
+        width: 40%;
+    }
+
+    & p {
+        margin: 10px 0 10px 0;
+    }
+}
+
+.container_img {
+    display: flex;
+    width: 95%;
+    margin-bottom: 5%;
+    
+    
+    & a {
+        margin: 0 1% 0 1%;
+        justify-content:  center;
+        object-fit: cover;
+    }
+    & img {
+        /* width: 80%; */
+        height: auto;
+        align-items: center;
+        /* justify-content: space-between; */
+        
+        /* object-fit: cover; */
+    }
+}
+
+.container_jeux {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    text-align: center;
+
+   
+
+    & .container_jeux_temps {
+        justify-content: flex-start;
+        background-color: rgb(54, 26, 61, .5);
+        border-radius: 5px;
+        width: 40%;
+        flex-wrap: wrap;
+        padding-bottom: 10px ;
+
+        & p {
+            margin: 5px 0 5px 0;
+        }
+
+        & input[type="radio"] {
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 10px;
+            height: 10px;
+            border: 2px solid white;
+            border-radius: 50%;
+            
+        }
+
+        & input[type="radio"]:checked {
+            background-color: #2196F3;
+          }
+
+    }
+
+    & .container_jeux_level {
+        margin-left: auto;
+        background-color: rgb(54, 26, 61, .5);
+        width: 40%;
+    
+
+    }
+
+}
+
+
