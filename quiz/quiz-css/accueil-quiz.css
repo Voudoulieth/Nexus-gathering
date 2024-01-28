@@ -26,6 +26,9 @@ body{
     background: linear-gradient(to right, #361a3d, #36193d, #35193e, #35183e, #34183f, #391a46, #3d1d4c, #421f53, #4e2562, #5a2b71, #663180, #733790);
     height: 15vh;
 }
+.largeurnav{
+    width: 50em;
+}
 .texte-basique::placeholder{
     color: #f7f1f9;
 }
@@ -35,10 +38,20 @@ body{
 .nav-link:hover{
     color: #f45a01;
 }
-/* TODO couleur placeholder + padding orange de la loupe */
+.SubmitRecherche{
+    background-color: #F45A01;
+    padding: 0.5em;
+    border-radius: 50%;
+}
 .connexion{
     background-color: #f45a01;
     border-radius: 90px;
+}
+.connexion:hover{
+    transform: scale(1.1);
+    background-color: #f45a01;
+    border-radius: 90px;
+    color: #f7f1f9;
 }
 .menu-burger{
     border-color: #f7f1f9 !important;

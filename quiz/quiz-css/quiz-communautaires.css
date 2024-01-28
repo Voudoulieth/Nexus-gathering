@@ -40,10 +40,6 @@ figure{
     .creerQuizCommu{
         width: 80%;
     }
-    .boutonCreer{
-        padding: 0.5em 1em 0.5em 1em;
-        font-size: 0.875em;
-    }
 /* galerie */
     .galerie figure a img{
         width: 15rem;
@@ -61,10 +57,6 @@ figure{
 /* banderole créer quiz */
     .creerQuizCommu{
         width: 90%;
-    }
-    .boutonCreer{
-        padding: 0.5em 1em 0.5em 1em;
-        font-size: 0.875em;
     }
 /* galerie */
     .galerie figure a img{
