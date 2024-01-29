@@ -1,36 +1,31 @@
+/* TODO:refacto les classes afin d'optimiser le code */
 .profil {
-    
     padding-top: 3%;
     display: flex;
     /* justify-content: flex-end; */
     margin-bottom: 10vh;
-    
 }
 
-
 .profil_avatar {
-    width : 15%;
+    width: 15%;
     padding-top: 2.2%;
     margin-left: 10%;
 }
 
 .profil_avatar_img {
-        
-        width:40%;
-        border-radius: 60px;
-        
-    }
+    width: 40%;
+    border-radius: 60px;
+}
 
 .profil_hero {
     width: 50%;
     height: 150px;
-    background-color: rgb(54, 26, 61, .6);
+    background-color: rgb(54, 26, 61, 0.6);
     border-radius: 30px;
     margin-left: 5vh;
     text-align: center;
-    
 
-    & .profil_hero_title{
+    & .profil_hero_title {
         padding-top: 4%;
         color: #f7f1f9;
         font-size: 3em;
@@ -40,33 +35,54 @@
     }
 }
 
-
 .btnprincipal {
-    display : flex;
+    display: flex;
     justify-content: space-around;
     margin-bottom: 5%;
-    
+
     & .btnprincipal_hero {
         border: solid 1px;
         border-radius: 15px;
         width: 150px;
         height: 35px;
         text-align: center;
-        background-color: rgb(54, 26, 61, .6);
-    
+        background-color: rgb(54, 26, 61, 0.6);
     }
-    
 }
 
-
 .container {
-    background-color: rgb(160, 111, 183, .5);
+    background-color: rgb(160, 111, 183, 0.5);
     display: flex;
     flex-direction: column;
     width: 80%;
     align-items: center;
     margin: 0 10% 0 10%;
-    border-radius: 20px 20px 0 0;    
+    border-radius: 20px 20px 0 0;
+}
+
+#container {
+    background-color: rgb(160, 111, 183, 0.5);
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    align-items: center;
+    margin: 0 10% 0 10%;
+    border-radius: 20px 20px 0 0;
+}
+
+.container_aside {
+    display: flex;
+    width: 95% ;
+    flex-direction: column;
+    flex:1;
+    
+    
+
+    & .container_aside_menu {
+        order: 1;
+    }
+
+
 }
 
 .container_btn {
@@ -74,7 +90,6 @@
     flex-direction: row;
     width: 100%;
     margin-bottom: 5%;
-    
 
     & .container_btn_ajout {
         width: 100px;
@@ -98,8 +113,7 @@
     }
 }
 
-
-.container_perso{
+.container_perso {
     display: flex;
     flex-direction: row;
     width: 95%;
@@ -108,14 +122,14 @@
 
     & .container_perso_bio {
         justify-content: flex-start;
-        background-color: rgb(54, 26, 61, .5);
+        background-color: rgb(54, 26, 61, 0.5);
         border-radius: 5px;
         width: 40%;
     }
 
     & .container_perso_interet {
         margin-left: auto;
-        background-color: rgb(54, 26, 61, .5);
+        background-color: rgb(54, 26, 61, 0.5);
         width: 40%;
     }
 
@@ -128,11 +142,10 @@
     display: flex;
     width: 95%;
     margin-bottom: 5%;
-    
-    
+
     & a {
         margin: 0 1% 0 1%;
-        justify-content:  center;
+        justify-content: center;
         object-fit: cover;
     }
     & img {
@@ -140,7 +153,7 @@
         height: auto;
         align-items: center;
         /* justify-content: space-between; */
-        
+
         /* object-fit: cover; */
     }
 }
@@ -150,16 +163,15 @@
     flex-direction: row;
     width: 95%;
     text-align: center;
-
-   
+    margin-bottom: 5%;
 
     & .container_jeux_temps {
         justify-content: flex-start;
-        background-color: rgb(54, 26, 61, .5);
+        background-color: rgb(54, 26, 61, 0.5);
         border-radius: 5px;
         width: 40%;
         flex-wrap: wrap;
-        padding-bottom: 10px ;
+        padding-bottom: 10px;
 
         & p {
             margin: 5px 0 5px 0;
@@ -174,23 +186,122 @@
             height: 10px;
             border: 2px solid white;
             border-radius: 50%;
-            
         }
 
         & input[type="radio"]:checked {
-            background-color: #2196F3;
-          }
-
+            background-color: #2196f3;
+        }
     }
 
     & .container_jeux_level {
         margin-left: auto;
-        background-color: rgb(54, 26, 61, .5);
+        background-color: rgb(54, 26, 61, 0.5);
         width: 40%;
-    
+        border-radius: 5px;
+        width: 40%;
+        flex-wrap: wrap;
+        padding-bottom: 10px;
+        align-items: center;
 
+        & p {
+            margin: 5px 0 5px 0;
+        }
     }
-
 }
 
+.container_type {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    text-align: center;
+    margin-bottom: 5%;
 
+    & .container_type_jeux {
+        justify-content: flex-start;
+        background-color: rgb(54, 26, 61, 0.5);
+        border-radius: 5px;
+        width: 40%;
+        flex-wrap: wrap;
+        padding-bottom: 10px;
+
+        & p {
+            margin: 5px 0 5px 0;
+        }
+
+        & input[type="checkbox"] {
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 10px;
+            height: 10px;
+            border: 2px solid white;
+            /* border-radius: 50%; */
+        }
+
+        & input[type="checkbox"]:checked {
+            background-color: #2196f3;
+        }
+    }
+
+    & .container_type_joueur {
+        margin-left: auto;
+        background-color: rgb(54, 26, 61, 0.5);
+        width: 40%;
+        border-radius: 5px;
+        width: 40%;
+        flex-wrap: wrap;
+        padding-bottom: 10px;
+        align-items: center;
+
+        & p {
+            margin: 5px 0 5px 0;
+        }
+    }
+}
+
+/* Après écriture du code, je me suis rendu compte que j'avais dupliqué le contenu des classes css, il faudra donc que je modifie en conséquence */
+
+/* Media Queries pour smartphones petits (jusqu'à 576px) */
+@media screen and (max-width: 576px) {
+    .profil_avatar {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .profil_hero {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+/* Media Queries pour smartphones moyens (de 577px à 768px) */
+@media screen and (min-width: 577px) and (max-width: 768px) {
+    .profil_avatar {
+        width: 70%;
+        margin-left: 15%;
+    }
+
+    .profil_hero {
+        width: 70%;
+        margin-left: 15%;
+    }
+
+    .btnprincipal_hero {
+        width: 120px;
+        height: 30px;
+    }
+}
+
+/* Media Queries pour smartphones grands (de 769px à 992px) */
+@media screen and (min-width: 769px) and (max-width: 992px) {
+    .profil_hero {
+        width: 60%;
+        margin-left: 20%;
+    }
+
+    .btnprincipal_hero {
+        width: 130px;
+        height: 32px;
+    }
+}
