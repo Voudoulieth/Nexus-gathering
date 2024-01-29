@@ -27,9 +27,9 @@ h1{
 }
 #loupe{
     position: absolute;
-    width: 1.82vw;
-    top: 26.4vh;
-    left: 35.5vw;
+    width: 1.6vw;
+    top: 25.7vh;
+    left: 35.3vw;
 }
 #carousel{
     display: flex;
@@ -37,6 +37,7 @@ h1{
     align-items: center;
     margin-top: 2vh;
 }
+
 .carouselimg{
     width: 16.4vw;
     object-fit: cover;
