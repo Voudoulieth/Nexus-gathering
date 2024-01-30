@@ -11,8 +11,8 @@
     position: absolute;
     width: 34.5vw;
     border-radius: 9999px;
-    top: 2.5rem;
-    left: 2.5rem;
+    top: 4vh;
+    left: 4vh;
 }
 .titres{
     font-size: 2.75em;
@@ -31,14 +31,59 @@
     opacity: 95%;
     position: absolute;
     width: 25vw;
-    height: 10vh;
+    height: 9vh;
     border-radius: 30px;
-    bottom: 4rem;
-    right: 4rem;
+    bottom: 8vh;
+    right: 4vw;
 }
 .parag{
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    font-size: 0.75em;
+    padding-left: 1.2vw;
+    padding-right: 1vw;
+    font-size: 0.94em;
     font-weight: 600;
+}
+@media screen and (max-width: 768px) {
+    .main-container{
+        flex-direction: column;
+    }
+    .search-section{
+        width: 100%;
+    }
+    .encareTitre{
+        left: 30vw;
+        width: 40vw;
+    }
+    #encareh2{
+        width: 34vw;
+        left: 33vw;
+    }
+    .titres{
+        font-size: 1.68em;
+    }
+    .encareP{
+        width: 48vw;
+        height: 13vh;
+        padding-left: 2vw;
+        padding-right: 2vw;
+    }
+}
+@media screen and (max-width: 425px){ 
+    .encareTitre{
+        left: 26vw;
+        width: 48vw;
+    }
+    #encareh2{
+        left: 30vw;
+        width: 40vw;
+    }
+    .titres{
+        font-size: 1.68em;
+    }
+    .encareP{
+        width: 48vw;
+        height: 10.5vh;
+        padding-left: 3vw;
+        padding-right: 2vw;
+        bottom: 5vh;
+    }
 }

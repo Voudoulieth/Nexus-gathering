@@ -62,3 +62,74 @@ figcaption{
 .arrow{
     width: 2vw;
 }
+
+@media screen and (max-width: 768px) {
+    body{
+        height:80vh;
+    }
+    main{
+        height: 60vh;
+    }
+    h1{
+        margin-top: 3vh;
+    }
+    #recherche{
+        padding-top: 6vh;
+    }
+    #carouRespon1{
+        display: none;
+    }
+    #carouRespon2{
+        display: none;
+    }
+    .carouselimg{
+        width: 25vw;
+        font-size: 1.68em;
+
+    }
+    #imgspotlight{
+        width: 30vw;
+        font-size: 2.6em;
+    }
+    .arrow{
+        width: 3vw;
+    }
+    #searchbar{
+        font-size: 1.4em;
+        padding-left: 3vw;
+    }
+    #loupe{
+        width: 2.8vw;
+        left: 36.1vw;
+        top: 22vh;
+    }
+}
+@media screen and (max-width: 425px){ 
+    body{
+        height:60vh;
+    }
+    main{
+        height: 50vh;
+    }
+    h1{
+        margin-top: 1.5vh;
+    }
+    #recherche{
+        padding-top: 4vh;
+    }
+    #searchbar{
+        font-size: 1em;
+        padding-left: 5vw;
+    }
+    #loupe{
+        width: 2.8vw;
+        left: 36.1vw;
+        top: 19.5vh;
+    }
+    .carouselimg{
+        font-size: 1.2em;
+    }
+    #imgspotlight{
+        font-size: 1.68em;
+    }
+}

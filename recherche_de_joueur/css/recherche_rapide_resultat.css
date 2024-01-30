@@ -60,3 +60,29 @@ h1{
     text-align: center;
     margin-right: 1vw;
 }
+@media screen and (max-width: 768px) {
+    h1{
+        font-size: 2.75em;
+        padding-top: 3vh;
+        margin-bottom: 4vh;
+    }
+}
+@media screen and (max-width: 425px){ 
+    h1{
+        padding-top: 3vh;
+        margin-bottom: 4vh;
+    }
+    .tokenjoueur img{
+        width: 5.5vw;
+        margin-bottom: 0.5vh;
+    }
+    .contact{
+        font-size: 0.5em;
+    }
+    .tokenjoueur ul{
+        margin-right: 0vw;
+    }
+    .tokenjoueur ul li{
+        padding-left: 1vw;
+    }
+}
