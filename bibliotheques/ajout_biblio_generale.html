@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="../css/style_global.css" />
     <!-- <script defer src=""></script> -->
     <link rel="shortcut icon" href="../assets/logo/favicon.svg" />
-    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="stylesheet" href="../dist/output.css" />
     <title>Ajout générale - Nexus Gathering</title>
   </head>
   <body>
@@ -65,7 +65,10 @@
               placeholder="Rechercher"
             />
             <button class="SubmitRecherche" type="submit">
-              <img src="../assets/Icone/magnifying-glass-solid-blanc.svg" alt="recherche" />
+              <img
+                src="../assets/Icone/magnifying-glass-solid-blanc.svg"
+                alt="recherche"
+              />
             </button>
           </div>
           <button class="BoutonConnexion navlink">Connexion</button>
@@ -116,7 +119,8 @@
                   type="text"
                   id="nomJeu"
                   name="nomJeu"
-                  class="hover:bg-white hover:text-black rounded-full mt-2"
+                  placeholder="Saisissez ici"
+                  class="hover:bg-white hover:text-black rounded-full mt-2 border focus:border-purple-800 focus:border-2"
                   required
                 />
               </div>
@@ -130,9 +134,10 @@
                 <textarea
                   id="resume"
                   name="resume"
+                  placeholder="Saisissez ici"
                   rows="15"
                   cols="150"
-                  class="hover:bg-white hover:text-black rounded-full m-4 pt-2 w-[90%]"
+                  class="hover:bg-white hover:text-black rounded-full m-4 pt-2 w-[90%] resize-y border focus:border-purple-800 focus:border-2"
                   required
                 ></textarea>
               </div>
@@ -148,7 +153,8 @@
                 type="text"
                 id="editeur"
                 name="editeur"
-                class="hover:bg-white hover:text-black rounded-full mt-1"
+                placeholder="Saisissez ici"
+                class="hover:bg-white hover:text-black rounded-full mt-1 border focus:border-purple-800 focus:border-2"
               />
             </div>
 
@@ -160,15 +166,15 @@
                 type="text"
                 id="studio"
                 name="studio"
-                class="hover:bg-white hover:text-black rounded-full mt-1"
+                placeholder="Saisissez ici"
+                class="hover:bg-white hover:text-black rounded-full mt-1 border focus:border-purple-800 focus:border-2"
               />
             </div>
 
             <div
               class="bg-[#f45a01]/95 rounded-full text-center text-[0.875em] font-semibold p-2 m-4"
             >
-              <label for="dateDebutDev">Début du développement :</label
-              ><br />
+              <label for="dateDebutDev">Début du développement :</label><br />
               <input
                 class="mt-2"
                 type="date"
@@ -192,23 +198,32 @@
             <div
               class="bg-[#f45a01]/95 rounded-full text-center text-[0.875em] font-semibold p-2 m-4"
             >
-              <label for="consoles">Consoles disponibles :</label><br />
-              <input
-                type="text"
-                id="consoles"
-                name="consoles"
-                class="hover:bg-white hover:text-black rounded-full mt-2"
-              />
+              <p>Consoles disponibles :</p>
+
+              <input  class="form-checkbox h-2 w-2 bg-white focus:ring-2 focus:ring-green-500 cursor-pointer" type="checkbox" id="ps1" name="choix" value="ps1" />
+              <label class="cursor-pointer" for="ps1">Playstation 1</label><br />
+
+              <input type="checkbox" id="ps2" name="choix" value="ps2" />
+              <label for="ps2">Playstation 2</label><br />
+
+              <input type="checkbox" id="ps3" name="choix" value="ps3" />
+              <label for="ps3">Playstation 3</label><br />
+
+              <input type="checkbox" id="ps4" name="choix" value="ps4" />
+              <label for="ps4">Playstation 4</label><br />
+
+              <input type="checkbox" id="ps5" name="choix" value="ps5" />
+              <label for="ps5">Playstation 5</label><br />
             </div>
 
             <div
               class="bg-[#f45a01]/95 rounded-full text-center text-[0.875em] font-semibold p-2 m-4"
             >
-              <label for="multijoueur">Multijoueur :</label><br />
-              <select class="mt-2" id="multijoueur" name="multijoueur">
-                <option value="true" class="text-[#120917]">Oui</option>
-                <option value="false" class="text-[#120917]">Non</option>
-              </select>
+              <p>Multijoueur :</p>
+              <label for="optionMulti1">Oui</label>
+              <input class="" type="radio" id="optionMulti1" name="options" value="option1">
+              <label for="optionMulti2">Non</label>
+              <input type="radio" id="optionMulti2" name="options" value="option2">
             </div>
 
             <div
@@ -225,14 +240,14 @@
               class="bg-[#f45a01]/95 rounded-full text-center text-[0.875em] font-semibold p-2 m-4"
             >
               <label for="format">Format physique/dématérialisé:</label><br />
-              <select class="mt-2" id="format" name="format">
-                <option value="physique" class="text-[#120917]">
+              <select class="mt-2 pl-3 pr-3 appearance-none row-start-1 col-start-1 bg-slate-50 dark:bg-purple-800 rounded-full"  id="format" name="format">
+                <option value="physique" class="text-[#f1f7f9]">
                   Physique
                 </option>
-                <option value="dematerialise" class="text-[#120917]">
+                <option value="dematerialise" class="text-[#f1f7f9]">
                   Dématérialisé
                 </option>
-                <option value="dematerialise" class="text-[#120917]">
+                <option value="dematerialise" class="text-[#f1f7f9]">
                   Physique et dématérialisé
                 </option>
               </select>
@@ -242,14 +257,14 @@
 
         <section class="flex justify-center w-full">
           <button
-            class="font-['Changa'] text-[#f1f7f9] bg-[#f45a01]/95 rounded-full w-[20%] text-center text-[1.06em] p-2 m-5 ring ring-offset-2 ring-purple-500 ring-offset-purple-100/30 hover:ring-red-500 hover:ring-offset-red-500"
+            class="font-['Changa'] text-[#f1f7f9] bg-[#f45a01]/95 rounded-full w-[20%] text-center text-[1.06em] p-2 m-5 ring ring-offset-2 ring-purple-500 ring-offset-purple-100/30 hover:ring-red-700 hover:ring-offset-red-700 shadow-lg shadow-indigo-500/50"
             type="reset"
             name="reset"
           >
             Effacer
           </button>
           <button
-            class="font-['Changa'] text-[#f1f7f9] bg-[#f45a01]/95 rounded-full w-[20%] text-center text-[1.06em] p-2 m-5 ring ring-offset-2 ring-purple-500 ring-offset-purple-100/30 hover:ring-green-500 hover:ring-offset-green-500"
+            class="font-['Changa'] text-[#f1f7f9] bg-[#f45a01]/95 rounded-full w-[20%] text-center text-[1.06em] p-2 m-5 ring ring-offset-2 ring-purple-500 ring-offset-purple-100/30 hover:ring-green-500 hover:ring-offset-green-500 shadow-lg shadow-indigo-500/50"
             type="submit"
             name="submit"
           >
