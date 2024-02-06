@@ -1074,3 +1074,20 @@ video {
 .hover\:ring-offset-red-500:hover {
   --tw-ring-offset-color: #ef4444;
 }
+
+@media (min-width: 768px) {
+  .md\:hidden {
+    display: none;
+  }
+
+  .md\:bg-white {
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:block {
+    display: block;
+  }
+}
