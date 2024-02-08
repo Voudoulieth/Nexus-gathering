@@ -35,7 +35,13 @@ h1{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 2vh;
+    margin-top: 4vh;
+}
+#carousel-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 92vw;
 }
 
 .carouselimg{
@@ -61,6 +67,8 @@ figcaption{
 }
 .arrow{
     width: 2vw;
+    margin-left: 1.5vw;
+    margin-right: 1.5vw;
 }
 
 @media screen and (max-width: 768px) {

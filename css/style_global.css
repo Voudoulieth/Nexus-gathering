@@ -112,7 +112,9 @@ header{
 .SubmitRecherche{
     background-color: #F45A01;
     padding: 0.5em;
-    border-radius: 50%;
+    border-radius: 9999%;
+    width: 1.7vw;
+    height: 1.7vw;
 }
 .BoutonConnexion{
     margin-right: 1em;

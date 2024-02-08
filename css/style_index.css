@@ -11,6 +11,12 @@
     align-items: center;
     padding-top: 8vh;
 }
+#carousel-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 92vw;
+}
 .carouselimg{
     display: flex;
     justify-content: center;
@@ -34,6 +40,8 @@ figcaption{
 }
 .arrow{
     width: 2vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
 }
 #imgspotlight{
     width: 30.78vw;
