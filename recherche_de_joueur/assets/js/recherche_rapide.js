@@ -29,12 +29,12 @@ function updateCarousel() {
     }
   }
 
-document.getElementById('suivant').addEventListener('click', function() {
+document.getElementById('precedent').addEventListener('click', function() {
   currentIndex = (currentIndex + 1) % carouselData.length; // Incrémente l'index actuel
   updateCarousel();
 });
 
-document.getElementById('precedent').addEventListener('click', function() {
+document.getElementById('suivant').addEventListener('click', function() {
   currentIndex = (currentIndex - 1 + carouselData.length) % carouselData.length; // Décrémente l'index actuel
   updateCarousel();
 });

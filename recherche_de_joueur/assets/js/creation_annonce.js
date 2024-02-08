@@ -6,6 +6,7 @@ document.getElementById('textDesc').addEventListener('input', function() {
         placeholder.style.display = 'block';
     }
 });
+
 const inputNumber = document.getElementById("nbjoueur")
 
 // Fonction pour mettre à jour la valeur de l'input
