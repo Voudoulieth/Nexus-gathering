@@ -16,15 +16,46 @@ main{
     gap: 7.1vh;
     margin-left: 7vw;
 }
+/* Masquer les flèches pour Chrome, Edge, Safari */
+input[type="number"].formNom::-webkit-inner-spin-button,
+input[type="number"].formNom::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.number-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.control-up, .control-down {
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+}
+
+.control-up {
+    margin-left: 13vw;
+    width: 1rem;
+}
+
+.control-down {
+    margin-left: 1.2vw;
+    width: 1rem;
+}
 .formNom{
+    position: relative;
     color: #F7F1F9;
     background-color: #F7F1F94D;
     border-radius: 9999px;
     width: 15vw;
     height: 6vh;
+    padding-bottom: 0.5vh;
     text-align: center;
 }
 #formDesc{
+    position: relative;
+    display: flex;
     color: #F7F1F9;
     background-color: #F7F1F94D;
     border-radius: 30px;
@@ -33,8 +64,16 @@ main{
     margin-left: 2vw;
 }
 #textDesc{
-    margin-left: 1.9vw;
-    margin-top: 1.5vh;
+    width: 62.5vw;
+    padding-left: 1.9vw;
+    padding-top: 1.5vh;
+}
+.placeholder-style {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;   
 }
 #formBut{
     display: flex;

@@ -1,88 +1,157 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Rejoignez une communauté de joueurs, trouvez vos coéquipiers et maintenez a jours vos collections!">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Rejoignez une communauté de joueurs, trouvez vos coéquipiers et maintenez a jours vos collections!"
+    />
     <!-- Import Changa -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Changa&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Changa&display=swap"
+      rel="stylesheet"
+    />
     <!-- Feuilles de style CSS -->
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/style_global.css">
-    <link rel="stylesheet" href="./assets/css/creation_annonce.css">
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/style_global.css" />
+    <link rel="stylesheet" href="./assets/css/creation_annonce.css" />
     <!-- <script defer src=""></script> -->
-    <link rel="shortcut icon" href="../assets/logo/favicon.svg">
+    <link rel="shortcut icon" href="../assets/logo/favicon.svg" />
     <title>Accueil - Nexus Gathering</title>
   </head>
   <body>
     <header>
-        <a href="../index.html">
-            <img class="logo" src="../assets/logo/logo_nexus_white.svg" title="Accueil" alt="Logo Nexus">
-        </a>
-        <div id="menuburger">
-            <nav>
-                <ul>
-                    <li><a class="navlink" href="../bibliotheques/acceuil_biblio.html">Bibliothèque</a></li>
-                    <li><a class="navlink" href="./recherche_de_joueurs.html">Joueurs</a></li>
-                    <li><a class="navlink" href="../quiz/quiz-accueil.html">Quiz</a></li>
-                    <li><a class="navlink" href="../recherche_de_joueur/messagerie.html">Messagerie</a></li>
-                </ul>
-            </nav>
-            <div class="header-moitie">
-                <div class="rechercher">
-                    <input class="FormulaireRechercher navlink" type="text" placeholder="Rechercher">
-                    <button class="SubmitRecherche" type="submit"><img src="../assets/Icone/magnifying-glass-solid-blanc.svg"></button>
-                </div>
-                <button class="BoutonConnexion navlink">Connexion</button>
-            </div>
+      <a href="../index.html">
+        <img
+          class="logo"
+          src="../assets/logo/logo_nexus_white.svg"
+          title="Accueil"
+          alt="Logo Nexus"
+        />
+      </a>
+      <div id="menuburger">
+        <nav>
+          <ul>
+            <li>
+              <a class="navlink" href="../bibliotheques/acceuil_biblio.html"
+                >Bibliothèque</a
+              >
+            </li>
+            <li>
+              <a class="navlink" href="./recherche_de_joueurs.html">Joueurs</a>
+            </li>
+            <li>
+              <a class="navlink" href="../quiz/quiz-accueil.html">Quiz</a>
+            </li>
+            <li>
+              <a class="navlink" href="../recherche_de_joueur/messagerie.html"
+                >Messagerie</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="header-moitie">
+          <div class="rechercher">
+            <input
+              class="FormulaireRechercher navlink"
+              type="text"
+              placeholder="Rechercher"
+            />
+            <button class="SubmitRecherche" type="submit">
+              <img src="../assets/Icone/magnifying-glass-solid-blanc.svg" />
+            </button>
+          </div>
+          <button class="BoutonConnexion navlink">Connexion</button>
         </div>
-        <a href="#" id="openMenuBurger"><!--TODO javascript pour ouvrir le menu burger et afficher la navbar mobile-->
-            <span class="burger-icon">
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-        </a>
+      </div>
+      <a href="#" id="openMenuBurger"
+        ><!--TODO javascript pour ouvrir le menu burger et afficher la navbar mobile-->
+        <span class="burger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </a>
     </header>
     <main>
-        <h1 class="titres">Création de l'annonce</h1>
-        <div id="form">           
-            <section id="formCol">
-                <input type="text" placeholder="Nom de l'annonce" class="formNom">
-                <div>
-                    <input type="text" placeholder="Nom du jeu" class="formNom">
-                    <select name="Nom du jeu" id="nom_du_jeu">
-                        <!-- <option value="nom_du_jeu">Nom du jeu</option> a ajouté en bdd -->
-                    </select>
-                </div>
-                <input type="number" min="1" placeholder="Nombre de joueurs" class="formNom">
-                <div id="formBut">
-                    <button class="boutonF">Publier <br> l'annonce</button>
-                    <button class="boutonF">Supprimer <br> l'annonce</button>
-                </div>
-            </section>
-            <section id="formDesc">
-                <textarea name="Description de l'annonce" placeholder="Description de l'annonce" id="textDesc" cols="30" rows="10" ></textarea>
-            </section>
-        </div>
+      <h1 class="titres">Création de l'annonce</h1>
+      <div id="form">
+        <section id="formCol">
+          <input type="text" placeholder="Nom de l'annonce" class="formNom" />
+          <div>
+            <input type="text" placeholder="Nom du jeu" class="formNom" />
+            <select name="Nom du jeu" id="nom_du_jeu">
+              <!-- <option value="nom_du_jeu">Nom du jeu</option> a ajouté en bdd -->
+            </select>
+          </div>
+          <div class="number-input-wrapper">
+            <input
+              type="number"
+              min="2"
+              max="64"
+              placeholder="Nombre de joueurs"
+              class="formNom"
+              id="nbjoueur"
+            />
+            <div class="control-down"><img src="../assets/Icone/minus-solid blanc.svg" alt="-"></div>
+            <div class="control-up"><img src="../assets/Icone/plus-solid blanc.svg" alt="+"></div>
+          </div>
+          <div id="formBut">
+            <button class="boutonF">
+              Publier <br />
+              l'annonce
+            </button>
+            <button class="boutonF">
+              Supprimer <br />
+              l'annonce
+            </button>
+          </div>
+        </section>
+        <section id="formDesc">
+          <p id="placeholderText" class="placeholder-style">
+            Description de l'annonce
+          </p>
+          <textarea
+            name="Description de l'annonce"
+            id="textDesc"
+            cols="30"
+            rows="10"
+          ></textarea>
+        </section>
+      </div>
     </main>
     <footer>
-        <div>
-          <a href="../index.html">
-            <img class="logo" src="../assets/logo/logo_long_nexus_white.svg" title="Acceuil" alt="Logo Nexus Blanc">
-          </a>
-          <nav>
-            <ul>
-              <li><a class="navlink" href="./cgu.html">CGU</a></li>
-              <li><a class="navlink" href="../mention_legale.html">Mention légale</a></li>
-              <li><a class="navlink" href="../confidentialite.html">Politique de confidentialité</a></li>
-              <li><a class="navlink" href="../contact.html">Contact</a></li>
-            </ul>
-          </nav>
-        </div>
-        <p class="copyright">COPYRIGHT @ 2024 TOUS DROITS RESERVE</p>
-      </footer>
-    </body>
-  </html>
+      <div>
+        <a href="../index.html">
+          <img
+            class="logo"
+            src="../assets/logo/logo_long_nexus_white.svg"
+            title="Acceuil"
+            alt="Logo Nexus Blanc"
+          />
+        </a>
+        <nav>
+          <ul>
+            <li><a class="navlink" href="./cgu.html">CGU</a></li>
+            <li>
+              <a class="navlink" href="../mention_legale.html"
+                >Mention légale</a
+              >
+            </li>
+            <li>
+              <a class="navlink" href="../confidentialite.html"
+                >Politique de confidentialité</a
+              >
+            </li>
+            <li><a class="navlink" href="../contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="copyright">COPYRIGHT @ 2024 TOUS DROITS RESERVE</p>
+    </footer>
+    <script src="./assets/js/creation_annonce.js"></script>
+  </body>
+</html>
