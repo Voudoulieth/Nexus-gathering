@@ -89,12 +89,12 @@ main{
     padding-bottom: 5vh;
     overflow-y: auto;
 }
-#blockMessage div{
+.messageContainer{
     display: flex;
     align-items: center;
     margin-top: 1vh;
-    padding-left: 1.5vw;
-    padding-right: 3vw;
+    padding-left: 3vw;
+    padding-right: 5vw;
     padding-top: 0.8vh;
     padding-bottom: 0.8vh;
     color: #f7f1f9;
@@ -104,15 +104,38 @@ main{
     line-height: 1.5em;
     font-weight: 500;
 }
-#blockMessage div:hover{
+.messageContainer:hover{
     background-color: rgb(18, 9, 23,0.3);
+}
+.messageIcons{
+    position: absolute;
+    right: 5%;
+    height: 2.8vh;
+    width: 4.5vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 0.2vw;
+    padding-right: 0.2vw;
+    margin-bottom: 7vh;
+    border-radius: 30px;
+}
+.messageIcons img{
+    height: 1.8vh;
+}
+.messageIcons:hover .messageIcons img{
+    display: block;
+}
+.messageIcons:hover{
+    background-color: rgb(18, 9, 23);
 }
 #blockMessage p{
     font-size: 1em;
 }
+
 #saisieMessage{
     display: flex;
-    align-items: baseline;
+    align-items: center;
     background: rgba(115, 55, 144, 0.40);
     width: 61vw;
     height: 12.5vh;
