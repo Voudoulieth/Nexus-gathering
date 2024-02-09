@@ -714,6 +714,18 @@ video {
   margin-top: 1.25rem;
 }
 
+.ml-20 {
+  margin-left: 5rem;
+}
+
+.mr-5 {
+  margin-right: 1.25rem;
+}
+
+.mt-1\.5 {
+  margin-top: 0.375rem;
+}
+
 .flex {
   display: flex;
 }
@@ -756,6 +768,30 @@ video {
 
 .h-\[3\.9vw\] {
   height: 3.9vw;
+}
+
+.h-16 {
+  height: 4rem;
+}
+
+.max-h-20 {
+  max-height: 5rem;
+}
+
+.max-h-6 {
+  max-height: 1.5rem;
+}
+
+.max-h-8 {
+  max-height: 2rem;
+}
+
+.max-h-10 {
+  max-height: 2.5rem;
+}
+
+.max-h-9 {
+  max-height: 2.25rem;
 }
 
 .w-1\/2 {
@@ -834,6 +870,18 @@ video {
   width: 100%;
 }
 
+.w-\[60\%\] {
+  width: 60%;
+}
+
+.w-\[70\%\] {
+  width: 70%;
+}
+
+.w-32 {
+  width: 8rem;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -852,8 +900,24 @@ video {
   grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
+.grid-cols-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
 .flex-col {
   flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.place-content-end {
+  place-content: end;
+}
+
+.place-items-center {
+  place-items: center;
 }
 
 .content-center {
@@ -864,6 +928,10 @@ video {
   align-items: center;
 }
 
+.justify-end {
+  justify-content: flex-end;
+}
+
 .justify-center {
   justify-content: center;
 }
@@ -872,14 +940,30 @@ video {
   justify-content: space-between;
 }
 
+.place-self-end {
+  place-self: end;
+}
+
 .place-self-center {
   place-self: center;
+}
+
+.place-self-stretch {
+  place-self: stretch;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 .truncate {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.text-clip {
+  text-overflow: clip;
 }
 
 .text-pretty {
@@ -965,6 +1049,10 @@ video {
   padding: 1.25rem;
 }
 
+.p-1 {
+  padding: 0.25rem;
+}
+
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -1004,6 +1092,42 @@ video {
 
 .pt-5 {
   padding-top: 1.25rem;
+}
+
+.pt-6 {
+  padding-top: 1.5rem;
+}
+
+.pt-7 {
+  padding-top: 1.75rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
+}
+
+.pr-20 {
+  padding-right: 5rem;
+}
+
+.pl-2 {
+  padding-left: 0.5rem;
+}
+
+.pl-5 {
+  padding-left: 1.25rem;
+}
+
+.pr-5 {
+  padding-right: 1.25rem;
+}
+
+.pl-20 {
+  padding-left: 5rem;
+}
+
+.pr-10 {
+  padding-right: 2.5rem;
 }
 
 .text-center {
@@ -1108,6 +1232,11 @@ video {
 
 .ring-offset-purple-100\/30 {
   --tw-ring-offset-color: rgb(243 232 255 / 0.3);
+}
+
+.checked\:bg-blue-500:checked {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-white:hover {

@@ -17,7 +17,7 @@
     <!-- Feuilles de style CSS -->
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/style_global.css" />
-    <!-- <script defer src=""></script> -->
+    <script defer type="module" src="./JS/script-ajout.js"></script>
     <link rel="shortcut icon" href="../assets/logo/favicon.svg" />
     <link rel="stylesheet" href="../dist/output.css" />
     <title>Ajout générale - Nexus Gathering</title>
@@ -91,9 +91,10 @@
         <p class="text-[0.875em]">
           Remplissez ce formulaire et apportez votre contribution!
         </p>
+        <p id="alert" class="text-[0.875em]">xxxxxxxxxxxxxxxxx</p>
       </div>
 
-      <form method="get">
+      <form id="ajoutJeu" action="" method="post">
         <div class="flex pt-5">
           <div class="flex-col w-2/3">
             <div class="flex">
@@ -104,8 +105,8 @@
                 <input
                   class="mt-2"
                   type="file"
-                  id="imageJeu"
-                  name="imageJeu"
+                  id="image"
+                  name="image"
                   accept="image/*"
                   required
                 />
@@ -117,11 +118,10 @@
                 <label for="nomJeu">Nom du Jeu :</label><br />
                 <input
                   type="text"
-                  id="nomJeu"
-                  name="nomJeu"
+                  id="nom"
+                  name="nom"
                   placeholder="Saisissez ici"
                   class="hover:bg-white hover:text-black rounded-full mt-2 border focus:border-purple-800 focus:border-2"
-                  required
                 />
               </div>
             </div>
@@ -138,7 +138,6 @@
                   rows="15"
                   cols="150"
                   class="hover:bg-white hover:text-black rounded-full m-4 pt-2 w-[90%] resize-y border focus:border-purple-800 focus:border-2"
-                  required
                 ></textarea>
               </div>
             </div>
@@ -200,46 +199,47 @@
             >
               <p>Consoles disponibles :</p>
 
-              <input  class="form-checkbox h-2 w-2 bg-white focus:ring-2 focus:ring-green-500 cursor-pointer" type="checkbox" id="ps1" name="choix" value="ps1" />
+              <input class="form-checkbox h-2 w-2 bg-white cursor-pointer checked:bg-blue-500" type="checkbox" id="ps1" name="choix" value="ps1" />
               <label class="cursor-pointer" for="ps1">Playstation 1</label><br />
 
-              <input type="checkbox" id="ps2" name="choix" value="ps2" />
+              <input class="form-checkbox h-2 w-2 bg-white cursor-pointer checked:bg-blue-500" type="checkbox" id="ps2" name="choix" value="ps2" />
               <label for="ps2">Playstation 2</label><br />
 
-              <input type="checkbox" id="ps3" name="choix" value="ps3" />
+              <input class="form-checkbox h-2 w-2 bg-white cursor-pointer checked:bg-blue-500" type="checkbox" id="ps3" name="choix" value="ps3" />
               <label for="ps3">Playstation 3</label><br />
 
-              <input type="checkbox" id="ps4" name="choix" value="ps4" />
+              <input class="form-checkbox h-2 w-2 bg-white cursor-pointer checked:bg-blue-500" type="checkbox" id="ps4" name="choix" value="ps4" />
               <label for="ps4">Playstation 4</label><br />
 
-              <input type="checkbox" id="ps5" name="choix" value="ps5" />
+              <input class="form-checkbox h-2 w-2 bg-white cursor-pointer checked:bg-blue-500" type="checkbox" id="ps5" name="choix" value="ps5" />
               <label for="ps5">Playstation 5</label><br />
             </div>
 
             <div
               class="bg-[#f45a01]/95 rounded-full text-center text-[0.875em] font-semibold p-2 m-4"
             >
-              <p>Multijoueur :</p>
+              <p>Multijoueur :</p><br>
               <label for="optionMulti1">Oui</label>
-              <input class="" type="radio" id="optionMulti1" name="options" value="option1">
+              <input class="form-checkbox h-2 w-2 bg-white cursor-pointer checked:bg-blue-500" type="radio" id="optionMulti1" name="optionsM" value="oui">
               <label for="optionMulti2">Non</label>
-              <input type="radio" id="optionMulti2" name="options" value="option2">
+              <input class="form-checkbox h-2 w-2 bg-white cursor-pointer checked:bg-blue-500" type="radio" id="optionMulti2" name="optionsM" value="non">
             </div>
 
             <div
               class="bg-[#f45a01]/95 rounded-full text-center text-[0.875em] font-semibold p-2 m-4"
             >
-              <label for="crossPlatform">Cross-Platform :</label><br />
-              <select class="mt-2" id="crossPlatform" name="crossPlatform">
-                <option value="true" class="text-[#120917]">Oui</option>
-                <option value="false" class="text-[#120917]">Non</option>
+              <p>Cross-Platform :</p><br>
+              <label for="optionCross1">Oui</label>
+              <input class="form-checkbox h-2 w-2 bg-white cursor-pointer checked:bg-blue-500" type="radio" id="optionCross1" name="optionsC" value="oui">
+              <label for="optionCross2">Non</label>
+              <input class="form-checkbox h-2 w-2 bg-white cursor-pointer checked:bg-blue-500" type="radio" id="optionCross2" name="optionsC" value="non">
               </select>
             </div>
 
             <div
               class="bg-[#f45a01]/95 rounded-full text-center text-[0.875em] font-semibold p-2 m-4"
             >
-              <label for="format">Format physique/dématérialisé:</label><br />
+              <label for="format">Format physique/dématérialisé:</label><br>
               <select class="mt-2 pl-3 pr-3 appearance-none row-start-1 col-start-1 bg-slate-50 dark:bg-purple-800 rounded-full"  id="format" name="format">
                 <option value="physique" class="text-[#f1f7f9]">
                   Physique
@@ -247,7 +247,7 @@
                 <option value="dematerialise" class="text-[#f1f7f9]">
                   Dématérialisé
                 </option>
-                <option value="dematerialise" class="text-[#f1f7f9]">
+                <option value="physique_dematerialise" class="text-[#f1f7f9]">
                   Physique et dématérialisé
                 </option>
               </select>
