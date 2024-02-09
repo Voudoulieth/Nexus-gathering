@@ -1,12 +1,17 @@
-document.getElementById('textDesc').addEventListener('input', function() {
+// Fonction pour basculer l'affichage du placeholder
+function togglePlaceholderDisplay() {
     var placeholder = document.getElementById('placeholderText');
     if (this.value) {
         placeholder.style.display = 'none';
     } else {
         placeholder.style.display = 'block';
     }
-});
-const inputNumber = document.getElementById("nbjoueur")
+}
+
+// Ajoute l'écouteur d'événements avec la fonction nommée
+document.getElementById('textDesc').addEventListener('input', togglePlaceholderDisplay);
+
+const inputNumber = document.getElementById("nbjoueur");
 
 // Fonction pour mettre à jour la valeur de l'input
 function updateValue(isIncrementing) {
@@ -19,12 +24,15 @@ function updateValue(isIncrementing) {
     inputNumber.value = currentValue; // Met à jour la valeur de l'input
 }
 
-// Ajoute un écouteur d'événement pour le bouton +
-document.querySelector('.control-up').addEventListener('click', function() {
-    updateValue(true); // Appelle updateValue avec true pour incrémenter
-});
+// Fonctions enveloppantes pour incrémenter et décrémenter
+function incrementValue() {
+    updateValue(true);
+}
 
-// Ajoute un écouteur d'événement pour le bouton -
-document.querySelector('.control-down').addEventListener('click', function() {
-    updateValue(false); // Appelle updateValue avec false pour décrémenter
-});
+function decrementValue() {
+    updateValue(false);
+}
+
+// Ajoute des écouteurs d'événements pour les boutons + et -
+document.querySelector('.control-up').addEventListener('click', incrementValue);
+document.querySelector('.control-down').addEventListener('click', decrementValue);

@@ -64,9 +64,11 @@ input[type="number"].formNom::-webkit-outer-spin-button {
     margin-left: 2vw;
 }
 #textDesc{
-    width: 62.5vw;
+    width: 100%;
+    max-width: 62.5vw;
     padding-left: 1.9vw;
     padding-top: 1.5vh;
+    box-sizing: border-box;
 }
 .placeholder-style {
     position: absolute;
