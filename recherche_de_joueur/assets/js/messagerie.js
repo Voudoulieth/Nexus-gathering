@@ -1,4 +1,6 @@
-document.getElementById('sendButton').addEventListener('click', function() {
+document.getElementById('sendButton').addEventListener('click', sendMessage);
+
+function sendMessage() {
     var messageText = document.getElementById('inputMessage').value.trim();
     if (messageText) {
         // Créer un nouvel élément div pour le message
@@ -21,4 +23,5 @@ document.getElementById('sendButton').addEventListener('click', function() {
         // Faire défiler automatiquement vers le bas pour afficher le dernier message
         blockMessage.scrollTop = blockMessage.scrollHeight;
     }
-});
+};
+
