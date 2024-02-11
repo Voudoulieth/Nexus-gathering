@@ -126,6 +126,7 @@ main{
 .messageIcons img{
     display: none;
     height: 1.8vh;
+    cursor: pointer;
 }
 .messageContainer:hover .messageIcons img{
     display: block;
@@ -157,6 +158,7 @@ main{
     height: 3.75vh;
     border-radius: 9999px;
     margin-right: 1vw;
+    cursor: pointer;
 }
 #inputMessage{
     width: 61vw;
