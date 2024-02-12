@@ -137,10 +137,16 @@ main{
 .messageIcons:hover{
     box-shadow: 1px 2px 4px 1px rgb(18, 9, 23, 0.8);
 }
-#blockMessage p{
+.message{
     font-size: 1em;
 }
-
+.messageModified{
+    font-style: italic;
+    font-size: 0.825em;
+    opacity: 0.5;
+    position: absolute;
+    right: 1%;
+}
 #saisieMessage{
     display: flex;
     align-items: center;
