@@ -56,6 +56,13 @@ main{
 .button:hover {
     background-position: 0 20%;
 }
+.button:active{
+    transition: background-position 0.1s ease;
+    background-position: 20% 100%;
+}
+.button:focus{
+    background-position: 100% 100%;
+}
 #affichageMessage{
     display: flex;
     flex-direction: column;

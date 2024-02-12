@@ -65,7 +65,8 @@ nav ul{
 .navlink{
     color: #f7f1f9;
     font-family: "Changa", sans-serif;
-    font-size: 1.1em;
+    font-size: 1.68em;
+    font-weight: 600;
 }
 .navlink:hover{
     color: #F45A01;
@@ -82,6 +83,7 @@ header{
     display: flex;
     align-items: center;
 }
+
 #menuburger{
     width: 100vw;
     display: flex;
