@@ -69,6 +69,7 @@ figcaption{
     width: 2vw;
     margin-left: 1.5vw;
     margin-right: 1.5vw;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
