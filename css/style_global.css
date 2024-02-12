@@ -102,7 +102,7 @@ nav ul{
 header{
     background: linear-gradient(to right, #361a3d, #36193d, #35193e, #35183e, #34183f, #391a46, #3d1d4c, #421f53, #4e2562, #5a2b71, #663180, #733790);
     height: 15vh;
-
+    color: #f7f1f9;
     display: flex;
     align-items: center;
 }
@@ -146,10 +146,21 @@ header{
     background-color: #F45A01;
     padding: 0.25em 0.75em;
     border-radius: 2em;
+    cursor: pointer;
+    background-image: linear-gradient(to top, #733790 50%, #F45A01 50%);
+    background-size: 100% 200%;
+    transition: background-position 0.3s ease;
 }
-.BoutonConnexion:hover{
-    transform: scale(1.1);
-    color: #f7f1f9;
+.BoutonConnexion:hover {
+    color: #F7F1F9;
+    background-position: 0 20%;
+}
+.BoutonConnexion:active{
+    transition: background-position 0.1s ease;
+    background-position: 20% 100%;
+}
+.BoutonConnexion:focus{
+    background-position: 100% 100%;
 }
 
 /* SEULEMENT FOOTER */
