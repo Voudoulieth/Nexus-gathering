@@ -77,7 +77,7 @@
       </a>
     </header>
     <main>
-      <h1 class="titres">Création de l'annonce</h1>
+      <h1 class="titres" id="h1">Création de l'annonce</h1>
       <div id="form">
         <section id="formCol">
           <input type="text" placeholder="Nom de l'annonce" class="formNom" />
@@ -123,17 +123,19 @@
           ></textarea>
         </section>
       </div>
-      <div class="tokenplace" id="annonceDisplay" style="display: none;">
-        <div class="tokenjoueur">
-            <ul>
-                <li id="annonceTitle">Nom de l'annonce</li>
-                <li id="annonceGameName">Nom du jeu</li>
-                <li id="annoncePlayerCount">Nombre de joueurs</li>
-            </ul>
-            <p id="annonceDescription">description de l'annonce</p>
-            <button class="button contact" id="editAnnonce">Modifier</button>
+      <section id="annonceDisplay" style="display: none;">
+        <div class="tokenplace">
+          <div class="tokenjoueur">
+              <ul>
+                  <li id="annonceTitle">Nom de l'annonce</li>
+                  <li id="annonceGameName">Nom du jeu</li>
+                  <li id="annoncePlayerCount">Nombre de joueurs</li>
+              </ul>
+              <p id="annonceDescription">description de l'annonce</p>
+              <button class="button contact" id="editAnnonce">Modifier</button>
+          </div>
         </div>
-    </div>
+      </section>
     </main>
     <footer>
       <div>
