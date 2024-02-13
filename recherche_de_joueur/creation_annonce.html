@@ -82,8 +82,8 @@
         <section id="formCol">
           <input type="text" placeholder="Nom de l'annonce" class="formNom" />
           <div>
-            <input type="text" placeholder="Nom du jeu" class="formNom" />
-            <select name="Nom du jeu" id="nom_du_jeu">
+            <input type="text" placeholder="Nom du jeu" class="formNom" id="nom_du_jeu" />
+            <select name="Nom du jeu" >
               <!-- <option value="nom_du_jeu">Nom du jeu</option> a ajouté en bdd -->
             </select>
           </div>
@@ -100,11 +100,11 @@
             <div class="control-up"><img src="../assets/Icone/plus-solid blanc.svg" alt="+"></div>
           </div>
           <div id="formBut">
-            <button class="button">
+            <button class="button" >
               Publier <br />
               l'annonce
             </button>
-            <button class="button">
+            <button class="button" id="deleteAnnonce">
               Supprimer <br />
               l'annonce
             </button>
@@ -123,6 +123,17 @@
           ></textarea>
         </section>
       </div>
+      <div class="tokenplace" id="annonceDisplay" style="display: none;">
+        <div class="tokenjoueur">
+            <ul>
+                <li id="annonceTitle">Nom de l'annonce</li>
+                <li id="annonceGameName">Nom du jeu</li>
+                <li id="annoncePlayerCount">Nombre de joueurs</li>
+            </ul>
+            <p id="annonceDescription">description de l'annonce</p>
+            <button class="button contact" id="editAnnonce">Modifier</button>
+        </div>
+    </div>
     </main>
     <footer>
       <div>
