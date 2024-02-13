@@ -38,7 +38,7 @@ main{
     width: 2vw;
     margin-bottom: 0.7vh;
 }
-.contact button{
+.button{
     background-color: #F45A01;
     font-family: 'Changa', sans-serif;
     font-weight: 600;
@@ -47,6 +47,21 @@ main{
     height: 3.75vh;
     border-radius: 9999px;
     margin-right: 1vw;
+    cursor: pointer;
+    background-image: linear-gradient(to top, #733790 50%, #F45A01 50%);
+    background-size: 100% 200%;
+    transition: background-position 0.3s ease;
+}
+
+.button:hover {
+    background-position: 0 20%;
+}
+.button:active{
+    transition: background-position 0.1s ease;
+    background-position: 20% 100%;
+}
+.button:focus{
+    background-position: 100% 100%;
 }
 #affichageMessage{
     display: flex;
@@ -78,6 +93,7 @@ main{
 #contactEnCour p{
     margin-left: 2.2vw;
 }
+
 #blockMessage{
     display: flex;
     flex-direction: column;

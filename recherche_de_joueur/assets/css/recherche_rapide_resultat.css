@@ -47,17 +47,9 @@ h1{
     margin-bottom: 0.5vh;
 }
 .contact{
-    background: #F45A01;
-    color: #F7F1F9;
-    font-family: Changa;
-    font-size: 0.875em;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
     border-radius: 90px;
     height: 3.33vh;
     width: 8vw;
-    text-align: center;
     margin-right: 1vw;
 }
 @media screen and (max-width: 768px) {

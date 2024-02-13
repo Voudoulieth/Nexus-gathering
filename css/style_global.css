@@ -47,7 +47,30 @@ h3{
     transform: scale(1.1);
     color: #f7f1f9;
 }
+.button{
+    background-color: #F45A01;
+    font-family: 'Changa', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    width: 7vw;
+    height: 3.75vh;
+    border-radius: 9999px;
+    cursor: pointer;
+    background-image: linear-gradient(to top, #733790 50%, #F45A01 50%);
+    background-size: 100% 200%;
+    transition: background-position 0.3s ease;
+}
 
+.button:hover {
+    background-position: 0 20%;
+}
+.button:active{
+    transition: background-position 0.1s ease;
+    background-position: 20% 100%;
+}
+.button:focus{
+    background-position: 100% 100%;
+}
 /* HEADER ET FOOTER */
 
 /* COMMUN HEADER + FOOTER */
@@ -65,7 +88,8 @@ nav ul{
 .navlink{
     color: #f7f1f9;
     font-family: "Changa", sans-serif;
-    font-size: 1.1em;
+    font-size: 1.68em;
+    font-weight: 600;
 }
 .navlink:hover{
     color: #F45A01;
@@ -78,10 +102,11 @@ nav ul{
 header{
     background: linear-gradient(to right, #361a3d, #36193d, #35193e, #35183e, #34183f, #391a46, #3d1d4c, #421f53, #4e2562, #5a2b71, #663180, #733790);
     height: 15vh;
-
+    color: #f7f1f9;
     display: flex;
     align-items: center;
 }
+
 #menuburger{
     width: 100vw;
     display: flex;
@@ -121,10 +146,21 @@ header{
     background-color: #F45A01;
     padding: 0.25em 0.75em;
     border-radius: 2em;
+    cursor: pointer;
+    background-image: linear-gradient(to top, #733790 50%, #F45A01 50%);
+    background-size: 100% 200%;
+    transition: background-position 0.3s ease;
 }
-.BoutonConnexion:hover{
-    transform: scale(1.1);
-    color: #f7f1f9;
+.BoutonConnexion:hover {
+    color: #F7F1F9;
+    background-position: 0 20%;
+}
+.BoutonConnexion:active{
+    transition: background-position 0.1s ease;
+    background-position: 20% 100%;
+}
+.BoutonConnexion:focus{
+    background-position: 100% 100%;
 }
 
 /* SEULEMENT FOOTER */

@@ -82,8 +82,8 @@ input[type="number"].formNom::-webkit-outer-spin-button {
     justify-content: space-around;
     width: 18.5vw;
 }
-.boutonF{
-    background-color: #f45a01;
+.button{
+    background-color: #F45A01;
     font-family: 'Changa', sans-serif;
     font-weight: 600;
     text-align: center;
@@ -91,6 +91,21 @@ input[type="number"].formNom::-webkit-outer-spin-button {
     width: 8vw;
     height: 5.5vh;
     border-radius: 9999px;
+    cursor: pointer;
+    background-image: linear-gradient(to top, #733790 50%, #F45A01 50%);
+    background-size: 100% 200%;
+}
+
+.button:hover {
+    transition: background-position 0.3s ease;
+    background-position: 0 20%;
+}
+.button:active{
+    transition: background-position 0.1s ease;
+    background-position: 20% 100%;
+}
+.button:focus{
+    background-position: 100% 100%;
 }
 @media screen and (max-width: 768px) {
     #form{

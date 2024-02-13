@@ -1,0 +1,131 @@
+#container{
+    display: flex;
+
+}
+#panneauFiltre{
+    display: flex;
+    background-color: #361A3D;
+    flex-direction: column;
+    align-items: center;
+    width: 17.7vw;
+    height: 53vh;
+    padding-top: 6vh;
+    border-radius: 0 0 20px 0;}
+#filtreTitre{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1vh;
+}
+h2{
+    font-weight: 600;
+    margin-right: 2vw;
+}
+#panneauFiltre img{
+    width: 1.5vw;
+}
+/* Masquer les flèches pour Chrome, Edge, Safari */
+input[type="number"].formNom::-webkit-inner-spin-button,
+input[type="number"].formNom::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.number-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.control-up, .control-down {
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+}
+
+.control-up {
+    margin-left: 10.3vw;
+    margin-top: 6vh;
+    width: 1rem;
+}
+
+.control-down {
+    margin-left: 1vw;
+    margin-top: 6vh;
+    width: 1rem;
+}
+.formNom{
+    color: #F7F1F9;
+    background-color: #f7f1f918;
+    border-radius: 9999px;
+    width: 12vw;
+    height: 6vh;
+    text-align: center;
+    margin-top: 6vh;
+}
+#recherche{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 32vh;
+    margin-bottom: 6vh;
+}
+#searchbar{
+    background-color: rgba(247, 241, 249, 0.10);
+    border-radius: 90px;
+    width: 29.68vw;
+    height: 8vh;
+    font-family: Changa;
+    color: #f7f1f9;
+    text-align: center;
+    font-size: 1.68em;
+    font-weight: 500;
+    font-style: normal;
+    margin-top: 5vh;
+}
+#loupe{
+    position: absolute;
+    width: 2.2vw;
+    top: 37.5vh;
+    left: 43vw;
+}
+#annonce{
+    width: 100%;
+}
+.tokenplace{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tokenjoueur{
+    width: 73vw;
+    height: 13vh;
+    border-radius: 90px;
+    background: #361A3D;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8vh;
+}
+.tokenjoueur ul{
+    display: flex;
+    justify-content: space-around;
+    width: 28vw;
+}
+.tokenjoueur ul li{
+    color: #F7F1F9;
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.9em;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.tokenjoueur p{
+    width: 30vw;
+    text-align: center;
+}
+.contact{
+    border-radius: 90px;
+    height: 4.5vh;
+    width: 8vw;
+    margin-right: 2vw;
+}
