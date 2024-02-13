@@ -65,3 +65,12 @@ let cyberpunk = new Jeu("../assets/image/cyberpunk.jpg", "Cyberpunk 2077", "10 d
 
 export let jeu = [hoi4, cyberpunk];
 
+export function afficherListeJeu() {
+    let listejeu = document.querySelector('#listejeu');
+    listejeu.innerHTML = "";
+    jeu.forEach(function(jeu){
+        let jeuElement = document.createElement("div");
+        jeuElement.innerHTML = jeu.getJeu();
+        listejeu.appendChild(jeuElement);
+    });
+}

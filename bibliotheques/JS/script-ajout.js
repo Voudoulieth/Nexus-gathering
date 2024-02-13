@@ -45,7 +45,9 @@ formulaireAjout.addEventListener("submit", function(event){
 
     //si il n'y a pas d'erreur alors je créer le jeu
     if (alert.textContent === "") {
-        let jeu = new Jeu (image, nom, dateSortie, resume, consoles, multijoueur);
+        //TODO gérer le style
+        let style = "aventure";
+        let jeu = new Jeu (image, nom, dateSortie, style, resume, consoles, multijoueur);
         // constructor (image, nom, dateSortie, resume, consoles, multijoueur) {
         data.jeu.push(jeu);
         afficherListeJeu();
@@ -54,7 +56,11 @@ formulaireAjout.addEventListener("submit", function(event){
     }
 });
 
-
+function afficherListeJeu() {
+    data.jeu.forEach(function(jeu){
+        console.log(jeu)
+    });
+}
 
 
 
