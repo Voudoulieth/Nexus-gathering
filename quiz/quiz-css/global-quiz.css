@@ -1,0 +1,207 @@
+/* 
+    CSS commun aux pages réalisées en CSS avec média queries pour le responsive
+*/
+
+/* GENERAL */
+body{
+    height: 100vh;
+    /* typo de base du doc  */
+    color: #f7f1f9;
+    font-family: 'Open sans', sans-serif;
+    font-size: 0.875em; 
+    font-style: normal;
+    line-height: normal;
+}
+main{
+    background: linear-gradient(to bottom, #733790, #572d70, #3e2351, #271833, #120917);
+    min-height: 100%;
+    
+}
+.titres{ /* points communs des titres, DRY */
+    font-family: 'Changa', sans-serif;
+}
+h1{
+    color: #F45A01;
+    font-size: 4.5em;
+    font-weight: 800;
+}
+h2{
+    font-size: 2.75em;
+    font-weight: 700;
+    color: #F7F1F9;
+}
+h3{
+    font-size: 1.68em;
+    font-weight: 600;
+    color: #F7F1F9;
+}
+.bouton{
+    background-color: #F45A01;
+    padding: 0.3em 2em;
+    border-radius: 3em;
+    margin: 1em;
+    font-family: "changa",sans-serif;
+    text-align: center;
+}
+.bouton:hover{
+    transform: scale(1.1);
+    color: #f7f1f9;
+}
+
+/* HEADER ET FOOTER */
+
+/* COMMUN HEADER + FOOTER */
+.logo{
+    width: 7em;
+    margin: 0em 1em;
+}
+nav{
+    width: 70%;
+}
+nav ul{
+    display: flex;
+    justify-content: space-around;
+}
+.navlink{
+    color: #f7f1f9;
+    font-family: "Changa", sans-serif;
+    font-size: 1.1em;
+}
+.navlink:hover{
+    color: #F45A01;
+}
+.active{
+    color: #f45a01;
+}
+
+/* SEULEMENT HEADER (styles ordonnés dans le sens de la lecture du header de gauche à droite) */
+header{
+    background: linear-gradient(to right, #361a3d, #36193d, #35193e, #35183e, #34183f, #391a46, #3d1d4c, #421f53, #4e2562, #5a2b71, #663180, #733790);
+    height: 15vh;
+
+    display: flex;
+    align-items: center;
+}
+#menuburger{
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-moitie{
+    display: flex;
+    align-items: center;
+}
+    /* styles de la search bar et du bouton connexion */
+.rechercher{
+    width: 18em;
+}
+.FormulaireRechercher{
+    width: 70%;
+    height: 3em;
+    font-size: 0.8em;
+    margin-right: 0em;
+    border-style: solid;
+    border-color: #f7f1f9;
+    border-radius: 0.3em;
+    border-width: 0.01em;
+}
+.FormulaireRechercher::placeholder{
+    padding: 1em;
+}
+.SubmitRecherche{
+    background-color: #F45A01;
+    padding: 0.5em;
+    border-radius: 9999%;
+    width: 1.7vw;
+    height: 1.7vw;
+}
+.BoutonConnexion{
+    margin-right: 1em;
+    background-color: #F45A01;
+    padding: 0.25em 0.75em;
+    border-radius: 2em;
+}
+.BoutonConnexion:hover{
+    transform: scale(1.1);
+    color: #f7f1f9;
+}
+
+/* SEULEMENT FOOTER */
+footer{
+    background-color: #120917;
+    height: 16vh;
+    font-size: 0.87em;
+    /* mise en colonne, séparation du footer principal et du copyright */
+    display: flex;
+    flex-direction: column;
+}
+footer div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70%;
+}
+.copyright{
+    font-size: 0.87em; /* copyright exclusivement */
+    font-style: italic;
+    padding: 0.5em;
+    align-self: center;
+}
+
+/* responsive */
+
+@media screen and (max-width: 768px) {
+    .bouton{
+        padding: 0.5em 2em 0.5em 2em;
+    }
+
+/* HEADER */
+    header{
+        justify-content: space-between;
+    }
+    #menuburger{
+        display: none;
+    }
+    #openMenuBurger{
+        border-style: solid;
+        border-color: #f7f1f9;
+        border-radius: 0.5em;
+        border-width: 0.1em;
+        margin: 2em;
+    }
+    .burger-icon span {
+        display: block;
+        width: 1.5em;
+        height: 0.1em;
+        background-color: #f7f1f9;
+        margin: 0.5em;
+    }
+
+/* FOOTER */
+    footer{
+        font-size: 0.625em;
+    }
+    .copyright{
+        font-size: 0.5em;
+    }
+}
+
+@media screen and (max-width: 425px){ 
+    .bouton{
+        padding: 0.5em 1em 0.5em 1em;
+        font-size: 0.875em;
+    }
+    body{
+        font-size: 0.625em;
+    }
+    h1{
+        font-size: 2.625em;
+    }
+    h2{
+        font-size: 1.625em;
+    }
+    h3{
+        font-size: 1em;
+    }
+}
