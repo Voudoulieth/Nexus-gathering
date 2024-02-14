@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "outDir": "./Profil/assets/js",
+        "target": "ES2020",
+        "module": "ESNext",
+    },
+    "files":[
+        "./Profil/src/data.ts",
+        "./Profil/src/profil.ts",
+        "./Profil/src/script_edition.ts",
+
+
+    ],
+
+    "allowJs": true,
+}
