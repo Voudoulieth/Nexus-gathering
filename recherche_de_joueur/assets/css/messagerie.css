@@ -100,7 +100,7 @@ main{
     background-color: #361A3D;
     width: 69vw;
     height: 63vh;
-    border-radius: 0px 0px 30px 30px;
+    border-radius: 0px 0px 10px 30px;
     margin-bottom: 1vh;
     padding-bottom: 5vh;
     padding-top: 1vh;
@@ -185,7 +185,33 @@ main{
 #inputMessage{
     width: 61vw;
     height: 10.5vh;
-    margin-left: 2vw;
-    margin-right: 2vw;
-    margin-top: 1vh;
+    margin: 1vh 2vw;
+}
+#inputMessage::-webkit-scrollbar {
+    width: 0.6vw;
+}
+#inputMessage::-webkit-scrollbar-track {
+    background: #733790;
+    border-radius: 9999px;
+}
+#inputMessage::-webkit-scrollbar-thumb {
+    background: #F45A01;
+    border-radius: 9999px;
+}
+#inputMessage::-webkit-scrollbar-thumb:hover {
+    background: #F7F1F9;
+}
+#blockMessage::-webkit-scrollbar {
+    width: 0.6vw;
+}
+#blockMessage::-webkit-scrollbar-track {
+    background: #733790;
+    border-radius: 9999px;
+}
+#blockMessage::-webkit-scrollbar-thumb {
+    background: #F45A01;
+    border-radius: 9999px;
+}
+#blockMessage::-webkit-scrollbar-thumb:hover {
+    background: #F7F1F9;
 }

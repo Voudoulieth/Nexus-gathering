@@ -6,3 +6,4 @@ export let carouselData = [
     { href: "./recherche_rapide_resultat.html", src: "../assets/Image/jeux de plateforme.png", alt: "Image de Color Island Adventure", caption: "Color Island Adventure" },
   ];
   
+  

@@ -46,7 +46,7 @@ input[type="number"].formNom::-webkit-outer-spin-button {
 .formNom{
     position: relative;
     color: #F7F1F9;
-    background-color: #F7F1F94D;
+    background-color: #f7f1f918;
     border-radius: 9999px;
     width: 15vw;
     height: 6vh;
@@ -57,8 +57,8 @@ input[type="number"].formNom::-webkit-outer-spin-button {
     position: relative;
     display: flex;
     color: #F7F1F9;
-    background-color: #F7F1F94D;
-    border-radius: 30px;
+    background-color: #f7f1f918;
+    border-radius: 30px 10px 10px 30px;
     width: 62.5vw;
     height: 45vh;
     margin-left: 2vw;
@@ -66,8 +66,7 @@ input[type="number"].formNom::-webkit-outer-spin-button {
 #textDesc{
     width: 100%;
     max-width: 62.5vw;
-    padding-left: 1.9vw;
-    padding-top: 1.5vh;
+    padding: 1.5vh 1.9vw;
     box-sizing: border-box;
 }
 .placeholder-style {
@@ -107,6 +106,89 @@ input[type="number"].formNom::-webkit-outer-spin-button {
 .button:focus{
     background-position: 100% 100%;
 }
+#annonceDisplay{
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+}
+.tokenplace{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tokenAnnonce{
+    width: 73vw;
+    height: 13vh;
+    border-radius: 90px;
+    background: #361A3D;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8vh;
+    padding: 1.5vh 0;
+}
+.tokenAnnonce ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 20vw;
+    padding-left: 3vw;
+}
+.tokenAnnonce ul li{
+    color: #F7F1F9;
+    font-family: "changa", sans-serif;
+    font-size: 1em;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+#annonceTitle{
+    font-size: 1.25em;
+    font-weight: 500;
+}
+#annonceDescription {
+    height: 100%;
+    width: 35vw;
+    padding: 0 1vw;
+    overflow-y: auto;
+    line-height: 1.3em;
+}
+.contact{
+    border-radius: 90px;
+    height: 4.5vh;
+    width: 8vw;
+    margin-right: 2vw;
+}
+
+#annonceDescription::-webkit-scrollbar {
+    width: 0.6vw;
+}
+#annonceDescription::-webkit-scrollbar-track {
+    background: #733790;
+    border-radius: 9999px;
+}
+#annonceDescription::-webkit-scrollbar-thumb {
+    background: #F45A01;
+    border-radius: 9999px;
+}
+#annonceDescription::-webkit-scrollbar-thumb:hover {
+    background: #F7F1F9;
+}
+#textDesc::-webkit-scrollbar {
+    width: 0.6vw;
+}
+#textDesc::-webkit-scrollbar-track {
+    background: #733790;
+    border-radius: 9999px;
+}
+#textDesc::-webkit-scrollbar-thumb {
+    background: #F45A01;
+    border-radius: 9999px;
+}
+#textDesc::-webkit-scrollbar-thumb:hover {
+    background: #F7F1F9;
+}
+
 @media screen and (max-width: 768px) {
     #form{
         flex-direction: column;
