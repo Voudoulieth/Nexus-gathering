@@ -96,3 +96,23 @@ document.querySelectorAll('.formNom').forEach((inputElement) => {
     inputElement.addEventListener('input', () => validateInput(inputElement));
 });
 
+document.getElementById('publishAnnonce').addEventListener('click', enregistrerAnnonce);
+
+function enregistrerAnnonce() {
+    // Récupération des valeurs du formulaire
+    const titre = document.querySelector('.formNom').value;
+    const jeu = document.getElementById('nom_du_jeu').value;
+    const nombreJoueurs = document.getElementById('nbjoueur').value;
+    const description = document.getElementById('textDesc').value;
+
+    // Création de l'objet annonce
+    const annonce = { titre, jeu, nombreJoueurs, description };
+
+    // Récupération des annonces existantes et ajout de la nouvelle annonce
+    const annonces = JSON.parse(localStorage.getItem('annonces')) || [];
+    annonces.push(annonce);
+
+    // Sauvegarde des annonces dans localStorage
+    localStorage.setItem('annonces', JSON.stringify(annonces));
+
+}

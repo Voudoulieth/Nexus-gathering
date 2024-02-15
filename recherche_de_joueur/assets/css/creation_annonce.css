@@ -116,7 +116,7 @@ input[type="number"].formNom::-webkit-outer-spin-button {
     flex-direction: column;
     align-items: center;
 }
-.tokenjoueur{
+.tokenAnnonce{
     width: 73vw;
     height: 13vh;
     border-radius: 90px;
@@ -127,14 +127,14 @@ input[type="number"].formNom::-webkit-outer-spin-button {
     margin-bottom: 8vh;
     padding: 1.5vh 0;
 }
-.tokenjoueur ul{
+.tokenAnnonce ul{
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 20vw;
     padding-left: 3vw;
 }
-.tokenjoueur ul li{
+.tokenAnnonce ul li{
     color: #F7F1F9;
     font-family: "changa", sans-serif;
     font-size: 1em;

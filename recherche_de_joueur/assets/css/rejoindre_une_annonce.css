@@ -8,7 +8,7 @@
     flex-direction: column;
     align-items: center;
     width: 17.7vw;
-    height: 53vh;
+    height: 55vh;
     padding-top: 6vh;
     border-radius: 0 0 20px 0;}
 #filtreTitre{
@@ -19,6 +19,9 @@
 h2{
     font-weight: 600;
     margin-right: 2vw;
+}
+#loupe{
+    cursor: pointer;
 }
 #panneauFiltre img{
     width: 1.5vw;
@@ -134,4 +137,14 @@ input[type="number"].formNom::-webkit-outer-spin-button {
     height: 4.5vh;
     width: 8vw;
     margin-right: 2vw;
+}
+#containerButtonFiltre{
+    width: 12vw;
+    display: flex;
+    justify-content: space-around;
+}
+.buttonFiltre{
+    width: 5.5vw;
+    margin-top: 6vh;
+    
 }
