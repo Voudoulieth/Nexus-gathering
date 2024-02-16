@@ -8,7 +8,7 @@
     flex-direction: column;
     align-items: center;
     width: 17.7vw;
-    height: 53vh;
+    height: 55vh;
     padding-top: 6vh;
     border-radius: 0 0 20px 0;}
 #filtreTitre{
@@ -19,6 +19,9 @@
 h2{
     font-weight: 600;
     margin-right: 2vw;
+}
+#loupe{
+    cursor: pointer;
 }
 #panneauFiltre img{
     width: 1.5vw;
@@ -96,7 +99,7 @@ input[type="number"].formNom::-webkit-outer-spin-button {
     flex-direction: column;
     align-items: center;
 }
-.tokenjoueur{
+.tokenAnnonce{
     width: 73vw;
     height: 13vh;
     border-radius: 90px;
@@ -105,27 +108,43 @@ input[type="number"].formNom::-webkit-outer-spin-button {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 8vh;
+    padding: 1.5vh 0;
 }
-.tokenjoueur ul{
+.tokenAnnonce ul{
     display: flex;
-    justify-content: space-around;
-    width: 28vw;
+    justify-content: space-between;
+    align-items: center;
+    width: 20vw;
+    padding-left: 3vw;
 }
-.tokenjoueur ul li{
+.tokenAnnonce ul li{
     color: #F7F1F9;
-    font-family: "Open Sans", sans-serif;
-    font-size: 0.9em;
+    font-family: "changa", sans-serif;
+    font-size: 1em;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
-.tokenjoueur p{
-    width: 30vw;
-    text-align: center;
+.tokenAnnonce p{
+    height: 100%;
+    width: 35vw;
+    padding: 0 1vw;
+    overflow-y: auto;
+    line-height: 1.3em;
 }
 .contact{
     border-radius: 90px;
     height: 4.5vh;
     width: 8vw;
     margin-right: 2vw;
+}
+#containerButtonFiltre{
+    width: 12vw;
+    display: flex;
+    justify-content: space-around;
+}
+.buttonFiltre{
+    width: 5.5vw;
+    margin-top: 6vh;
+    
 }
