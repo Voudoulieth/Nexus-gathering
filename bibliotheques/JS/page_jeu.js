@@ -2,27 +2,28 @@
 const Modifier = document.querySelector('button[name="button"]');
 // Sélection du bouton "Valider"
 const Valider = document.querySelector('button[name="submit"]');
+// Sélection page du jeu
+const PageJeu = document.querySelector('#pageJeu');
+// Sélection formulaire
+const AjoutJeu = document.querySelector('#ajoutJeu');
 
 // Ajout d'un écouteur d'événement pour le clic sur le bouton "Modifier"
 Modifier.addEventListener('click', () => {
-    // Affichage du bouton "Valider"
+    // Affichage
     Valider.style.display = 'block';
-    // Masquage du bouton "Modifier"
+    AjoutJeu.style.display = 'block';
+    // Masquage
     Modifier.style.display = 'none';
+    PageJeu.style.display = 'none';
+});
 
-    // Sélection de tous les éléments que vous souhaitez modifier
-    let inputs = document.querySelectorAll('input');
-    let checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
-    // Parcours des saisies de texte et suppression de l'attribut 'readonly'
-    inputs.forEach(input => {
-        input.removeAttribute('readonly');
-    });
+const supprimer = document.getElementById("supprimerContenu")
 
-    // Parcours des cases à cocher et suppression de l'attribut 'disabled'
-    checkboxes.forEach(checkbox => {
-        checkbox.removeAttribute('disabled');
-    });
-
-    // Vous pouvez également ajouter d'autres modifications ici, selon vos besoins
+supprimer.addEventListener("click", function() {
+    const confirmation = confirm("Êtes-vous sûr de vouloir supprimer le contenu de la page ?");
+    if (confirmation) {
+    const contenu = document.getElementById("contenu");
+        contenu.remove();
+    }
 });
