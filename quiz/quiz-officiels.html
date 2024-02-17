@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="quiz-css/global-quiz.css">
     <link rel="stylesheet" href="./quiz-css/quiz-officiels-et-communautaires.css">
     <link rel="stylesheet" href="./quiz-css/quiz-officiels.css">
-    <!-- <script defer src=""></script> -->
+    <!--scripts-->
+    <script defer src="./quiz-js/data.js"></script>
+    <script defer type="module" src="./quiz-js/officiels.js"></script>
+    <!--identité du site-->
     <link rel="shortcut icon" href="../assets/logo/favicon.svg">
     <title>Quiz officiels - Nexus Gathering</title>
   </head>
@@ -49,61 +52,8 @@
     </header>
     <main>
       <a class="boutonCreer bouton" href="quiz-creer.html">Créer un quiz officiel (administrateurs)</a>
-      <div class="galerie">
-        <figure>
-          <figcaption>
-            <p>Baldur's Gate 3 - </p>
-            <time datetime="2024-01-07">7 janvier 2024</time>
-          </figcaption>
-          <a href="./quiz-jouer/quiz-jouer-off-baldur.html">
-            <img src="./quiz-assets/couverture-quiz/baldur.jpg" alt="Quiz officiel Baldur's Gate 3">
-          </a>
-        </figure>
-        <figure>
-          <figcaption>
-            <p>Genshin Impact - </p>
-            <time datetime="2024-01-07">9 janvier 2024</time>
-          </figcaption>
-          <a href="./quiz-jouer/quiz-jouer-off-genshin.html">
-            <img src="./quiz-assets/couverture-quiz/genshin.jpeg" alt="Quiz offciel Genshin Impact">
-          </a>
-        </figure>
-        <figure>
-          <figcaption>
-            <p>Titre - </p>
-            <time datetime="2024-01-01">Date</time>
-          </figcaption>
-          <a href="#">
-            <img src="quiz-assets/couverture-quiz/exemple.png" alt="Quiz communautaire Leaugue of Legends">
-          </a>
-        </figure>
-        <figure>
-          <figcaption>
-            <p>Titre - </p>
-            <time datetime="2024-01-01">Date</time>
-          </figcaption>
-          <a href="#">
-            <img src="quiz-assets/couverture-quiz/exemple.png" alt="Quiz communautaire Leaugue of Legends">
-          </a>
-        </figure>
-        <figure>
-          <figcaption>
-            <p>Titre - </p>
-            <time datetime="2024-01-01">Date</time>
-          </figcaption>
-          <a href="#">
-            <img src="quiz-assets/couverture-quiz/exemple.png" alt="Quiz communautaire Leaugue of Legends">
-          </a>
-        </figure>
-        <figure>
-          <figcaption>
-            <p>Titre - </p>
-            <time datetime="2024-01-01">Date</time>
-          </figcaption>
-          <a href="#">
-            <img src="quiz-assets/couverture-quiz/exemple.png" alt="Quiz communautaire Leaugue of Legends">
-          </a>
-        </figure>
+      <div class="galerie" id="galerieOfficiel">
+        <!--Les quiz sont gérés de façon dynamique, ils se situent pour l'instant dans le fichier data.js-->
       </div>
     </main>
     <footer>

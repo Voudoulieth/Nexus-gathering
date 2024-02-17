@@ -14,7 +14,10 @@
     <link rel="stylesheet" href="quiz-css/quiz-officiels-et-communautaires.css">
     <link rel="stylesheet" href="quiz-css/quiz-communautaires.css">
     <link rel="stylesheet" href="quiz-css/panneau-admin-quiz.css">
-    <!-- <script defer src=""></script> -->
+    <!--scripts-->
+    <script defer src="./quiz-js/data.js"></script>
+    <script defer type="module" src="./quiz-js/admin.js"></script>
+    <!--identité du site-->
     <link rel="shortcut icon" href="../assets/logo/favicon.svg">
     <title>Accueil Quiz - Nexus Gathering</title>
   </head>
@@ -50,71 +53,27 @@
     </header>
     <main>
       <h1 class="titres">Panneau Administrateur</h1>
-      <div class="panneauAdmin">
+      <div class="panneauAdmin" id="panneauAdmin">
         <form>
           <fieldset>
             <legend>Sélectionnez les types de quiz que vous souhaitez visualiser :</legend> 
-            <span><input type="radio" name="typeQuiz">Quiz communautaires</span>
-            <span><input type="radio" name="typeQuiz">Quiz officiels</span>
-            <span><input type="radio" name="typeQuiz" checked>Tous les quiz</span>
-            </fieldset>
+            <span>
+              <input id="communautaire" type="radio" name="typeQuiz">
+              <label for="communautaire">Quiz communautaires</label>
+            </span>
+            <span>
+              <input id="officiel" type="radio" name="typeQuiz">
+              <label for="officiel">Quiz officiels</label>
+            </span>
+            <span>
+              <input id="tous" type="radio" name="typeQuiz" checked>
+              <label for="tous">Tous les quiz</label>
+            </span>
+          </fieldset>
         </form>
       </div>
-      <div class="galerie">
-        <figure>
-          <figcaption>
-            <p>League of Legends - créé par Océane - <span>Quiz communautaire</span></p>
-            <time datetime="2024-01-07">5 janvier 2024</time>
-          </figcaption>
-          <a href="./quiz-jouer/quiz-jouer-com-lol.html">
-            <img src="./quiz-assets/couverture-quiz/lol.jpg" alt="Quiz communautaire League of Legends">
-          </a>
-        </figure>
-        <figure>
-          <figcaption>
-            <p>Baldur's Gate 3<span>Quiz officiel</span></p>
-            <time datetime="2024-01-07">7 janvier 2024</time>
-          </figcaption>
-          <a href="./quiz-jouer/quiz-jouer-off-baldur.html">
-            <img src="./quiz-assets/couverture-quiz/baldur.jpg" alt="Quiz officiel Baldur's Gate 3">
-          </a>
-        </figure>
-        <figure>
-          <figcaption>
-            <p>Genshin Impact<span>Quiz officiel</span></p>
-            <time datetime="2024-01-07">9 janvier 2024</time>
-          </figcaption>
-          <a href="./quiz-jouer/quiz-jouer-off-genshin.html">
-            <img src="./quiz-assets/couverture-quiz/genshin.jpeg" alt="Quiz offciel Genshin Impact">
-          </a>
-        </figure>
-        <figure>
-          <figcaption>
-            <p>Titre - créé par pseudonyme - <span>Quiz communautaire</span></p>
-            <time datetime="2024-01-01">Date</time>
-          </figcaption>
-          <a href="#">
-            <img src="quiz-assets/couverture-quiz/exemple.png" alt="Quiz communautaire Leaugue of Legends">
-          </a>
-        </figure>
-        <figure>
-          <figcaption>
-            <p>Titre<span>Quiz officiel</span></p>
-            <time datetime="2024-01-01">Date</time>
-          </figcaption>
-          <a href="#">
-            <img src="quiz-assets/couverture-quiz/exemple.png" alt="Quiz communautaire Leaugue of Legends">
-          </a>
-        </figure>
-        <figure>
-          <figcaption>
-            <p>Titre<span>Quiz officiel</span></p>
-            <time datetime="2024-01-01">Date</time>
-          </figcaption>
-          <a href="#">
-            <img src="quiz-assets/couverture-quiz/exemple.png" alt="Quiz communautaire Leaugue of Legends">
-          </a>
-        </figure>
+      <div class="galerie" id="galerieAdmin">
+        <!--Les quiz sont gérés de façon dynamique, ils se situent pour l'instant dans le fichier data.js-->
       </div>
     </main>
     <footer>
