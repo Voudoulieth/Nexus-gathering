@@ -6,9 +6,9 @@ const carouselContent = document.getElementById("carousel-content");
 // Initialise l'index actuel à 0 pour démarrer à partir du premier élément
 let currentIndex = 0;
 
-/**
- * Met à jour le contenu affiché dans le carrousel.
- */
+
+ // Met à jour le contenu affiché dans le carrousel.
+
 function updateCarousel() {
   // Efface le contenu précédent du conteneur du carrousel
   carouselContent.innerHTML = '';
