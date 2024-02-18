@@ -1,6 +1,7 @@
 /* ---main--- */
 .main-container {
     display: flex;
+    overflow: hidden;
 }
 
 .liens {

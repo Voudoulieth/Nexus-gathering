@@ -9,7 +9,6 @@ formulaireAjout.addEventListener("submit", function(event){
     let image = document.querySelector("#image").files[0].name;
     let nom = document.querySelector("#nom").value;
     let dateSortie = document.querySelector("#dateSortie").value;
-    // let style = document.querySelector("#style").value;
     let resume = document.querySelector("#resume").value;
     // let editeur = document.querySelector("#editeur").value;
     // let studio = document.querySelector("#studio").value;
@@ -27,10 +26,19 @@ formulaireAjout.addEventListener("submit", function(event){
         alert.textContent = "Veuillez ne pas saisir uniquement des espaces";
     }
 
+    let style = [];
+    let choixStyle = document.querySelectorAll('input[name="choixS"]:checked');
+    choixStyle.forEach(function(styleCheckbox) {
+        style.push(styleCheckbox.value);
+    });
+        if (style.length === 0) {
+            alert.textContent = "Veuillez sélectionner au moins une option pour le style du jeu"
+        }
+
     let consoles = [];
-    let checkboxes = document.querySelectorAll('input[name="choix"]:checked'); //selectionne tous les éléments choix cochés
-    checkboxes.forEach(function(checkbox) { //itére sur chaque élément recup dans la liste checkboxes
-        consoles.push(checkbox.value); //recupére la value de chaque éléments coché et l'envoie a un tableau consoles
+    let choixConsoles = document.querySelectorAll('input[name="choixC"]:checked'); //selectionne tous les éléments choix cochés
+    choixConsoles.forEach(function(consoleCheckbox) { //itére sur chaque élément recup dans la liste checkboxes
+        consoles.push(consoleCheckbox.value); //recupére la value de chaque éléments coché et l'envoie a un tableau consoles
     });
         if (consoles.length === 0) {
             alert.textContent = "Veuillez sélectionner au moins une option pour les consoles";
@@ -45,8 +53,6 @@ formulaireAjout.addEventListener("submit", function(event){
 
     //si il n'y a pas d'erreur alors je créer le jeu
     if (alert.textContent === "") {
-        //TODO gérer le style
-        let style = "aventure";
         let jeu = new Jeu (image, nom, dateSortie, style, resume, consoles, multijoueur);
         // constructor (image, nom, dateSortie, resume, consoles, multijoueur) {
         data.jeu.push(jeu);
@@ -61,39 +67,5 @@ function afficherListeJeu() {
         console.log(jeu)
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// document.getElementById("ajoutJeu").addEventListener("submit", function(event) {
-//     event.preventDefault();
-
-//     // Récupère les données du formulaire
-//     var formData = new FormData(this);
-
-//     // Envoie les données à la première page
-//     fetch("page_destination_1.html", {
-//         method: "POST",
-//         body: formData
-//     });
-
-//     // Envoie les données à la deuxième page
-//     fetch("page_destination_2.html", {
-//         method: "POST",
-//         body: formData
-//     });
-
-//     // Redirige vers la première page
-//     window.location.href = "page_destination_1.html";
-// });
+// console.log(Jeu)
+console.dir(Jeu)
