@@ -24,7 +24,12 @@ main{
 }
 
 /* ATTENTION les pourcentages de personnes ayant répondu x bonnes réponses est ici donné en static en CSS
-    cela devra être remplacé par du dynamisme, en utilisant les id, tout en utilisant la même syntaxe (le pourcentage de width est visuellement représentatif du poucentage de réponses) */
+    C'est maintenant remplacé par du dynamisme, en rendant les id dynamiques (le pourcentage de width est visuellement représentatif du poucentage de réponses)
+ */
+
+/* #barre0{
+    width: 10%;
+}
 #barre1{
     width: 20%;
 }
@@ -34,12 +39,9 @@ main{
 #barre3{
     width: 20%;
 }
-#barre4{
-    width: 10%;
-}
 .resultat{
     background: linear-gradient(to right, #361a3d,#F45A01);
-}
+} */
 
 @media screen and (max-width: 768px){
     .resultats{

@@ -44,3 +44,14 @@ let baldur  = new QuizOfficiels("qo2", "officiel", "Baldur's gate 3", "2024-01-0
 
 export let communautaires  = [lol];
 export let officiels       = [genshin, baldur];
+
+
+// Objet littéral spécifiquement utilisé dans resultats.js, en guise d'exemple pour mettre en place le dynamisme
+// Les propriétés barreX représentent les pourcentages de personnes ayant répondu x bonnes réponses (cf fichier resultats.css)
+// Cet objet est destiné à être remplacé quand on aura les bases de données
+export const pourcentages = {
+    barre0: 10,
+    barre1: 20,
+    barre2: 50,
+    barre3: 20,
+  }
