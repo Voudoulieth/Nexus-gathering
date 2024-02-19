@@ -1,90 +1,74 @@
-// Importe les données du carrousel depuis un fichier externe
 import { carouselData } from './data.js';
 
-// Sélectionne le conteneur du contenu du carrousel
 const carouselContent = document.getElementById("carousel-content");
-// Initialise l'index actuel à 0 pour démarrer à partir du premier élément
+
+// Initialisation de l'indice de l'élément actuellement affiché dans le carrousel à 0.
 let currentIndex = 0;
 
 
- // Met à jour le contenu affiché dans le carrousel.
-
+ // Met à jour le contenu du carrousel avec de nouveaux éléments.
 function updateCarousel() {
-  // Efface le contenu précédent du conteneur du carrousel
+  // Effacement du contenu actuel du carrousel pour pouvoir afficher les nouveaux éléments.
   carouselContent.innerHTML = '';
 
-  // Boucle pour générer et afficher les 5 prochains éléments du carrousel
   for (let i = 0; i < 5; i++) {
-    // Calcule l'index de l'élément à afficher, en bouclant sur le tableau si nécessaire
     let itemIndex = (currentIndex + i) % carouselData.length;
+    // Récupération de l'élément à afficher à partir des données du carrousel.
     const item = carouselData[itemIndex];
 
-    // Détermine si l'élément actuel doit avoir des attributs supplémentaires (pour le spotlight)
+    // Initialisation des attributs supplémentaires pour certains éléments, ici pour le troisième élément.
     let additionalAttributes = '';
-    if (i === 2) { // Si c'est le troisième élément, lui assigne un id spécial
-      additionalAttributes = ' id="imgspotlight"';
+    if (i === 2) {
+      additionalAttributes = ' id="imgspotlight"'; // Attribution d'un id spécial pour le mettre en évidence.
     }
 
-    // Construit le contenu HTML pour l'élément du carrousel
+    // Construction du contenu HTML pour chaque élément du carrousel en utilisant les données de l'élément.
     const aTag = `<a href="${item.href}" class="carouselimg"${additionalAttributes} data-caption="${encodeURIComponent(item.caption)}">
-    <figure>
-      <img src="${item.src}" alt="${item.alt}">
-      <figcaption>${item.caption}</figcaption>
-    </figure>
-  </a>`;
+      <figure>
+        <img src="${item.src}" alt="${item.alt}">
+        <figcaption>${item.caption}</figcaption>
+      </figure>
+    </a>`;
 
-    // Ajoute l'élément généré au conteneur du carrousel
+    // Ajout du contenu HTML généré au conteneur du carrousel.
     carouselContent.innerHTML += aTag;
   }
-
-  // Attache les événements click à chaque nouvel élément du carrousel
   attachClickEventToCarouselItems();
 }
 
-/**
- * Fonction pour naviguer vers l'élément précédent du carrousel.
- */
+ // Permet de naviguer vers l'élément précédent du carrousel.
 function navigateToPrevious() {
-  // Décrémente l'index actuel et met à jour le carrousel
-  currentIndex = (currentIndex + 1) % carouselData.length;
-  updateCarousel();
-}
-
-/**
- * Fonction pour naviguer vers l'élément suivant du carrousel.
- */
-function navigateToNext() {
-  // Incrémente l'index actuel et met à jour le carrousel
+  // Mise à jour de l'indice pour pointer vers l'élément précédent et mise à jour du contenu du carrousel.
   currentIndex = (currentIndex - 1 + carouselData.length) % carouselData.length;
   updateCarousel();
 }
 
-/**
- * Attache un écouteur d'événements à chaque image du carrousel pour gérer les clics.
- */
+ // Permet de naviguer vers l'élément suivant du carrousel.
+function navigateToNext() {
+  // Mise à jour de l'indice pour pointer vers l'élément suivant et mise à jour du contenu du carrousel.
+  currentIndex = (currentIndex + 1) % carouselData.length;
+  updateCarousel();
+}
+
+
+ // Associe des écouteurs d'événements de clic aux images du carrousel.
 function attachClickEventToCarouselItems() {
   document.querySelectorAll('.carouselimg').forEach(item => {
-    item.removeEventListener('click', handleCarouselItemClick); // Assure la suppression de l'écouteur précédent pour éviter les doublons
-    item.addEventListener('click', handleCarouselItemClick); // Attache le gestionnaire d'événements
+    item.removeEventListener('click', handleCarouselItemClick);
+    item.addEventListener('click', handleCarouselItemClick);
   });
 }
 
-/**
- * Gestionnaire d'événements pour les clics sur les images du carrousel.
- * Stocke le nom du jeu sélectionné dans le localStorage.
- * 
- * @param {Event} e - L'événement du clic
- */
+// récupération du nom du jeu pour l'affiché sur la page suivante
 function handleCarouselItemClick(e) {
-  // Récupère la légende associée à l'image cliquée
-  const caption = e.currentTarget.getAttribute('data-caption');
-  // Stocke la légende dans le localStorage sous la clé 'selectedGameName'
+  // Récupération de la légende (caption) de l'élément cliqué.
+  const caption = decodeURIComponent(e.currentTarget.getAttribute('data-caption'));
+  // Stockage de la légende dans le localStorage pour une utilisation ultérieure.
   localStorage.setItem('selectedGameName', caption);
 }
 
-// Attache les gestionnaires d'événements aux boutons de navigation 'précédent' et 'suivant'
 document.getElementById('precedent').addEventListener('click', navigateToPrevious);
 document.getElementById('suivant').addEventListener('click', navigateToNext);
 
-// Initialise le carrousel au chargement de la page
+// Initialisation du carrousel au chargement de la page.
 updateCarousel();
