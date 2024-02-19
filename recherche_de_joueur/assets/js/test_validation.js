@@ -27,6 +27,26 @@ QUnit.module('validateInput Tests', function() {
 QUnit.module('updateNumericValue Tests', function() {
     QUnit.test('Tests de validation de updateNumericValue', function(assert) {
         let inputElement = document.createElement('input');
+        
+        // Test de valeur supérieure
+        inputElement.value = '75';
+        updateNumericValue(inputElement, true, 2, 64);
+        assert.notStrictEqual(inputElement.value, '75', 'Supérieure: Une valeur supérieure à la limite maximale ne doit pas être acceptée.');
+
+        // Test de valeur négative
+        inputElement.value = '-5';
+        updateNumericValue(inputElement, true, 2, 64);
+        assert.notStrictEqual(inputElement.value, '-5', 'Inférieur: Les valeurs négatives ne sont pas acceptées.');
+
+        // Test d'insertion de texte
+        inputElement.value = 'texte';
+        updateNumericValue(inputElement, true, 2, 64);
+        assert.notStrictEqual(inputElement.value, 'texte', 'Le texte n\'est pas accepté comme valeur.');
+
+        // Test d'insertion de code HTML
+        inputElement.value = '<script>alert("test")</script>';
+        updateNumericValue(inputElement, true, 2, 64);
+        assert.notStrictEqual(inputElement.value, '<script>alert("test")</script>', 'Le code HTML n\'est pas accepté comme valeur.');
 
         // Test de valeur normale
         inputElement.value = '10';
@@ -42,26 +62,6 @@ QUnit.module('updateNumericValue Tests', function() {
         inputElement.value = '64';
         updateNumericValue(inputElement, true, 2, 64);
         assert.strictEqual(inputElement.value, '64', 'Incrémentation: La valeur maximale 64 doit rester inchangée.');
-
-        // Test de valeur supérieure
-        inputElement.value = '75';
-        updateNumericValue(inputElement, true, 2, 64);
-        assert.notStrictEqual(inputElement.value, '75', 'Incrémentation: Une valeur supérieure à la limite maximale ne doit pas être acceptée.');
-
-        // Test de valeur négative
-        inputElement.value = '-5';
-        updateNumericValue(inputElement, true, 2, 64);
-        assert.notStrictEqual(inputElement.value, '-5', 'Incrémentation: Les valeurs négatives ne sont pas acceptées.');
-
-        // Test d'insertion de texte
-        inputElement.value = 'texte';
-        updateNumericValue(inputElement, true, 2, 64);
-        assert.notStrictEqual(inputElement.value, 'texte', 'Incrémentation: Le texte n\'est pas accepté comme valeur.');
-
-        // Test d'insertion de code HTML
-        inputElement.value = '<script>alert("test")</script>';
-        updateNumericValue(inputElement, true, 2, 64);
-        assert.notStrictEqual(inputElement.value, '<script>alert("test")</script>', 'Incrémentation: Le code HTML n\'est pas accepté comme valeur.');
 
         // Décrémenter dans les limites valides
         inputElement.value = '5';
