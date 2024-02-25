@@ -80,7 +80,6 @@ function addIconEventListeners(messageDiv) {
         document.getElementById('inputMessage').focus();
         isEditing = true;
         divBeingEdited = messageDiv;
-        // Pas besoin de changer l'écouteur d'événement sur le bouton d'envoi ici, géré globalement
     });
     
     var deleteIcon = messageDiv.querySelector('.delete-icon');
@@ -97,6 +96,8 @@ function resetSendButtonEvent() {
         sendMessage();
     });
 }
+
+
 document.addEventListener('DOMContentLoaded', () => {
     // Sélectionne tous les boutons "Contacter" et leur ajoute un écouteur d'événement
     const contactButtons = document.querySelectorAll('#contactContainer .button');

@@ -1,118 +1,78 @@
-// Fonction pour basculer l'affichage du formulaire et de l'annonce
+import { validateInput, updateNumericValue } from './validation.js';
+
+// Ajoute un écouteur pour valider le champ de description à chaque saisie
+document.getElementById('textDesc').addEventListener('input', () => validateInput(document.getElementById('textDesc')));
+
+// Controle de saisie de chaque champ avec la classe '.formNom' lors de la saisie
+document.querySelectorAll('.formNom').forEach((inputElement) => {
+    inputElement.addEventListener('input', () => validateInput(inputElement));
+});
+
+// Gestion des boutons pour incrémenter/décrémenter la valeur numérique du nombre de joueurs
+const inputNumber = document.getElementById("nbjoueur");
+document.querySelector('.control-up').addEventListener('click', () => updateNumericValue(inputNumber, true, 2, 64));
+document.querySelector('.control-down').addEventListener('click', () => updateNumericValue(inputNumber, false, 2, 64));
+inputNumber.addEventListener('input', () => updateNumericValue(inputNumber, undefined, 2, 64));
+
+// Bascule l'affichage entre le formulaire et l'annonce
 function toggleDisplay(showAnnonce) {
     const form = document.getElementById('form');
     const annonceDisplay = document.getElementById('annonceDisplay');
 
+    // Affiche l'annonce si showAnnonce est vrai, sinon affiche le formulaire
     if (showAnnonce) {
-        document.getElementById('h1').textContent = "Votre annonce"
+        document.getElementById('h1').textContent = "Votre annonce";
         form.style.display = 'none';
         annonceDisplay.style.display = 'flex';
-        // Remplir les détails de l'annonce ici
+        // Mise à jour des informations de l'annonce avec les valeurs du formulaire
         document.getElementById('annonceTitle').textContent = document.querySelector('.formNom').value;
         document.getElementById('annonceGameName').textContent = document.getElementById('nom_du_jeu').value;
         document.getElementById('annoncePlayerCount').textContent = document.getElementById('nbjoueur').value;
         document.getElementById('annonceDescription').textContent = document.getElementById('textDesc').value;
     } else {
-        document.getElementById('h1').textContent = "Création de l'annonce"
+        document.getElementById('h1').textContent = "Création de l'annonce";
         form.style.display = 'flex';
         annonceDisplay.style.display = 'none';
     }
 }
 
-// Ajouter un écouteur d'événements sur le bouton de publication pour basculer vers l'affichage de l'annonce
+// Écouteurs pour afficher l'annonce ou revenir au formulaire
 document.querySelector('#formBut .button').addEventListener('click', function() {
-    toggleDisplay(true); // Affiche l'annonce
+    toggleDisplay(true); // Passe en mode affichage de l'annonce
 });
-
-// Ajouter un écouteur d'événements sur le bouton de modification pour basculer vers le formulaire
 document.getElementById('editAnnonce').addEventListener('click', function() {
-    toggleDisplay(false); // Affiche le formulaire
+    toggleDisplay(false); // Passe en mode édition de l'annonce
 });
 
-
-// Fonction pour basculer l'affichage du placeholder
+// Gère l'affichage du placeholder en fonction de la présence de texte
 function togglePlaceholderDisplay() {
     var placeholder = document.getElementById('placeholderText');
-    if (this.value) {
-        placeholder.style.display = 'none';
-    } else {
-        placeholder.style.display = 'block';
-    }
+    placeholder.style.display = this.value ? 'none' : 'block';
 }
-
-// Ajoute l'écouteur d'événements avec la fonction nommée
 document.getElementById('textDesc').addEventListener('input', togglePlaceholderDisplay);
 
-const inputNumber = document.getElementById("nbjoueur");
-
-// Fonction pour mettre à jour la valeur de l'input en respectant les limites
-const updateValue = (isIncrementing) => {
-    let currentValue = parseInt(inputNumber.value) || 2; // Obtient la valeur actuelle de l'input, ou 2 si non numérique
-    if (isIncrementing !== undefined) {
-        // Incrément ou décrément basé sur le bouton cliqué
-        currentValue = isIncrementing ? Math.min(currentValue + 1, 64) : Math.max(currentValue - 1, 2);
-    } else {
-        // Ajuste la valeur si saisie manuellement hors limites
-        currentValue = Math.min(Math.max(currentValue, 2), 64);
-    }
-    inputNumber.value = currentValue; // Met à jour la valeur de l'input
-};
-
-// Fonctions enveloppantes pour incrémenter et décrémenter
-const incrementValue = () => updateValue(true);
-const decrementValue = () => updateValue(false);
-
-// Ajoute des écouteurs d'événements pour les boutons + et -
-document.querySelector('.control-up').addEventListener('click', incrementValue);
-document.querySelector('.control-down').addEventListener('click', decrementValue);
-
-// Ajoute un écouteur d'événements pour valider la saisie manuelle
-inputNumber.addEventListener('input', () => updateValue());
-
-
-
+// Réinitialise le formulaire et affiche à nouveau le placeholder
 function resetForm() {
-    // Réinitialiser les valeurs des champs
     document.querySelector('.formNom').value = '';
     document.getElementById('nom_du_jeu').value = '';
     document.getElementById('nbjoueur').value = '';
     document.getElementById('textDesc').value = '';
-
-    // Réafficher le placeholder si masqué
     document.getElementById('placeholderText').style.display = 'block';
 }
 document.getElementById('deleteAnnonce').addEventListener('click', resetForm);
 
-const validateInput = (inputElement) => {
-    const value = inputElement.value;
-    if (/<[^>]+>/i.test(value)) {
-        alert('La saisie de code HTML n\'est pas autorisée.');
-        inputElement.value = value.replace(/<[^>]+>/gm, '');
-    }
-    
-};
-document.getElementById('textDesc').addEventListener('input', () => validateInput(document.getElementById('textDesc')));
-document.querySelectorAll('.formNom').forEach((inputElement) => {
-    inputElement.addEventListener('input', () => validateInput(inputElement));
-});
-
+// Enregistre l'annonce dans le localStorage
 document.getElementById('publishAnnonce').addEventListener('click', enregistrerAnnonce);
 
 function enregistrerAnnonce() {
-    // Récupération des valeurs du formulaire
+    // Collecte les valeurs du formulaire
     const titre = document.querySelector('.formNom').value;
     const jeu = document.getElementById('nom_du_jeu').value;
     const nombreJoueurs = document.getElementById('nbjoueur').value;
     const description = document.getElementById('textDesc').value;
-
-    // Création de l'objet annonce
+    // Crée une nouvelle annonce et l'ajoute au localStorage
     const annonce = { titre, jeu, nombreJoueurs, description };
-
-    // Récupération des annonces existantes et ajout de la nouvelle annonce
     const annonces = JSON.parse(localStorage.getItem('annonces')) || [];
     annonces.push(annonce);
-
-    // Sauvegarde des annonces dans localStorage
     localStorage.setItem('annonces', JSON.stringify(annonces));
-
 }

@@ -1,7 +1,12 @@
-document.addEventListener("DOMContentLoaded", titleName()) 
-function titleName(){
-  const gameName = localStorage.getItem('selectedGameName'); // Ou sessionStorage selon ce que vous avez choisi
+document.addEventListener("DOMContentLoaded", titleName);
+
+// Fonction pour mettre à jour le titre du jeu.
+function titleName() {
+  // Récupère le nom du jeu depuis le localStorage.
+  const gameName = localStorage.getItem('selectedGameName');
+  
+  // Si un nom de jeu est trouvé, met à jour le titre de la page.
   if (gameName) {
     document.querySelector('h1').textContent = decodeURIComponent(gameName);
   }
-};
+}

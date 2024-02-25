@@ -9,14 +9,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Changa&display=swap" rel="stylesheet">
     <!-- Feuilles de style CSS -->
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.20.0.css">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="quiz-css/global-quiz.css">
     <link rel="stylesheet" href="quiz-css/creer-quiz.css">
-    <!-- <script defer src=""></script> -->
+    <!--scripts-->
+    <script defer src="./quiz-js/data.js"></script>
+    <script defer type="module" src="./quiz-js/creer-quiz.js"></script>
+    <!--Les 2 scripts suivant servent pour les tests QUnit-->
+    <script defer src="https://code.jquery.com/qunit/qunit-2.20.0.js"></script> 
+    <script defer type="module" src="./quiz-js/test-QUnit.js"></script>
+    <!--identité du site-->
     <link rel="shortcut icon" href="../assets/logo/favicon.svg">
     <title>Créer un quiz - Nexus Gathering</title>
   </head>
   <body>
+    <!-- !!!!!! Décommenter les 2 lignes ci-dessous pour afficher les tests QUnit, puis aller dans le fichier test-QUnit.js pour décommenter les tests-->
+
+      <!-- <div id="qunit"></div>
+      <div id="qunit-fixture"></div> -->
     <header>
         <a href="../index.html">
             <img class="logo" src="../assets/logo/logo_nexus_white.svg" title="Accueil" alt="Logo Nexus">
@@ -47,61 +58,18 @@
         </a>
     </header>
     <main>
-      <form action="#" method="post" enctype="multipart/form-data">
+      <form id="formulaireQuiz" action="#" method="post" enctype="multipart/form-data">
         <div class="couverture">
           <label>Importer la photo de couverture du quiz :</label>
-          <input type="file" accept="image/*">
+          <input id="inputImage" type="file" accept="image/*">
         </div>
-        <input type="text" placeholder="TITRE DE VOTRE QUIZ" class="FormulaireRechercher">
-        <!--début d'une question-->
-        <div class="question">
-          <input type="text" placeholder="Entrez votre question" class="FormulaireRechercher ">
-          <div class="reponses">
-            <div class="reponsePossible">
-              <input type="text" placeholder="Entrez une réponse" class="FormulaireRechercher formulaireQuiz">
-              <input type="text" placeholder="Entrez une réponse" class="FormulaireRechercher formulaireQuiz">
-            </div>
-            <fieldset class="reponseVraie">
-              <legend>Sélectionnez la <br> réponse vraie :</legend>
-              <input type="radio" name="reponseVraie1">
-              <input type="radio" name="reponseVraie1">
-            </fieldset>
-          </div>
-          <input class="bouton" type="button" value="Ajouter une réponse">
+        <input id="titreQuiz" type="text" placeholder="TITRE DE VOTRE QUIZ" class="FormulaireRechercher">
+        <div id="galerieQuestions">
+        <!--Ajout des questions géré en javascript-->
         </div>
-        <!--fin d'une question-->
-        <div class="question">
-          <input type="text" placeholder="Entrez votre question" class="FormulaireRechercher ">
-          <div class="reponses">
-            <div class="reponsePossible">
-              <input type="text" placeholder="Entrez une réponse" class="FormulaireRechercher formulaireQuiz">
-              <input type="text" placeholder="Entrez une réponse" class="FormulaireRechercher formulaireQuiz">
-            </div>
-            <fieldset class="reponseVraie">
-              <legend>Sélectionnez la/les <br> réponse(s) vraie(s) :</legend>
-              <input type="checkbox" name="reponseVraie2">
-              <input type="checkbox" name="reponseVraie2">
-            </fieldset>
-          </div>
-          <input class="bouton" type="button" value="Ajouter une réponse">
-        </div>
-        <div class="question">
-          <input type="text" placeholder="Entrez votre question" class="FormulaireRechercher ">
-          <div class="reponses">
-            <div class="reponsePossible">
-              <input type="text" placeholder="Entrez une réponse" class="FormulaireRechercher formulaireQuiz">
-              <input type="text" placeholder="Entrez une réponse" class="FormulaireRechercher formulaireQuiz">
-            </div>
-            <fieldset class="reponseVraie">
-              <legend>Sélectionnez la/les <br> réponse(s) vraie(s) :</legend>
-              <input type="checkbox" name="reponseVraie3">
-              <input type="checkbox" name="reponseVraie3">
-            </fieldset>
-          </div>
-          <input class="bouton" type="button" value="Ajouter une réponse">
-        </div>
+        <div id="messageVerifierQuiz"></div>
         <div class="boutonFin">
-          <input class="bouton" type="button" value="Ajouter une question">
+          <button id="ajouterQuestion" class="bouton" type="button">Ajouter une question</button>
           <input class="bouton" type="submit" value="Poster le quiz">
         </div>
       </form>
