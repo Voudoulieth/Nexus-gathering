@@ -62,8 +62,11 @@ export class Jeu {
 
 let hoi4 = new Jeu("../assets/image/Hoi4.jpg", "Hearts of iron 4", "06 juin 2016", "jeu de grande stratégie", "Le joueur prend le contrôle d'une nation, et gère les aspects économique, militaire, et politique de son pays. Les pays ont chacun un arbre de priorités nationales qui octroie divers avantages et définit ainsi la direction et le rôle que prend le pays pendant le conflit.", "PC", "oui");
 let cyberpunk = new Jeu("../assets/image/cyberpunk.jpg", "Cyberpunk 2077", "10 décembre 2020", "Action-RPG, action-aventure", "L'histoire de Cyberpunk 2077 prend place sur Terre en 2077 et se déroule dans la mégapole futuriste de Night City dans l’État libre de Californie. Dans ce monde futuriste à tendance cyberpunk et dystopique où règnent la pauvreté et les inégalités, l'influence des mégacorporations est prédominante celles-ci ayant pris le pas sur les gouvernements et dictant leur loi, ainsi que celle du cyberespace, la «Nouvelle Frontière» de cette époque.", "PS4, PS5, Xbox One, Xbox Series, Steam Decks, PC", "non");
+let mtw2 = new Jeu("../assets/image/mtw2.png", "Medieval total war 2", "10 novembre 2006", "Jeu de tactique en temps réel", "Le jeu se déroule en Europe, en Afrique du Nord et au Moyen-Orient pendant une période du Moyen Âge allant de 1080 à 1530. La campagne principale met en scène les nations européennes du Moyen-Age, comme la France et l'Angleterre.", "PC", "oui");
+let mab2b = new Jeu("../assets/image/mab2b.jpg", "Mount & Blade II : Bannerlord", "30 mars 2020", "Action RPG", "Créez et développez un personnage qui vous correspond et explorez, pillez et conquérez dans un vaste bac à sable médiéval qui rend chaque partie unique. Levez des armées, usez de diplomatie, commercez, créez des armes, recrutez des compagnons et gérez votre fief pour tenter de hisser votre clan dans les hautes sphères de la noblesse de Calradia. Commandez une armée et combattez à ses côtés dans de batailles en temps réel à la première ou troisième personne utilisant le système de combat intuitif et complet basé sur les compétences de Mount & Blade.", "PS5, PS4, Xbox One, Xbox series, PC", "oui");
 
-export let jeu = [hoi4, cyberpunk];
+
+export let jeu = [hoi4, cyberpunk, mtw2, mab2b];
 
 export function afficherListeJeu() {
     let listejeu = document.querySelector('#listejeu');
