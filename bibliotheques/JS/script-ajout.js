@@ -62,10 +62,14 @@ formulaireAjout.addEventListener("submit", function(event){
     }
 });
 
+
+
 function afficherListeJeu() {
     data.jeu.forEach(function(jeu){
         console.log(jeu)
     });
 }
 // console.log(Jeu)
-console.dir(Jeu)
+// console.dir(Jeu)
+
+//Test Qunit
