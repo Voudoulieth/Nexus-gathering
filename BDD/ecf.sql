@@ -31,7 +31,6 @@ DROP TABLE IF EXISTS categorie;
 DROP TABLE IF EXISTS NiveauUtilisateur;
 DROP TABLE IF EXISTS roleUser;
 
-
 CREATE TABLE roleUser(
     id_role INTEGER AUTO_INCREMENT,
     nom_role VARCHAR(50) NOT NULL unique,
@@ -90,8 +89,6 @@ CREATE TABLE Ville (
     PRIMARY KEY(id_ville)
 )ENGINE=InnoDB;
 
--- foreign key
-
 CREATE TABLE Utilisateur(
     id_user INTEGER AUTO_INCREMENT,
     nom_user VARCHAR(50) NOT NULL UNIQUE,
@@ -103,8 +100,6 @@ CREATE TABLE Utilisateur(
     PRIMARY KEY(id_user),
     Foreign Key (id_role) REFERENCES roleUser(id_role)
 ) ENGINE=InnoDB;
-
-
 ALTER TABLE Utilisateur
 ADD CONSTRAINT AgeCheck CHECK (age > 13);
 
@@ -149,7 +144,7 @@ create table quiz(
     primary key (id_quiz),
     foreign key (id_cat_quiz) references categorie (id_cat_quiz),
     foreign key (id_user) references utilisateur (id_user)
-); -- TODO JOUER date 
+);
 
 create table question(
     id_question integer AUTO_INCREMENT,
@@ -177,8 +172,7 @@ CREATE TABLE Messages(
     FOREIGN KEY (id_exped) REFERENCES Utilisateur(id_user) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY (id_desti) REFERENCES Utilisateur(id_user) ON DELETE CASCADE ON UPDATE CASCADE
 	-- CHECK (id_exped != id_desti)
-); -- TODO date
-
+);
 
 create table jeu    (
 	id_jeu		INTEGER			AUTO_INCREMENT PRIMARY KEY,  
@@ -213,7 +207,7 @@ CREATE TABLE Annonce(
     id_jeu	integer,
     FOREIGN KEY (id_user) REFERENCES Utilisateur(id_user) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (id_jeu) REFERENCES jeu(id_jeu) ON DELETE CASCADE ON UPDATE CASCADE
-); -- date
+);
 
 CREATE TABLE rechercheRapide(
     id_session integer  AUTO_INCREMENT PRIMARY KEY,
@@ -223,7 +217,7 @@ CREATE TABLE rechercheRapide(
     FOREIGN KEY (id_jeu) REFERENCES Jeu(id_jeu) ON DELETE CASCADE ON UPDATE CASCADE
 	-- CHECK (fin_session IS NULL OR fin_session >= deb_session),
     -- CHECK (fin_session IS NULL OR TIMESTAMPDIFF(HOUR, deb_session, fin_session) <= 6)
-); -- date
+);
 
 create table jouerQuiz(
     id_quiz integer,
@@ -232,8 +226,7 @@ create table jouerQuiz(
     primary key (id_quiz, id_user),
     foreign key (id_quiz) references quiz (id_quiz),
     foreign key (id_user) references utilisateur (id_user)
-); -- date
-
+);
 ALTER TABLE jouerQuiz
 ADD CONSTRAINT minicheck CHECK (score_quiz >= 0);
 
