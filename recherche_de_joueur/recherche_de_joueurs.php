@@ -1,21 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-    name="description"
-    content="Rejoignez une communauté de joueurs, trouvez vos coéquipiers et maintenez a jours vos collections!"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <?php include '../src/view/head.inc.php' ?>
     <link rel="stylesheet" href="../dist/output.css">
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/style_global.css">
     <title>Recherche de joueurs</title>
-    <link rel="shortcut icon" href="assets/logo/favicon.svg" />
     <script defer src=""></script>
 </head>
 <body>
