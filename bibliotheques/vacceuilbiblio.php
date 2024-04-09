@@ -12,7 +12,7 @@
       <!--TODO regler le probleme overflow et marge header/footer -->
       <article class="main-container">
         <a
-          href="./biblio_generale.html"
+          href="./vbibliogenerale.php"
           class="liens"
           title="Accéder a la bibliothèque générale"
         >
