@@ -1,5 +1,5 @@
 <header>
-      <a href="../index.html">
+      <a href="../index.php">
         <img
           class="logo"
           src="../assets/logo/logo_nexus_white.svg"
@@ -11,22 +11,22 @@
         <nav>
           <ul>
             <li>
-              <a class="navlink" href="../bibliotheques/acceuil_biblio.html"
+              <a class="navlink" href="../bibliotheques/acceuil_biblio.php"
                 >Bibliothèque</a
               >
             </li>
             <li>
               <a
                 class="navlink"
-                href="../recherche_de_joueur/recherche_de_joueurs.html"
+                href="../recherche_de_joueur/recherche_de_joueurs.php"
                 >Joueurs</a
               >
             </li>
             <li>
-              <a class="navlink" href="../quiz/quiz-accueil.html">Quiz</a>
+              <a class="navlink" href="../quiz/quiz-accueil.php">Quiz</a>
             </li>
             <li>
-              <a class="navlink" href="../recherche_de_joueur/messagerie.html"
+              <a class="navlink" href="../recherche_de_joueur/messagerie.php"
                 >Messagerie</a
               >
             </li>
