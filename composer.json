@@ -1,0 +1,10 @@
+{
+    "name": "corentin/nexus-gathering",
+    "authors": [
+        {
+            "name": "Corentin Malecki",
+            "email": "Corentin.Malecki@gmail.com"
+        }
+    ],
+    "require": {}
+}
