@@ -11,7 +11,7 @@
         <nav>
           <ul>
             <li>
-              <a class="navlink" href="../bibliotheques/acceuil_biblio.php"
+              <a class="navlink" href="../bibliotheques/vacceuilbiblio.php"
                 >Bibliothèque</a
               >
             </li>
