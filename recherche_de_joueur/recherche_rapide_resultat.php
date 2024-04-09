@@ -17,7 +17,7 @@
                     <li>Niveau de jeu</li>
                     <li>nombre de jeu dans la collection</li>
                 </ul>
-                <a href="./messagerie.html"><button  class="button contact">Contacter</button></a>
+                <a href="./messagerie.php"><button  class="button contact">Contacter</button></a>
             </div>
         </div>
         <div class="tokenplace">
@@ -28,7 +28,7 @@
                     <li>Niveau de jeu</li>
                     <li>nombre de jeu dans la collection</li>
                 </ul>
-                <a href="./messagerie.html"><button  class="button contact">Contacter</button></a>
+                <a href="./messagerie.php"><button  class="button contact">Contacter</button></a>
             </div>
         </div>
         <div class="tokenplace">
@@ -39,7 +39,7 @@
                     <li>Niveau de jeu</li>
                     <li>nombre de jeu dans la collection</li>
                 </ul>
-                <a href="./messagerie.html"><button  class="button contact">Contacter</button></a>
+                <a href="./messagerie.php"><button  class="button contact">Contacter</button></a>
             </div>
         </div>        <div class="tokenplace">
             <div class="tokenjoueur">
@@ -49,7 +49,7 @@
                     <li>Niveau de jeu</li>
                     <li>nombre de jeu dans la collection</li>
                 </ul>
-                <a href="./messagerie.html"><button  class="button contact">Contacter</button></a>
+                <a href="./messagerie.php"><button  class="button contact">Contacter</button></a>
             </div>
         </div>        <div class="tokenplace">
             <div class="tokenjoueur">
@@ -59,7 +59,7 @@
                     <li>Niveau de jeu</li>
                     <li>nombre de jeu dans la collection</li>
                 </ul>
-                <a href="./messagerie.html"><button  class="button contact">Contacter</button></a>
+                <a href="./messagerie.php"><button  class="button contact">Contacter</button></a>
             </div>
         </div>
     </main>

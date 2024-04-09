@@ -11,7 +11,7 @@
     <main>
         <div class="flex">
             <section class="w-1/2 relative">
-                <a href="./recherche_rapide.html">
+                <a href="./recherche_rapide.php">
                     <img src="../assets/Image/recherche rapide.png" alt="Recherche rapide" />
                     <div class="bg-[#F45A01]/95 absolute top-10 left-10 w-[26.5vw]  rounded-full">
                         <h1 class="text-[2.75em] font-['Changa'] font-bold text-[#f1f7f9] text-center">Recherche rapide</h1>
@@ -22,7 +22,7 @@
                 </a>
             </section>
             <section class="w-1/2 relative">
-                <a href="./recherche_par_annonce.html">
+                <a href="./recherche_par_annonce.php">
                     <img src="../assets/Image/recherche par annonce.png" alt="Recherche par annonce" />
                     <div class="bg-[#F45A01]/95 absolute top-10 left-10 w-[34vw] rounded-full ">
                         <h1 class="text-[2.75em] font-['Changa'] font-bold text-[#f1f7f9] text-center ">Recherche par annonce</h1>

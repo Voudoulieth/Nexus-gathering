@@ -10,7 +10,7 @@
     <main>
         <div class="main-container">
             <section class="search-section">
-              <a href="./rejoindre_une_annonce.html">
+              <a href="./rejoindre_une_annonce.php">
                 <img src="../assets/Image/rejoindre une annonce.png" alt="Recherche rapide" />
                 <div class="encareTitre" >
                     <h1 class="titres">Rejoindre une annonce</h1>
@@ -21,7 +21,7 @@
               </a>
             </section>
             <section class="search-section">
-              <a href="./creation_annonce.html">
+              <a href="./creation_annonce.php">
                 <img src="../assets/Image/créée une annonce.png" alt="Recherche par annonce" />
                 <div class="encareTitre" id="encareh2">
                     <h2 class="titres">Créer une annonce</h2>
