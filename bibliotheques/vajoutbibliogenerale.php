@@ -1,95 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Ajoutez un jeu de votre choix a la bibliothèque générale!"
-    />
-    <!-- Import Changa -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Changa&display=swap"
-      rel="stylesheet"
-    />
+    <?php include '../src/view/head.inc.php' ?>
     <!-- Feuilles de style CSS -->
-    <link rel="stylesheet" href="../css/reset.css" />
-    <link rel="stylesheet" href="../css/style_global.css" />
     <script defer type="module" src="./JS/script-ajout.js"></script>
-    <link rel="shortcut icon" href="../assets/logo/favicon.svg" />
     <link rel="stylesheet" href="../dist/output.css" />
+    <title>Ajout générale - Nexus Gathering</title>    
     <!-- Test Qunit -->
     <!-- <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.20.0.css"> -->
-    <title>Ajout générale - Nexus Gathering</title>
   </head>
   <body>
     <!-- Test Qunit -->
     <!-- <div id="qunit"></div>
     <div id="qunit-fixture"></div>
     <script src="https://code.jquery.com/qunit/qunit-2.20.0.js"></script> -->
-
-    <header>
-      <a href="../index.html">
-        <img
-          class="logo"
-          src="../assets/logo/logo_nexus_white.svg"
-          title="Accueil"
-          alt="Logo Nexus"
-        />
-      </a>
-      <div id="menuburger">
-        <nav>
-          <ul>
-            <li>
-              <a class="navlink" href="../bibliotheques/acceuil_biblio.html"
-                >Bibliothèque</a
-              >
-            </li>
-            <li>
-              <a
-                class="navlink"
-                href="../recherche_de_joueur/recherche_de_joueurs.html"
-                >Joueurs</a
-              >
-            </li>
-            <li>
-              <a class="navlink" href="../quiz/quiz-accueil.html">Quiz</a>
-            </li>
-            <li>
-              <a class="navlink" href="../recherche_de_joueur/messagerie.html"
-                >Messagerie</a
-              >
-            </li>
-          </ul>
-        </nav>
-        <div class="header-moitie">
-          <div class="rechercher">
-            <input
-              class="FormulaireRechercher navlink"
-              type="text"
-              placeholder="Rechercher"
-            />
-            <button class="SubmitRecherche" type="submit">
-              <img
-                src="../assets/Icone/magnifying-glass-solid-blanc.svg"
-                alt="recherche"
-              />
-            </button>
-          </div>
-          <button class="BoutonConnexion navlink">Connexion</button>
-        </div>
-      </div>
-      <a href="#" id="openMenuBurger"
-        ><!--TODO javascript pour ouvrir le menu burger et afficher la navbar mobile-->
-        <span class="burger-icon">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-      </a>
-    </header>
+    <?php include '../src/view/header.inc.php' ?>
     <main>
       <div class="text-center pt-5">
         <h1 class="font-['Changa'] text-[4.5em] p-5">
