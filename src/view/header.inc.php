@@ -1,5 +1,5 @@
 <header>
-      <a href="../index.html">
+      <a href="../index.php">
         <img
           class="logo"
           src="../assets/logo/logo_nexus_white.svg"
@@ -11,7 +11,7 @@
         <nav>
           <ul>
             <li>
-              <a class="navlink" href="../bibliotheques/acceuil_biblio.php"
+              <a class="navlink" href="../bibliotheques/vacceuilbiblio.php"
                 >Bibliothèque</a
               >
             </li>
