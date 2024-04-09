@@ -2,62 +2,15 @@
 <html lang="fr">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Tout le détails du jeu choisis ici!" />
-  <!-- Import Changa -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Changa&display=swap" rel="stylesheet" />
+  <?php include '../src/view/head.inc.php' ?>
   <!-- Feuilles de style CSS -->
-  <link rel="stylesheet" href="../css/reset.css" />
-  <link rel="stylesheet" href="../css/style_global.css" />
   <script defer type="module" src="./JS/page_jeu.js"></script>
-  <link rel="shortcut icon" href="../assets/logo/favicon.svg" />
   <link rel="stylesheet" href="../dist/output.css">
   <title>Page jeu - Nexus Gathering</title>
 </head>
 
 <body>
-  <header>
-    <a href="../index.html">
-      <img class="logo" src="../assets/logo/logo_nexus_white.svg" title="Accueil" alt="Logo Nexus" />
-    </a>
-    <div id="menuburger">
-      <nav>
-        <ul>
-          <li>
-            <a class="navlink" href="../bibliotheques/acceuil_biblio.html">Bibliothèque</a>
-          </li>
-          <li>
-            <a class="navlink" href="../recherche_de_joueur/recherche_de_joueurs.html">Joueurs</a>
-          </li>
-          <li>
-            <a class="navlink" href="../quiz/quiz-accueil.html">Quiz</a>
-          </li>
-          <li>
-            <a class="navlink" href="../recherche_de_joueur/messagerie.html">Messagerie</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="header-moitie">
-        <div class="rechercher">
-          <input class="FormulaireRechercher navlink" type="text" placeholder="Rechercher" />
-          <button class="SubmitRecherche" type="submit">
-            <img src="../assets/Icone/magnifying-glass-solid-blanc.svg" alt="recherche" />
-          </button>
-        </div>
-        <button class="BoutonConnexion navlink">Connexion</button>
-      </div>
-    </div>
-    <a href="#" id="openMenuBurger"><!--TODO javascript pour ouvrir le menu burger et afficher la navbar mobile-->
-      <span class="burger-icon">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
-    </a>
-  </header>
+  <?php include '../src/view/header.inc.php' ?>
   <main>
 
     <div class="text-center pt-5">
@@ -314,25 +267,6 @@
       </button>
     </div>
   </main>
-  <footer>
-    <div>
-      <a href="../index.html">
-        <img class="logo" src="../assets/logo/logo_long_nexus_white.svg" title="Acceuil" alt="Logo Nexus Blanc" />
-      </a>
-      <nav>
-        <ul>
-          <li><a class="navlink" href="../cgu.html">CGU</a></li>
-          <li>
-            <a class="navlink" href="../mention_legale.html">Mention légale</a>
-          </li>
-          <li>
-            <a class="navlink" href="../confidentialite.html">Politique de confidentialité</a>
-          </li>
-          <li><a class="navlink" href="../contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-    <p class="copyright">COPYRIGHT @ 2024 TOUS DROITS RESERVE</p>
-  </footer>
+  <?php include '../src/view/footer.inc.php' ?>
 </body>
 </html>
