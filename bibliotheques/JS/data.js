@@ -53,7 +53,7 @@ export class Jeu {
     <p class="place-self-center text-[0.875em]">${this.style}</p>\
         <p class="text-clip overflow-hidden text-[0.875em] mt-2">${this.resume}</p>\
         <div class="flex justify-end mr-5">\
-    <a href="./page_jeu.html" class="rounded-full font-['Open Sans'] bg-[#733790]/95 place-self-center text-center text-[1.06em] p-2 pl-5 pr-5">Voir</a>\
+    <a href="./vpagejeu.php" class="rounded-full font-['Open Sans'] bg-[#733790]/95 place-self-center text-center text-[1.06em] p-2 pl-5 pr-5">Voir</a>\
         </div>\
     </div>\
 </div>`;
