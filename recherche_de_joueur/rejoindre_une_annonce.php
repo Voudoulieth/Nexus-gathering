@@ -1,19 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Rejoignez une communauté de joueurs, trouvez vos coéquipiers et maintenez a jours vos collections!">
-    <!-- Import Changa -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Changa&display=swap" rel="stylesheet">
-    <!-- Feuilles de style CSS -->
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/style_global.css">
+    <?php include '../src/view/head.inc.php' ?>
     <link rel="stylesheet" href="./assets/css/rejoindre_une_annonce.css">
-    <!-- <script defer src=""></script> -->
-    <link rel="shortcut icon" href="./assets/logo/favicon.svg">
     <title>Recherche rapide</title>
   </head>
   <body>
@@ -133,22 +122,9 @@
         </div>    
     </main>
     <footer>
-        <div>
-          <a href="../index.html">
-            <img class="logo" src="../assets/logo/logo_long_nexus_white.svg" title="Acceuil" alt="Logo Nexus Blanc">
-          </a>
-          <nav>
-            <ul>
-              <li><a class="navlink" href="../cgu.html">CGU</a></li>
-              <li><a class="navlink" href="../mention_legale.html">Mention légale</a></li>
-              <li><a class="navlink" href="../confidentialite.html">Politique de confidentialité</a></li>
-              <li><a class="navlink" href="../contact.html">Contact</a></li>
-            </ul>
-          </nav>
-        </div>
-        <p class="copyright">COPYRIGHT @ 2024 TOUS DROITS RESERVE</p>
-      </footer>
-      <script type="module" src="./assets/js/validation.js"></script>
-      <script type="module" src="./assets/js/rejoindre_une_annonce.js"></script>
-    </body>
-  </html>
+    <?php include '../src/view/footer.inc.php' ?>
+    </footer>
+    <script type="module" src="./assets/js/validation.js"></script>
+    <script type="module" src="./assets/js/rejoindre_une_annonce.js"></script>
+  </body>
+</html>
