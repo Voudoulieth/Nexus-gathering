@@ -1,4 +1,5 @@
-<div>
+<footer>
+        <div>
           <a href="../index.php">
             <img class="logo" src="../assets/logo/logo_long_nexus_white.svg" title="Acceuil" alt="Logo Nexus Blanc">
           </a>
@@ -12,3 +13,6 @@
           </nav>
         </div>
         <p class="copyright">COPYRIGHT @ 2024 TOUS DROITS RESERVE</p>
+        <script src="./assets/js/recherche_rapide_resultat.js"></script>
+      </footer>
+    </body>

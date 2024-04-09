@@ -121,10 +121,8 @@
             </section>
         </div>    
     </main>
-    <footer>
     <?php include '../src/view/footer.inc.php' ?>
-    </footer>
     <script type="module" src="./assets/js/validation.js"></script>
     <script type="module" src="./assets/js/rejoindre_une_annonce.js"></script>
-  </body>
+    </body>
 </html>
