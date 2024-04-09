@@ -1,5 +1,5 @@
 <header>
-      <a href="../index.php">
+      <a href="../index.html">
         <img
           class="logo"
           src="../assets/logo/logo_nexus_white.svg"
