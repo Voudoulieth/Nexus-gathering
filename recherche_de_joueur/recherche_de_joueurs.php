@@ -7,28 +7,7 @@
     <script defer src=""></script>
 </head>
 <body>
-    <header>
-        <a href="../index.html">
-            <img class="logo" src="../assets/logo/logo_nexus_white.svg" title="Accueil" alt="Logo Nexus">
-        </a>
-        <div id="menuburger">
-            <nav>
-                <ul>
-                    <li><a class="navlink" href="../bibliotheques/acceuil_biblio.html">Bibliothèque</a></li>
-                    <li><a class="navlink" href="./recherche_de_joueurs.html">Joueurs</a></li>
-                    <li><a class="navlink" href="../quiz/quiz-accueil.html">Quiz</a></li>
-                    <li><a class="navlink" href="../recherche_de_joueur/messagerie.html">Messagerie</a></li>
-                </ul>
-            </nav>
-            <div class="header-moitie">
-                <div class="rechercher">
-                    <input class="FormulaireRechercher navlink" type="text" placeholder="Rechercher">
-                    <button class="SubmitRecherche" type="submit"><img src="../assets/Icone/magnifying-glass-solid-blanc.svg"></button>
-                </div>
-                <button class="BoutonConnexion navlink">Connexion</button>
-            </div>
-        </div>
-    </header>
+<?php include '../src/view/header.inc.php' ?>
     <main>
         <div class="flex">
             <section class="w-1/2 relative">
@@ -55,18 +34,6 @@
             </section>
         </div>
     </main>
-    <footer class="h-[16vh] bg-[#120917] flex flex-col items-center">
-        <div class="flex justify-between w-full">
-            <a href="../index.html"><img src="../assets/logo/logo_long_nexus_white.svg" title="Acceuil" alt="Logo Nexus Blanc" class="w-[8.6vw] ml-10 mt-2"/></a>
-            <ul class="font-['Open_Sans'] text-[0.94em] font-semibold text-[#f1f7f9] flex justify-between w-[70vw] mr-20 mt-5">
-                <li><a href="cgu.html">CGU</a></li>
-                <li><a href="mention_legale.html">Mention <br> légale</a></li>
-                <li><a href="confidentialite.html">Politique de <br>confidentialité</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="">Réseaux</a></li>
-            </ul>
-        </div>
-        <p class="text-[#f1f7f9] font-['Open_Sans'] text-[0.87em] font-regular mt-4 italic">COPYRIGHT @ 2024 TOUS DROITS RESERVE</p>
-    </footer>
+    <?php include '../src/view/footer.inc.php' ?>
 </body>
 </html>

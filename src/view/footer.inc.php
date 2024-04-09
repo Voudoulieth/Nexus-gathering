@@ -15,4 +15,3 @@
         <p class="copyright">COPYRIGHT @ 2024 TOUS DROITS RESERVE</p>
         <script src="./assets/js/recherche_rapide_resultat.js"></script>
       </footer>
-    </body>
