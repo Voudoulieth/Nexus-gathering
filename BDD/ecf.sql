@@ -68,7 +68,7 @@ CREATE TABLE dates (
 CREATE TABLE formats (
     id_form 	INTEGER 		AUTO_INCREMENT PRIMARY KEY,
     nom_form 	VARCHAR(40) 	NOT NULL
-    -- CONSTRAINT chk_format CHECK (form IN ('dématérialisé', 'physique'))
+    CONSTRAINT chk_format CHECK (form IN ('dématérialisé', 'physique'))
 );
 
 CREATE TABLE genre (
