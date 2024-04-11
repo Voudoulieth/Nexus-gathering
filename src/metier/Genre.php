@@ -14,7 +14,7 @@ class Genre {
     public function getId_genre(): int {
         return $this->id_genre;
     }
-    public function setId_genre(int $id_genre) {
+    private function setId_genre(int $id_genre) {
         $this->id_genre = $id_genre;
     }
     public function getNom_genre(): String {

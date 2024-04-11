@@ -25,7 +25,7 @@ class Jeu {
     public function getId_jeu(): int {
         return $this->id_jeu;
     }
-    public function setId_jeu(int $id_jeu) {
+    private function setId_jeu(int $id_jeu) {
         $this->id_jeu = $id_jeu;
     }
     public function getNom_jeu(): String {
