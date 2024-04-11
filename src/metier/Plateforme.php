@@ -14,7 +14,7 @@ class Plateforme {
     public function getId_plat(): int {
         return $this->id_plat;
     }
-    public function setId_plat(int $id_plat) {
+    private function setId_plat(int $id_plat) {
         $this->id_plat = $id_plat;
     }
     public function getNom_plat(): String {

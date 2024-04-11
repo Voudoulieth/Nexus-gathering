@@ -14,7 +14,7 @@ class Editeur {
     public function getId_ed(): int {
         return $this->id_ed;
     }
-    public function setId_ed(int $id_ed) {
+    private function setId_ed(int $id_ed) {
         $this->id_ed = $id_ed;
     }
     public function getNom_ed(): String {

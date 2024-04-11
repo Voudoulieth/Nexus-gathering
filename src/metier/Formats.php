@@ -16,7 +16,7 @@ class Formats {
     public function getId_form (): int {
         return $this->id_form;
     }
-    public function setId_form (int $id_form) {
+    private function setId_form (int $id_form) {
         $this->id_form = $id_form;
     }
     public function getNom_form(): String {

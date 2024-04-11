@@ -16,7 +16,7 @@ class Studio {
     public function getId_stu(): int {
         return $this->id_stu;
     }
-    public function setId_stu(int $id_stu) {
+    private function setId_stu(int $id_stu) {
         $this->id_stu = $id_stu;
     }
     public function getNom_stu(): String {
