@@ -107,54 +107,6 @@ class Messages {
     {
         return $this->date_message_id;
     }
-
-    public function createMessage($contenu, $idExped, $idDesti) {
-        $sql = "INSERT INTO Messages (contenu_mess, modif, id_exped, id_desti) VALUES (?, false, ?, ?)";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("sii", $contenu, $idExped, $idDesti);
-        $stmt->execute();
-        if ($stmt->error) {
-            return false; // Gestion de l'erreur
-        }
-        return true; // Succès de l'insertion
-    }
-
-    public function getAllMessagesForUser($userId) {
-        $sql = "SELECT * FROM Messages WHERE id_exped = ? OR id_desti = ?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("ii", $userId, $userId);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    public function getConversationMessages($idExped, $idDesti) {
-        $sql = "SELECT * FROM Messages WHERE (id_exped = ? AND id_desti = ?) OR (id_exped = ? AND id_desti = ?) ORDER BY date_message ASC";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("iiii", $idExped, $idDesti, $idDesti, $idExped);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-    
-
-    
-    public function updateMessage($messageId, $nouveauContenu) {
-        $sql = "UPDATE Messages SET contenu_mess = ?, modif = true WHERE id_message = ?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("si", $nouveauContenu, $messageId);
-        $stmt->execute();
-        return $stmt->affected_rows > 0;
-    }
-
-    
-    public function deleteMessage($messageId) {
-        $sql = "DELETE FROM Messages WHERE id_message = ?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("i", $messageId);
-        $stmt->execute();
-        return $stmt->affected_rows > 0;
-    }
     
 
     public function __toString(){
