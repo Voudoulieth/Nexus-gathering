@@ -26,6 +26,8 @@ class Nexus_gathering {
         }
     }
 
+    //      ---MESSAGERIE---
+
 public function createMessage($contenu, $idExped, $idDesti, $dateMessageId) {
         $sql = "INSERT INTO Messages (contenu_mess, modif, id_exped, id_desti, date_message_id) VALUES (?, false, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
@@ -70,6 +72,10 @@ public function createMessage($contenu, $idExped, $idDesti, $dateMessageId) {
         $stmt->execute();
         return $stmt->affected_rows > 0;
     }
+
+
+        //      ---JEU---
+
 
     public function getJeux(): ?array {
         $jeux = array();

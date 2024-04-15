@@ -2,6 +2,8 @@
 declare(strict_types=1);
 namespace Nexus_gathering\src\metier;
 
+use Nexus_gathering\src\metier\Dates;
+
 
 class Messages {
     private int     $id_message;
@@ -9,16 +11,16 @@ class Messages {
     private bool    $modif;
     private int     $id_exped;
     private int     $id_desti;
-    private int     $date_message_id;
+    private Dates   $dates;
     // CHECK (id_exped != id_desti)
 
-    public function __construct(int $id_message, string $contenu_mess, bool $modif, int $id_exped, int $id_desti, int $date_message_id) {
+    public function __construct(int $id_message, string $contenu_mess, bool $modif, int $id_exped, int $id_desti, Dates $dates) {
         $this->id_message       = $id_message;
         $this->contenu_mess     = $contenu_mess;
         $this->modif            = $modif;
         $this->id_exped         = $id_exped;
         $this->id_desti         = $id_desti;
-        $this->date_message_id  = $date_message_id;
+        $this->dates            = $dates;
     }
 
     /**
@@ -99,18 +101,19 @@ class Messages {
     }
     
     /**
-     * Get the value of date_message_id
+     * Get the value of dates
      *
-     * @return int
+     * @return Dates
      */
-    public function getDateMessageId(): int
+    public function getDates(): Dates
     {
-        return $this->date_message_id;
+        return $this->dates;
     }
     
-
+    
     public function __toString(){
-        return '[Message : ' . $this->id_message . ', ' . $this->contenu_mess . ', ' . $this->modif . ', ' . $this->id_exped . ', ' . $this->id_desti . ', ' . $this->date_message_id . ']';
+        return '[Message : ' . $this->id_message . ', ' . $this->contenu_mess . ', ' . $this->modif . ', ' . $this->id_exped . ', ' . $this->id_desti . ', ' . $this->dates . ']';
     }
-
+    
+    
 }
