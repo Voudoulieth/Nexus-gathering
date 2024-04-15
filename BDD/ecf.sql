@@ -61,8 +61,9 @@ CREATE TABLE editeur (
 );
 
 CREATE TABLE dates (
-    ddate 		DATE			PRIMARY KEY,
-    hdate time
+    id_date INTEGER AUTO_INCREMENT PRIMARY KEY,
+    ddate 	DATE,
+    hdate   time
 );
 
 CREATE TABLE formats (
@@ -167,8 +168,10 @@ CREATE TABLE Messages(
     id_message integer  AUTO_INCREMENT PRIMARY KEY,
     contenu_mess text not null,
     modif boolean,
+    date_message_id INTEGER,
     id_exped integer,
     id_desti integer,
+    FOREIGN KEY (date_message_id) REFERENCES dates(id_date) ON DELETE SET NULL ON UPDATE CASCADE,
     FOREIGN KEY (id_exped) REFERENCES Utilisateur(id_user) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY (id_desti) REFERENCES Utilisateur(id_user) ON DELETE CASCADE ON UPDATE CASCADE
 	-- CHECK (id_exped != id_desti)

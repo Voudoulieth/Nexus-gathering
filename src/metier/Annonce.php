@@ -1,8 +1,11 @@
 <?php
+
 declare(strict_types=1);
+namespace Nexus_gathering\src\metier;
 
 
-class Annonce {
+class Annonce
+{
     private int     $id_annonce;
     private string  $nom_annonce;
     private int     $nb_user;
@@ -10,7 +13,8 @@ class Annonce {
     private int $id_user;
     private int $id_jeu;
 
-    public function __construct(int $id_annonce, string $nom_annonce, int $nb_user, string $desc_annonce, int $id_user, int $id_jeu){
+    public function __construct(int $id_annonce, string $nom_annonce, int $nb_user, string $desc_annonce, int $id_user, int $id_jeu)
+    {
         $this->id_annonce   = $id_annonce;
         $this->nom_annonce  = $nom_annonce;
         $this->nb_user      = $nb_user;
@@ -102,7 +106,8 @@ class Annonce {
         return $this;
     }
 
-    public function __toString(){
+    public function __toString()
+    {
         return '[Annonce : ' . $this->id_annonce . ', ' . $this->nom_annonce . ', ' . $this->nb_user . ', ' . $this->desc_annonce . ', ' . $this->id_user . ', ' . $this->id_jeu . ']';
     }
 }
