@@ -77,20 +77,24 @@ public function createMessage($contenu, $idExped, $idDesti, $dateMessageId) {
         //      ---JEU---
 
 
-    public function getJeux(): ?array {
-        $jeux = array();
-        $query = Requetes::SELECT_JEU;
-        try {
-            $cursor = $this->conn->query($query);
-            while ($row = $cursor->fetch(\PDO::FETCH_OBJ)) {
-                $jeu = new Jeu($row->id_jeu, $row->nom_jeu, $row->resum_jeu, $row->img_jeu, (bool)$row->multi, $row->id_stu, $row->id_ed, $row->id_form, $row->id_genre, $row->id_plat);
-                array_push($jeux, $jeu);
+        public function getJeux(): ?array {
+            $jeux = array();
+            $query = Requetes::SELECT_JEU;
+            try {
+                $stmt = $this->conn->prepare($query);
+                $stmt->execute();
+                $jeuxData = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+                foreach ($jeuxData as $row) {
+                    $jeu = new Jeu($row['id_jeu'], $row['nom_jeu'], $row['resum_jeu'], $row['img_jeu'], (bool)$row['multi'], $row['id_stu'], $row['id_ed'], $row['id_form'], $row['id_genre'], $row['id_plat']);
+                    array_push($jeux, $jeu);
+                }
+                return $jeux;
+            } catch (\PDOException $e) {
+                error_log('PDOException in getJeux(): ' . $e->getMessage());
+                throw new \Exception('Erreur lors de la récupération des jeux.', $this->convertCode($e->getCode()));
+            } catch (\Exception $e) {
+                error_log('Exception in getJeux(): ' . $e->getMessage());
+                throw new \Exception('Une erreur est survenue lors de la récupération des jeux.');
             }
-        } catch (\Exception $e) {
-            throw new \Exception('Exception JEUX !!! : ' . $e->getMessage(), $this->convertCode($e->getCode()));
-        } catch (\Error $error) {
-            throw new \Exception('Error JEUX !!! : ' . $error->getMessage());
         }
-        return $jeux;
-    }
 }
