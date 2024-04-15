@@ -12,19 +12,19 @@ class Jeu {
     private String  $resum_jeu;
     private String  $img_jeu;
     private bool    $multi;
-    private int     $id_editeur;
+    private int     $id_ed;
     private int     $id_user;
     private int     $id_stu;
 
-    public function __construct(int $id_jeu, string $nom_jeu, string $resum_jeu, string $img_jeu, bool $multi, Editeur $editeur, User $user, Studio $studio) {
+    public function __construct(int $id_jeu, string $nom_jeu, string $resum_jeu, string $img_jeu, bool $multi, int $id_ed, int $id_user, int $id_stu) {
         $this->id_jeu       = $id_jeu;
         $this->nom_jeu	    = $nom_jeu;
         $this->resum_jeu	= $resum_jeu;
         $this->img_jeu	    = $img_jeu;
         $this->multi	    = $multi;
-        $this->id_editeur   = $editeur->getId_ed();
-        $this->id_user      = $user->getId_user();
-        $this->id_stu       = $studio->getId_stu();
+        $this->id_ed        = $id_ed;
+        $this->id_user      = $id_user;
+        $this->id_stu       = $id_stu;
     }
 
     public function getId_jeu(): int {
@@ -59,6 +59,28 @@ class Jeu {
             throw new \InvalidArgumentException('La valeur de multi doit être soit 0 soit 1.');
         }
         $this->multi = $multi;
+    }
+
+    public function getIdEditeur(): int {
+        return $this->id_ed;
+    }
+
+    public function setIdEditeur(int $id_ed) {
+        $this->id_ed = $id_ed;
+    }
+    public function getIdUser(): int {
+        return $this->id_user;
+    }
+
+    public function setIdUser(int $id_user) {
+        $this->id_user = $id_user;
+    }
+    public function getIdStudio(): int {
+        return $this->id_stu;
+    }
+
+    public function setIdStudio(int $id_stu) {
+        $this->id_stu = $id_stu;
     }
 
     public function __toString() {
