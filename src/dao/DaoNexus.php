@@ -77,7 +77,7 @@ public function createMessage($contenu, $idExped, $idDesti, $dateMessageId) {
         try {
             $cursor = $this->conn->query($query);
             while ($row = $cursor->fetch(\PDO::FETCH_OBJ)) {
-                $jeu = new Jeu($row->id_jeu, $row->nom_jeu, $row->resum_jeu, $row->img_jeu, (bool)$row->multi);
+                $jeu = new Jeu($row->id_jeu, $row->nom_jeu, $row->resum_jeu, $row->img_jeu, (bool)$row->multi, $row->id_stu, $row->id_ed, $row->id_form, $row->id_genre, $row->id_plat);
                 array_push($jeux, $jeu);
             }
         } catch (\Exception $e) {
