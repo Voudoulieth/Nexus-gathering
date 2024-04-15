@@ -1,11 +1,10 @@
 <?php
 declare(strict_types=1);
-// namespace restoV5b\metier;
+namespace Nexus_gathering\src\dao;
 
-//TODO voir pour add CONSTRAINT chk_mult CHECK (multi IN (0, 1)),    
-    //FOREIGN KEY (id_ed) REFERENCES editeur(id_ed),
-    //foreign key (id_user) REFERENCES utilisateur(id_user),
-    //foreign key (id_stu) REFERENCES studio(id_stu)
+use Nexus_gathering\src\metier\Editeur;
+use Nexus_gathering\src\metier\Studio;
+use Nexus_gathering\src\metier\User;
 
 class Jeu {
     private int     $id_jeu;
@@ -13,13 +12,19 @@ class Jeu {
     private String  $resum_jeu;
     private String  $img_jeu;
     private bool    $multi;
+    private int     $id_editeur;
+    private int     $id_user;
+    private int     $id_stu;
 
-    public function __construct($id_jeu, $nom_jeu, $resum_jeu, $img_jeu, $multi) {
+    public function __construct(int $id_jeu, string $nom_jeu, string $resum_jeu, string $img_jeu, bool $multi, Editeur $editeur, User $user, Studio $studio) {
         $this->id_jeu       = $id_jeu;
         $this->nom_jeu	    = $nom_jeu;
         $this->resum_jeu	= $resum_jeu;
         $this->img_jeu	    = $img_jeu;
         $this->multi	    = $multi;
+        $this->id_editeur   = $editeur->getId_ed();
+        $this->id_user      = $user->getId_user();
+        $this->id_stu       = $studio->getId_stu();
     }
 
     public function getId_jeu(): int {
@@ -50,8 +55,12 @@ class Jeu {
         return $this->multi;
     }
     public function setMulti(bool $multi) {
+        if ($multi !== 0 && $multi !== 1) {
+            throw new \InvalidArgumentException('La valeur de multi doit être soit 0 soit 1.');
+        }
         $this->multi = $multi;
     }
+
     public function __toString() {
         return '[Categorie : '.$this->id_jeu . ',' . $this->nom_jeu .']';
     }

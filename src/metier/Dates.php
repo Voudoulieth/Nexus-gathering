@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-// namespace restoV5b\metier;
+namespace Nexus_gathering\src\dao;
 
 class Dates {
     private datetime     $ddate;
@@ -8,7 +8,7 @@ class Dates {
 
     //TODO VOIR DATE ET TIME EN PHP
 
-    public function __construct($ddate, $hdate) {
+    public function __construct(datetime $ddate, string $hdate) {
         $this->ddate  = $ddate;
         $this->hdate  = $hdate;
     }

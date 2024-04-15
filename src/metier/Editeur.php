@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
-// namespace restoV5b\metier;
+namespace Nexus_gathering\src\dao;
 
 class Editeur {
     private int     $id_ed;
     private String  $nom_ed;
 
-    public function __construct($id_ed, $nom_ed) {
-        $this->id_ed       = $id_ed;
+    public function __construct(int $id_ed, string $nom_ed) {
+        $this->id_ed   = $id_ed;
         $this->nom_ed  = $nom_ed;
     }
 

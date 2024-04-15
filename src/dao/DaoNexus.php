@@ -6,7 +6,12 @@ namespace Nexus_gathering\src\dao;
 use Nexus_gathering\src\dao\Database;
 use Nexus_gathering\src\dao\Requetes;
 use Nexus_gathering\src\metier\Messages;
-
+use Nexus_gathering\src\metier\Editeur;
+use Nexus_gathering\src\metier\Formats;
+use Nexus_gathering\src\metier\Genre;
+use Nexus_gathering\src\metier\Jeu;
+use Nexus_gathering\src\metier\Plateforme;
+use Nexus_gathering\src\metier\Studio;
 
 //TODO : gestion des exceptions
 class Nexus_gathering {
@@ -64,5 +69,22 @@ public function createMessage($contenu, $idExped, $idDesti, $dateMessageId) {
         $stmt->bind_param("i", $messageId);
         $stmt->execute();
         return $stmt->affected_rows > 0;
+    }
+
+    public function getJeux(): ?array {
+        $jeux = array();
+        $query = Requetes::SELECT_JEU;
+        try {
+            $cursor = $this->conn->query($query);
+            while ($row = $cursor->fetch(\PDO::FETCH_OBJ)) {
+                $jeu = new Jeu($row->id_jeu, $row->nom_jeu, $row->resum_jeu, $row->img_jeu, (bool)$row->multi);
+                array_push($jeux, $jeu);
+            }
+        } catch (\Exception $e) {
+            throw new \Exception('Exception JEUX !!! : ' . $e->getMessage(), $this->convertCode($e->getCode()));
+        } catch (\Error $error) {
+            throw new \Exception('Error JEUX !!! : ' . $error->getMessage());
+        }
+        return $jeux;
     }
 }

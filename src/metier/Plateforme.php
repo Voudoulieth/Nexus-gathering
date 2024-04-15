@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
-// namespace restoV5b\metier;
+namespace Nexus_gathering\src\dao;
 
 class Plateforme {
     private int     $id_plat;
     private String  $nom_plat;
 
-    public function __construct($id_plat, $nom_plat) {
+    public function __construct(int $id_plat, string $nom_plat) {
         $this->id_plat       = $id_plat;
         $this->nom_plat  = $nom_plat;
     }
