@@ -1,6 +1,9 @@
 <?php
 declare(strict_types=1);
+
 namespace Nexus_gathering\src\dao;
+
+require_once __DIR__ . '/../../../vendor/autoload.php';
 
 use PDO;
 use Nexus_gathering\src\dao\Database;
@@ -13,11 +16,12 @@ use Nexus_gathering\src\metier\Jeu;
 use Nexus_gathering\src\metier\Plateforme;
 use Nexus_gathering\src\metier\Studio;
 
+
 //TODO : gestion des exceptions
 class Nexus_gathering {
-
+    
     private \PDO $conn;
-
+    
     public function __construct() {
         try {
             $this->conn = Database::getConnection();
@@ -25,28 +29,27 @@ class Nexus_gathering {
             $conn = null;
         }
     }
-
+    
     //      ---MESSAGERIE---
 
-    public function createMessage($contenu, $idExped, $idDesti, $dateMessageId) {
-        $sql = "INSERT INTO Messages (contenu_mess, modif, id_exped, id_desti, date_message_id) VALUES (?, false, ?, ?, ?)";
+    public function createMessage($contenu, $idExped, $idDesti) {
+        $sql = "INSERT INTO Messages (contenu_mess, modif, id_exped, id_desti, date_message) VALUES (?, false, ?, ?, CURRENT_TIMESTAMP)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(1, $contenu, \PDO::PARAM_STR);
         $stmt->bindValue(2, $idExped, \PDO::PARAM_INT);
         $stmt->bindValue(3, $idDesti, \PDO::PARAM_INT);
-        $stmt->bindValue(4, $dateMessageId, \PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->errorCode() == '00000';
+        return $stmt->errorCode() == '00000';  // Retourne true si l'insertion a réussi
     }
+    
 
-    // public function createMessage($contenu, $idExped, $idDesti, $dateMessageId) {
-    //     $query = Requetes::INSERT_MESSAGE;
+    // public function createMessage($contenu, $idExped, $idDesti) {
+    //     $query = \Nexus_gathering\src\dao\Requetes::INSERT_MESSAGE;
     //     try {
     //         $stmt = $this->conn->prepare($query);
     //         $stmt->bindValue(1, $contenu, PDO::PARAM_STR);
     //         $stmt->bindValue(2, $idExped, PDO::PARAM_INT);
     //         $stmt->bindValue(3, $idDesti, PDO::PARAM_INT);
-    //         $stmt->bindValue(4, $dateMessageId, PDO::PARAM_INT);
     //         $stmt->execute();
             
     //         if ($stmt->errorCode() == '00000') {

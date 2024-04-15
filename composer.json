@@ -2,6 +2,7 @@
     "name": "corentin/nexus-gathering",
     "autoload": {
         "psr-4": {
+            "Nexus_gathering\\src\\": "src/",
             "Corentin\\NexusGathering\\": "src/"
         }
     },

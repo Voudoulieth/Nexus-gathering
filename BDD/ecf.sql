@@ -174,13 +174,12 @@ GRANT all PRIVILEGES on NexusGathering.* TO 'adminNG'@'localhost';
         id_message integer  AUTO_INCREMENT PRIMARY KEY,
         contenu_mess text not null,
         modif boolean,
-        date_message_id INTEGER,
+        date_message DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
         id_exped integer,
         id_desti integer,
-        FOREIGN KEY (date_message_id) REFERENCES dates(id_date) ON DELETE SET NULL ON UPDATE CASCADE,
         FOREIGN KEY (id_exped) REFERENCES Utilisateur(id_user) ON DELETE CASCADE ON UPDATE CASCADE,
-        FOREIGN KEY (id_desti) REFERENCES Utilisateur(id_user) ON DELETE CASCADE ON UPDATE CASCADE
-        -- CHECK (id_exped != id_desti)
+        FOREIGN KEY (id_desti) REFERENCES Utilisateur(id_user) ON DELETE CASCADE ON UPDATE CASCADE,
+        CHECK (id_exped != id_desti)
     );
 
     create table jeu    (
