@@ -7,7 +7,7 @@ use Nexus_gathering\src\metier\Editeur;
 class Studio {
     private int     $id_stu;
     private String  $nom_stu;
-    private int     $id_ed;
+    private Editeur $id_ed;
 
     public function __construct(int $id_stu, string $nom_stu, Editeur $editeur) {
         $this->id_stu   = $id_stu;
@@ -26,6 +26,14 @@ class Studio {
     }
     public function setNom_stu(String $nom_stu) {
         $this->nom_stu = $nom_stu;
+    }
+
+    public function getId_ed(): Editeur {
+        return $this->id_ed;
+    }
+
+    public function setId_ed(Editeur $id_ed) {
+        $this->id_ed = $id_ed;
     }
 
     public function __toString() {

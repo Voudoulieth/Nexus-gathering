@@ -12,9 +12,9 @@ class Jeu {
     private String  $resum_jeu;
     private String  $img_jeu;
     private bool    $multi;
-    private int     $id_editeur;
-    private int     $id_user;
-    private int     $id_stu;
+    private Editeur $id_editeur;
+    private User    $id_user;
+    private Studio  $id_stu;
 
     public function __construct(int $id_jeu, string $nom_jeu, string $resum_jeu, string $img_jeu, bool $multi, Editeur $editeur, User $user, Studio $studio) {
         $this->id_jeu       = $id_jeu;
@@ -59,6 +59,28 @@ class Jeu {
             throw new \InvalidArgumentException('La valeur de multi doit être soit 0 soit 1.');
         }
         $this->multi = $multi;
+    }
+
+    public function getIdEditeur(): Editeur {
+        return $this->id_editeur;
+    }
+
+    public function setIdEditeur(Editeur $id_editeur) {
+        $this->id_editeur = $id_editeur;
+    }
+    public function getIdUser(): User {
+        return $this->id_user;
+    }
+
+    public function setIdUser(User $id_user) {
+        $this->id_user = $id_user;
+    }
+    public function getIdStudio(): Studio {
+        return $this->id_stu;
+    }
+
+    public function setIdStudio(Studio $id_stu) {
+        $this->id_stu = $id_stu;
     }
 
     public function __toString() {
