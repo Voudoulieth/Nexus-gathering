@@ -1,5 +1,11 @@
 -- Active: 1710969956952@@127.0.0.1@3306@nexusgathering
+DROP DATABASE IF EXISTS NexusGathering;
+
 create database NexusGathering;
+
+DROP USER IF EXISTS 'adminNG'@'localhost';
+CREATE USER 'adminNG'@'localhost' identified by 'adminNG';
+GRANT all PRIVILEGES on NexusGathering.* TO 'adminNG'@'localhost';
 
 use NexusGathering;
 
