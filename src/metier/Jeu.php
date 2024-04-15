@@ -12,19 +12,19 @@ class Jeu {
     private String  $resum_jeu;
     private String  $img_jeu;
     private bool    $multi;
-    private Editeur $id_editeur;
-    private User    $id_user;
-    private Studio  $id_stu;
+    private int     $id_ed;
+    private int     $id_user;
+    private int     $id_stu;
 
-    public function __construct(int $id_jeu, string $nom_jeu, string $resum_jeu, string $img_jeu, bool $multi, Editeur $editeur, User $user, Studio $studio) {
+    public function __construct(int $id_jeu, string $nom_jeu, string $resum_jeu, string $img_jeu, bool $multi, int $id_ed, int $id_user, int $id_stu) {
         $this->id_jeu       = $id_jeu;
         $this->nom_jeu	    = $nom_jeu;
         $this->resum_jeu	= $resum_jeu;
         $this->img_jeu	    = $img_jeu;
         $this->multi	    = $multi;
-        $this->id_editeur   = $editeur->getId_ed();
-        $this->id_user      = $user->getId_user();
-        $this->id_stu       = $studio->getId_stu();
+        $this->id_ed        = $id_ed;
+        $this->id_user      = $id_user;
+        $this->id_stu       = $id_stu;
     }
 
     public function getId_jeu(): int {
@@ -61,25 +61,25 @@ class Jeu {
         $this->multi = $multi;
     }
 
-    public function getIdEditeur(): Editeur {
-        return $this->id_editeur;
+    public function getIdEditeur(): int {
+        return $this->id_ed;
     }
 
-    public function setIdEditeur(Editeur $id_editeur) {
-        $this->id_editeur = $id_editeur;
+    public function setIdEditeur(int $id_ed) {
+        $this->id_ed = $id_ed;
     }
-    public function getIdUser(): User {
+    public function getIdUser(): int {
         return $this->id_user;
     }
 
-    public function setIdUser(User $id_user) {
+    public function setIdUser(int $id_user) {
         $this->id_user = $id_user;
     }
-    public function getIdStudio(): Studio {
+    public function getIdStudio(): int {
         return $this->id_stu;
     }
 
-    public function setIdStudio(Studio $id_stu) {
+    public function setIdStudio(int $id_stu) {
         $this->id_stu = $id_stu;
     }
 
