@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace Nexus_gathering\src\dao;
 
-
+use PDO;
 use Nexus_gathering\src\dao\Database;
 use Nexus_gathering\src\dao\Requetes;
 use Nexus_gathering\src\metier\Messages;
@@ -28,50 +28,83 @@ class Nexus_gathering {
 
     //      ---MESSAGERIE---
 
-public function createMessage($contenu, $idExped, $idDesti, $dateMessageId) {
+    public function createMessage($contenu, $idExped, $idDesti, $dateMessageId) {
         $sql = "INSERT INTO Messages (contenu_mess, modif, id_exped, id_desti, date_message_id) VALUES (?, false, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("siii", $contenu, $idExped, $idDesti, $dateMessageId);
+        $stmt->bindValue(1, $contenu, \PDO::PARAM_STR);
+        $stmt->bindValue(2, $idExped, \PDO::PARAM_INT);
+        $stmt->bindValue(3, $idDesti, \PDO::PARAM_INT);
+        $stmt->bindValue(4, $dateMessageId, \PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->error ? false : true;
+        return $stmt->errorCode() == '00000';
     }
+
+    // public function createMessage($contenu, $idExped, $idDesti, $dateMessageId) {
+    //     $query = Requetes::INSERT_MESSAGE;
+    //     try {
+    //         $stmt = $this->conn->prepare($query);
+    //         $stmt->bindValue(1, $contenu, PDO::PARAM_STR);
+    //         $stmt->bindValue(2, $idExped, PDO::PARAM_INT);
+    //         $stmt->bindValue(3, $idDesti, PDO::PARAM_INT);
+    //         $stmt->bindValue(4, $dateMessageId, PDO::PARAM_INT);
+    //         $stmt->execute();
+            
+    //         if ($stmt->errorCode() == '00000') {
+    //             return true;
+    //         } else {
+    //             throw new \Exception("Erreur lors de l'insertion du message : " . implode(", ", $stmt->errorInfo()));
+    //         }
+    //     } catch (\PDOException $e) {
+    //         throw new \Exception("PDOException lors de l'insertion du message : " . $e->getMessage());
+    //     } catch (\Exception $e) {
+    //         throw new \Exception("Exception générale lors de l'insertion du message : " . $e->getMessage());
+    //     }
+    // }
+    
 
     public function getAllMessagesForUser($userId) {
         $sql = "SELECT * FROM Messages WHERE id_exped = ? OR id_desti = ?";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("ii", $userId, $userId);
+        $stmt->bindValue(1, $userId, \PDO::PARAM_INT);
+        $stmt->bindValue(2, $userId, \PDO::PARAM_INT);
         $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+    
 
     public function getConversationMessages($idExped, $idDesti) {
         $sql = "SELECT * FROM Messages WHERE (id_exped = ? AND id_desti = ?) OR (id_exped = ? AND id_desti = ?) ORDER BY date_message ASC";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("iiii", $idExped, $idDesti, $idDesti, $idExped);
+        $stmt->bindValue(1, $idExped, \PDO::PARAM_INT);
+        $stmt->bindValue(2, $idDesti, \PDO::PARAM_INT);
+        $stmt->bindValue(3, $idDesti, \PDO::PARAM_INT);
+        $stmt->bindValue(4, $idExped, \PDO::PARAM_INT);
         $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+    
     
 
     
     public function updateMessage($messageId, $nouveauContenu) {
         $sql = "UPDATE Messages SET contenu_mess = ?, modif = true WHERE id_message = ?";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("si", $nouveauContenu, $messageId);
+        $stmt->bindValue(1, $nouveauContenu, \PDO::PARAM_STR);
+        $stmt->bindValue(2, $messageId, \PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->affected_rows > 0;
+        return $stmt->rowCount() > 0;
     }
+    
 
     
     public function deleteMessage($messageId) {
         $sql = "DELETE FROM Messages WHERE id_message = ?";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("i", $messageId);
+        $stmt->bindValue(1, $messageId, \PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->affected_rows > 0;
+        return $stmt->rowCount() > 0;
     }
+    
 
 
         //      ---JEU---
