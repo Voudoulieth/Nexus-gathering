@@ -17,9 +17,10 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="" />
+    
     <title>Votre profil</title>
     <link rel="shortcut icon" href="../assets/logo/favicon.png" />
-    <script defer src=""></script>
+    <script defer src="./assets/js/script_edition.js"></script>
 
     
   </head>
@@ -70,19 +71,20 @@
         </div>
         <div class="container">
             <div class="container_btn">
-                <!-- <button class="container_btn_ajout" type="button" action="#">Ajout</button> -->
-                <button class="container_btn_sup" type="button" action="#" >Modifier</button>
+                <button class="container_btn_ajout" id="btnsave" type="button" action="#">Sauvegarder</button>
+                <button class="container_btn_edit" id="btnedit" type="button" >Modifier</button>
             </div>
             <div class="container_perso">
                 <div class="container_perso_bio">
                   <p>Biographie</p>
-                  <textarea name="" id="" cols="50" rows="10">Lorem ipsum dolor sit amet consectetur adipisicing elit. A similique autem possimus itaque, quod placeat esse animi, nam vero nisi blanditiis numquam in omnis ad? Provident sed ad aperiam fugit quam aspernatur asperiores necessitatibus, voluptas, rem eligendi velit tenetur qui similique ratione. Non dignissimos dicta quibusdam eaque velit asperiores modi!
-                  </textarea>
+                  <p id="bio" >Je me sens vieux aujourd'hui, mon dieu qu'on est vieux aujourd'hui. C'est difficile d'être vieux aujourd'hui.</p>
+                  <textarea id="editableBioText"></textarea>
               </div>
               <div class="container_perso_interet">
                   <p>Centre d'intérêt</p>
-                  <textarea name="" id="" cols="50" rows="10">Lorem ipsum dolor sit amet consectetur adipisicing elit. A similique autem possimus itaque, quod placeat esse animi, nam vero nisi blanditiis numquam in omnis ad? Provident sed ad aperiam fugit quam aspernatur asperiores necessitatibus, voluptas, rem eligendi velit tenetur qui similique ratione. Non dignissimos dicta quibusdam eaque velit asperiores modi!
-                </textarea>
+                  <p id="interet">Lorem ipsum dolor sit amet consectetur adipisicing elit. A similique autem possimus itaque, quod placeat esse animi, nam vero nisi blanditiis numquam in omnis ad? Provident sed ad aperiam fugit quam aspernatur asperiores necessitatibus, voluptas, rem eligendi velit tenetur qui similique ratione. Non dignissimos dicta quibusdam eaque velit asperiores modi!
+                  </p>
+                  <textarea id="editableInsterestText"></textarea>
               </div>
             </div>
             <div class="container_img">

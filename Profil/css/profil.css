@@ -17,6 +17,9 @@
     border-radius: 60px;
 }
 
+
+
+
 .profil_hero {
     width: 50%;
     height: 150px;
@@ -49,6 +52,7 @@
         background-color: rgb(54, 26, 61, 0.6);
     }
 }
+
 
 .container {
     background-color: rgb(160, 111, 183, 0.5);
@@ -99,9 +103,10 @@
         color: black;
         font-weight: 600;
         text-align: center;
+        display: none;
     }
 
-    & .container_btn_sup {
+    & .container_btn_edit {
         margin-left: auto;
         color: black;
         width: 100px;
