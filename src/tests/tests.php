@@ -1,10 +1,9 @@
 <?php
-require_once 'xampp/htdocs/DM/Nexus-gathering/src/dao/DaoNexus.php';
-require_once 'Nexus-gathering/src/metier/Jeu.php';
-require_once 'Nexus-gathering/src/dao/Requetes.php';
+require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 
-// Création d'une instance de la classe JeuDAO en passant une connexion PDO valide
-$pdo = new PDO('mysql:host=localhost;dbname=nom_de_votre_base_de_donnees', 'utilisateur', 'mot_de_passe');
+use Nexus_gathering\dao\DaoNexus;
+use Nexus_gathering\metier\Jeu;
+
 $jeuDAO = new JeuDAO($pdo);
 
 // Appel de la fonction getJeux() pour obtenir les jeux

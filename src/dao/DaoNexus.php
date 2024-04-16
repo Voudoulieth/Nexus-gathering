@@ -1,24 +1,24 @@
 <?php
 declare(strict_types=1);
 
-namespace Nexus_gathering\src\dao;
+namespace Nexus_gathering\dao;
 
-require_once __DIR__ . '/../../../vendor/autoload.php';
+require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 
 use PDO;
-use Nexus_gathering\src\dao\Database;
-use Nexus_gathering\src\dao\Requetes;
-use Nexus_gathering\src\metier\Messages;
-use Nexus_gathering\src\metier\Editeur;
-use Nexus_gathering\src\metier\Formats;
-use Nexus_gathering\src\metier\Genre;
-use Nexus_gathering\src\metier\Jeu;
-use Nexus_gathering\src\metier\Plateforme;
-use Nexus_gathering\src\metier\Studio;
+use Nexus_gathering\dao\Database;
+use Nexus_gathering\dao\Requetes;
+use Nexus_gathering\metier\Messages;
+use Nexus_gathering\metier\Editeur;
+use Nexus_gathering\metier\Formats;
+use Nexus_gathering\metier\Genre;
+use Nexus_gathering\metier\Jeu;
+use Nexus_gathering\metier\Plateforme;
+use Nexus_gathering\metier\Studio;
 
 
 //TODO : gestion des exceptions
-class Nexus_gathering {
+class DaoNexus {
     
     private \PDO $conn;
     
@@ -85,8 +85,6 @@ class Nexus_gathering {
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
-    
-    
 
     
     public function updateMessage($messageId, $nouveauContenu) {

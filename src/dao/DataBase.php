@@ -1,9 +1,10 @@
 <?php
 declare(strict_types=1);
-namespace Nexus_gathering\src\dao;
+namespace Nexus_gathering\dao;
 
-// require_once 'DaoException.php';
-use Nexus_gathering\src\dao\DaoException;
+require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
+
+use Nexus_gathering\dao\DaoException;
 
 class Database {
 

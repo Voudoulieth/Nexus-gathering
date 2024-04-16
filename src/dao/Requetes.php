@@ -1,6 +1,8 @@
 <?php
 
-namespace Nexus_gathering\src\dao;
+namespace Nexus_gathering\dao;
+
+require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 
 class Requetes {
     public const INSERT_MESSAGE = "INSERT INTO Messages (contenu_mess, modif, id_exped, id_desti, date_message) VALUES (?, false, ?, ?, CURRENT_TIMESTAMP)";

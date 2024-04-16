@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace Nexus_gathering\src\dao;
+namespace Nexus_gathering\dao;
 
 //TODO  voir pour add la contrainte CONSTRAINT chk_format CHECK (form IN ('dématérialisé', 'physique'))
 

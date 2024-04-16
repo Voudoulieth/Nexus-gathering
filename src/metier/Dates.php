@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace Nexus_gathering\src\metier;
+namespace Nexus_gathering\metier;
 
 use DateTime;
 

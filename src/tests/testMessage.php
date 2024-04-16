@@ -1,13 +1,12 @@
 <?php
 // Inclure l'autoloader de Composer en premier pour configurer l'autoloading
-require_once __DIR__ . '/../../../vendor/autoload.php';
-
+require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 // Utilisation de l'espace de noms pour simplifier l'instanciation des objets
-use Nexus_gathering\src\dao\Nexus_gathering as NexusGatheringDAO;
-use Nexus_gathering\src\dao\DataBase;
+use Nexus_gathering\dao\DaoNexus as DaoNexusDAO;
+use Nexus_gathering\dao\DataBase;
 var_dump(class_exists('Nexus_gathering\src\dao\Nexus_gathering'));
 // Créer une instance de la classe DAO
-$dao = new NexusGatheringDAO();
+$dao = new DaoNexusDAO();
 
 // Définir les données de test
 $contenu = "Ceci est un message test.";

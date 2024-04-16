@@ -1,10 +1,14 @@
 <?php
-require_once '/XAMPP/htdocs/DM/Nexus_gathering/src/dao/DaoNexus.php';  // Assurez-vous que le chemin est correct
-require_once '/XAMPP/htdocs/DM/Nexus_gathering/src/dao/DataBase.php';
-require_once __DIR__ . '/../../../vendor/autoload.php';
+
+require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
+
+use Nexus_gathering\dao\DaoNexus;
+use Nexus_gathering\dao\DataBase;
+
+// UTILISER DIR NAME
 
 // Créer une instance de la classe DAO
-$dao = new Nexus_gathering\src\dao\Nexus_gathering();
+$dao = new DaoNexus();
 
 // <?php
 
