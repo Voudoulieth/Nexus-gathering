@@ -9,6 +9,7 @@
     />
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/style_global.css" />
+    <link rel="stylesheet" href="./css/profil.css">
     <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link
@@ -16,9 +17,13 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/connexion_style.css" />
-    <title>Votre profil</title>
-    <link rel="shortcut icon" href="assets/logo/favicon.svg" />
     <script defer src="./assets/js/connexion.js"></script>
+    
+    <title>Votre profil</title>
+    <link rel="shortcut icon" href="../assets/logo/favicon.png" />
+    <script defer src="./assets/js/script_edition.js"></script>
+
+    
   </head>
   <body>
     <header>
@@ -28,16 +33,16 @@
       <div id="menuburger">
           <nav>
               <ul>
-                <li><a class="navlink" href="../bibliotheques/acceuil_biblio.html">Bibliothèque</a></li>
-                <li><a class="navlink" href="../recherche_de_joueur/recherche_de_joueurs.html">Joueurs</a></li>
-                <li><a class="navlink" href="../quiz/quiz-accueil.html">Quiz</a></li>
-                <li><a class="navlink" href="../recherche_de_joueur/messagerie.html">Messagerie</a></li>
+                  <li><a class="navlink" href="../bibliotheques/acceuil_biblio.html">Bibliothèque</a></li>
+                  <li><a class="navlink" href="../recherche_de_joueur/recherche_de_joueurs.html">Joueurs</a></li>
+                  <li><a class="navlink" href="../quiz/quiz-accueil.html">Quiz</a></li>
+                  <li><a class="navlink" href="../recherche_de_joueur/messagerie.html">Messagerie</a></li>
               </ul>
           </nav>
           <div class="header-moitie">
               <div class="rechercher">
                   <input class="FormulaireRechercher navlink" type="text" placeholder="Rechercher">
-                  <button class="SubmitRecherche" type="submit"><img src="./assets/Icone/magnifying-glass-solid blanc.svg"></button>
+                  <button class="SubmitRecherche" type="submit"><img src="../assets/Icone/magnifying-glass-solid-blanc.svg"></button>
               </div>
               <button class="BoutonConnexion navlink"><a href="../Profil/connexion.html">Connexion</a></button>
           </div>
@@ -48,6 +53,8 @@
             <span></span>
             <span></span>
           </span>
+      </a>
+  </header>
       </a>
   </header>
     <main>
@@ -61,10 +68,10 @@
                     </div>
                       
                     <span>Ou vous pouvez utiliser votre email</span>
-                    <input type="text" placeholder="Identifiant">
-                    <input type="password" placeholder="Mot de passe">
-                    <input type="email" placeholder="Email">
-                    <button>Inscrivez vous</button>
+                    <input type="text" id="registerUsername" placeholder="Identifiant">
+                    <input type="password" id="registerPassword" placeholder="Mot de passe">
+                    <input type="email" id="registerEmail" placeholder="Email">
+                    <button id="registerSubmit">Inscrivez vous</button>
                 </form>
             </div>
 
@@ -76,11 +83,11 @@
                       <!-- TODO définir les connexions tierse  -->
                 </div>
                 <span>Ou vous pouvez utiliser votre identifiant</span>
-                <input type="text" placeholder="Identifiant">
-                <input type="password" placeholder="Mot de passe">
+                <input type="text" id="loginUsername" placeholder="Identifiant">
+                <input type="password" id="loginPassword" placeholder="Mot de passe">
                 <a href="#">Identifiant oublié ?</a>
                 <a href="#">Mot de passe oublié ?</a>
-                <button>Connexion</button>
+                <button id="loginSubmit">Connexion</button>
               </form>
             </div>
             <div class="toggle-container">
