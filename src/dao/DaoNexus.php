@@ -44,7 +44,7 @@ class Nexus_gathering {
     
 
     public function createMessage($contenu, $idExped, $idDesti) {
-        $query = \Nexus_gathering\src\dao\Requetes::INSERT_MESSAGE;
+        $query = Requetes::INSERT_MESSAGE;
         try {
             $stmt = $this->conn->prepare($query);
             $stmt->bindValue(1, $contenu, PDO::PARAM_STR);
@@ -106,6 +106,53 @@ class Nexus_gathering {
         $stmt->bindValue(1, $messageId, \PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->rowCount() > 0;
+    }
+    
+
+    //          ---RECHERCHE RAPIDE---
+
+    public function addRechercheRapide($userId, $jeuId) {
+        $sql = "INSERT INTO rechercheRapide (id_user, id_jeu, deb_session) VALUES (?, ?, NOW())";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $userId, PDO::PARAM_INT);
+        $stmt->bindValue(2, $jeuId, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+    
+
+    public function getRechercheRapideByJeu($jeuId) {
+        $sql = "SELECT rr.id_session, u.nom, u.prenom, rr.deb_session, rr.fin_session
+                FROM rechercheRapide rr
+                JOIN utilisateur u ON rr.id_user = u.id_user
+                WHERE rr.id_jeu = ? AND (rr.fin_session IS NULL OR rr.fin_session >= NOW())
+                AND (rr.fin_session IS NULL OR TIMESTAMPDIFF(HOUR, rr.deb_session, rr.fin_session) <= 6)
+                ORDER BY rr.id_session DESC";
+    
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $jeuId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+
+    public function updateRechercheRapide($sessionId, $newJeuId) {
+        $sql = "UPDATE rechercheRapide SET id_jeu = ?, fin_session = CASE
+                WHEN TIMESTAMPDIFF(HOUR, deb_session, NOW()) <= 6 THEN fin_session
+                ELSE NOW()
+                END
+                WHERE id_session = ? AND (fin_session IS NULL OR fin_session >= NOW())";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $newJeuId, PDO::PARAM_INT);
+        $stmt->bindValue(2, $sessionId, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+    
+
+    public function endRechercheRapide($sessionId) {
+        $sql = "UPDATE rechercheRapide SET fin_session = NOW() WHERE id_session = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(1, $sessionId, PDO::PARAM_INT);
+        return $stmt->execute();
     }
     
 

@@ -2,7 +2,7 @@
     "name": "lucas/nexus_gathering",
     "autoload": {
         "psr-4": {
-            "Lucas\\NexusGathering\\": "src/"
+            "Nexus_gathering\\": "src/"
         }
     },
     "authors": [
