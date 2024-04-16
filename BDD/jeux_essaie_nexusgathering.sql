@@ -16,9 +16,9 @@ INSERT INTO plateforme (nom_plat) VALUES ('Plateforme1');
 INSERT INTO plateforme (nom_plat) VALUES ('Plateforme2');
 INSERT INTO plateforme (nom_plat) VALUES ('Plateforme3');
 
-INSERT INTO formats (nom_form) VALUES ('Format1');
-INSERT INTO formats (nom_form) VALUES ('Format2');
-INSERT INTO formats (nom_form) VALUES ('Format3');
+INSERT INTO formats (nom_form) VALUES ('physique');
+INSERT INTO formats (nom_form) VALUES ('physique');
+INSERT INTO formats (nom_form) VALUES ('dématérialisé');
 
 INSERT INTO editeur (nom_ed) VALUES ('Editeur1');
 INSERT INTO editeur (nom_ed) VALUES ('Editeur2');

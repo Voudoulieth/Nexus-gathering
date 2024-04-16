@@ -10,7 +10,6 @@ class Messages {
     private int     $id_exped;
     private int     $id_desti;
     private \DateTime   $date_message;
-    // CHECK (id_exped != id_desti)
 
     public function __construct(int $id_message, string $contenu_mess, bool $modif, int $id_exped, int $id_desti, \DateTime $date_message) {
         $this->id_message       = $id_message;

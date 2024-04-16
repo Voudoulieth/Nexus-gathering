@@ -10,8 +10,8 @@ class Annonce
     private string  $nom_annonce;
     private int     $nb_user;
     private string  $desc_annonce;
-    private int $id_user;
-    private int $id_jeu;
+    private int     $id_user;
+    private int     $id_jeu;
 
     public function __construct(int $id_annonce, string $nom_annonce, int $nb_user, string $desc_annonce, int $id_user, int $id_jeu)
     {
@@ -106,8 +106,29 @@ class Annonce
         return $this;
     }
 
+    /**
+     * Get the value of id_user
+     *
+     * @return int
+     */
+    public function getIdUser(): int
+    {
+        return $this->id_user;
+    }
+
+    /**
+     * Get the value of id_jeu
+     *
+     * @return int
+     */
+    public function getIdJeu(): int
+    {
+        return $this->id_jeu;
+    }
+    
     public function __toString()
     {
         return '[Annonce : ' . $this->id_annonce . ', ' . $this->nom_annonce . ', ' . $this->nb_user . ', ' . $this->desc_annonce . ', ' . $this->id_user . ', ' . $this->id_jeu . ']';
     }
+
 }

@@ -9,6 +9,7 @@ use PDO;
 use Nexus_gathering\dao\Database;
 use Nexus_gathering\dao\Requetes;
 use Nexus_gathering\metier\Messages;
+use Nexus_gathering\metier\Annonce;
 use Nexus_gathering\metier\Editeur;
 use Nexus_gathering\metier\Formats;
 use Nexus_gathering\metier\Genre;
@@ -31,17 +32,6 @@ class DaoNexus {
     }
     
     //      ---MESSAGERIE---
-
-    // public function createMessage($contenu, $idExped, $idDesti) {
-    //     $sql = "INSERT INTO Messages (contenu_mess, modif, id_exped, id_desti, date_message) VALUES (?, false, ?, ?, CURRENT_TIMESTAMP)";
-    //     $stmt = $this->conn->prepare($sql);
-    //     $stmt->bindValue(1, $contenu, \PDO::PARAM_STR);
-    //     $stmt->bindValue(2, $idExped, \PDO::PARAM_INT);
-    //     $stmt->bindValue(3, $idDesti, \PDO::PARAM_INT);
-    //     $stmt->execute();
-    //     return $stmt->errorCode() == '00000';  // Retourne true si l'insertion a réussi
-    // }
-    
 
     public function createMessage($contenu, $idExped, $idDesti) {
         $query = Requetes::INSERT_MESSAGE;
@@ -66,8 +56,8 @@ class DaoNexus {
     
 
     public function getAllMessagesForUser($userId) {
-        $sql = "SELECT * FROM Messages WHERE id_exped = ? OR id_desti = ?";
-        $stmt = $this->conn->prepare($sql);
+        $query = Requetes::SELECT_MESSAGE;
+        $stmt = $this->conn->prepare($query);
         $stmt->bindValue(1, $userId, \PDO::PARAM_INT);
         $stmt->bindValue(2, $userId, \PDO::PARAM_INT);
         $stmt->execute();
@@ -76,8 +66,8 @@ class DaoNexus {
     
 
     public function getConversationMessages($idExped, $idDesti) {
-        $sql = "SELECT * FROM Messages WHERE (id_exped = ? AND id_desti = ?) OR (id_exped = ? AND id_desti = ?) ORDER BY date_message ASC";
-        $stmt = $this->conn->prepare($sql);
+        $query = Requetes::SELECT_CONV;
+        $stmt = $this->conn->prepare($query);
         $stmt->bindValue(1, $idExped, \PDO::PARAM_INT);
         $stmt->bindValue(2, $idDesti, \PDO::PARAM_INT);
         $stmt->bindValue(3, $idDesti, \PDO::PARAM_INT);
@@ -88,8 +78,8 @@ class DaoNexus {
 
     
     public function updateMessage($messageId, $nouveauContenu) {
-        $sql = "UPDATE Messages SET contenu_mess = ?, modif = true WHERE id_message = ?";
-        $stmt = $this->conn->prepare($sql);
+        $query = Requetes::UPDATE_MESSAGE;
+        $stmt = $this->conn->prepare($query);
         $stmt->bindValue(1, $nouveauContenu, \PDO::PARAM_STR);
         $stmt->bindValue(2, $messageId, \PDO::PARAM_INT);
         $stmt->execute();
@@ -99,8 +89,8 @@ class DaoNexus {
 
     
     public function deleteMessage($messageId) {
-        $sql = "DELETE FROM Messages WHERE id_message = ?";
-        $stmt = $this->conn->prepare($sql);
+        $query = Requetes::DELETE_MESSAGE;
+        $stmt = $this->conn->prepare($query);
         $stmt->bindValue(1, $messageId, \PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->rowCount() > 0;
@@ -110,8 +100,8 @@ class DaoNexus {
     //          ---RECHERCHE RAPIDE---
 
     public function addRechercheRapide($userId, $jeuId) {
-        $sql = "INSERT INTO rechercheRapide (id_user, id_jeu, deb_session) VALUES (?, ?, NOW())";
-        $stmt = $this->conn->prepare($sql);
+        $query = Requetes::INSERT_RECHERCHE_RAPIDE;
+        $stmt = $this->conn->prepare($query);
         $stmt->bindValue(1, $userId, PDO::PARAM_INT);
         $stmt->bindValue(2, $jeuId, PDO::PARAM_INT);
         return $stmt->execute();
@@ -119,14 +109,8 @@ class DaoNexus {
     
 
     public function getRechercheRapideByJeu($jeuId) {
-        $sql = "SELECT rr.id_session, u.nom, u.prenom, rr.deb_session, rr.fin_session
-                FROM rechercheRapide rr
-                JOIN utilisateur u ON rr.id_user = u.id_user
-                WHERE rr.id_jeu = ? AND (rr.fin_session IS NULL OR rr.fin_session >= NOW())
-                AND (rr.fin_session IS NULL OR TIMESTAMPDIFF(HOUR, rr.deb_session, rr.fin_session) <= 6)
-                ORDER BY rr.id_session DESC";
-    
-        $stmt = $this->conn->prepare($sql);
+        $query = Requetes::SELECT_RECHERCHE_RAPIDE;
+        $stmt = $this->conn->prepare($query);
         $stmt->bindValue(1, $jeuId, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -134,12 +118,8 @@ class DaoNexus {
     
 
     public function updateRechercheRapide($sessionId, $newJeuId) {
-        $sql = "UPDATE rechercheRapide SET id_jeu = ?, fin_session = CASE
-                WHEN TIMESTAMPDIFF(HOUR, deb_session, NOW()) <= 6 THEN fin_session
-                ELSE NOW()
-                END
-                WHERE id_session = ? AND (fin_session IS NULL OR fin_session >= NOW())";
-        $stmt = $this->conn->prepare($sql);
+        $query = Requetes::UPDATE_RECHERCHE_RAPIDE;
+        $stmt = $this->conn->prepare($query);
         $stmt->bindValue(1, $newJeuId, PDO::PARAM_INT);
         $stmt->bindValue(2, $sessionId, PDO::PARAM_INT);
         return $stmt->execute();
@@ -147,29 +127,82 @@ class DaoNexus {
     
 
     public function endRechercheRapide($sessionId) {
-        $sql = "UPDATE rechercheRapide SET fin_session = NOW() WHERE id_session = ?";
-        $stmt = $this->conn->prepare($sql);
+        $query = Requetes::END_RECHERCHE_RAPIDE;
+        $stmt = $this->conn->prepare($query);
         $stmt->bindValue(1, $sessionId, PDO::PARAM_INT);
         return $stmt->execute();
     }
     
+    public function deleteRechercheRapide($sessionId) {
+        $query = Requetes::DELETE_RECHERCHE_RAPIDE;
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(1, $sessionId, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    //          ---ANNONCE---
+
+    // Création d'une annonce
+    public function createAnnonce(Annonce $annonce) {
+        $query = Requetes::CREATE_ANNONCE;
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([
+            $annonce->getNomAnnonce(),
+            $annonce->getNbUser(),
+            $annonce->getDescAnnonce(),
+            $annonce->getIdUser(),
+            $annonce->getIdJeu()
+        ]);
+        return $stmt->rowCount() > 0;
+    }
+
+    // Lecture d'une annonce par ID
+    public function readAnnonce(int $id_annonce) {
+        $query = Requetes::READ_ANNONCE;
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$id_annonce]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    // Mise à jour d'une annonce
+    public function updateAnnonce(Annonce $annonce) {
+        $query = Requetes::UPDATE_ANNONCE;
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([
+            $annonce->getNomAnnonce(),
+            $annonce->getNbUser(),
+            $annonce->getDescAnnonce(),
+            $annonce->getIdUser(),
+            $annonce->getIdJeu(),
+            $annonce->getIdAnnonce()
+        ]);
+        return $stmt->rowCount() > 0;
+    }
+
+    // Suppression d'une annonce
+    public function deleteAnnonce(int $id_annonce) {
+        $query = Requetes::DELETE_ANNONCE;
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(1, $id_annonce, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
+
+    //           ---JEU---
 
 
-        //      ---JEU---
-
-
-        public function getJeux(): ?array {
-            $jeux = array();
-            $query = Requetes::SELECT_JEU;
-            try {
-                $stmt = $this->conn->prepare($query);
-                $stmt->execute();
-                $jeuxData = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-                foreach ($jeuxData as $row) {
-                    $jeu = new Jeu($row['id_jeu'], $row['nom_jeu'], $row['resum_jeu'], $row['img_jeu'], (bool)$row['multi'], $row['id_stu'], $row['id_ed'], $row['id_form'], $row['id_genre'], $row['id_plat']);
-                    array_push($jeux, $jeu);
-                }
-                return $jeux;
+    public function getJeux(): ?array {
+        $jeux = array();
+        $query = Requetes::SELECT_JEU;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            $jeuxData = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            foreach ($jeuxData as $row) {
+                $jeu = new Jeu($row['id_jeu'], $row['nom_jeu'], $row['resum_jeu'], $row['img_jeu'], (bool)$row['multi'], $row['id_stu'], $row['id_ed'], $row['id_form'], $row['id_genre'], $row['id_plat']);
+                array_push($jeux, $jeu);
+            }
+            return $jeux;
             } catch (\PDOException $e) {
                 error_log('PDOException in getJeux(): ' . $e->getMessage());
                 throw new \Exception('Erreur lors de la récupération des jeux.', $this->convertCode($e->getCode()));
