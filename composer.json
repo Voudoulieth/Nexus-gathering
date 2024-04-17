@@ -11,5 +11,7 @@
             "email": "lucas.lucasleg@gmail.com"
         }
     ],
-    "require": {}
+    "require-dev": {
+        "phpunit/phpunit": "11"
+    }
 }
