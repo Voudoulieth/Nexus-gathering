@@ -76,6 +76,15 @@ class DaoNexus {
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    public function getUserConversations($userId) {
+        $query = Requetes::SELECT_CONTACT;
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':userId', $userId, \PDO::PARAM_INT);  // Binder le même paramètre trois fois
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+    
+
     
     public function updateMessage($messageId, $nouveauContenu) {
         $query = Requetes::UPDATE_MESSAGE;
@@ -163,6 +172,14 @@ class DaoNexus {
         $stmt->execute([$id_annonce]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function readAllAnnonces() {
+        $query = "SELECT * FROM Annonce"; // Assurez-vous que le nom de la table est correct
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupère toutes les annonces
+    }
+    
 
     // Mise à jour d'une annonce
     public function updateAnnonce(Annonce $annonce) {

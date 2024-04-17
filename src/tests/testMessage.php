@@ -11,7 +11,7 @@ $dao = new DaoNexus();
 $contenu = "Ceci est un message test.";
 $idExped = 2;
 $idDesti = 3;
-$id_user = 3;
+$id_user = 4;
 $messageId = 6;
 
 
@@ -34,6 +34,16 @@ print_r($allMessages);
 $conversationMessages = $dao->getConversationMessages($idExped, $idDesti);
 echo "Conversation entre $idExped et $idDesti:\n";
 print_r($conversationMessages);
+
+
+// Appeler la fonction getUserConversations
+$conversations = $dao->getUserConversations($id_user);
+
+// Afficher les résultats
+echo "Conversations pour l'utilisateur $id_user:\n";
+foreach ($conversations as $conversation) {
+    echo "ID Utilisateur: " . $conversation['id_user'] . ", Nom: " . $conversation['nom_user'] . ", Dernier Message: " . $conversation['last_message_date'] . "\n <br><br>";
+}
 
 // Test updateMessage
 $nouveauContenu = "Ceci est le contenu modifié.";

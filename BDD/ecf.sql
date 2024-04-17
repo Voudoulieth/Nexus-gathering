@@ -211,6 +211,7 @@ GRANT all PRIVILEGES on NexusGathering.* TO 'adminNG'@'localhost';
         nom_annonce varchar(50) not null,
         nb_user int CHECK (nb_user BETWEEN 1 AND 64),
         desc_annonce text not null,
+        date_annonce DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
         id_user integer,
         id_jeu	integer,
         FOREIGN KEY (id_user) REFERENCES Utilisateur(id_user) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -224,7 +225,7 @@ GRANT all PRIVILEGES on NexusGathering.* TO 'adminNG'@'localhost';
         deb_session DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
         fin_session DATETIME,
         FOREIGN KEY (id_user) REFERENCES utilisateur(id_user) ON DELETE CASCADE ON UPDATE CASCADE,
-        FOREIGN KEY (id_jeu) REFERENCES Jeu(id_jeu) ON DELETE CASCADE ON UPDATE CASCADE
+        FOREIGN KEY (id_jeu) REFERENCES Jeu(id_jeu) ON DELETE CASCADE ON UPDATE CASCADE,
         CHECK (fin_session IS NULL OR fin_session >= deb_session),
         CHECK (fin_session IS NULL OR TIMESTAMPDIFF(HOUR, deb_session, fin_session) <= 6)
     );
