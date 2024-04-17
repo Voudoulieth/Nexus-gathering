@@ -7,6 +7,7 @@ require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 
 use PDO;
 use Nexus_gathering\dao\Database;
+use Nexus_gathering\dao\DaoException;
 use Nexus_gathering\dao\Jeu;
 use Nexus_gathering\dao\Requetes;
 use Nexus_gathering\metier\Messages;
@@ -17,7 +18,7 @@ use Nexus_gathering\metier\Formats;
 use Nexus_gathering\metier\Genre;
 use Nexus_gathering\metier\Plateforme;
 use Nexus_gathering\metier\Studio;
-use Nexus_gathering\metier\CreationUser;
+use Nexus_gathering\metier\CreationUser;    
 
 //TODO : gestion des exceptions
 class DaoNexus {
@@ -33,7 +34,7 @@ class DaoNexus {
     }
     
     //      ---MESSAGERIE---
-
+ 
     public function createMessage(Messages $message) {
         $query = Requetes::INSERT_MESSAGE;
         try {
@@ -42,169 +43,241 @@ class DaoNexus {
             $stmt->bindValue(2, $message->getIdExped(), PDO::PARAM_INT);
             $stmt->bindValue(3, $message->getIdDesti(), PDO::PARAM_INT);
             $stmt->execute();
-            
-            if ($stmt->errorCode() == '00000') {
-                return true;
-            } else {
-                throw new \Exception("Erreur lors de l'insertion du message : " . implode(", ", $stmt->errorInfo()));
-            }
+    
+            return true;
         } catch (\PDOException $e) {
-            throw new \Exception("PDOException lors de l'insertion du message : " . $e->getMessage());
+            throw DaoException::fromCreateMessagePDOException($e);
         } catch (\Exception $e) {
-            throw new \Exception("Exception générale lors de l'insertion du message : " . $e->getMessage());
+            throw DaoException::fromCreateMessageException($e);
         }
     }
     
-    
-
-    public function getAllMessagesForUser(CreationUser $CreationUser) {
-        $query = Requetes::SELECT_MESSAGE;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(1, $CreationUser->getIdUser(), \PDO::PARAM_INT);
-        $stmt->bindValue(2, $CreationUser->getIdUser(), \PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    }
-    
-
     public function getConversationMessages(Messages $message) {
         $query = Requetes::SELECT_CONV;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(1, $message->getIdExped(), \PDO::PARAM_INT);
-        $stmt->bindValue(2, $message->getIdDesti(), \PDO::PARAM_INT);
-        $stmt->bindValue(3, $message->getIdDesti(), \PDO::PARAM_INT);
-        $stmt->bindValue(4, $message->getIdExped(), \PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $message->getIdExped(), \PDO::PARAM_INT);
+            $stmt->bindValue(2, $message->getIdDesti(), \PDO::PARAM_INT);
+            $stmt->bindValue(3, $message->getIdDesti(), \PDO::PARAM_INT);
+            $stmt->bindValue(4, $message->getIdExped(), \PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            throw DaoException::fromFetchConversationsPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromFetchConversationsException($e);
+        }
     }
 
-    public function getUserConversations(CreationUser $CreationUser) {
+    public function getUserConversations(CreationUser $creationUser) {
         $query = Requetes::SELECT_CONTACT;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':userId', $CreationUser->getIdUser(), \PDO::PARAM_INT);  // Binder le même paramètre trois fois
-        $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    }
-    
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':userId', $creationUser->getIdUser(), \PDO::PARAM_INT);  // Binder le même paramètre trois fois
+            $stmt->execute();
 
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            throw DaoException::fromFetchUserConversationsException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromFetchUserConversationsException($e);
+        }
+    }
     
     public function updateMessage(Messages $message) {
         $query = Requetes::UPDATE_MESSAGE;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(1, $message->getContenuMess(), \PDO::PARAM_STR);
-        $stmt->bindValue(2, $message->getIdMessage(), \PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->rowCount() > 0;
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $message->getContenuMess(), \PDO::PARAM_STR);
+            $stmt->bindValue(2, $message->getIdMessage(), \PDO::PARAM_INT);
+            $stmt->execute();
+            
+            return $stmt->rowCount() > 0;
+        } catch (\PDOException $e) {
+            throw DaoException::fromUpdateMessagePDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromUpdateMessageException($e);
+        }
     }
-    
 
-    
     public function deleteMessage(Messages $message) {
         $query = Requetes::DELETE_MESSAGE;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(1, $message->getIdMessage(), \PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->rowCount() > 0;
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $message->getIdMessage(), \PDO::PARAM_INT);
+            $stmt->execute();
+            
+            return $stmt->rowCount() > 0;
+        } catch (\PDOException $e) {
+            throw DaoException::fromDeleteMessagePDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromDeleteMessageException($e);
+        }
     }
     
-
     //          ---RECHERCHE RAPIDE---
 
-    public function addRechercheRapide(RechercheRapide $RechercheRapide) {
+    public function addRechercheRapide(RechercheRapide $rechercheRapide) {
         $query = Requetes::INSERT_RECHERCHE_RAPIDE;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(1, $RechercheRapide->getIdUser(), PDO::PARAM_INT);
-        $stmt->bindValue(2, $RechercheRapide->getId_jeu(), PDO::PARAM_INT);
-        return $stmt->execute();
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $rechercheRapide->getIdUser(), PDO::PARAM_INT);
+            $stmt->bindValue(2, $rechercheRapide->getIdJeu(), PDO::PARAM_INT);
+            
+            return $stmt->execute();
+        } catch (\PDOException $e) {
+            throw DaoException::fromCreateRechercheRapidePDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromCreateRechercheRapideException($e);
+        }
     }
-    
 
-    public function getRechercheRapideByJeu(RechercheRapide $RechercheRapide) {
+    public function getRechercheRapideByJeu(RechercheRapide $rechercheRapide) {
         $query = Requetes::SELECT_RECHERCHE_RAPIDE;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(1, $RechercheRapide->getId_jeu(), PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $rechercheRapide->getIdJeu(), PDO::PARAM_INT);
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            throw DaoException::fromFetchRechercheRapidePDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromFetchRechercheRapideException($e);
+        }
     }
-    
 
-    public function updateRechercheRapide(RechercheRapide $RechercheRapide) {
+    public function updateRechercheRapide(RechercheRapide $rechercheRapide) {
         $query = Requetes::UPDATE_RECHERCHE_RAPIDE;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(1, $RechercheRapide->getId_jeu(), PDO::PARAM_INT);
-        $stmt->bindValue(2, $RechercheRapide->getIdSession(), PDO::PARAM_INT);
-        return $stmt->execute();
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $rechercheRapide->getIdJeu(), PDO::PARAM_INT);
+            $stmt->bindValue(2, $rechercheRapide->getIdSession(), PDO::PARAM_INT);
+            
+            return $stmt->execute();
+        } catch (\PDOException $e) {
+            throw DaoException::fromUpdateRechercheRapidePDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromUpdateRechercheRapideException($e);
+        }
     }
-    
 
-    public function endRechercheRapide(RechercheRapide $RechercheRapide) {
+    public function endRechercheRapide(RechercheRapide $rechercheRapide) {
         $query = Requetes::END_RECHERCHE_RAPIDE;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(1, $RechercheRapide->getIdSession(), PDO::PARAM_INT);
-        return $stmt->execute();
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $rechercheRapide->getIdSession(), PDO::PARAM_INT);
+            
+            return $stmt->execute();
+        } catch (\PDOException $e) {
+            throw DaoException::fromEndRechercheRapidePDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromEndRechercheRapideException($e);
+        }
     }
     
-    public function deleteRechercheRapide(RechercheRapide $RechercheRapide) {
+    public function deleteRechercheRapide(RechercheRapide $rechercheRapide) {
         $query = Requetes::DELETE_RECHERCHE_RAPIDE;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(1, $RechercheRapide->getIdSession(), PDO::PARAM_INT);
-        return $stmt->execute();
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $rechercheRapide->getIdSession(), PDO::PARAM_INT);
+            
+            return $stmt->execute();
+        } catch (\PDOException $e) {
+            throw DaoException::fromDeleteRechercheRapidePDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromDeleteRechercheRapideException($e);
+        }
     }
 
     //          ---ANNONCE---
 
     // Création d'une annonce
-    public function createAnnonce(Annonce $Annonce) {
+    public function createAnnonce(Annonce $annonce) {
         $query = Requetes::CREATE_ANNONCE;
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute([
-            $Annonce->getNomAnnonce(),
-            $Annonce->getNbUser(),
-            $Annonce->getDescAnnonce(),
-            $Annonce->getIdUser(),
-            $Annonce->getIdJeu()
-        ]);
-        return $stmt->rowCount() > 0;
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $annonce->getNomAnnonce(), PDO::PARAM_STR);
+            $stmt->bindValue(2, $annonce->getNbUser(), PDO::PARAM_INT);
+            $stmt->bindValue(3, $annonce->getDescAnnonce(), PDO::PARAM_STR);
+            $stmt->bindValue(4, $annonce->getIdUser(), PDO::PARAM_INT);
+            $stmt->bindValue(5, $annonce->getIdJeu(), PDO::PARAM_INT);
+            $stmt->execute();
+                      
+            return $stmt->rowCount() > 0;
+        } catch (\PDOException $e) {
+            throw DaoException::fromCreateAnnoncePDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromCreateAnnonceException($e);
+        }
     }
 
     // Lecture d'une annonce par ID
-    public function readAnnonce(Annonce $Annonce) {
+    public function readAnnonce(Annonce $annonce) {
         $query = Requetes::READ_ANNONCE;
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute([$Annonce->getIdAnnonce()]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-
-    public function readAllAnnonces() {
-        $query = Requetes::READ_ALL_ANNONCE; 
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute([$annonce->getIdAnnonce()]);
+            
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            throw DaoException::fromFetchAnnoncePDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromFetchAnnonceException($e);
+        }
     }
     
+    // Lecture de toutes les annonces
+    public function readAllAnnonces() {
+        $query = Requetes::READ_ALL_ANNONCE; 
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            throw DaoException::fromFetchAllAnnoncesPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromFetchAllAnnoncesException($e);
+        }
+    }
 
     // Mise à jour d'une annonce
-    public function updateAnnonce(Annonce $Annonce) {
+    public function updateAnnonce(Annonce $annonce) {
         $query = Requetes::UPDATE_ANNONCE;
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute([
-            $Annonce->getNomAnnonce(),
-            $Annonce->getNbUser(),
-            $Annonce->getDescAnnonce(),
-            $Annonce->getIdUser(),
-            $Annonce->getIdJeu(),
-            $Annonce->getIdAnnonce()
-        ]);
-        return $stmt->rowCount() > 0;
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $annonce->getNomAnnonce(), PDO::PARAM_STR);
+            $stmt->bindValue(2, $annonce->getNbUser(), PDO::PARAM_INT);
+            $stmt->bindValue(3, $annonce->getDescAnnonce(), PDO::PARAM_STR);
+            $stmt->bindValue(4, $annonce->getIdUser(), PDO::PARAM_INT);
+            $stmt->bindValue(5, $annonce->getIdJeu(), PDO::PARAM_INT);
+            $stmt->bindValue(6, $annonce->getIdAnnonce(), PDO::PARAM_INT);
+            $stmt->execute();
+            
+            return $stmt->rowCount() > 0;
+        } catch (\PDOException $e) {
+            throw DaoException::fromUpdateAnnoncePDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromUpdateAnnonceException($e);
+        }
     }
 
     // Suppression d'une annonce
-    public function deleteAnnonce(Annonce $Annonce) {
+    public function deleteAnnonce(Annonce $annonce) {
         $query = Requetes::DELETE_ANNONCE;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(1, $Annonce->getIdAnnonce(), PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->rowCount() > 0;
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $annonce->getIdAnnonce(), PDO::PARAM_INT);
+            $stmt->execute();
+            
+            return $stmt->rowCount() > 0;
+        } catch (\PDOException $e) {
+            throw DaoException::fromDeleteAnnoncePDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromDeleteAnnonceException($e);
+        }
     }
 
     //           ---JEU---

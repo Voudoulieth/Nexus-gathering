@@ -3,6 +3,8 @@
 require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 
 use Nexus_gathering\dao\DaoNexus;
+use Nexus_gathering\metier\Messages;
+
 
 
 $dao = new DaoNexus();
@@ -14,9 +16,10 @@ $idDesti = 3;
 $id_user = 4;
 $messageId = 6;
 
+$message = new Messages($messageId, $contenu, $modif, $idExped, $idDesti, $dateMessage);
 
 // Appeler la fonction createMessage
-$result = $dao->createMessage($contenu, $idExped, $idDesti);
+$result = $dao->createMessage($message);
 
 // Afficher le résultat
 if ($result) {
