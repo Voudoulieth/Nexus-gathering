@@ -1,14 +1,16 @@
 <?php
 declare(strict_types=1);
+namespace Nexus_gathering\metier;
+
 
 class RechercheRapide {
     private int $id_session;
     private int $id_user;
     private int $id_jeu;
-    private DateTime $deb_session;
-    private ?DateTime $fin_session;
+    private \DateTime $deb_session;
+    private ?\DateTime $fin_session;
 
-    public function __construct(int $id_session, int $id_user, int $id_jeu, DateTime $deb_session, ?DateTime $fin_session = null) {
+    public function __construct(int $id_session, int $id_user, int $id_jeu, \DateTime $deb_session, ?\DateTime $fin_session = null) {
         $this->id_session = $id_session;
         $this->id_user = $id_user;
         $this->id_jeu = $id_jeu;
@@ -48,9 +50,9 @@ class RechercheRapide {
     /**
      * Get the value of deb_session
      *
-     * @return DateTime
+     * @return \DateTime
      */
-    public function getDebSession(): DateTime
+    public function getDebSession(): \DateTime
     {
         return $this->deb_session;
     }
@@ -58,9 +60,9 @@ class RechercheRapide {
     /**
      * Get the value of fin_session
      *
-     * @return ?DateTime
+     * @return ?\DateTime
      */
-    public function getFinSession(): ?DateTime
+    public function getFinSession(): ?\DateTime
     {
         return $this->fin_session;
     }
@@ -68,11 +70,11 @@ class RechercheRapide {
     /**
      * Set the value of fin_session
      *
-     * @param ?DateTime $fin_session
+     * @param ?\DateTime $fin_session
      *
      * @return self
      */
-    public function setFinSession(?DateTime $fin_session): self
+    public function setFinSession(?\DateTime $fin_session): self
     {
         $this->fin_session = $fin_session;
 
