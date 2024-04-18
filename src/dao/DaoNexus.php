@@ -118,12 +118,12 @@ class DaoNexus {
     
     //          ---RECHERCHE RAPIDE---
 
-    public function addRechercheRapide(RechercheRapide $rechercheRapide) {
+    public function addRechercheRapide(CreationUser $creationUser, Jeu $jeu) {
         $query = Requetes::INSERT_RECHERCHE_RAPIDE;
         try{
             $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(1, $rechercheRapide->getIdUser(), PDO::PARAM_INT);
-            $stmt->bindValue(2, $rechercheRapide->getIdJeu(), PDO::PARAM_INT);
+            $stmt->bindValue(1, $creationUser->getIdUser(), PDO::PARAM_INT);
+            $stmt->bindValue(2, $jeu->getId_jeu(), PDO::PARAM_INT);
             
             return $stmt->execute();
         } catch (\PDOException $e) {
@@ -133,11 +133,11 @@ class DaoNexus {
         }
     }
 
-    public function getRechercheRapideByJeu(RechercheRapide $rechercheRapide) {
+    public function getRechercheRapideByJeu(Jeu $jeu) {
         $query = Requetes::SELECT_RECHERCHE_RAPIDE;
         try{
             $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(1, $rechercheRapide->getIdJeu(), PDO::PARAM_INT);
+            $stmt->bindValue(1, $jeu->getId_jeu(), PDO::PARAM_INT);
             $stmt->execute();
             
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -148,11 +148,11 @@ class DaoNexus {
         }
     }
 
-    public function updateRechercheRapide(RechercheRapide $rechercheRapide) {
+    public function updateRechercheRapide(Jeu $jeu, RechercheRapide $rechercheRapide) {
         $query = Requetes::UPDATE_RECHERCHE_RAPIDE;
         try{
             $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(1, $rechercheRapide->getIdJeu(), PDO::PARAM_INT);
+            $stmt->bindValue(1, $jeu->getId_jeu(), PDO::PARAM_INT);
             $stmt->bindValue(2, $rechercheRapide->getIdSession(), PDO::PARAM_INT);
             
             return $stmt->execute();
@@ -194,15 +194,15 @@ class DaoNexus {
     //          ---ANNONCE---
 
     // Création d'une annonce
-    public function createAnnonce(Annonce $annonce) {
+    public function createAnnonce(Annonce $annonce, CreationUser $creationUser, Jeu $jeu) {
         $query = Requetes::CREATE_ANNONCE;
         try{
             $stmt = $this->conn->prepare($query);
             $stmt->bindValue(1, $annonce->getNomAnnonce(), PDO::PARAM_STR);
             $stmt->bindValue(2, $annonce->getNbUser(), PDO::PARAM_INT);
             $stmt->bindValue(3, $annonce->getDescAnnonce(), PDO::PARAM_STR);
-            $stmt->bindValue(4, $annonce->getIdUser(), PDO::PARAM_INT);
-            $stmt->bindValue(5, $annonce->getIdJeu(), PDO::PARAM_INT);
+            $stmt->bindValue(4, $creationUser->getIdUser(), PDO::PARAM_INT);
+            $stmt->bindValue(5, $jeu->getId_jeu(), PDO::PARAM_INT);
             $stmt->execute();
                       
             return $stmt->rowCount() > 0;
@@ -244,15 +244,15 @@ class DaoNexus {
     }
 
     // Mise à jour d'une annonce
-    public function updateAnnonce(Annonce $annonce) {
+    public function updateAnnonce(Annonce $annonce, CreationUser $creationUser, Jeu $jeu) {
         $query = Requetes::UPDATE_ANNONCE;
         try{
             $stmt = $this->conn->prepare($query);
             $stmt->bindValue(1, $annonce->getNomAnnonce(), PDO::PARAM_STR);
             $stmt->bindValue(2, $annonce->getNbUser(), PDO::PARAM_INT);
             $stmt->bindValue(3, $annonce->getDescAnnonce(), PDO::PARAM_STR);
-            $stmt->bindValue(4, $annonce->getIdUser(), PDO::PARAM_INT);
-            $stmt->bindValue(5, $annonce->getIdJeu(), PDO::PARAM_INT);
+            $stmt->bindValue(4, $creationUser->getIdUser(), PDO::PARAM_INT);
+            $stmt->bindValue(5, $jeu->getId_Jeu(), PDO::PARAM_INT);
             $stmt->bindValue(6, $annonce->getIdAnnonce(), PDO::PARAM_INT);
             $stmt->execute();
             
