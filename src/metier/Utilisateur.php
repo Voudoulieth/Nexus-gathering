@@ -7,7 +7,7 @@ namespace Nexus_gathering\metier;
 class Utilisateur extends CreationUser
 {
     private RoleUtilisateur $role;
-
+    
     public function __construct(int $id_user, string $nom_user, string $password, string $avatar, string $mail, int $age, RoleUtilisateur $role)
     {
         parent::__construct($id_user, $nom_user, $password, $avatar, $mail, $age);
