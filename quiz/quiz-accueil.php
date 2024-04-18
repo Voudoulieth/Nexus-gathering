@@ -16,18 +16,13 @@
     <link rel="shortcut icon" href="../assets/logo/favicon.svg">
     <title>Accueil Quiz - Nexus Gathering</title>
 
-    <!-- 
-      A l'attention de Dominique : 
-      * Le dossier quiz est réalisé par Océane
-      * La page d'accueil des quiz est réalisée en Bootstrap
-      * Les autres pages sont réalisées en CSS avec médias queries pour le responsive
-    -->
+    <!-- Page Bootstrap, donc pas d'utilisation des composants de la view car ça entre en conflit avec Bootstrap-->
   </head>
   <body>
   <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="../index.html">
+        <a class="navbar-brand" href="../index.php">
           <img class="logo" src="../assets/logo/logo_nexus_white.svg" alt="Logo Nexus" title="Accueil">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,16 +32,16 @@
           <div class="largeurnav me-auto">
               <ul class="navbar-nav mb-2 mb-lg-0 d-flex justify-content-around">
               <li class="nav-item">
-                <a class="nav-link texte-basique"  href="../bibliotheques/acceuil_biblio.html">Bibliothèque</a>
+                <a class="nav-link texte-basique"  href="../bibliotheques/acceuil_biblio.php">Bibliothèque</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link texte-basique" href="../recherche_de_joueur/recherche_rapide.html">Joueurs</a>
+                <a class="nav-link texte-basique" href="../recherche_de_joueur/recherche_rapide.php">Joueurs</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active texte-basique" aria-current="page" href="quiz-accueil.html">Quiz</a>
+                <a class="nav-link active texte-basique" aria-current="page" href="quiz-accueil.php">Quiz</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link texte-basique" href="../recherche_de_joueur/messagerie.html">Messagerie</a>
+                <a class="nav-link texte-basique" href="../recherche_de_joueur/messagerie.php">Messagerie</a>
               </li>
             </ul>
           </div>
@@ -63,7 +58,7 @@
   </header>
   <main>
     <!--bouton pour accéder au panneau admin, visible pour les administrateurs, display:none pour le reste des utiliateurs-->
-    <a class="btn pt-1 pb-1 connexion texte-basique m-3" href="quiz-panneau-admin.html">Page de gestion administrateur</a>
+    <a class="btn pt-1 pb-1 connexion texte-basique m-3" href="quiz-panneau-admin.php">Page de gestion administrateur</a>
     <h1 class="d-flex justify-content-center mt-3 texte-basique titre1">Découvrez les quiz les plus populaires !</h1>
     <!-- début carousel quiz récents bootstrap -->
     <div id="carouselExampleCaptions" class="carousel slide mx-auto col-6 mt-4 mb-4">
@@ -74,7 +69,7 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <a href="./quiz-jouer/quiz-jouer-off-genshin.html">
+          <a href="./quiz-jouer/quiz-jouer-off-genshin.php">
             <img src="quiz-assets/couverture-quiz/genshin.jpeg" class="d-block w-100" alt="quiz officiel genshin impact">
           </a>
           <div class="carousel-caption d-none d-md-block">
@@ -82,7 +77,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <a href="quiz-jouer/quiz-jouer-off-baldur.html">
+          <a href="quiz-jouer/quiz-jouer-off-baldur.php">
             <img src="quiz-assets/couverture-quiz/baldur.jpg" class="d-block w-100" alt="quiz officiel baldur's gate 3">
           </a>
           <div class="carousel-caption d-none d-md-block">
@@ -90,7 +85,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <a href="quiz-jouer/quiz-jouer-com-lol.html">
+          <a href="quiz-jouer/quiz-jouer-com-lol.php">
             <img src="quiz-assets/couverture-quiz/lol.jpg" class="d-block w-100" alt="quiz officiel league of legends">
           </a>
           <div class="carousel-caption d-none d-md-block">
@@ -114,13 +109,13 @@
     <div class="row">
       <figure class="col-12 col-md-6 d-flex flex-column align-items-center">
         <figcaption class="texte-basique d-flex justify-content-center my-2">Quiz officiels</figcaption>
-        <a class="d-flex justify-content-center" href="quiz-officiels.html">
+        <a class="d-flex justify-content-center" href="quiz-officiels.php">
           <img class="imageQuiz" src="quiz-assets/quiz-officiels.png" alt="Lien vers les quiz officiels">
         </a>
       </figure>
       <figure class="col-12 col-md-6 d-flex flex-column align-items-center">
         <figcaption class="texte-basique d-flex justify-content-center my-2">Quiz communautaires</figcaption>
-        <a class="d-flex justify-content-center" href="quiz-communautaires.html">
+        <a class="d-flex justify-content-center" href="quiz-communautaires.php">
           <img class="imageQuiz" src="quiz-assets/quiz-communautaires.png" alt="Lien vers les quiz communautaires">
         </a>
       </figure>
@@ -130,16 +125,16 @@
   <footer class="footer pt-2">
     <div class="container">
       <div class="row justify-content-end">
-        <a class="col-3" href="../index.html">
+        <a class="col-3" href="../index.php">
           <img class="logo" src="../assets/logo/logo_long_nexus_white.svg" title="Accueil" alt="Logo Nexus">
         </a>
-        <a class="col-4 col-md-2 nav-link texte-basique"  href="../cgu.html">CGU</a>
-        <a class="col-5 col-md-3 nav-link texte-basique" href="../mention_legale.html">Mention légale</a>
-        <a class="col-4 col-md-3 nav-link texte-basique" aria-current="page" href="../confidentialite.html">Politique de confidentialité</a>
-        <a class="col-5 col-md-1 nav-link texte-basique" href="../contact.html">Contact</a>
+        <a class="col-4 col-md-2 nav-link texte-basique"  href="../cgu.php">CGU</a>
+        <a class="col-5 col-md-3 nav-link texte-basique" href="../mention_legale.php">Mention légale</a>
+        <a class="col-4 col-md-3 nav-link texte-basique" aria-current="page" href="../confidentialite.php">Politique de confidentialité</a>
+        <a class="col-5 col-md-1 nav-link texte-basique" href="../contact.php">Contact</a>
         <p class="texte-basique mx-auto mt-2 mb-2 col-12 d-flex justify-content-center copyright">COPYRIGHT @ 2024 TOUS DROITS RESERVES</p>
       </div>
     </div>
   </footer>
   </body>
-</html>
+</php>
