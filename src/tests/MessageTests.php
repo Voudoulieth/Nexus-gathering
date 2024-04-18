@@ -15,6 +15,8 @@ class MessageTests extends TestCase
     private $stmt;
     private $dao;
     private $message;
+    private $creationUser;
+    private $jeu;
 
     protected function setUp(): void
     {
@@ -26,6 +28,10 @@ class MessageTests extends TestCase
         $this->message->method('getContenuMess')->willReturn('Bonjour');
         $this->message->method('getIdExped')->willReturn(1);
         $this->message->method('getIdDesti')->willReturn(2);
+        $this->creationUser = $this->createMock(CreationUser::class);
+        $this->creationUser->method('getIdUser')->willReturn(1);
+        $this->jeu = $this->createMock(Jeu::class);
+        $this->jeu->method('getId_jeu')->willReturn(1);
     }
     
     
@@ -129,6 +135,109 @@ class MessageTests extends TestCase
         $this->dao->getUserConversations($this->creationUser);
     }
 
+    public function testUpdateMessageSuccess()
+    {
+        // Configuration du PDOStatement
+        $this->pdo->method('prepare')->willReturn($this->stmt);
+        $this->stmt->method('execute')->willReturn(true);
+        $this->stmt->method('rowCount')->willReturn(1);  // Simule la modification d'une ligne
+
+        // Exécution de la fonction updateMessage
+        $result = $this->dao->updateMessage($this->message);
+
+        // Vérification que la fonction retourne true
+        $this->assertTrue($result);
+    }
+
+    public function testUpdateMessageNoChange()
+    {
+        // Configuration du PDOStatement
+        $this->pdo->method('prepare')->willReturn($this->stmt);
+        $this->stmt->method('execute')->willReturn(true);
+        $this->stmt->method('rowCount')->willReturn(0);  // Simule aucune modification
+
+       // Exécution de la fonction updateMessage
+        $result = $this->dao->updateMessage($this->message);
+
+        // Vérification que la fonction retourne false
+         $this->assertFalse($result);
+    }
+
+    public function testUpdateMessagePDOException()
+    {
+        $this->pdo->method('prepare')->willReturn($this->stmt);
+        $this->stmt->method('execute')->will($this->throwException(new \PDOException()));
+
+        // On s'attend à ce que l'exception personnalisée soit lancée
+        $this->expectException(DaoException::class);
+
+        // Exécution de la fonction updateMessage
+        $this->dao->updateMessage($this->message);
+    }
+
+    public function testUpdateMessageException()
+    {
+        $this->pdo->method('prepare')->willReturn($this->stmt);
+        $this->stmt->method('execute')->will($this->throwException(new \Exception()));
+
+        // On s'attend à ce que l'exception personnalisée soit lancée
+        $this->expectException(DaoException::class);
+
+        // Exécution de la fonction updateMessage
+        $this->dao->updateMessage($this->message);
+    }
+
+    public function testDeleteMessageSuccess()
+    {
+        // Configuration du PDOStatement
+        $this->pdo->method('prepare')->willReturn($this->stmt);
+        $this->stmt->method('execute')->willReturn(true);
+        $this->stmt->method('rowCount')->willReturn(1);  // Simule la suppression d'une ligne
+
+        // Exécution de la fonction deleteMessage
+        $result = $this->dao->deleteMessage($this->message);
+
+        // Vérification que la fonction retourne true
+        $this->assertTrue($result);
+    }
+
+    public function testDeleteMessageFailure()
+    {
+        // Configuration du PDOStatement
+        $this->pdo->method('prepare')->willReturn($this->stmt);
+        $this->stmt->method('execute')->willReturn(true);
+        $this->stmt->method('rowCount')->willReturn(0);  // Simule aucune ligne supprimée
+
+        // Exécution de la fonction deleteMessage
+        $result = $this->dao->deleteMessage($this->message);
+
+        // Vérification que la fonction retourne false
+        $this->assertFalse($result);
+    }
+
+    public function testDeleteMessagePDOException()
+    {
+        $this->pdo->method('prepare')->willReturn($this->stmt);
+        $this->stmt->method('execute')->will($this->throwException(new \PDOException()));
+
+        // On s'attend à ce que l'exception personnalisée soit lancée
+        $this->expectException(DaoException::class);
+
+        // Exécution de la fonction deleteMessage
+        $this->dao->deleteMessage($this->message);
+    }
+
+    public function testDeleteMessageException()
+    {
+        $this->pdo->method('prepare')->willReturn($this->stmt);
+        $this->stmt->method('execute')->will($this->throwException(new \Exception()));
+
+        // On s'attend à ce que l'exception personnalisée soit lancée
+        $this->expectException(DaoException::class);
+
+        // Exécution de la fonction deleteMessage
+        $this->dao->deleteMessage($this->message);
+    }
 
 
 
