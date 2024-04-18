@@ -6,7 +6,6 @@ require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 
 class Requetes {
     public const INSERT_MESSAGE = "INSERT INTO Messages (contenu_mess, modif, id_exped, id_desti, date_message) VALUES (?, false, ?, ?, CURRENT_TIMESTAMP)";
-    public const SELECT_MESSAGE = "SELECT * FROM Messages WHERE id_exped = ? OR id_desti = ?";
     public const SELECT_CONV = "SELECT * FROM Messages WHERE (id_exped = ? AND id_desti = ?) OR (id_exped = ? AND id_desti = ?) ORDER BY date_message ASC";
     public const SELECT_CONTACT = "SELECT u.id_user, u.nom_user, MAX(m.date_message) AS last_message_date
     FROM Messages m
