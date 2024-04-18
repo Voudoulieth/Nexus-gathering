@@ -282,149 +282,270 @@ class DaoNexus {
 
     //           ---JEU---
 
+        // Création d'un jeu
+
     public function create(Jeu $jeu, Studio $studio, Editeur $editeur): bool {
         $query = Requetes::INSERT_JEU;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':nom_jeu', $jeu->getNom_jeu());
-        $stmt->bindValue(':resum_jeu', $jeu->getResum_jeu());
-        $stmt->bindValue(':img_jeu', $jeu->getImg_jeu());
-        $stmt->bindValue(':multi', $jeu->getMulti() ? 1 : 0, \PDO::PARAM_INT);
-        $stmt->bindValue(':id_ed', $editeur->getId_ed(), \PDO::PARAM_INT);
-        $stmt->bindValue(':id_user', $jeu->getIdUser(), \PDO::PARAM_INT);
-        $stmt->bindValue(':id_stu', $studio->getId_stu(), \PDO::PARAM_INT);
-        return $stmt->execute();
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':nom_jeu', $jeu->getNom_jeu());
+            $stmt->bindValue(':resum_jeu', $jeu->getResum_jeu());
+            $stmt->bindValue(':img_jeu', $jeu->getImg_jeu());
+            $stmt->bindValue(':multi', $jeu->getMulti() ? 1 : 0, \PDO::PARAM_INT);
+            $stmt->bindValue(':id_ed', $editeur->getId_ed(), \PDO::PARAM_INT);
+            $stmt->bindValue(':id_user', $jeu->getIdUser(), \PDO::PARAM_INT);
+            $stmt->bindValue(':id_stu', $studio->getId_stu(), \PDO::PARAM_INT);
+
+            return $stmt->execute();
+        } catch (\PDOException $e) {
+            throw DaoException::fromCreateJeuPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromCreateJeuException($e);
+        }
     }
+
+    // Lecture d'un jeu par ID
 
     public function getById(int $id_jeu): ?Jeu {
         $query = Requetes::SELECT_jEU;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':id_jeu', $id_jeu, \PDO::PARAM_INT);
-        $stmt->execute();
-        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
-        if (!$row) {
-            return null;
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':id_jeu', $id_jeu, \PDO::PARAM_INT);
+            $stmt->execute();
+            $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+            if (!$row) {
+                return null;
+            }
+            return new Jeu($row['id_jeu'], $row['nom_jeu'], $row['resum_jeu'], $row['img_jeu'], (bool) $row['multi'], $row['id_ed'], $row['id_user'], $row['id_stu']);
+        } catch (\PDOException $e) {
+            throw DaoException::fromFetchJeuPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromFetchJeuException($e);
         }
-        return new Jeu($row['id_jeu'], $row['nom_jeu'], $row['resum_jeu'], $row['img_jeu'], (bool) $row['multi'], $row['id_ed'], $row['id_user'], $row['id_stu']);
     }
+
+        // Lecture de touts les jeux
 
     public function getAll(): array {
         $query = Requetes::SELECT_ALL_JEU;
-        $stmt = $this->conn->prepare($query);
-        $jeux = [];
-        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            $jeux[] = new Jeu($row['id_jeu'], $row['nom_jeu'], $row['resum_jeu'], $row['img_jeu'], (bool) $row['multi'], $row['id_ed'], $row['id_user'], $row['id_stu']);
+        try{
+            $stmt = $this->conn->prepare($query);
+            $jeux = [];
+            while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                $jeux[] = new Jeu($row['id_jeu'], $row['nom_jeu'], $row['resum_jeu'], $row['img_jeu'], (bool) $row['multi'], $row['id_ed'], $row['id_user'], $row['id_stu']);
+            }
+            return $jeux;
+        } catch (\PDOException $e) {
+            throw DaoException::fromFetchAllJeuxPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromFetchAllJeuxException($e);
         }
-        return $jeux;
     }
+
+    // Mise à jour d'un jeu
 
     public function update(Jeu $jeu, Studio $studio, Editeur $editeur): bool {
         $query = Requetes::UPDATE_JEU;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':nom_jeu', $jeu->getNom_jeu());
-        $stmt->bindValue(':resum_jeu', $jeu->getResum_jeu());
-        $stmt->bindValue(':img_jeu', $jeu->getImg_jeu());
-        $stmt->bindValue(':multi', $jeu->getMulti() ? 1 : 0, \PDO::PARAM_INT);
-        $stmt->bindValue(':id_ed', $editeur->getId_ed(), \PDO::PARAM_INT);
-        $stmt->bindValue(':id_user', $jeu->getIdUser(), \PDO::PARAM_INT);
-        $stmt->bindValue(':id_stu', $studio->getId_stu(), \PDO::PARAM_INT);
-        $stmt->bindValue(':id_jeu', $jeu->getId_jeu(), \PDO::PARAM_INT);
-        return $stmt->execute();
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':nom_jeu', $jeu->getNom_jeu());
+            $stmt->bindValue(':resum_jeu', $jeu->getResum_jeu());
+            $stmt->bindValue(':img_jeu', $jeu->getImg_jeu());
+            $stmt->bindValue(':multi', $jeu->getMulti() ? 1 : 0, \PDO::PARAM_INT);
+            $stmt->bindValue(':id_ed', $editeur->getId_ed(), \PDO::PARAM_INT);
+            $stmt->bindValue(':id_user', $jeu->getIdUser(), \PDO::PARAM_INT);
+            $stmt->bindValue(':id_stu', $studio->getId_stu(), \PDO::PARAM_INT);
+            $stmt->bindValue(':id_jeu', $jeu->getId_jeu(), \PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (\PDOException $e) {
+            throw DaoException::fromUpdateJeuPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromUpdateJeuException($e);
+        }
     }
+
+    // Suppression d'un jeu
 
     public function delete(int $id_jeu): bool {
         $query = Requetes::DELETE_JEU;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':id_jeu', $id_jeu, \PDO::PARAM_INT);
-        return $stmt->execute();
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':id_jeu', $id_jeu, \PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (\PDOException $e) {
+            throw DaoException::fromDeleteJeuPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromDeleteJeuException($e);
+        }
     }
+
+        // Création d'un studio
 
     public function createStudio(Studio $studio): bool {
         $query = Requetes::INSERT_STUDIO;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':nom_stu', $studio->getNom_stu());
-        $stmt->bindValue(':id_ed', $studio->getId_ed(), \PDO::PARAM_INT);
-        return $stmt->execute();
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':nom_stu', $studio->getNom_stu());
+            $stmt->bindValue(':id_ed', $studio->getId_ed(), \PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (\PDOException $e) {
+            throw DaoException::fromCreateStudioPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromCreateStudioException($e);
+        }
     }
+
+    // Lecture d'un studio par ID
 
     public function getByIdStudio(int $id_stu): ?Studio {
         $query = Requetes::SELECT_STUDIO;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':id_stu', $id_stu, \PDO::PARAM_INT);
-        $stmt->execute();
-        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
-        if (!$row) {
-            return null;
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':id_stu', $id_stu, \PDO::PARAM_INT);
+            $stmt->execute();
+            $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+            if (!$row) {
+                return null;
+            }
+            return new Studio($row['id_stu'], $row['nom_stu'], $row['id_ed']);
+        } catch (\PDOException $e) {
+            throw DaoException::fromFetchStudioPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromFetchStudioException($e);
         }
-        return new Studio($row['id_stu'], $row['nom_stu'], $row['id_ed']);
     }
+
+        // Lecture de touts les studios
 
     public function getAllStudio(): array {
         $query = Requetes::SELECT_ALL_STUDIO;
-        $stmt = $this->conn->prepare($query);
-        $studios = [];
-        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            $studios[] = new Studio($row['id_stu'], $row['nom_stu'], $row['id_ed']);
+        try{
+            $stmt = $this->conn->prepare($query);
+            $studios = [];
+            while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                $studios[] = new Studio($row['id_stu'], $row['nom_stu'], $row['id_ed']);
+            }
+            return $studios;
+        } catch (\PDOException $e) {
+            throw DaoException::fromFetchAllStudiosPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromFetchAllStudiosException($e);
         }
-        return $studios;
     }
+
+    // Mise à jour d'un studio
 
     public function updateStudio(Studio $studio): bool {
         $query = Requetes::UPDATE_STUDIO;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':nom_stu', $studio->getNom_stu());
-        $stmt->bindValue(':id_ed', $studio->getId_ed(), \PDO::PARAM_INT);
-        $stmt->bindValue(':id_stu', $studio->getId_stu(), \PDO::PARAM_INT);
-        return $stmt->execute();
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':nom_stu', $studio->getNom_stu());
+            $stmt->bindValue(':id_ed', $studio->getId_ed(), \PDO::PARAM_INT);
+            $stmt->bindValue(':id_stu', $studio->getId_stu(), \PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (\PDOException $e) {
+            throw DaoException::fromUpdateStudioPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromUpdateStudioException($e);
+        }
     }
+
+    // Suppression d'un studio
 
     public function deleteStudio(int $id_stu): bool {
         $query = Requetes::DELETE_STUDIO;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':id_stu', $id_stu, \PDO::PARAM_INT);
-        return $stmt->execute();
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':id_stu', $id_stu, \PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (\PDOException $e) {
+            throw DaoException::fromDeleteStudioPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromDeleteStudioException($e);
+        }
     }
+
+        // Création d'un editeur
 
     public function createEditeur(Editeur $editeur): bool {
         $query = Requetes::INSERT_EDITEUR;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':nom_ed', $editeur->getNom_ed());
-        return $stmt->execute();
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':nom_ed', $editeur->getNom_ed());
+            return $stmt->execute();
+        } catch (\PDOException $e) {
+            throw DaoException::fromCreateEditeurPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromCreateEditeurException($e);
+        }
     }
+
+    // Lecture d'un editeur par ID
 
     public function getByIdEditeur(int $id_ed): ?Editeur {
         $query = Requetes::SELECT_EDITEUR;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':id_ed', $id_ed, \PDO::PARAM_INT);
-        $stmt->execute();
-        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
-        if (!$row) {
-            return null;
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':id_ed', $id_ed, \PDO::PARAM_INT);
+            $stmt->execute();
+            $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+            if (!$row) {
+                return null;
+            }
+            return new Editeur($row['id_ed'], $row['nom_ed']);
+        } catch (\PDOException $e) {
+            throw DaoException::fromFetchEditeurPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromFetchEditeurException($e);
         }
-        return new Editeur($row['id_ed'], $row['nom_ed']);
     }
+
+        // Lecture de touts les editeurs
 
     public function getAllEditeur(): array {
         $query = Requetes::SELECT_ALL_EDITEUR;
-        $stmt = $this->conn->prepare($query);
-        $editeurs = [];
-        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            $editeurs[] = new Editeur($row['id_ed'], $row['nom_ed']);
+        try{
+            $stmt = $this->conn->prepare($query);
+            $editeurs = [];
+            while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                $editeurs[] = new Editeur($row['id_ed'], $row['nom_ed']);
+            }
+            return $editeurs;
+        } catch (\PDOException $e) {
+            throw DaoException::fromFetchAllEditeursPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromFetchAllEditeursException($e);
         }
-        return $editeurs;
     }
+
+    // Mise à jour d'un editeur
 
     public function updateEditeur(Editeur $editeur): bool {
         $query = Requetes::UPDATE_EDITEUR;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':nom_ed', $editeur->getNom_ed());
-        $stmt->bindValue(':id_ed', $editeur->getId_ed(), \PDO::PARAM_INT);
-        return $stmt->execute();
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':nom_ed', $editeur->getNom_ed());
+            $stmt->bindValue(':id_ed', $editeur->getId_ed(), \PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (\PDOException $e) {
+            throw DaoException::fromUpdateEditeurPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromUpdateEditeurException($e);
+        }
     }
+
+    // Suppression d'un editeur
 
     public function deleteEditeur(int $id_ed): bool {
         $query = Requetes::DELETE_EDITEUR;
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':id_ed', $id_ed, \PDO::PARAM_INT);
-        return $stmt->execute();
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':id_ed', $id_ed, \PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (\PDOException $e) {
+            throw DaoException::fromDeleteEditeurPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromDeleteEditeurException($e);
+        }
     }
 }

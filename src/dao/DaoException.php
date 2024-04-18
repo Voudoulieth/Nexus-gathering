@@ -123,4 +123,124 @@ class DaoException extends \Exception {
         return new self("Erreur lors de la suppression d'une annonce : " . $e->getMessage());
     }
 
+    // --- Jeu ---
+        // Erreur lors de la création d'un jeu
+        public static function fromCreateJeuPDOException(\Exception $e) {
+            return new self("Erreur PDO lors de la création d'un jeu : " . $e->getMessage());
+        }
+        public static function fromCreateJeuException(\Exception $e) {
+            return new self("Erreur lors de la création d'un jeu : " . $e->getMessage());
+        }
+        
+        // Erreur lors de la récupération d'un jeu
+        public static function fromFetchJeuPDOException(\Exception $e) {
+            return new self("Erreur PDO lors de la récupération d'un jeu : " . $e->getMessage());
+        }
+        public static function fromFetchJeuException(\Exception $e) {
+            return new self("Erreur lors de la récupération d'un jeu : " . $e->getMessage());
+        }
+        
+        // Erreur lors de la récupération des jeux
+        public static function fromFetchAllJeuxPDOException(\Exception $e) {
+            return new self("Erreur PDO lors de la récupération des jeux : " . $e->getMessage());
+        }
+        public static function fromFetchAllJeuxException(\Exception $e) {
+            return new self("Erreur lors de la récupération des jeux : " . $e->getMessage());
+        }
+        
+        // Erreur lors de la mise à jour d'un jeu
+        public static function fromUpdateJeuPDOException(\Exception $e) {
+            return new self("Erreur PDO lors de la mise à jour d'un jeu : " . $e->getMessage());
+        }
+        public static function fromUpdateJeuException(\Exception $e) {
+            return new self("Erreur lors de la mise à jour d'un jeu : " . $e->getMessage());
+        }
+        
+        // Erreur lors de la suppression d'un jeu
+        public static function fromDeleteJeuPDOException(\Exception $e) {
+            return new self("Erreur PDO lors de la suppression d'un jeu : " . $e->getMessage());
+        }
+        public static function fromDeleteJeuException(\Exception $e) {
+            return new self("Erreur lors de la suppression d'un jeu : " . $e->getMessage());
+        }
+
+        // Erreur lors de la création d'un studio
+        public static function fromCreateStudioPDOException(\Exception $e) {
+            return new self("Erreur PDO lors de la création d'un studio : " . $e->getMessage());
+        }
+        public static function fromCreateStudioException(\Exception $e) {
+            return new self("Erreur lors de la création d'un studio : " . $e->getMessage());
+        }
+        
+        // Erreur lors de la récupération d'un studio
+        public static function fromFetchStudioPDOException(\Exception $e) {
+            return new self("Erreur PDO lors de la récupération d'un studio : " . $e->getMessage());
+        }
+        public static function fromFetchStudioException(\Exception $e) {
+            return new self("Erreur lors de la récupération d'un studio : " . $e->getMessage());
+        }
+        
+        // Erreur lors de la récupération des studios
+        public static function fromFetchAllStudiosPDOException(\Exception $e) {
+            return new self("Erreur PDO lors de la récupération des studios : " . $e->getMessage());
+        }
+        public static function fromFetchAllStudiosException(\Exception $e) {
+            return new self("Erreur lors de la récupération des studios : " . $e->getMessage());
+        }
+        
+        // Erreur lors de la mise à jour d'un studio
+        public static function fromUpdateStudioPDOException(\Exception $e) {
+            return new self("Erreur PDO lors de la mise à jour d'un studio : " . $e->getMessage());
+        }
+        public static function fromUpdateStudioException(\Exception $e) {
+            return new self("Erreur lors de la mise à jour d'un studio : " . $e->getMessage());
+        }
+        
+        // Erreur lors de la suppression d'un studio
+        public static function fromDeleteStudioPDOException(\Exception $e) {
+            return new self("Erreur PDO lors de la suppression d'un studio : " . $e->getMessage());
+        }
+        public static function fromDeleteStudioException(\Exception $e) {
+            return new self("Erreur lors de la suppression d'un studio : " . $e->getMessage());
+        }
+
+        // Erreur lors de la création d'un editeur
+        public static function fromCreateEditeurPDOException(\Exception $e) {
+            return new self("Erreur PDO lors de la création d'un editeur : " . $e->getMessage());
+        }
+        public static function fromCreateEditeurException(\Exception $e) {
+            return new self("Erreur lors de la création d'un editeur : " . $e->getMessage());
+        }
+        
+        // Erreur lors de la récupération d'un editeur
+        public static function fromFetchEditeurPDOException(\Exception $e) {
+            return new self("Erreur PDO lors de la récupération d'un editeur : " . $e->getMessage());
+        }
+        public static function fromFetchEditeurException(\Exception $e) {
+            return new self("Erreur lors de la récupération d'un editeur : " . $e->getMessage());
+        }
+        
+        // Erreur lors de la récupération des studios
+        public static function fromFetchAllEditeursPDOException(\Exception $e) {
+            return new self("Erreur PDO lors de la récupération des editeurs : " . $e->getMessage());
+        }
+        public static function fromFetchAllEditeursException(\Exception $e) {
+            return new self("Erreur lors de la récupération des editeurs : " . $e->getMessage());
+        }
+        
+        // Erreur lors de la mise à jour d'un editeur
+        public static function fromUpdateEditeurPDOException(\Exception $e) {
+            return new self("Erreur PDO lors de la mise à jour d'un editeur : " . $e->getMessage());
+        }
+        public static function fromUpdateEditeurException(\Exception $e) {
+            return new self("Erreur lors de la mise à jour d'un editeur : " . $e->getMessage());
+        }
+        
+        // Erreur lors de la suppression d'un editeur
+        public static function fromDeleteEditeurPDOException(\Exception $e) {
+            return new self("Erreur PDO lors de la suppression d'un editeur : " . $e->getMessage());
+        }
+        public static function fromDeleteEditeurException(\Exception $e) {
+            return new self("Erreur lors de la suppression d'un editeur : " . $e->getMessage());
+        }
 }
