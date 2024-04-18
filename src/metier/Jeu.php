@@ -1,10 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace Nexus_gathering\dao;
-
-use Nexus_gathering\metier\Editeur;
-use Nexus_gathering\metier\Studio;
-use Nexus_gathering\metier\User;
+namespace Nexus_gathering\metier;
 
 class Jeu {
     private int     $id_jeu;

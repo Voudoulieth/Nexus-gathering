@@ -8,7 +8,7 @@ require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 use PDO;
 use Nexus_gathering\dao\Database;
 use Nexus_gathering\dao\DaoException;
-use Nexus_gathering\dao\Jeu;
+use Nexus_gathering\metier\Jeu;
 use Nexus_gathering\dao\Requetes;
 use Nexus_gathering\metier\Messages;
 use Nexus_gathering\metier\Annonce;
@@ -282,25 +282,149 @@ class DaoNexus {
 
     //           ---JEU---
 
+    public function create(Jeu $jeu, Studio $studio, Editeur $editeur): bool {
+        $query = Requetes::INSERT_JEU;
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':nom_jeu', $jeu->getNom_jeu());
+        $stmt->bindValue(':resum_jeu', $jeu->getResum_jeu());
+        $stmt->bindValue(':img_jeu', $jeu->getImg_jeu());
+        $stmt->bindValue(':multi', $jeu->getMulti() ? 1 : 0, \PDO::PARAM_INT);
+        $stmt->bindValue(':id_ed', $editeur->getId_ed(), \PDO::PARAM_INT);
+        $stmt->bindValue(':id_user', $jeu->getIdUser(), \PDO::PARAM_INT);
+        $stmt->bindValue(':id_stu', $studio->getId_stu(), \PDO::PARAM_INT);
+        return $stmt->execute();
+    }
 
-    public function getJeux(): ?array {
-        $jeux = array();
-        $query = Requetes::SELECT_JEU;
-        try {
-            $stmt = $this->conn->prepare($query);
-            $stmt->execute();
-            $jeuxData = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-            foreach ($jeuxData as $row) {
-                $jeu = new Jeu($row['id_jeu'], $row['nom_jeu'], $row['resum_jeu'], $row['img_jeu'], (bool)$row['multi'], $row['id_stu'], $row['id_ed'], $row['id_form'], $row['id_genre'], $row['id_plat']);
-                array_push($jeux, $jeu);
-            }
-            return $jeux;
-            } catch (\PDOException $e) {
-                error_log('PDOException in getJeux(): ' . $e->getMessage());
-                throw new \Exception('Erreur lors de la récupération des jeux.', $this->convertCode($e->getCode()));
-            } catch (\Exception $e) {
-                error_log('Exception in getJeux(): ' . $e->getMessage());
-                throw new \Exception('Une erreur est survenue lors de la récupération des jeux.');
-            }
+    public function getById(int $id_jeu): ?Jeu {
+        $query = Requetes::SELECT_jEU;
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':id_jeu', $id_jeu, \PDO::PARAM_INT);
+        $stmt->execute();
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+        if (!$row) {
+            return null;
         }
+        return new Jeu($row['id_jeu'], $row['nom_jeu'], $row['resum_jeu'], $row['img_jeu'], (bool) $row['multi'], $row['id_ed'], $row['id_user'], $row['id_stu']);
+    }
+
+    public function getAll(): array {
+        $query = Requetes::SELECT_ALL_JEU;
+        $stmt = $this->conn->prepare($query);
+        $jeux = [];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $jeux[] = new Jeu($row['id_jeu'], $row['nom_jeu'], $row['resum_jeu'], $row['img_jeu'], (bool) $row['multi'], $row['id_ed'], $row['id_user'], $row['id_stu']);
+        }
+        return $jeux;
+    }
+
+    public function update(Jeu $jeu, Studio $studio, Editeur $editeur): bool {
+        $query = Requetes::UPDATE_JEU;
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':nom_jeu', $jeu->getNom_jeu());
+        $stmt->bindValue(':resum_jeu', $jeu->getResum_jeu());
+        $stmt->bindValue(':img_jeu', $jeu->getImg_jeu());
+        $stmt->bindValue(':multi', $jeu->getMulti() ? 1 : 0, \PDO::PARAM_INT);
+        $stmt->bindValue(':id_ed', $editeur->getId_ed(), \PDO::PARAM_INT);
+        $stmt->bindValue(':id_user', $jeu->getIdUser(), \PDO::PARAM_INT);
+        $stmt->bindValue(':id_stu', $studio->getId_stu(), \PDO::PARAM_INT);
+        $stmt->bindValue(':id_jeu', $jeu->getId_jeu(), \PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    public function delete(int $id_jeu): bool {
+        $query = Requetes::DELETE_JEU;
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':id_jeu', $id_jeu, \PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    public function createStudio(Studio $studio): bool {
+        $query = Requetes::INSERT_STUDIO;
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':nom_stu', $studio->getNom_stu());
+        $stmt->bindValue(':id_ed', $studio->getId_ed(), \PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    public function getByIdStudio(int $id_stu): ?Studio {
+        $query = Requetes::SELECT_STUDIO;
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':id_stu', $id_stu, \PDO::PARAM_INT);
+        $stmt->execute();
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+        if (!$row) {
+            return null;
+        }
+        return new Studio($row['id_stu'], $row['nom_stu'], $row['id_ed']);
+    }
+
+    public function getAllStudio(): array {
+        $query = Requetes::SELECT_ALL_STUDIO;
+        $stmt = $this->conn->prepare($query);
+        $studios = [];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $studios[] = new Studio($row['id_stu'], $row['nom_stu'], $row['id_ed']);
+        }
+        return $studios;
+    }
+
+    public function updateStudio(Studio $studio): bool {
+        $query = Requetes::UPDATE_STUDIO;
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':nom_stu', $studio->getNom_stu());
+        $stmt->bindValue(':id_ed', $studio->getId_ed(), \PDO::PARAM_INT);
+        $stmt->bindValue(':id_stu', $studio->getId_stu(), \PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    public function deleteStudio(int $id_stu): bool {
+        $query = Requetes::DELETE_STUDIO;
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':id_stu', $id_stu, \PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    public function createEditeur(Editeur $editeur): bool {
+        $query = Requetes::INSERT_EDITEUR;
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':nom_ed', $editeur->getNom_ed());
+        return $stmt->execute();
+    }
+
+    public function getByIdEditeur(int $id_ed): ?Editeur {
+        $query = Requetes::SELECT_EDITEUR;
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':id_ed', $id_ed, \PDO::PARAM_INT);
+        $stmt->execute();
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+        if (!$row) {
+            return null;
+        }
+        return new Editeur($row['id_ed'], $row['nom_ed']);
+    }
+
+    public function getAllEditeur(): array {
+        $query = Requetes::SELECT_ALL_EDITEUR;
+        $stmt = $this->conn->prepare($query);
+        $editeurs = [];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $editeurs[] = new Editeur($row['id_ed'], $row['nom_ed']);
+        }
+        return $editeurs;
+    }
+
+    public function updateEditeur(Editeur $editeur): bool {
+        $query = Requetes::UPDATE_EDITEUR;
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':nom_ed', $editeur->getNom_ed());
+        $stmt->bindValue(':id_ed', $editeur->getId_ed(), \PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    public function deleteEditeur(int $id_ed): bool {
+        $query = Requetes::DELETE_EDITEUR;
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':id_ed', $id_ed, \PDO::PARAM_INT);
+        return $stmt->execute();
+    }
 }

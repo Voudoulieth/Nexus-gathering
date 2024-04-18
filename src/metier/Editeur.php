@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace Nexus_gathering\dao;
+namespace Nexus_gathering\metier;
 
 class Editeur {
     private int     $id_ed;

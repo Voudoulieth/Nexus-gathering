@@ -38,6 +38,22 @@ class Requetes {
     public const UPDATE_ANNONCE = "UPDATE Annonce SET nom_annonce = ?, nb_user = ?, desc_annonce = ?, id_user = ?, id_jeu = ? WHERE id_annonce = ?";
     public const DELETE_ANNONCE = "DELETE FROM Annonce WHERE id_annonce = ?";
 
-    public const SELECT_JEU = "SELECT id_jeu, nom_jeu, resum_jeu, img_jeu, multi, id_stu, id_ed, id_form, id_genre, id_plat FROM jeux";
+    public const INSERT_JEU = "INSERT INTO jeu (nom_jeu, resum_jeu, img_jeu, multi, id_ed, id_user, id_stu) VALUES (:nom_jeu, :resum_jeu, :img_jeu, :multi, :id_ed, :id_user, :id_stu)";
+    public const SELECT_jEU = "SELECT * FROM jeu WHERE id_jeu = :id_jeu";
+    public const SELECT_ALL_JEU = "SELECT * FROM jeu";
+    public const UPDATE_JEU = "UPDATE jeu SET nom_jeu = :nom_jeu, resum_jeu = :resum_jeu, img_jeu = :img_jeu, multi = :multi, id_ed = :id_ed, id_user = :id_user, id_stu = :id_stu WHERE id_jeu = :id_jeu";
+    public const DELETE_JEU = "DELETE FROM jeu WHERE id_jeu = :id_jeu";
+
+    public const INSERT_STUDIO = "INSERT INTO studio (nom_stu, id_ed) VALUES (:nom_stu, :id_ed)";
+    public const SELECT_STUDIO = "SELECT * FROM studio WHERE id_stu = :id_stu";
+    public const SELECT_ALL_STUDIO = "SELECT * FROM studio";
+    public const UPDATE_STUDIO = "UPDATE studio SET nom_stu = :nom_stu, id_ed = :id_ed WHERE id_stu = :id_stu";
+    public const DELETE_STUDIO = "DELETE FROM studio WHERE id_stu = :id_stu";
+
+    public const INSERT_EDITEUR = "INSERT INTO editeur (nom_ed) VALUES (:nom_ed)";
+    public const SELECT_EDITEUR = "SELECT * FROM editeur WHERE id_ed = :id_ed";
+    public const SELECT_ALL_EDITEUR = "SELECT * FROM editeur";
+    public const UPDATE_EDITEUR = "UPDATE editeur SET nom_ed = :nom_ed WHERE id_ed = :id_ed";
+    public const DELETE_EDITEUR = "DELETE FROM editeur WHERE id_ed = :id_ed";
 }
 
