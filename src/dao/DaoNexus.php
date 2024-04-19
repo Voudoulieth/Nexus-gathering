@@ -25,17 +25,12 @@ class DaoNexus {
     
     private \PDO $conn;
     
-    // public function __construct() {
-    //     try {
-    //         $this->conn = Database::getConnection();
-    //     } catch (\Exception $e) {
-    //         $conn = null;
-    //     }
-    // }
-
-
-    public function __construct(\PDO $conn = null) {
-        $this->conn = $conn ?: Database::getConnection();
+    public function __construct() {
+        try {
+            $this->conn = Database::getConnection();
+        } catch (\Exception $e) {
+            $conn = null;
+        }
     }
     
     //      ---MESSAGERIE---
