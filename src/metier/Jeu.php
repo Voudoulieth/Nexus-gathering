@@ -16,7 +16,7 @@ class Jeu {
     private int     $id_user;
     private int     $id_stu;
 
-    public function __construct(int $id_jeu, string $nom_jeu, string $resum_jeu, string $img_jeu, bool $multi, int $id_ed, int $id_user, int $id_stu) {
+    public function __construct(int $id_jeu, string $nom_jeu, string $resum_jeu ='', string $img_jeu = '', bool $multi, int $id_ed, int $id_user, int $id_stu) {
         $this->id_jeu       = $id_jeu;
         $this->nom_jeu	    = $nom_jeu;
         $this->resum_jeu	= $resum_jeu;

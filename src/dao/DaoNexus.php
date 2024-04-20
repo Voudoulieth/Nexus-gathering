@@ -25,12 +25,8 @@ class DaoNexus {
     
     private \PDO $conn;
     
-    public function __construct() {
-        try {
-            $this->conn = Database::getConnection();
-        } catch (\Exception $e) {
-            $conn = null;
-        }
+    public function __construct(\PDO $conn = null) {
+        $this->conn = $conn ?: Database::getConnection();
     }
     
     //      ---MESSAGERIE---
@@ -326,21 +322,33 @@ class DaoNexus {
 
         // Lecture de touts les jeux
 
-    public function getAll(): array {
-        $query = Requetes::SELECT_ALL_JEU;
-        try{
-            $stmt = $this->conn->prepare($query);
-            $jeux = [];
-            while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-                $jeux[] = new Jeu($row['id_jeu'], $row['nom_jeu'], $row['resum_jeu'], $row['img_jeu'], (bool) $row['multi'], $row['id_ed'], $row['id_user'], $row['id_stu']);
+        public function getAll(): array {
+            $query = Requetes::SELECT_ALL_JEU;
+            try {
+                $stmt = $this->conn->prepare($query);
+                $stmt->execute(); // Exécuter la requête
+                $jeux = [];
+                while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                    // Traitement des valeurs NULL pour les arguments de la construction de Jeu
+                    $resume = isset($row['resum_jeu']) ? $row['resum_jeu'] : ''; // Valeur par défaut si le champ est NULL
+                    $img = isset($row['img_jeu']) ? $row['img_jeu'] : ''; // Valeur par défaut si le champ est NULL
+                    $id_ed = isset($row['id_ed']) ? (int)$row['id_ed'] : 0; // Valeur par défaut si le champ est NULL
+                    $id_user = isset($row['id_user']) ? (int)$row['id_user'] : 0; // Valeur par défaut si le champ est NULL
+                    $id_stu = isset($row['id_stu']) ? (int)$row['id_stu'] : 0; // Valeur par défaut si le champ est NULL
+                    // Création de l'objet Jeu en prenant en compte les valeurs par défaut
+                    $jeux[] = new Jeu($row['id_jeu'], $row['nom_jeu'], $resume, $img, (bool) $row['multi'], $id_ed, $id_user, $id_stu);
+                }
+                return $jeux;
+            } catch (\PDOException $e) {
+                throw DaoException::fromFetchAllJeuxPDOException($e);
+            } catch (\Exception $e) {
+                throw DaoException::fromFetchAllJeuxException($e);
             }
-            return $jeux;
-        } catch (\PDOException $e) {
-            throw DaoException::fromFetchAllJeuxPDOException($e);
-        } catch (\Exception $e) {
-            throw DaoException::fromFetchAllJeuxException($e);
         }
-    }
+        
+        
+        
+        
 
     // Mise à jour d'un jeu
 
