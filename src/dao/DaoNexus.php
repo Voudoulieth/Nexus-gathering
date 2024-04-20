@@ -24,7 +24,7 @@ use Nexus_gathering\metier\CreationUser;
 class DaoNexus {
     
     private \PDO $conn;
-    
+
     public function __construct(\PDO $conn = null) {
         $this->conn = $conn ?: Database::getConnection();
     }
