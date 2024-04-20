@@ -3,6 +3,7 @@
 use Nexus_gathering\dao\DaoNexus;
 use Nexus_gathering\dao\DaoException;
 use Nexus_gathering\metier\Editeur;
+use PHPUnit\Framework\TestCase;
 
 class DaoEditeurTest extends TestCase
 {

@@ -5,6 +5,7 @@ require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 use Nexus_gathering\dao\DaoNexus;
 use Nexus_gathering\dao\DaoException;
 use Nexus_gathering\metier\Studio;
+use PHPUnit\Framework\TestCase;
 
 $dao = new DaoNexus();
 

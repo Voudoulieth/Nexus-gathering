@@ -7,6 +7,7 @@ use Nexus_gathering\dao\DaoException;
 use Nexus_gathering\metier\Jeu;
 use Nexus_gathering\metier\Studio;
 use Nexus_gathering\metier\Editeur;
+use PHPUnit\Framework\TestCase;
 
 $dao = new DaoNexus();
 
