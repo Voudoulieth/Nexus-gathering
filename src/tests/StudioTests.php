@@ -7,9 +7,9 @@ use Nexus_gathering\dao\DaoException;
 use Nexus_gathering\metier\Studio;
 use PHPUnit\Framework\TestCase;
 
-$dao = new DaoNexus();
+// $dao = new DaoNexus();
 
-class DaoStudioTest extends TestCase
+class StudioTests extends TestCase
 {
     private $pdo;
     private $stmt;
@@ -80,11 +80,17 @@ class DaoStudioTest extends TestCase
         // Configuration du PDOStatement
         $this->pdo->method('prepare')->willReturn($this->stmt);
         $this->stmt->method('execute')->willReturn(true);
-        $this->stmt->method('fetch')->will($this->onConsecutiveCalls(['id_stu' => 1, 'nom_stu' => 'Studio 1', 'id_ed' => 1], ['id_stu' => 2, 'nom_stu' => 'Studio 2', 'id_ed' => 1]));
-    
+        
+        // Utilisation de willReturnOnConsecutiveCalls pour fournir plusieurs retours consécutifs
+        $this->stmt->method('fetch')
+                    ->willReturnOnConsecutiveCalls(
+                        ['id_stu' => 1, 'nom_stu' => 'Studio 1', 'id_ed' => 1],
+                        ['id_stu' => 2, 'nom_stu' => 'Studio 2', 'id_ed' => 1]
+                    );
+        
         // Exécution de la fonction getAllStudio
         $result = $this->dao->getAllStudio();
-    
+        
         // Vérification que la fonction retourne un tableau d'objets Studio
         $this->assertIsArray($result);
         $this->assertInstanceOf(Studio::class, $result[0]);

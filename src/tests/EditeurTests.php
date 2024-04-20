@@ -1,23 +1,16 @@
 <?php
-
 require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 
 use Nexus_gathering\dao\DaoNexus;
 use Nexus_gathering\dao\DaoException;
-use Nexus_gathering\metier\Jeu;
-use Nexus_gathering\metier\Studio;
 use Nexus_gathering\metier\Editeur;
 use PHPUnit\Framework\TestCase;
 
-$dao = new DaoNexus();
-
-class DaoJeuTest extends TestCase
+class EditeurTests extends TestCase
 {
     private $pdo;
     private $stmt;
     private $dao;
-    private $jeu;
-    private $studio;
     private $editeur;
 
     protected function setUp(): void
@@ -25,25 +18,24 @@ class DaoJeuTest extends TestCase
         $this->pdo = $this->createMock(PDO::class);
         $this->stmt = $this->createMock(PDOStatement::class);
         $this->dao = new DaoNexus($this->pdo);
-        $this->jeu = $this->createMock(Jeu::class);
-        $this->studio = $this->createMock(Studio::class);
         $this->editeur = $this->createMock(Editeur::class);
     }
 
-    public function testCreateJeuSuccess()
+    // Tests pour les méthodes liées aux éditeurs
+    public function testCreateEditeurSuccess()
     {
         // Configuration du PDOStatement
         $this->pdo->method('prepare')->willReturn($this->stmt);
         $this->stmt->expects($this->once())->method('execute')->willReturn(true);
 
-        // Exécution de la fonction createJeu
-        $result = $this->dao->create($this->jeu, $this->studio, $this->editeur);
+        // Exécution de la fonction createEditeur
+        $result = $this->dao->createEditeur($this->editeur);
 
         // Vérification que la fonction retourne true
         $this->assertTrue($result);
     }
 
-    public function testCreateJeuThrowsPDOException()
+    public function testCreateEditeurThrowsPDOException()
     {
         $this->pdo->method('prepare')->willReturn($this->stmt);
         $this->stmt->method('execute')->will($this->throwException(new PDOException()));
@@ -51,11 +43,11 @@ class DaoJeuTest extends TestCase
         // On s'attend à ce que l'exception personnalisée soit lancée
         $this->expectException(DaoException::class);
 
-        // Exécution de la fonction createJeu
-        $this->dao->create($this->jeu, $this->studio, $this->editeur);
+        // Exécution de la fonction createEditeur
+        $this->dao->createEditeur($this->editeur);
     }
 
-    public function testCreateJeuThrowsException()
+    public function testCreateEditeurThrowsException()
     {
         $this->pdo->method('prepare')->willReturn($this->stmt);
         $this->stmt->method('execute')->will($this->throwException(new Exception()));
@@ -63,68 +55,68 @@ class DaoJeuTest extends TestCase
         // On s'attend à ce que l'exception personnalisée soit lancée
         $this->expectException(DaoException::class);
 
-        // Exécution de la fonction createJeu
-        $this->dao->create($this->jeu, $this->studio, $this->editeur);
+        // Exécution de la fonction createEditeur
+        $this->dao->createEditeur($this->editeur);
     }
 
-    public function testGetByIdJeuSuccess()
+    public function testGetByIdEditeurSuccess()
 {
     // Configuration du PDOStatement
     $this->pdo->method('prepare')->willReturn($this->stmt);
     $this->stmt->method('execute')->willReturn(true);
-    $this->stmt->method('fetch')->willReturn(['id_jeu' => 1, 'nom_jeu' => 'Nom du Jeu', 'resum_jeu' => 'Résumé du Jeu', 'img_jeu' => 'image.jpg', 'multi' => 1, 'id_ed' => 1, 'id_user' => 1, 'id_stu' => 1]);
+    $this->stmt->method('fetch')->willReturn(['id_ed' => 1, 'nom_ed' => 'Editeur']);
 
-    // Exécution de la fonction getByIdJeu
-    $result = $this->dao->getById(1);
+    // Exécution de la fonction getByIdEditeur
+    $result = $this->dao->getByIdEditeur(1);
 
-    // Vérification que la fonction retourne un objet Jeu
-    $this->assertInstanceOf(Jeu::class, $result);
+    // Vérification que la fonction retourne un objet Editeur
+    $this->assertInstanceOf(Editeur::class, $result);
 }
 
-public function testGetByIdJeuReturnsNull()
+public function testGetByIdEditeurReturnsNull()
 {
     // Configuration du PDOStatement
     $this->pdo->method('prepare')->willReturn($this->stmt);
     $this->stmt->method('execute')->willReturn(true);
     $this->stmt->method('fetch')->willReturn(false);
 
-    // Exécution de la fonction getByIdJeu
-    $result = $this->dao->getById(1);
+    // Exécution de la fonction getByIdEditeur
+    $result = $this->dao->getByIdEditeur(1);
 
     // Vérification que la fonction retourne null
     $this->assertNull($result);
 }
 
-public function testGetAllJeuSuccess()
+public function testGetAllEditeurSuccess()
 {
     // Configuration du PDOStatement
     $this->pdo->method('prepare')->willReturn($this->stmt);
     $this->stmt->method('execute')->willReturn(true);
-    $this->stmt->method('fetch')->willReturnOnConsecutiveCalls(['id_jeu' => 1, 'nom_jeu' => 'Jeu 1'], ['id_jeu' => 2, 'nom_jeu' => 'Jeu 2']);
+    $this->stmt->method('fetch')->willReturnOnConsecutiveCalls(['id_ed' => 1, 'nom_ed' => 'Editeur 1'], ['id_ed' => 2, 'nom_ed' => 'Editeur 2']);
 
-    // Exécution de la fonction getAllJeu
-    $result = $this->dao->getAll();
+    // Exécution de la fonction getAllEditeur
+    $result = $this->dao->getAllEditeur();
 
-    // Vérification que la fonction retourne un tableau d'objets Jeu
+    // Vérification que la fonction retourne un tableau d'objets Editeur
     $this->assertCount(2, $result);
-    $this->assertInstanceOf(Jeu::class, $result[0]);
-    $this->assertInstanceOf(Jeu::class, $result[1]);
+    $this->assertInstanceOf(Editeur::class, $result[0]);
+    $this->assertInstanceOf(Editeur::class, $result[1]);
 }
 
-public function testUpdateJeuSuccess()
+public function testUpdateEditeurSuccess()
 {
     // Configuration du PDOStatement
     $this->pdo->method('prepare')->willReturn($this->stmt);
     $this->stmt->expects($this->once())->method('execute')->willReturn(true);
 
-    // Exécution de la fonction updateJeu
-    $result = $this->dao->update($this->jeu, $this->studio, $this->editeur);
+    // Exécution de la fonction updateEditeur
+    $result = $this->dao->updateEditeur($this->editeur);
 
     // Vérification que la fonction retourne true
     $this->assertTrue($result);
 }
 
-public function testUpdateJeuThrowsPDOException()
+public function testUpdateEditeurThrowsPDOException()
 {
     $this->pdo->method('prepare')->willReturn($this->stmt);
     $this->stmt->method('execute')->will($this->throwException(new PDOException()));
@@ -132,11 +124,11 @@ public function testUpdateJeuThrowsPDOException()
     // On s'attend à ce que l'exception personnalisée soit lancée
     $this->expectException(DaoException::class);
 
-    // Exécution de la fonction updateJeu
-    $this->dao->update($this->jeu, $this->studio, $this->editeur);
+    // Exécution de la fonction updateEditeur
+    $this->dao->updateEditeur($this->editeur);
 }
 
-public function testUpdateJeuThrowsException()
+public function testUpdateEditeurThrowsException()
 {
     $this->pdo->method('prepare')->willReturn($this->stmt);
     $this->stmt->method('execute')->will($this->throwException(new Exception()));
@@ -144,24 +136,24 @@ public function testUpdateJeuThrowsException()
     // On s'attend à ce que l'exception personnalisée soit lancée
     $this->expectException(DaoException::class);
 
-    // Exécution de la fonction updateJeu
-    $this->dao->update($this->jeu, $this->studio, $this->editeur);
+    // Exécution de la fonction updateEditeur
+    $this->dao->updateEditeur($this->editeur);
 }
 
-public function testDeleteJeuSuccess()
+public function testDeleteEditeurSuccess()
 {
     // Configuration du PDOStatement
     $this->pdo->method('prepare')->willReturn($this->stmt);
     $this->stmt->expects($this->once())->method('execute')->willReturn(true);
 
-    // Exécution de la fonction deleteJeu
-    $result = $this->dao->delete(1);
+    // Exécution de la fonction deleteEditeur
+    $result = $this->dao->deleteEditeur(1);
 
     // Vérification que la fonction retourne true
     $this->assertTrue($result);
 }
 
-public function testDeleteJeuThrowsPDOException()
+public function testDeleteEditeurThrowsPDOException()
 {
     $this->pdo->method('prepare')->willReturn($this->stmt);
     $this->stmt->method('execute')->will($this->throwException(new PDOException()));
@@ -169,11 +161,11 @@ public function testDeleteJeuThrowsPDOException()
     // On s'attend à ce que l'exception personnalisée soit lancée
     $this->expectException(DaoException::class);
 
-    // Exécution de la fonction deleteJeu
-    $this->dao->delete(1);
+    // Exécution de la fonction deleteEditeur
+    $this->dao->deleteEditeur(1);
 }
 
-public function testDeleteJeuThrowsException()
+public function testDeleteEditeurThrowsException()
 {
     $this->pdo->method('prepare')->willReturn($this->stmt);
     $this->stmt->method('execute')->will($this->throwException(new Exception()));
@@ -181,7 +173,7 @@ public function testDeleteJeuThrowsException()
     // On s'attend à ce que l'exception personnalisée soit lancée
     $this->expectException(DaoException::class);
 
-    // Exécution de la fonction deleteJeu
-    $this->dao->delete(1);
+    // Exécution de la fonction deleteEditeur
+    $this->dao->deleteEditeur(1);
 }
 }
