@@ -1,14 +1,14 @@
 {
-    "name": "lucas/nexus_gathering",
+    "name": "fauri/nexus_gathering",
     "autoload": {
         "psr-4": {
-            "Nexus_gathering\\": "src/"
+            "Fauri\\Nexus_gathering\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "Lucas Legendre",
-            "email": "lucas.lucasleg@gmail.com"
+            "name": "oceane faurie",
+            "email": "faurie.oce@gmail.com"
         }
     ],
     "require-dev": {

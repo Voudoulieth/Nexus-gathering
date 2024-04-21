@@ -8,8 +8,8 @@ require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 use PDO;
 use Nexus_gathering\dao\Database;
 use Nexus_gathering\dao\DaoException;
-use Nexus_gathering\metier\Jeu;
 use Nexus_gathering\dao\Requetes;
+use Nexus_gathering\metier\Jeu;
 use Nexus_gathering\metier\Messages;
 use Nexus_gathering\metier\Annonce;
 use Nexus_gathering\metier\RechercheRapide;
@@ -24,6 +24,11 @@ use Nexus_gathering\metier\NiveauUtilisateur;
 use Nexus_gathering\metier\Utilisateur;
 use Nexus_gathering\metier\Contributeur;
 use Nexus_gathering\metier\Admin; 
+use Nexus_gathering\metier\Quiz;
+use Nexus_gathering\metier\Question;
+use Nexus_gathering\metier\Reponse;
+use Nexus_gathering\metier\Categorie;
+use Nexus_gathering\metier\JouerQuiz;   
 
 //TODO : gestion des exceptions
 class DaoNexus {
