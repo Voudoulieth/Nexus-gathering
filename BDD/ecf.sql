@@ -148,6 +148,7 @@ GRANT all PRIVILEGES on NexusGathering.* TO 'adminNG'@'localhost';
         id_user integer,
         titre_quiz varchar(30) not null,
         photo_quiz varchar(100) not null,
+        date_quiz DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
         primary key (id_quiz),
         foreign key (id_cat_quiz) references categorie (id_cat_quiz),
         foreign key (id_user) references utilisateur (id_user)
