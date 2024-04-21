@@ -4,3 +4,4 @@ package.json
 tailwind.config.js
 
 /vendor/
+composer.json
