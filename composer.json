@@ -2,7 +2,7 @@
     "name": "fauri/nexus_gathering",
     "autoload": {
         "psr-4": {
-            "Fauri\\Nexus_gathering\\": "src/"
+            "Nexus_gathering\\": "src/"
         }
     },
     "authors": [

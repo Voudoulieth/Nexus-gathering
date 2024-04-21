@@ -16,9 +16,9 @@ class ComposerStaticInit87daaa0013b1aff709f6a12ea8471208
         array (
             'PhpParser\\' => 10,
         ),
-        'F' => 
+        'N' => 
         array (
-            'Fauri\\Nexus_gathering\\' => 22,
+            'Nexus_gathering\\' => 16,
         ),
         'D' => 
         array (
@@ -31,7 +31,7 @@ class ComposerStaticInit87daaa0013b1aff709f6a12ea8471208
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
-        'Fauri\\Nexus_gathering\\' => 
+        'Nexus_gathering\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
