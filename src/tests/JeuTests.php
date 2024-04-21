@@ -9,8 +9,6 @@ use Nexus_gathering\metier\Studio;
 use Nexus_gathering\metier\Editeur;
 use PHPUnit\Framework\TestCase;
 
-// $dao = new DaoNexus();
-
 class JeuTests extends TestCase
 {
     private $pdo;

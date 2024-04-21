@@ -7,8 +7,6 @@ use Nexus_gathering\dao\DaoException;
 use Nexus_gathering\metier\Studio;
 use PHPUnit\Framework\TestCase;
 
-// $dao = new DaoNexus();
-
 class StudioTests extends TestCase
 {
     private $pdo;
@@ -122,5 +120,4 @@ class StudioTests extends TestCase
         // Vérification que la fonction retourne true
         $this->assertTrue($result);
     }
-    
 }

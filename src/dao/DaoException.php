@@ -243,4 +243,8 @@ class DaoException extends \Exception {
         public static function fromDeleteEditeurException(\Exception $e) {
             return new self("Erreur lors de la suppression d'un editeur : " . $e->getMessage());
         }
+
+        public static function fromCreateRoleUtilisateur(\Exception $e){
+            return new self("Erreur PDO lors de la création d'un rôle : " . $e->getMessage());
+        }
 }
