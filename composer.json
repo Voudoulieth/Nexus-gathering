@@ -2,7 +2,7 @@
     "name": "fauri/nexus_gathering",
     "autoload": {
         "psr-4": {
-            "NexusGathering\\": "src/"
+            "Fauri\\Nexus_gathering\\": "src/"
         }
     },
     "authors": [
@@ -11,5 +11,7 @@
             "email": "faurie.oce@gmail.com"
         }
     ],
-    "require": {}
+    "require-dev": {
+        "phpunit/phpunit": "11"
+    }
 }
