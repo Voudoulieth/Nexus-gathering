@@ -54,5 +54,7 @@ class Requetes {
     public const SELECT_ALL_EDITEUR = "SELECT * FROM editeur";
     public const UPDATE_EDITEUR = "UPDATE editeur SET nom_ed = :nom_ed WHERE id_ed = :id_ed";
     public const DELETE_EDITEUR = "DELETE FROM editeur WHERE id_ed = :id_ed";
+
+    public const INSERT_ROLE = "INSERT INTO RoleUtilisateur (nom_role) VALUES (:nom_role)" ;
 }
 

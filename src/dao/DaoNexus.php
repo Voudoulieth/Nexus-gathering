@@ -18,7 +18,12 @@ use Nexus_gathering\metier\Formats;
 use Nexus_gathering\metier\Genre;
 use Nexus_gathering\metier\Plateforme;
 use Nexus_gathering\metier\Studio;
-use Nexus_gathering\metier\CreationUser;    
+use Nexus_gathering\metier\CreationUser;
+use Nexus_gathering\metier\RoleUtilisateur;
+use Nexus_gathering\metier\NiveauUtilisateur;
+use Nexus_gathering\metier\Utilisateur;
+use Nexus_gathering\metier\Contributeur;
+use Nexus_gathering\metier\Admin; 
 
 //TODO : gestion des exceptions
 class DaoNexus {
@@ -555,5 +560,37 @@ class DaoNexus {
         } catch (\Exception $e) {
             throw DaoException::fromDeleteEditeurException($e);
         }
+    }
+
+
+    // public function createMessage(Messages $message) {
+    //     $query = Requetes::INSERT_MESSAGE;
+    //     try {
+    //         $stmt = $this->conn->prepare($query);
+    //         $stmt->bindValue(1, $message->getContenuMess(), PDO::PARAM_STR);
+    //         $stmt->bindValue(2, $message->getIdExped(), PDO::PARAM_INT);
+    //         $stmt->bindValue(3, $message->getIdDesti(), PDO::PARAM_INT);
+    //         $stmt->execute();
+    
+    //         return true;
+    //     } catch (\PDOException $e) {
+    //         throw DaoException::fromCreateMessagePDOException($e);
+    //     } catch (\Exception $e) {
+    //         throw DaoException::fromCreateMessageException($e);
+    //     }
+    // }
+
+    public function createRoleUtilisateur(RoleUtilisateur $role): void
+    {
+        $query = Requetes::INSERT_ROLE;
+        try {
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':nom_role', $role->getNomRole());
+        $stmt->execute();
+
+        return true;
+        } catch (\PDOException $e){
+            throw DaoException::fromCreateRoleUtilisateur($e);
+        } catch (\Exception )
     }
 }
