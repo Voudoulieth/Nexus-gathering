@@ -291,6 +291,24 @@ class DaoException extends \Exception {
         public static function fromReadNiveauException(\Exception $e){
             return new self("Erreur lors de la récupération du niveau : " . $e->getMessage());
         }
+        public static function fromReadAllNiveauPDOException(\Exception $e){
+            return new self("Erreur PDO lors de la récupération des niveaux : " . $e->getMessage());
+        }
+        public static function fromReadAllNiveauException(\Exception $e){
+            return new self("Erreur lors de la récupération des niveaux : " . $e->getMessage());
+        }
+        public static function fromUpdateNiveauPDOException(\Exception $e){
+            return new self("Erreur PDO lors de la mise à jour du niveau : " . $e->getMessage());
+        }
+        public static function fromUpdateNiveauException(\Exception $e){
+            return new self("Erreur lors de la mise à jour du niveau : " . $e->getMessage());
+        }
+        public static function fromDeleteNiveauPDOException(\Exception $e){
+            return new self("Erreur lors de la suppression du niveau : " . $e->getMessage());
+        }
+        public static function fromDeleteNiveauException(\Exception $e){
+            return new self("Erreur lors de la suppression du niveau : " . $e->getMessage());
+        }
 
 
 

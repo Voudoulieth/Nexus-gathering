@@ -67,6 +67,9 @@ class Requetes {
 
     public const INSERT_NIVEAU = "INSERT INTO NiveauUtilisateur (nom_niveau, description) VALUES (nom_niveau, description)" ;
     public const READ_NIVEAU = "SELECT * FROM NiveauUtilisateur WHERE id_niveau = id_niveau";
+    public const READ_ALL_NIVEAU = "SELECT * FROM NiveauUtilisateur" ;
+    public const UPDATE_NIVEAU = "UPDATE NiveauUtilisateur SET nom_niveau = nom_niveau, description = description WHERE id_niveau = id_niveau";
+    public const DELETE_NIVEAU = "DELETE FROM NiveauUtilisateur WHERE id_niveau = id_niveau" ;
 
 }
 

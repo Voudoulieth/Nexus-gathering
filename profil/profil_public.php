@@ -1,49 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Rejoignez une communauté de joueurs, trouvez vos coéquipiers et maintenez a jours vos collections!"
-    />
-    <!-- <link rel="stylesheet" href="../css/reset.css" /> -->
-    <!-- <link rel="stylesheet" href="../css/style_global.css" /> -->
-    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Changa:wght@300;400;500;600&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="" />
+    <?php include '../src/view/head.inc.php' ?>
     <title>Votre profil</title>
-    <link rel="shortcut icon" href="assets/logo/favicon.svg" />
-    <script defer src=""></script>
   </head>
   <body>
-    <header>
-      <!-- <a href="index.html"
-        ><img src="assets/logo/logo_nexus.svg" title="Accueil" alt="Logo Nexus"
-      /></a> -->
-      <nav>
-        <ul>
-          <li><a href="acceuil_biblio.html">Bibliothèque</a></li>
-          <li>
-            <a href="Recherche de joueur/recherche_de_joueurs.html">Joueurs</a>
-          </li>
-          <li><a href="quiz/quiz-accueil.html">Quiz</a></li>
-          <li><a href="Recherche de joueur/Messagerie.html">Messagerie</a></li>
-        </ul>
-        <div class="search">
-          <input placeholder="Rechercher" />
-          <button id="search">
-            <i class="material-icons"></i>
-          </button>
-        </div>
-        <!--- ecriture a virer et mettre icone  --->
-        <button><a href="connexion.html">connexion </a></button>
-      </nav>
-    </header>
+    <?php include '../src/view/header.inc.php' ?>
     <main>
         <div>
             <img src="" alt="">
@@ -195,20 +157,6 @@
         </div>
 
     </main>
-    <footer>
-      <a href="index.html"
-        ><img
-          src="assets/logo_long_nexus_white.svg"
-          title="Acceuil"
-          alt="Logo Nexus Blanc"
-      /></a>
-      <ul>
-        <li><a href="cgu.html">CGU</a></li>
-        <li><a href="mention_legale.html">Mention légale</a></li>
-        <li><a href="confidentialite.html">Politique de confidentialité</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <p>COPYRIGHT @ 2024 TOUS DROITS RESERVE</p>
-    </footer>
+    <?php include '../src/view/footer.inc.php' ?>
   </body>
 </html>
