@@ -244,7 +244,55 @@ class DaoException extends \Exception {
             return new self("Erreur lors de la suppression d'un editeur : " . $e->getMessage());
         }
 
-        public static function fromCreateRoleUtilisateur(\Exception $e){
+
+        //Exception Role Utilisateur
+        public static function fromCreateRoleUtilisateurPDOException(\Exception $e){
             return new self("Erreur PDO lors de la création d'un rôle : " . $e->getMessage());
         }
+        public static function fromCreateRoleUtilisateurException(\Exception $e){
+            return new self("Erreur lors de la création d'un rôle : " . $e->getMessage());
+        }
+        public static function fromFetchRoleUtilisateurPDOException(\Exception $e){
+            return new self("Erreur PDO lors de la récupération du rôle : " . $e->getMessage());
+        }
+        public static function fromFetchRoleUtilisateurException(\Exception $e){
+            return new self("Erreur lors de la récupération du rôle : " . $e->getMessage());
+        }
+        public static function fromFetchAllRoleUtilisateurPDOException(\Exception $e){
+            return new self("Erreur PDO lors de la récupération des rôles : " . $e->getMessage());
+        }
+        public static function fromFetchAllRoleUtilisateurException(\Exception $e){
+            return new self("Erreur lors de la récupération des rôles : " . $e->getMessage());
+        }
+        public static function fromUpdateRolePDOException(\Exception $e){
+            return new self("Erreur PDO lors de la mise à jour du rôle : " . $e->getMessage());
+        }
+        public static function fromUpdateRoleException(\Exception $e){
+            return new self("Erreur lors de la mise à jour du rôle : " . $e->getMessage());
+        }
+        public static function fromDeleteRolePDOException(\Exception $e){
+            return new self("Erreur PDO lors de la suppression du rôle : " . $e->getMessage());
+        }
+        public static function fromDeleteRoleException(\Exception $e){
+            return new self("Erreur lors de la suppression du rôle : " . $e->getMessage());
+        }
+
+        // Exception Niveau Utilisateur
+
+        public static function fromCreateNiveauPDOException(\Exception $e){
+            return new self("Erreur PDO lors de la création du niveau : " . $e->getMessage());
+        }
+        public static function fromCreateNiveauException(\Exception $e){
+            return new self("Erreur lors de la création du niveau : " . $e->getMessage());
+        }
+        public static function fromReadNiveauPDOException(\Exception $e){
+            return new self("Erreur PDO lors de la récupération du niveau : " . $e->getMessage());
+        }
+        public static function fromReadNiveauException(\Exception $e){
+            return new self("Erreur lors de la récupération du niveau : " . $e->getMessage());
+        }
+
+
+
+
 }

@@ -205,7 +205,7 @@ class DaoNexus {
             $stmt->bindValue(4, $creationUser->getIdUser(), PDO::PARAM_INT);
             $stmt->bindValue(5, $jeu->getId_jeu(), PDO::PARAM_INT);
             $stmt->execute();
-                      
+            
             return $stmt->rowCount() > 0;
         } catch (\PDOException $e) {
             throw DaoException::fromCreateAnnoncePDOException($e);
@@ -580,17 +580,130 @@ class DaoNexus {
     //     }
     // }
 
-    public function createRoleUtilisateur(RoleUtilisateur $role): void
+    public function createRole(RoleUtilisateur $role)
     {
         $query = Requetes::INSERT_ROLE;
         try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue('nom_role', $role->getNomRole(), PDO::PARAM_STR);
+            $stmt->execute();
+
+            return true;
+        } catch (\PDOException $e){
+            throw DaoException::fromCreateRoleUtilisateurPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromCreateRoleUtilisateurException($e);
+        }
+    }
+
+    // public function getConversationMessages(Messages $message) {
+    //     $query = Requetes::SELECT_CONV;
+    //     try{
+    //         $stmt = $this->conn->prepare($query);
+    //         $stmt->bindValue(1, $message->getIdExped(), \PDO::PARAM_INT);
+    //         $stmt->bindValue(2, $message->getIdDesti(), \PDO::PARAM_INT);
+    //         $stmt->bindValue(3, $message->getIdDesti(), \PDO::PARAM_INT);
+    //         $stmt->bindValue(4, $message->getIdExped(), \PDO::PARAM_INT);
+    //         $stmt->execute();
+
+    //         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    //     } catch (\PDOException $e) {
+    //         throw DaoException::fromFetchConversationsPDOException($e);
+    //     } catch (\Exception $e) {
+    //         throw DaoException::fromFetchConversationsException($e);
+    //     }
+    // }
+
+    public function getRoleByID(int $roleId): ?RoleUtilisateur
+    {
+        $query = Requetes::READ_ROLE;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue('id_role', $roleId);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e){
+            throw DaoException::fromFetchRoleUtilisateurPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromFetchRoleUtilisateurException($e);
+        }
+    }
+
+    public function getAllRole(int $roleId) {
+        $query = Requetes::READ_ALL_ROLE; 
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            throw DaoException::fromFetchAllRoleUtilisateurPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromFetchAllRoleUtilisateurException($e);
+        }
+    }
+
+    public function updateRole(RoleUtilisateur $role)
+    {
+        $query = Requetes::UPDATE_ROLE;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue('nom_role', $role->getNomRole());
+            $stmt->bindValue('id_role', $role->getIdRole());
+            $stmt->execute();
+            return true;
+        } catch (\PDOException $e) {
+            throw DaoException::fromUpdateRolePDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromUpdateRoleException($e);
+        }
+    }
+
+    public function deleteRole(RoleUtilisateur $roleId)
+    {
+        $query = Requetes::DELETE_ROLE;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue('id_role', $roleId);
+            $stmt->execute();
+            return true;
+        } catch (\PDOException $e) {
+            throw DaoException::fromDeleteRolePDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromDeleteRoleException($e);
+        }
+    }
+
+    public function createNiveau(NiveauUtilisateur $niveau)
+    {
+        $query = Requetes::INSERT_NIVEAU;
+        try{
         $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':nom_role', $role->getNomRole());
+        $stmt->bindValue('nom_niveau', $niveau->getNomNiveau());
+        $stmt->bindValue('description', $niveau->getDescription());
         $stmt->execute();
 
         return true;
         } catch (\PDOException $e){
-            throw DaoException::fromCreateRoleUtilisateur($e);
-        } catch (\Exception )
+            throw DaoException::fromCreateNiveauPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromCreateNiveauException($e);
+        }
     }
+
+    public function read(int $niveauId): ?NiveauUtilisateur
+    {
+        $query = Requetes::READ_NIVEAU;
+        try {
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':id_niveau', $niveauId);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            throw DaoException::fromReadNiveauPDOException($e);
+        }
+
+    }
+
+
 }
