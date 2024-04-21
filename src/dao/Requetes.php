@@ -55,6 +55,18 @@ class Requetes {
     public const UPDATE_EDITEUR = "UPDATE editeur SET nom_ed = :nom_ed WHERE id_ed = :id_ed";
     public const DELETE_EDITEUR = "DELETE FROM editeur WHERE id_ed = :id_ed";
 
-    public const INSERT_ROLE = "INSERT INTO RoleUtilisateur (nom_role) VALUES (:nom_role)" ;
+
+        // Requête Role utilisateur //
+    public const INSERT_ROLE = "INSERT INTO RoleUtilisateur (nom_role) VALUES (nom_role)" ;
+    public const READ_ROLE = "SELECT * FROM RoleUtilisateur WHERE id_role = id_role";
+    public const READ_ALL_ROLE = "SELECT * FROM RoleUtilisateur";
+    public const UPDATE_ROLE = "UPDATE RoleUtilisateur SET nom_role = nom_role WHERE id_role = id_role";
+    public const DELETE_ROLE = "SELECT * FROM RoleUtilisateur WHERE id_role = id_role";
+
+        // Requête Niveau utilisateur //
+
+    public const INSERT_NIVEAU = "INSERT INTO NiveauUtilisateur (nom_niveau, description) VALUES (nom_niveau, description)" ;
+    public const READ_NIVEAU = "SELECT * FROM NiveauUtilisateur WHERE id_niveau = id_niveau";
+
 }
 
