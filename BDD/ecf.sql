@@ -234,6 +234,7 @@ GRANT all PRIVILEGES on NexusGathering.* TO 'adminNG'@'localhost';
     create table jouerQuiz(
         id_quiz integer,
         id_user integer,
+        date_jouerQuiz DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
         score_quiz tinyint,
         primary key (id_quiz, id_user),
         foreign key (id_quiz) references quiz (id_quiz),
