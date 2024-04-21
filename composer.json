@@ -1,17 +1,15 @@
 {
-    "name": "lucas/nexus_gathering",
+    "name": "fauri/nexus_gathering",
     "autoload": {
         "psr-4": {
-            "Nexus_gathering\\": "src/"
+            "Fauri\\NexusGathering\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "Lucas Legendre",
-            "email": "lucas.lucasleg@gmail.com"
+            "name": "oceane faurie",
+            "email": "faurie.oce@gmail.com"
         }
     ],
-    "require-dev": {
-        "phpunit/phpunit": "11"
-    }
+    "require": {}
 }

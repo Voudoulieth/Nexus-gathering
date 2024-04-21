@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
-namespace Nexus_gathering\src\metier;
+namespace Nexus_gathering\metier;
 
-class Messages {
+class Quiz {
     private int         $id_quiz;
     private int         $id_cat_quiz;
     private int         $id_user;
