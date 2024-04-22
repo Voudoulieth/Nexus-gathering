@@ -15,7 +15,7 @@ class Quiz {
         $this->id_cat_quiz   = $id_cat_quiz;
         $this->id_user       = $id_user;
         $this->titre_quiz    = $titre_quiz;
-        $this->date_quiz     = $date_crea_quiz;
+        $this->date_crea_quiz     = $date_crea_quiz;
     }
 
     
@@ -100,6 +100,6 @@ class Quiz {
         return $this;
     }
     public function __toString(){
-        return '[Quiz : ' . $this->id_quiz . ', ' . $this->id_cat_quiz . ', ' . $this->id_user . ', ' . $this->titre_quiz . ', ' . $this->date_quiz . ']';
+        return '[Quiz : ' . $this->id_quiz . ', ' . $this->id_cat_quiz . ', ' . $this->id_user . ', ' . $this->titre_quiz . ', ' . $this->date_crea_quiz . ']';
     }
 }
