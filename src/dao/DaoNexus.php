@@ -30,7 +30,6 @@ use Nexus_gathering\metier\Reponse;
 use Nexus_gathering\metier\Categorie;
 use Nexus_gathering\metier\JouerQuiz;   
 
-//TODO : gestion des exceptions
 class DaoNexus {
     
     private \PDO $conn;
@@ -567,24 +566,6 @@ class DaoNexus {
         }
     }
 
-
-    // public function createMessage(Messages $message) {
-    //     $query = Requetes::INSERT_MESSAGE;
-    //     try {
-    //         $stmt = $this->conn->prepare($query);
-    //         $stmt->bindValue(1, $message->getContenuMess(), PDO::PARAM_STR);
-    //         $stmt->bindValue(2, $message->getIdExped(), PDO::PARAM_INT);
-    //         $stmt->bindValue(3, $message->getIdDesti(), PDO::PARAM_INT);
-    //         $stmt->execute();
-    
-    //         return true;
-    //     } catch (\PDOException $e) {
-    //         throw DaoException::fromCreateMessagePDOException($e);
-    //     } catch (\Exception $e) {
-    //         throw DaoException::fromCreateMessageException($e);
-    //     }
-    // }
-
     public function createRole(RoleUtilisateur $role)
     {
         $query = Requetes::INSERT_ROLE;
@@ -601,30 +582,12 @@ class DaoNexus {
         }
     }
 
-    // public function getConversationMessages(Messages $message) {
-    //     $query = Requetes::SELECT_CONV;
-    //     try{
-    //         $stmt = $this->conn->prepare($query);
-    //         $stmt->bindValue(1, $message->getIdExped(), \PDO::PARAM_INT);
-    //         $stmt->bindValue(2, $message->getIdDesti(), \PDO::PARAM_INT);
-    //         $stmt->bindValue(3, $message->getIdDesti(), \PDO::PARAM_INT);
-    //         $stmt->bindValue(4, $message->getIdExped(), \PDO::PARAM_INT);
-    //         $stmt->execute();
-
-    //         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    //     } catch (\PDOException $e) {
-    //         throw DaoException::fromFetchConversationsPDOException($e);
-    //     } catch (\Exception $e) {
-    //         throw DaoException::fromFetchConversationsException($e);
-    //     }
-    // }
-
     public function getRoleByID(int $roleId): ?RoleUtilisateur
     {
         $query = Requetes::READ_ROLE;
         try {
             $stmt = $this->conn->prepare($query);
-            $stmt->bindValue('id_role', $roleId);
+            $stmt->bindValue('id_role', $roleId, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (\PDOException $e){
@@ -653,8 +616,8 @@ class DaoNexus {
         $query = Requetes::UPDATE_ROLE;
         try {
             $stmt = $this->conn->prepare($query);
-            $stmt->bindValue('nom_role', $role->getNomRole());
-            $stmt->bindValue('id_role', $role->getIdRole());
+            $stmt->bindValue('nom_role', $role->getNomRole(), PDO::PARAM_STR);
+            $stmt->bindValue('id_role', $role->getIdRole(), PDO::PARAM_INT);
             $stmt->execute();
             return true;
         } catch (\PDOException $e) {
@@ -669,7 +632,7 @@ class DaoNexus {
         $query = Requetes::DELETE_ROLE;
         try {
             $stmt = $this->conn->prepare($query);
-            $stmt->bindValue('id_role', $roleId);
+            $stmt->bindValue('id_role', $roleId, PDO::PARAM_INT);
             $stmt->execute();
             return true;
         } catch (\PDOException $e) {
@@ -684,8 +647,8 @@ class DaoNexus {
         $query = Requetes::INSERT_NIVEAU;
         try{
         $stmt = $this->conn->prepare($query);
-        $stmt->bindValue('nom_niveau', $niveau->getNomNiveau());
-        $stmt->bindValue('description', $niveau->getDescription());
+        $stmt->bindValue('nom_niveau', $niveau->getNomNiveau(), PDO::PARAM_STR);
+        $stmt->bindValue('description', $niveau->getDescription(), PDO::PARAM_STR);
         $stmt->execute();
 
         return true;
@@ -701,7 +664,7 @@ class DaoNexus {
         $query = Requetes::READ_NIVEAU;
         try {
         $stmt = $this->conn->prepare($query);
-        $stmt->bindValue('id_niveau', $niveauId);
+        $stmt->bindValue('id_niveau', $niveauId, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
