@@ -30,7 +30,6 @@ use Nexus_gathering\metier\Reponse;
 use Nexus_gathering\metier\Categorie;
 use Nexus_gathering\metier\JouerQuiz;   
 
-//TODO : gestion des exceptions
 class DaoNexus {
     
     private \PDO $conn;
