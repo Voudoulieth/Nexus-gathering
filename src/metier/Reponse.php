@@ -75,6 +75,6 @@ class Reponse {
 
     
     public function __toString(){
-        return '[réponse à la question : ' . $this->id_reponse . ', ' . $this->id_question . ', ' . $this->reponse_quiz ', ' .  $this->reponse_vraie_quiz . ']';
+        return '[réponse à la question : ' . $this->id_reponse . ', ' . $this->id_question . ', ' . $this->reponse_quiz . ', ' .  $this->reponse_vraie_quiz . ']';
     }
 }
