@@ -58,7 +58,7 @@ echo $deleteStatus ? "Le message 6 a été supprimé.\n" : "Échec de la suppres
 
 
 // Définir les données de test pour un jeu
-$id_jeux = 1;
+$id_jeu = 1;
 $nom_jeu = "Nom du jeu d'essai";
 $resum_jeu = "Résumé du jeu d'essai";
 $img_jeu = "lien_image_jeu.jpg";
@@ -68,7 +68,7 @@ $id_user = 3; // ID de l'utilisateur
 $id_stu = 4; // ID du studio
 
 // Création de l'objet Jeu
-$jeu = new Jeu($id_jeux, $nom_jeu, $resum_jeu, $img_jeu, $multi, $id_ed, $id_user, $id_stu);
+$jeu = new Jeu($id_jeu, $nom_jeu, $resum_jeu, $img_jeu, $multi, $id_ed, $id_user, $id_stu);
 
 // Test de la création du jeu
 try {
@@ -80,7 +80,7 @@ try {
 
 // Test de la récupération du jeu par ID
 try {
-    $id_jeux = 5 ;
+    $id_jeu = 5 ;
     $jeu_recupere = $dao->getById($id_jeu);
     if ($jeu_recupere) {
         echo "Le jeu récupéré : " . $jeu_recupere->getNom_jeu();
