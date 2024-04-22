@@ -6,6 +6,12 @@ use Nexus_gathering\dao\DaoNexus;
 use Nexus_gathering\metier\Messages;
 use Nexus_gathering\metier\CreationUser;
 use Nexus_gathering\metier\Jeu;
+use Nexus_gathering\metier\Quiz;
+use Nexus_gathering\metier\Question;
+use Nexus_gathering\metier\Reponse;
+use Nexus_gathering\metier\JouerQuiz;
+use Nexus_gathering\metier\Categorie;
+
 
 $dao = new DaoNexus();
 
@@ -126,3 +132,50 @@ echo $deleteStatus ? "Le message 6 a été supprimé.\n" : "Échec de la suppres
 // } catch (DaoException $e) {
 //     echo "Une erreur s'est produite lors de la suppression du jeu : " . $e->getMessage();
 // }
+
+
+/////////// Quiz
+
+echo '<br><br><br>';
+
+$id_quiz = 1;
+$id_cat_quiz = 2;
+$id_user = 3;
+$titre_quiz = "Titre de quiz";
+$photo_quiz = "path de la photo"; 
+$dateCreaQuiz = new DateTime(); 
+
+$quiz1 = new Quiz($id_quiz, $id_cat_quiz, $id_user, $titre_quiz, $photo_quiz, $dateCreaQuiz);
+
+$user1 = new CreationUser(3, 'toto', 'titi', 'photo.jpeg', 'toto@gmail.com', 20);
+
+// Appeler la fonction createQuiz
+$resultQuiz1 = $dao->createQuiz($quiz1, $user1);
+
+// Afficher le résultat
+if ($resultQuiz1) {
+    echo "Créer quiz : succès";
+} else {
+    echo "Créer quiz : echec";
+}
+
+// Test SELECT_QUIZ
+echo '<br><br><br>';
+$choisirQuiz = $dao->selectQuizById($quiz1);
+echo "id du quiz : $id_quiz et titre du quiz : $titre_quiz:\n";
+echo '<br>';
+print_r($choisirQuiz);
+echo '<br>';
+echo $choisirQuiz ? "Selectionner un quiz : success" : "Select quiz : echec";
+
+// Test UPDATE_QUIZ
+echo '<br><br><br>';
+$updateQuiz = $dao->updateQuiz($quiz1, $user1);
+print_r($updateQuiz);
+echo '<br>';
+echo $updateQuiz ? "Update un quiz : success" : "update quiz : echec";
+
+// Test DELETE_QUIZ
+echo '<br><br><br>';
+$deleteQuiz = $dao->deleteQuiz($quiz1);
+echo $deleteQuiz ? "delete quiz : success" : "supprimer quiz : echec";

@@ -10,11 +10,12 @@ class Quiz {
     private string      $photo_quiz;
     private \DateTime   $date_crea_quiz;
 
-    public function __construct(int $id_quiz, string $id_cat_quiz, int $id_user, int $titre_quiz, \DateTime $date_crea_quiz) {
+    public function __construct(int $id_quiz, int $id_cat_quiz, int $id_user, string $titre_quiz, string $photo_quiz, \DateTime $date_crea_quiz) {
         $this->id_quiz       = $id_quiz;
         $this->id_cat_quiz   = $id_cat_quiz;
         $this->id_user       = $id_user;
         $this->titre_quiz    = $titre_quiz;
+        $this->photo_quiz    = $photo_quiz;
         $this->date_crea_quiz     = $date_crea_quiz;
     }
 
@@ -100,6 +101,6 @@ class Quiz {
         return $this;
     }
     public function __toString(){
-        return '[Quiz : ' . $this->id_quiz . ', ' . $this->id_cat_quiz . ', ' . $this->id_user . ', ' . $this->titre_quiz . ', ' . $this->date_crea_quiz . ']';
+        return '[Quiz : ' . $this->id_quiz . ', ' . $this->id_cat_quiz . ', ' . $this->id_user . ', ' . $this->titre_quiz . ', ' . $this->photo_quiz . ', ' . $this->date_crea_quiz . ']';
     }
 }
