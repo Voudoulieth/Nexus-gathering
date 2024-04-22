@@ -71,6 +71,15 @@ class Requetes {
     public const UPDATE_NIVEAU = "UPDATE NiveauUtilisateur SET nom_niveau = nom_niveau, description = description WHERE id_niveau = id_niveau";
     public const DELETE_NIVEAU = "DELETE FROM NiveauUtilisateur WHERE id_niveau = id_niveau" ;
 
+        // Requête Utilisateur //
+
+    public const INSERT_USER ="INSERT INTO Utilisateur (nom_user, mot_de_passe, avatar, mail, age, id_role) VALUES (nom_user, mot_de_passe, avatar, mail, age, id_role)" ;
+    public const READ_USER = "SELECT * FROM Utilisateur WHERE id_user = id_user";
+    public const READ_ALL_USER = "SELECT * FROM Utilisateur";
+    public const UPDATE_USER = "UPDATE Utilisateur SET nom_user = nom_user, mot_de_passe = mot_de_passe, avatar = avatar, mail = mail, age = age, id_role = id_role WHERE id_user = id_user";
+    public const DELETE_USER = "DELETE FROM Utilisateur WHERE id_user = id_user";
+
+
         // Requêtes Quiz //
 
     // Insertion d'un nouveau quiz

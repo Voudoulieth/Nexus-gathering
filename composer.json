@@ -1,5 +1,5 @@
 {
-    "name": "fauri/nexus_gathering",
+    "name": "lucian/nexus_gathering",
     "autoload": {
         "psr-4": {
             "Nexus_gathering\\": "src/"
@@ -7,8 +7,8 @@
     },
     "authors": [
         {
-            "name": "oceane faurie",
-            "email": "faurie.oce@gmail.com"
+            "name": "Lucian LAFFONT",
+            "email": "Lucianlaffont31@gmail.com"
         }
     ],
     "require-dev": {
