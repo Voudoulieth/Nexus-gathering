@@ -310,6 +310,37 @@ class DaoException extends \Exception {
             return new self("Erreur lors de la suppression du niveau : " . $e->getMessage());
         }
 
+        // Utilisateur //
+        public static function fromCreateUtilisateurPDOException($e){
+            return new self("Erreur PDO lors de la création de l'utilisateur : " . $e->getMessage());
+        }
+        public static function fromCreateUtilisateurException($e){
+            return new self("Erreur lors de la création de l'utilisateur : " . $e->getMessage());
+        }
+        public static function fromReadUtilisateurPDOException($e){
+            return new self("Erreur PDO lors de la récupération de l'utilisateur : " . $e->getMessage());
+        }
+        public static function fromReadUtilisateurException($e){
+            return new self("Erreur lors de la récupération de l'utilisateur : " . $e->getMessage());
+        }
+        public static function fromReadAllUtilisateurPDOException($e){
+            return new self("Erreur PDO lors de la récupération des utilisateurs : " . $e->getMessage());
+        }
+        public static function fromReadAllUtilisateurException($e){
+            return new self("Erreur lors de la récupération des utilisateurs : " . $e->getMessage());
+        }
+        public static function fromUpdateUtilisateurPDOException($e){
+            return new self("Erreur PDO lors de la mise à jour de l'utilisateur : " . $e->getMessage());
+        }
+        public static function fromUpdateUtilisateurException($e){
+            return new self("Erreur lors de la mise à jour de l'utilisateur : " . $e->getMessage());
+        }
+        public static function fromDeleteUtilisateurPDOException($e){
+            return new self("Erreur PDO lors de la suppression de l'utilisateur : " . $e->getMessage());
+        }
+        public static function fromDeleteUtilisateurException($e){
+            return new self("Erreur lors de la suppression de l'utilisateur : " . $e->getMessage());
+        }
         // Quiz //
 
     // Exceptions pour la création de quiz

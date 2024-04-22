@@ -3,7 +3,9 @@
 require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 
 use Nexus_gathering\dao\DaoNexus;
+use Nexus_gathering\dao\DaoException;
 use Nexus_gathering\metier\Messages;
+use Nexus_gathering\metier\Jeu;
 
 $dao = new DaoNexus();
 
@@ -51,4 +53,3 @@ echo $updateStatus ? "Le message $messageId a été mis à jour.\n" : "Échec de
 // Test deleteMessage
 $deleteStatus = $dao->deleteMessage($messageId);
 echo $deleteStatus ? "Le message 6 a été supprimé.\n" : "Échec de la suppression du message $messageId.\n";
-?>

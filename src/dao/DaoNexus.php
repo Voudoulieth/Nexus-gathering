@@ -674,6 +674,137 @@ class DaoNexus {
         }
     }
 
+    public function getAllNiveau(int $niveauId): ?NiveauUtilisateur
+    {
+        $query = Requetes::READ_ALL_NIVEAU;
+        try {
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue('id_niveau', $niveauId);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            throw DaoException::fromReadAllNiveauPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromReadAllNiveauException($e);
+        }
+    }
+
+    public function updateNiveau(NiveauUtilisateur $niveau)
+    {
+        $query = Requetes::UPDATE_NIVEAU;
+        try {
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':nom_niveau', $niveau->getNomNiveau());
+        $stmt->bindValue(':description', $niveau->getDescription());
+        $stmt->bindValue(':id_niveau', $niveau->getIdNiveau());
+        $stmt->execute();
+        } catch (\PDOException $e){
+            throw DaoException::fromUpdateNiveauPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromUpdateNiveauException($e);
+        }
+    }
+
+    public function deleteNiveau(int $niveauId)
+    {
+        $query = Requetes::DELETE_NIVEAU;
+        try {
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue('id_niveau', $niveauId);
+        $stmt->execute();
+        return true;
+        } catch (\PDOException $e){
+            throw DaoException::fromDeleteNiveauPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromDeleteNiveauException($e);
+        }
+    }
+
+    public function createUser(CreationUser $createUser, Utilisateur $utilisateur) {
+        $query = Requetes::INSERT_USER;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue('nom_user', $utilisateur->getNomUser(), PDO::PARAM_STR);
+            $stmt->bindValue('mot_de_passe', $createUser->getPassword(), PDO::PARAM_STR);
+            $stmt->bindValue('avatar', $utilisateur->getAvatar(), PDO::PARAM_STR);
+            $stmt->bindValue('mail', $utilisateur->getMail(), PDO::PARAM_STR);
+            $stmt->bindValue('age', $utilisateur->getAge(), PDO::PARAM_INT);
+            $stmt->bindValue('id_role', $utilisateur->getRole()->getIdRole(), PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        } catch (\PDOException $e){
+            throw DaoException::fromCreateUtilisateurPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromCreateUtilisateurException($e);
+        }
+    }
+
+    public function readUser(int $userId): ?Utilisateur {
+        $query = Requetes::READ_USER;
+        try {
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue('id_user', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e){
+            throw DaoException::fromReadUtilisateurPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromReadUtilisateurException($e);
+        }
+        
+    }
+
+    public function readAllUser(int $userId): ?Utilisateur {
+        $query = Requetes::READ_ALL_USER;
+        try {
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue('id_user', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e){
+            throw DaoException::fromReadAllUtilisateurPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromReadAllUtilisateurException($e);
+        }
+        
+    }
+
+    public function updateUser(CreationUser $creationUser, Utilisateur $utilisateur) {
+        $query = Requetes::UPDATE_USER;
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue('nom_user', $utilisateur->getNomUser(), PDO::PARAM_STR);
+            $stmt->bindValue('mot_de_passe', $creationUser->getPassword(),PDO::PARAM_STR);
+            $stmt->bindValue('avatar', $utilisateur->getAvatar(),PDO::PARAM_STR);
+            $stmt->bindValue('mail', $utilisateur->getMail(),PDO::PARAM_STR);
+            $stmt->bindValue('age', $utilisateur->getAge(),PDO::PARAM_INT);
+            $stmt->bindValue('id_role', $utilisateur->getRole()->getIdRole(),PDO::PARAM_INT);
+            $stmt->bindValue('id_user', $utilisateur->getIdUser(),PDO::PARAM_INT);
+            $stmt->execute();
+            return true;        
+        }  catch (\PDOException $e){
+            throw DaoException::fromUpdateUtilisateurPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromUpdateUtilisateurException($e);
+        }
+
+    }
+
+    public function deleteUser(int $userId) {
+        $query = Requetes::DELETE_USER;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':id_user', $userId);
+            $stmt->execute();
+            return true;
+        }  catch (\PDOException $e){
+            throw DaoException::fromDeleteUtilisateurPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromDeleteUtilisateurException($e);
+        }
+    }
+    
+    
     // Quiz //
 
     // Insérer un nouveau quiz
@@ -926,51 +1057,7 @@ class DaoNexus {
             throw DaoException::fromSelectJouerQuiz($e);
         }
     }
-    public function getAllNiveau(int $niveauId): ?NiveauUtilisateur
-    {
-        $query = Requetes::READ_ALL_NIVEAU;
-        try {
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue('id_niveau', $niveauId);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-        } catch (\PDOException $e) {
-            throw DaoException::fromReadAllNiveauPDOException($e);
-        } catch (\Exception $e){
-            throw DaoException::fromReadAllNiveauException($e);
-        }
-    }
-
-    public function updateNiveau(NiveauUtilisateur $niveau)
-    {
-        $query = Requetes::UPDATE_NIVEAU;
-        try {
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':nom_niveau', $niveau->getNomNiveau());
-        $stmt->bindValue(':description', $niveau->getDescription());
-        $stmt->bindValue(':id_niveau', $niveau->getIdNiveau());
-        $stmt->execute();
-        } catch (\PDOException $e){
-            throw DaoException::fromUpdateNiveauPDOException($e);
-        } catch (\Exception $e){
-            throw DaoException::fromUpdateNiveauException($e);
-        }
-    }
-
-    public function deleteNiveau(int $niveauId)
-    {
-        $query = Requetes::DELETE_NIVEAU;
-        try {
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue('id_niveau', $niveauId);
-        $stmt->execute();
-        return true;
-        } catch (\PDOException $e){
-            throw DaoException::fromDeleteNiveauPDOException($e);
-        } catch (\Exception $e){
-            throw DaoException::fromDeleteNiveauException($e);
-        }
-    }
+    
 
     
 
