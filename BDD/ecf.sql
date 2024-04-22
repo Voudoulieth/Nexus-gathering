@@ -179,8 +179,8 @@ GRANT all PRIVILEGES on NexusGathering.* TO 'adminNG'@'localhost';
         id_exped integer,
         id_desti integer,
         FOREIGN KEY (id_exped) REFERENCES Utilisateur(id_user) ON DELETE CASCADE ON UPDATE CASCADE,
-        FOREIGN KEY (id_desti) REFERENCES Utilisateur(id_user) ON DELETE CASCADE ON UPDATE CASCADE,
-        CHECK (id_exped != id_desti)
+        FOREIGN KEY (id_desti) REFERENCES Utilisateur(id_user) ON DELETE CASCADE ON UPDATE CASCADE
+        -- CHECK (id_exped != id_desti)
     );
 
     create table jeu    (
