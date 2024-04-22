@@ -220,7 +220,7 @@ class DaoException extends \Exception {
             return new self("Erreur lors de la récupération d'un editeur : " . $e->getMessage());
         }
         
-        // Erreur lors de la récupération des studios
+        // Erreur lors de la récupération des editeurs
         public static function fromFetchAllEditeursPDOException(\Exception $e) {
             return new self("Erreur PDO lors de la récupération des editeurs : " . $e->getMessage());
         }
