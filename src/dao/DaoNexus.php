@@ -713,12 +713,12 @@ class DaoNexus {
     // Quiz //
 
     // Insérer un nouveau quiz
-    public function createQuiz(Quiz $quiz) {
+    public function createQuiz(Quiz $quiz, CreationUser $creationUser) {
         $query = Requetes::INSERT_QUIZ;
         try {
             $stmt = $this->conn->prepare($query);
             $stmt->bindValue(1, $quiz->getId_cat_quiz(), PDO::PARAM_INT);
-            $stmt->bindValue(2, $quiz->getIdUser(), PDO::PARAM_INT);
+            $stmt->bindValue(2, $creationUser->getIdUser(), PDO::PARAM_INT);
             $stmt->bindValue(3, $quiz->getTitre_quiz(), PDO::PARAM_STR);
             $stmt->bindValue(4, $quiz->getPhoto_quiz(), PDO::PARAM_STR);
             $stmt->execute();
@@ -754,12 +754,12 @@ class DaoNexus {
     }
 
     // Mettre à jour un quiz
-    public function updateQuiz(Quiz $quiz) {
+    public function updateQuiz(Quiz $quiz, CreationUser $creationUser) {
         $query = Requetes::UPDATE_QUIZ;
         try {
             $stmt = $this->conn->prepare($query);
             $stmt->bindValue(1, $quiz->getId_cat_quiz(), PDO::PARAM_INT);
-            $stmt->bindValue(2, $quiz->getIdUser(), PDO::PARAM_INT);
+            $stmt->bindValue(2, $creationUser->getIdUser(), PDO::PARAM_INT);
             $stmt->bindValue(3, $quiz->getTitre_quiz(), PDO::PARAM_STR);
             $stmt->bindValue(4, $quiz->getId_quiz(), PDO::PARAM_INT);
             $stmt->execute();
@@ -936,12 +936,12 @@ class DaoNexus {
     // Impossible de le modifier également, en revanche, on peut en ajouter autant qu'on veut car un utilisateur peut rejouer le quiz à volonté
     // Donc ni update ni delete
     // Insérer un nouveau record de jeu :
-    public function insertJouerQuiz(JouerQuiz $jouerquiz) {
+    public function insertJouerQuiz(JouerQuiz $jouerquiz, CreationUser $creationUser) {
         $query = Requetes::INSERT_JOUERQUIZ;
         try {
             $stmt = $this->conn->prepare($query);
             $stmt->bindValue(1, $jouerquiz->getId_quiz(), PDO::PARAM_INT);
-            $stmt->bindValue(2, $jouerquiz->getIdUser(), PDO::PARAM_INT);
+            $stmt->bindValue(2, $creationUser->getIdUser(), PDO::PARAM_INT);
             $stmt->bindValue(3, $jouerquiz->getScore_quiz(), PDO::PARAM_INT);
             $stmt->execute();
             return true;
@@ -950,12 +950,12 @@ class DaoNexus {
         }
     }
     // Sélectionner un record spécifique par id_quiz et id_user
-    public function selectJouerQuiz(JouerQuiz $jouerquiz) {
+    public function selectJouerQuiz(JouerQuiz $jouerquiz, CreationUser $creationUser) {
         $query = Requetes::SELECT_JOUERQUIZ;
         try {
             $stmt = $this->conn->prepare($query);
             $stmt->bindValue(1, $jouerquiz->getId_quiz(), PDO::PARAM_INT);
-            $stmt->bindValue(2, $jouerquiz->getIdUser(), PDO::PARAM_INT);
+            $stmt->bindValue(2, $creationUser->getIdUser(), PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (\Exception $e) {
