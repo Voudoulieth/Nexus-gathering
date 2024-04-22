@@ -54,5 +54,64 @@ class Requetes {
     public const SELECT_ALL_EDITEUR = "SELECT * FROM editeur";
     public const UPDATE_EDITEUR = "UPDATE editeur SET nom_ed = :nom_ed WHERE id_ed = :id_ed";
     public const DELETE_EDITEUR = "DELETE FROM editeur WHERE id_ed = :id_ed";
+
+
+        // Requête Role utilisateur //
+    public const INSERT_ROLE = "INSERT INTO RoleUtilisateur (nom_role) VALUES (nom_role)" ;
+    public const READ_ROLE = "SELECT * FROM RoleUtilisateur WHERE id_role = id_role";
+    public const READ_ALL_ROLE = "SELECT * FROM RoleUtilisateur";
+    public const UPDATE_ROLE = "UPDATE RoleUtilisateur SET nom_role = nom_role WHERE id_role = id_role";
+    public const DELETE_ROLE = "SELECT * FROM RoleUtilisateur WHERE id_role = id_role";
+
+        // Requête Niveau utilisateur //
+
+    public const INSERT_NIVEAU = "INSERT INTO NiveauUtilisateur (nom_niveau, description) VALUES (nom_niveau, description)" ;
+    public const READ_NIVEAU = "SELECT * FROM NiveauUtilisateur WHERE id_niveau = id_niveau";
+    public const READ_ALL_NIVEAU = "SELECT * FROM NiveauUtilisateur" ;
+    public const UPDATE_NIVEAU = "UPDATE NiveauUtilisateur SET nom_niveau = nom_niveau, description = description WHERE id_niveau = id_niveau";
+    public const DELETE_NIVEAU = "DELETE FROM NiveauUtilisateur WHERE id_niveau = id_niveau" ;
+
+        // Requêtes Quiz //
+
+    // Insertion d'un nouveau quiz
+    public const INSERT_QUIZ = "INSERT INTO Quiz (id_cat_quiz, id_user, titre_quiz, photo_quiz, date_quiz) VALUES (?, ?, ?, ?, NOW())";
+    // Sélection d'un quiz spécifique par son identifiant
+    public const SELECT_QUIZ = "SELECT * FROM Quiz WHERE id_quiz = ?";
+    // Sélection d'un quiz spécifique par sa catégorie, 1=communautaire 2=officiel
+    public const SELECT_CAT_QUIZ = "SELECT * FROM Quiz WHERE id_cat_quiz = ?";
+    // Sélection de tous les quiz par ordre decroissant de publication
+    public const SELECT_ALL_QUIZ = "SELECT * FROM Quiz ORDER BY date_quiz DESC";
+    // Mise à jour d'un quiz
+    public const UPDATE_QUIZ = "UPDATE Quiz SET id_cat_quiz = ?, id_user = ?, titre_quiz = ? WHERE id_quiz = ?";
+    // Suppression d'un quiz
+    public const DELETE_QUIZ = "DELETE FROM Quiz WHERE id_quiz = ?";
+
+    // CRUD Questions
+    public const INSERT_QUESTION = "INSERT INTO Question (id_quiz, question_quiz) VALUES (?, ?)";
+    public const SELECT_QUESTION = "SELECT * FROM Question WHERE id_question = ?";
+    public const SELECT_ALL_QUESTIONS_FROM_QUIZ = "SELECT * FROM Question WHERE id_quiz = ? ORDER BY id_question ASC";
+    public const UPDATE_QUESTION = "UPDATE Question SET question_quiz = ? WHERE id_question = ?";
+    public const DELETE_QUESTION = "DELETE FROM Question WHERE id_question = ?";
+
+    // CRUD Reponses
+    public const INSERT_REPONSE = "INSERT INTO reponse (id_question, reponse_quiz, reponse_vraie_quiz) VALUES (?, ?, ?)";
+    public const SELECT_REPONSE = "SELECT * FROM reponse WHERE id_reponse = ?";
+    public const SELECT_ALL_REPONSES_FROM_QUESTION = "SELECT * FROM reponse WHERE id_question = ? ORDER BY id_reponse ASC";
+    public const UPDATE_REPONSE = "UPDATE reponse SET reponse_quiz = ?, reponse_vraie_quiz = ? WHERE id_reponse = ?";
+    public const DELETE_REPONSE = "DELETE FROM reponse WHERE id_reponse = ?";
+
+    //CRUD Categorie
+    // On ne peut que sélectionner les catégories, la modification est interdite, il n'en existe que 2 qui ne sont pas destinées à changer
+    public const SELECT_CATEGORIE = "SELECT * FROM categorie WHERE id_cat_quiz = ?";
+    public const SELECT_ALL_CATEGORIES = "SELECT * FROM categorie ORDER BY id_cat_quiz";
+
+    //CRUD JouerQuiz
+    //Insertion d'un nouveau record de jeu :
+    public const INSERT_JOUERQUIZ = "INSERT INTO jouerQuiz (id_quiz, id_user, score_quiz) VALUES (?, ?, ?)";
+    //Sélection d'un record spécifique par id_quiz et id_user :
+    public const SELECT_JOUERQUIZ = "SELECT * FROM jouerQuiz WHERE id_quiz = ? AND id_user = ?";
+    //Sélection de tous les jeux d'un utilisateur spécifique :
+    public const SELECT_ALL_JOUERQUIZ_BY_USER = "SELECT * FROM jouerQuiz WHERE id_user = ? ORDER BY date_jouerQuiz DESC";
+
 }
 

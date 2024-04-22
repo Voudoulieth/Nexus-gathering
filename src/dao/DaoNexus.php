@@ -8,8 +8,8 @@ require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 use PDO;
 use Nexus_gathering\dao\Database;
 use Nexus_gathering\dao\DaoException;
-use Nexus_gathering\metier\Jeu;
 use Nexus_gathering\dao\Requetes;
+use Nexus_gathering\metier\Jeu;
 use Nexus_gathering\metier\Messages;
 use Nexus_gathering\metier\Annonce;
 use Nexus_gathering\metier\RechercheRapide;
@@ -18,7 +18,17 @@ use Nexus_gathering\metier\Formats;
 use Nexus_gathering\metier\Genre;
 use Nexus_gathering\metier\Plateforme;
 use Nexus_gathering\metier\Studio;
-use Nexus_gathering\metier\CreationUser;    
+use Nexus_gathering\metier\CreationUser;
+use Nexus_gathering\metier\RoleUtilisateur;
+use Nexus_gathering\metier\NiveauUtilisateur;
+use Nexus_gathering\metier\Utilisateur;
+use Nexus_gathering\metier\Contributeur;
+use Nexus_gathering\metier\Admin; 
+use Nexus_gathering\metier\Quiz;
+use Nexus_gathering\metier\Question;
+use Nexus_gathering\metier\Reponse;
+use Nexus_gathering\metier\Categorie;
+use Nexus_gathering\metier\JouerQuiz;   
 
 //TODO : gestion des exceptions
 class DaoNexus {
@@ -200,7 +210,7 @@ class DaoNexus {
             $stmt->bindValue(4, $creationUser->getIdUser(), PDO::PARAM_INT);
             $stmt->bindValue(5, $jeu->getId_jeu(), PDO::PARAM_INT);
             $stmt->execute();
-                      
+            
             return $stmt->rowCount() > 0;
         } catch (\PDOException $e) {
             throw DaoException::fromCreateAnnoncePDOException($e);
@@ -556,4 +566,452 @@ class DaoNexus {
             throw DaoException::fromDeleteEditeurException($e);
         }
     }
+
+
+    // public function createMessage(Messages $message) {
+    //     $query = Requetes::INSERT_MESSAGE;
+    //     try {
+    //         $stmt = $this->conn->prepare($query);
+    //         $stmt->bindValue(1, $message->getContenuMess(), PDO::PARAM_STR);
+    //         $stmt->bindValue(2, $message->getIdExped(), PDO::PARAM_INT);
+    //         $stmt->bindValue(3, $message->getIdDesti(), PDO::PARAM_INT);
+    //         $stmt->execute();
+    
+    //         return true;
+    //     } catch (\PDOException $e) {
+    //         throw DaoException::fromCreateMessagePDOException($e);
+    //     } catch (\Exception $e) {
+    //         throw DaoException::fromCreateMessageException($e);
+    //     }
+    // }
+
+    public function createRole(RoleUtilisateur $role)
+    {
+        $query = Requetes::INSERT_ROLE;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue('nom_role', $role->getNomRole(), PDO::PARAM_STR);
+            $stmt->execute();
+
+            return true;
+        } catch (\PDOException $e){
+            throw DaoException::fromCreateRoleUtilisateurPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromCreateRoleUtilisateurException($e);
+        }
+    }
+
+    // public function getConversationMessages(Messages $message) {
+    //     $query = Requetes::SELECT_CONV;
+    //     try{
+    //         $stmt = $this->conn->prepare($query);
+    //         $stmt->bindValue(1, $message->getIdExped(), \PDO::PARAM_INT);
+    //         $stmt->bindValue(2, $message->getIdDesti(), \PDO::PARAM_INT);
+    //         $stmt->bindValue(3, $message->getIdDesti(), \PDO::PARAM_INT);
+    //         $stmt->bindValue(4, $message->getIdExped(), \PDO::PARAM_INT);
+    //         $stmt->execute();
+
+    //         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    //     } catch (\PDOException $e) {
+    //         throw DaoException::fromFetchConversationsPDOException($e);
+    //     } catch (\Exception $e) {
+    //         throw DaoException::fromFetchConversationsException($e);
+    //     }
+    // }
+
+    public function getRoleByID(int $roleId): ?RoleUtilisateur
+    {
+        $query = Requetes::READ_ROLE;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue('id_role', $roleId);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e){
+            throw DaoException::fromFetchRoleUtilisateurPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromFetchRoleUtilisateurException($e);
+        }
+    }
+
+    public function getAllRole(int $roleId) {
+        $query = Requetes::READ_ALL_ROLE; 
+        try{
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            throw DaoException::fromFetchAllRoleUtilisateurPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromFetchAllRoleUtilisateurException($e);
+        }
+    }
+
+    public function updateRole(RoleUtilisateur $role)
+    {
+        $query = Requetes::UPDATE_ROLE;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue('nom_role', $role->getNomRole());
+            $stmt->bindValue('id_role', $role->getIdRole());
+            $stmt->execute();
+            return true;
+        } catch (\PDOException $e) {
+            throw DaoException::fromUpdateRolePDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromUpdateRoleException($e);
+        }
+    }
+
+    public function deleteRole(RoleUtilisateur $roleId)
+    {
+        $query = Requetes::DELETE_ROLE;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue('id_role', $roleId);
+            $stmt->execute();
+            return true;
+        } catch (\PDOException $e) {
+            throw DaoException::fromDeleteRolePDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromDeleteRoleException($e);
+        }
+    }
+
+    public function createNiveau(NiveauUtilisateur $niveau)
+    {
+        $query = Requetes::INSERT_NIVEAU;
+        try{
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue('nom_niveau', $niveau->getNomNiveau());
+        $stmt->bindValue('description', $niveau->getDescription());
+        $stmt->execute();
+
+        return true;
+        } catch (\PDOException $e){
+            throw DaoException::fromCreateNiveauPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromCreateNiveauException($e);
+        }
+    }
+
+    public function getNiveauById(int $niveauId): ?NiveauUtilisateur
+    {
+        $query = Requetes::READ_NIVEAU;
+        try {
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue('id_niveau', $niveauId);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            throw DaoException::fromReadNiveauPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromReadNiveauException($e);
+        }
+    }
+
+    // Quiz //
+
+    // Insérer un nouveau quiz
+    public function createQuiz(Quiz $quiz) {
+        $query = Requetes::INSERT_QUIZ;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $quiz->getId_cat_quiz(), PDO::PARAM_INT);
+            $stmt->bindValue(2, $quiz->getIdUser(), PDO::PARAM_INT);
+            $stmt->bindValue(3, $quiz->getTitre_quiz(), PDO::PARAM_STR);
+            $stmt->bindValue(4, $quiz->getPhoto_quiz(), PDO::PARAM_STR);
+            $stmt->execute();
+            return true;
+        }
+        catch (\Exception $e) {
+            throw DaoException::fromCreateQuiz($e);
+        }
+    }
+    // Sélectionner un quiz par son identifiant
+    public function selectQuizById(Quiz $quiz) {
+        $query = Requetes::SELECT_QUIZ;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $quiz->getId_quiz(), PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            throw DaoException::fromSelectQuizById($e);
+        }
+    }
+        // Sélectionner un/des quiz par sa/leur catégorie/s
+    public function selectQuizByCat(Quiz $quiz) {
+        $query = Requetes::SELECT_CAT_QUIZ;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $quiz->getId_cat_quiz(), PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            throw DaoException::fromSelectQuizByCat($e);
+        }
+    }
+
+    // Mettre à jour un quiz
+    public function updateQuiz(Quiz $quiz) {
+        $query = Requetes::UPDATE_QUIZ;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $quiz->getId_cat_quiz(), PDO::PARAM_INT);
+            $stmt->bindValue(2, $quiz->getIdUser(), PDO::PARAM_INT);
+            $stmt->bindValue(3, $quiz->getTitre_quiz(), PDO::PARAM_STR);
+            $stmt->bindValue(4, $quiz->getId_quiz(), PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (\Exception $e) {
+            throw DaoException::fromUpdateQuiz($e);
+        }
+    }
+    // Supprimer un quiz
+    public function deleteQuiz(Quiz $quiz) {
+        $query = Requetes::DELETE_QUIZ;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $quiz->getId_quiz(), PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (\Exception $e) {
+            throw DaoException::fromDeleteQuiz($e);
+        }
+    }
+
+    // Insérer une nouvelle question
+    public function createQuestion(Question $question) {
+        $query = Requetes::INSERT_QUESTION;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $question->getId_quiz(), PDO::PARAM_INT);
+            $stmt->bindValue(2, $question->getQuestion_quiz(), PDO::PARAM_STR);
+            $stmt->execute();
+            return true;
+        } catch (\Exception $e) {
+            throw DaoException::fromCreateQuestion($e);
+        }
+    }
+    // Sélectionner une question par son identifiant
+    public function selectQuestionById(Question $question) {
+        $query = Requetes::SELECT_QUESTION;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $question->getId_question(), PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            throw DaoException::fromSelectQuestionById($e);
+        }
+    }
+    // Sélectionner toutes les questions d'un quiz spécifique
+    public function selectAllQuestionsFromQuiz(Question $question) {
+        $query = Requetes::SELECT_ALL_QUESTIONS_FROM_QUIZ;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $question->getId_quiz(), PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            throw DaoException::fromSelectAllQuestions($e);
+        }
+    }
+    // Mettre à jour une question
+    public function updateQuestion(Question $question) {
+        $query = Requetes::UPDATE_QUESTION;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $question->getQuestion_quiz(), PDO::PARAM_STR);
+            $stmt->bindValue(2, $question->getId_question(), PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        } catch (\Exception $e) {
+            throw DaoException::fromUpdateQuestion($e);
+        }
+    }
+    // Supprimer une question
+    public function deleteQuestion(Question $question) {
+        $query = Requetes::DELETE_QUESTION;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $question->getId_question(), PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        } catch (\Exception $e) {
+            throw DaoException::fromDeleteQuestion($e);
+        }
+    }
+
+    // Insérer une nouvelle réponse
+    public function createReponse(Reponse $reponse) {
+        $query = Requetes::INSERT_REPONSE;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $reponse->getId_question(), PDO::PARAM_INT);
+            $stmt->bindValue(2, $reponse->getReponse_quiz(), PDO::PARAM_STR);
+            $stmt->bindValue(3, $reponse->getReponse_vraie_quiz(), PDO::PARAM_BOOL);
+            $stmt->execute();
+            return true;
+        } catch (\Exception $e) {
+            throw DaoException::fromCreateReponse($e);
+        }
+    }
+    // Sélectionner une réponse par son identifiant
+    public function selectReponseById(Reponse $reponse) {
+        $query = Requetes::SELECT_REPONSE;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $reponse->getId_reponse(), PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            throw DaoException::fromSelectReponseById($e);
+        }
+    }
+    // Sélectionner toutes les réponses d'une question spécifique
+    public function selectAllReponsesFromQuestion(Reponse $reponse) {
+        $query = Requetes::SELECT_ALL_REPONSES_FROM_QUESTION;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $reponse->getId_question(), PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            throw DaoException::fromSelectAllReponse($e);
+        }
+    }
+    // Mettre à jour une réponse
+    public function updateReponse(Reponse $reponse) {
+        $query = Requetes::UPDATE_REPONSE;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $reponse->getReponse_quiz(), PDO::PARAM_STR);
+            $stmt->bindValue(2, $reponse->getReponse_vraie_quiz(), PDO::PARAM_BOOL);
+            $stmt->bindValue(3, $reponse->getId_reponse(), PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        } catch (\Exception $e) {
+            throw DaoException::fromUpdateReponse($e);
+        }
+    }
+    // Supprimer une réponse
+    public function deleteReponse(Reponse $reponse) {
+        $query = Requetes::DELETE_REPONSE;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $reponse->getId_reponse(), PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        } catch (\Exception $e) {
+            throw DaoException::fromDeleteReponse($e);
+        }
+    }
+
+    // Les catégories sont prédéfinies et non vouées à changer, donc pas de création, d'update ou de delete
+    // Sélectionner une catégorie par son identifiant 1 ou 2 :
+    public function selectCategorieById(Categorie $categorie) {
+        $query = Requetes::SELECT_CATEGORIE;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $categorie->getId_cat_quiz(), PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            throw DaoException::fromSelectCategorieById($e);
+        }
+    }
+    // Sélectionner toutes les catégories (2)
+    public function selectAllCategories() {
+        $query = Requetes::SELECT_ALL_CATEGORIES;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            throw DaoException::fromSelectAllCategorie($e);
+        }
+    }
+
+    // Pour les scores aux quiz, il n'est pas possible de supprimer un score. 
+    // Impossible de le modifier également, en revanche, on peut en ajouter autant qu'on veut car un utilisateur peut rejouer le quiz à volonté
+    // Donc ni update ni delete
+    // Insérer un nouveau record de jeu :
+    public function insertJouerQuiz(JouerQuiz $jouerquiz) {
+        $query = Requetes::INSERT_JOUERQUIZ;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $jouerquiz->getId_quiz(), PDO::PARAM_INT);
+            $stmt->bindValue(2, $jouerquiz->getIdUser(), PDO::PARAM_INT);
+            $stmt->bindValue(3, $jouerquiz->getScore_quiz(), PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        } catch (\Exception $e) {
+            throw DaoException::fromInsertJouerQuiz($e);
+        }
+    }
+    // Sélectionner un record spécifique par id_quiz et id_user
+    public function selectJouerQuiz(JouerQuiz $jouerquiz) {
+        $query = Requetes::SELECT_JOUERQUIZ;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $jouerquiz->getId_quiz(), PDO::PARAM_INT);
+            $stmt->bindValue(2, $jouerquiz->getIdUser(), PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            throw DaoException::fromSelectJouerQuiz($e);
+        }
+    }
+    public function getAllNiveau(int $niveauId): ?NiveauUtilisateur
+    {
+        $query = Requetes::READ_ALL_NIVEAU;
+        try {
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue('id_niveau', $niveauId);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            throw DaoException::fromReadAllNiveauPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromReadAllNiveauException($e);
+        }
+    }
+
+    public function updateNiveau(NiveauUtilisateur $niveau)
+    {
+        $query = Requetes::UPDATE_NIVEAU;
+        try {
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':nom_niveau', $niveau->getNomNiveau());
+        $stmt->bindValue(':description', $niveau->getDescription());
+        $stmt->bindValue(':id_niveau', $niveau->getIdNiveau());
+        $stmt->execute();
+        } catch (\PDOException $e){
+            throw DaoException::fromUpdateNiveauPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromUpdateNiveauException($e);
+        }
+    }
+
+    public function deleteNiveau(int $niveauId)
+    {
+        $query = Requetes::DELETE_NIVEAU;
+        try {
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue('id_niveau', $niveauId);
+        $stmt->execute();
+        return true;
+        } catch (\PDOException $e){
+            throw DaoException::fromDeleteNiveauPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromDeleteNiveauException($e);
+        }
+    }
+
+    
+
+
+
+
 }

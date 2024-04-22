@@ -243,4 +243,144 @@ class DaoException extends \Exception {
         public static function fromDeleteEditeurException(\Exception $e) {
             return new self("Erreur lors de la suppression d'un editeur : " . $e->getMessage());
         }
+
+
+        //Exception Role Utilisateur
+        public static function fromCreateRoleUtilisateurPDOException(\Exception $e){
+            return new self("Erreur PDO lors de la création d'un rôle : " . $e->getMessage());
+        }
+        public static function fromCreateRoleUtilisateurException(\Exception $e){
+            return new self("Erreur lors de la création d'un rôle : " . $e->getMessage());
+        }
+        public static function fromFetchRoleUtilisateurPDOException(\Exception $e){
+            return new self("Erreur PDO lors de la récupération du rôle : " . $e->getMessage());
+        }
+        public static function fromFetchRoleUtilisateurException(\Exception $e){
+            return new self("Erreur lors de la récupération du rôle : " . $e->getMessage());
+        }
+        public static function fromFetchAllRoleUtilisateurPDOException(\Exception $e){
+            return new self("Erreur PDO lors de la récupération des rôles : " . $e->getMessage());
+        }
+        public static function fromFetchAllRoleUtilisateurException(\Exception $e){
+            return new self("Erreur lors de la récupération des rôles : " . $e->getMessage());
+        }
+        public static function fromUpdateRolePDOException(\Exception $e){
+            return new self("Erreur PDO lors de la mise à jour du rôle : " . $e->getMessage());
+        }
+        public static function fromUpdateRoleException(\Exception $e){
+            return new self("Erreur lors de la mise à jour du rôle : " . $e->getMessage());
+        }
+        public static function fromDeleteRolePDOException(\Exception $e){
+            return new self("Erreur PDO lors de la suppression du rôle : " . $e->getMessage());
+        }
+        public static function fromDeleteRoleException(\Exception $e){
+            return new self("Erreur lors de la suppression du rôle : " . $e->getMessage());
+        }
+
+        // Exception Niveau Utilisateur
+
+        public static function fromCreateNiveauPDOException(\Exception $e){
+            return new self("Erreur PDO lors de la création du niveau : " . $e->getMessage());
+        }
+        public static function fromCreateNiveauException(\Exception $e){
+            return new self("Erreur lors de la création du niveau : " . $e->getMessage());
+        }
+        public static function fromReadNiveauPDOException(\Exception $e){
+            return new self("Erreur PDO lors de la récupération du niveau : " . $e->getMessage());
+        }
+        public static function fromReadNiveauException(\Exception $e){
+            return new self("Erreur lors de la récupération du niveau : " . $e->getMessage());
+        }
+        public static function fromReadAllNiveauPDOException(\Exception $e){
+            return new self("Erreur PDO lors de la récupération des niveaux : " . $e->getMessage());
+        }
+        public static function fromReadAllNiveauException(\Exception $e){
+            return new self("Erreur lors de la récupération des niveaux : " . $e->getMessage());
+        }
+        public static function fromUpdateNiveauPDOException(\Exception $e){
+            return new self("Erreur PDO lors de la mise à jour du niveau : " . $e->getMessage());
+        }
+        public static function fromUpdateNiveauException(\Exception $e){
+            return new self("Erreur lors de la mise à jour du niveau : " . $e->getMessage());
+        }
+        public static function fromDeleteNiveauPDOException(\Exception $e){
+            return new self("Erreur lors de la suppression du niveau : " . $e->getMessage());
+        }
+        public static function fromDeleteNiveauException(\Exception $e){
+            return new self("Erreur lors de la suppression du niveau : " . $e->getMessage());
+        }
+
+        // Quiz //
+
+    // Exceptions pour la création de quiz
+    public static function fromCreateQuiz(\Exception $e) {
+        return new self("Erreur lors de la création d'un quiz : " . $e->getMessage());
+    }
+    // Exceptions pour la sélection d'un quiz par son identifiant
+    public static function fromSelectQuizById(\Exception $e) {
+        return new self("Erreur lors de la sélection d'un quiz par identifiant : " . $e->getMessage());
+    }
+    // Exceptions pour la sélection de quiz par catégorie
+    public static function fromSelectQuizByCat(\Exception $e) {
+        return new self("Erreur lors de la sélection de quiz par catégorie : " . $e->getMessage());
+    }
+    // Exceptions pour la mise à jour d'un quiz
+    public static function fromUpdateQuiz(\Exception $e) {
+        return new self("Erreur lors de la mise à jour d'un quiz : " . $e->getMessage());
+    }
+    // Exceptions pour la suppression d'un quiz
+    public static function fromDeleteQuiz(\Exception $e) {
+        return new self("Erreur lors de la suppression d'un quiz : " . $e->getMessage());
+    }
+
+    // Exceptions pour la création, sélection et gestion des Questions
+    public static function fromCreateQuestion(\Exception $e) {
+        return new self("Erreur lors de la création d'une question : " . $e->getMessage());
+    }
+    public static function fromSelectQuestionById(\Exception $e) {
+        return new self("Erreur lors de la sélection d'une question par identifiant : " . $e->getMessage());
+    }
+    public static function fromSelectAllQuestions(\Exception $e) {
+        return new self("Erreur lors de la sélection de toutes les questions : " . $e->getMessage());
+    }
+    public static function fromUpdateQuestion(\Exception $e) {
+        return new self("Erreur lors de la mise à jour d'une question : " . $e->getMessage());
+    }
+    public static function fromDeleteQuestion(\Exception $e) {
+        return new self("Erreur lors de la suppression d'une question : " . $e->getMessage());
+    }
+
+    // Exceptions pour la création, sélection et gestion des Réponses
+    public static function fromCreateReponse(\Exception $e) {
+        return new self("Erreur lors de la création d'une réponse : " . $e->getMessage());
+    }
+    public static function fromSelectReponseById(\Exception $e) {
+        return new self("Erreur lors de la sélection d'une réponse par identifiant : " . $e->getMessage());
+    }
+    public static function fromSelectAllReponse(\Exception $e) {
+        return new self("Erreur lors de la sélection de toutes les réponses : " . $e->getMessage());
+    }
+    public static function fromUpdateReponse(\Exception $e) {
+        return new self("Erreur lors de la mise à jour d'une réponse : " . $e->getMessage());
+    }
+    public static function fromDeleteReponse(\Exception $e) {
+        return new self("Erreur lors de la suppression d'une réponse : " . $e->getMessage());
+    }
+
+    // Exceptions pour la sélection de Catégories
+    public static function fromSelectCategorieById(\Exception $e) {
+        return new self("Erreur lors de la sélection d'une catégorie par identifiant : " . $e->getMessage());
+    }
+    public static function fromSelectAllCategorie(\Exception $e) {
+        return new self("Erreur lors de la sélection de toutes les catégories : " . $e->getMessage());
+    }
+
+    // Exceptions pour la gestion de JouerQuiz
+    public static function fromInsertJouerQuiz(\Exception $e) {
+        return new self("Erreur lors de l'insertion d'un record de jouerQuiz : " . $e->getMessage());
+    }
+    public static function fromSelectJouerQuiz(\Exception $e) {
+        return new self("Erreur lors de la sélection d'un record de jouerQuiz : " . $e->getMessage());
+    }
+
 }
