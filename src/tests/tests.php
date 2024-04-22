@@ -15,6 +15,8 @@ $idExped = 2;
 $idDesti = 3;
 $id_user = 4;
 $messageId = 6;
+$modif = false; 
+$dateMessage = new DateTime(); 
 
 $message = new Messages($messageId, $contenu, $modif, $idExped, $idDesti, $dateMessage);
 
