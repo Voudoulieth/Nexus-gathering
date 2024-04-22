@@ -15,10 +15,7 @@ $idExped = 2;
 $idDesti = 3;
 $id_user = 4;
 $messageId = 6;
-$modif = false;  // Supposition que modif est un booléen, initialisé à false
-$dateMessage = new DateTime(); // Initialise avec la date et l'heure actuelle
 
-// Création d'un objet Messages avec tous les paramètres requis
 $message = new Messages($messageId, $contenu, $modif, $idExped, $idDesti, $dateMessage);
 
 // Appeler la fonction createMessage
@@ -30,6 +27,7 @@ if ($result) {
 } else {
     echo "Erreur lors de la création du message.";
 }
+
 
 // Test getConversationMessages
 $conversationMessages = $dao->getConversationMessages($message);
@@ -58,7 +56,6 @@ echo $deleteStatus ? "Le message 6 a été supprimé.\n" : "Échec de la suppres
 
 
 // // Définir les données de test pour un jeu
-// $id_jeu = 1;
 // $nom_jeu = "Nom du jeu d'essai";
 // $resum_jeu = "Résumé du jeu d'essai";
 // $img_jeu = "lien_image_jeu.jpg";
@@ -68,7 +65,7 @@ echo $deleteStatus ? "Le message 6 a été supprimé.\n" : "Échec de la suppres
 // $id_stu = 4; // ID du studio
 
 // // Création de l'objet Jeu
-// $jeu = new Jeu($id_jeu, $nom_jeu, $resum_jeu, $img_jeu, $multi, $id_ed, $id_user, $id_stu);
+// $jeu = new Jeu($nom_jeu, $resum_jeu, $img_jeu, $multi, $id_ed, $id_user, $id_stu);
 
 // // Test de la création du jeu
 // try {
@@ -80,7 +77,7 @@ echo $deleteStatus ? "Le message 6 a été supprimé.\n" : "Échec de la suppres
 
 // // Test de la récupération du jeu par ID
 // try {
-//     $id_jeu = 5 ;
+//     $id_jeu = 1;
 //     $jeu_recupere = $dao->getById($id_jeu);
 //     if ($jeu_recupere) {
 //         echo "Le jeu récupéré : " . $jeu_recupere->getNom_jeu();
@@ -121,80 +118,9 @@ echo $deleteStatus ? "Le message 6 a été supprimé.\n" : "Échec de la suppres
 
 // // Test de la suppression du jeu
 // try {
-//     $id_jeu_a_supprimer = 5;
-//     $dao->delete($id_jeu_a_supprimer);
+//     $id_jeu_a_supprimer = null;
+//     $dao->delete($id_jeu, a_supprimer);
 //     echo "Le jeu a été supprimé avec succès !";
 // } catch (DaoException $e) {
 //     echo "Une erreur s'est produite lors de la suppression du jeu : " . $e->getMessage();
 // }
-
-
-// // // Définir les données de test pour un jeu
-// // $nom_jeu = "Nom du jeu d'essai";
-// // $resum_jeu = "Résumé du jeu d'essai";
-// // $img_jeu = "lien_image_jeu.jpg";
-// // $multi = true; // ou false selon le cas
-// // $id_ed = 2; // ID de l'éditeur
-// // $id_user = 3; // ID de l'utilisateur
-// // $id_stu = 4; // ID du studio
-
-// // // Création de l'objet Jeu
-// // $jeu = new Jeu($nom_jeu, $resum_jeu, $img_jeu, $multi, $id_ed, $id_user, $id_stu);
-
-// // // Test de la création du jeu
-// // try {
-// //     $result = $dao->create($jeu, $studio, $editeur);
-// //     echo $result ? "Le jeu a été créé avec succès." : "Erreur lors de la création du jeu.";
-// // } catch (DaoException $e) {
-// //     echo "Une erreur s'est produite lors de la création du jeu : " . $e->getMessage();
-// // }
-
-// // // Test de la récupération du jeu par ID
-// // try {
-// //     $id_jeu = 1;
-// //     $jeu_recupere = $dao->getById($id_jeu);
-// //     if ($jeu_recupere) {
-// //         echo "Le jeu récupéré : " . $jeu_recupere->getNom_jeu();
-// //     } else {
-// //         echo "Aucun jeu trouvé avec cet ID.";
-// //     }
-// // } catch (DaoException $e) {
-// //     echo "Une erreur s'est produite lors de la récupération du jeu : " . $e->getMessage();
-// // }
-
-// // // Test de la récupération de tous les jeux
-// // try {
-// //     $liste_jeux = $dao->getAll();
-// //     if (!empty($liste_jeux)) {
-// //         echo "Liste des jeux :";
-// //         foreach ($liste_jeux as $jeu) {
-// //             echo "- " . $jeu->getNom_jeu() . "<br>";
-// //         }
-// //     } else {
-// //         echo "Aucun jeu trouvé.";
-// //     }
-// // } catch (DaoException $e) {
-// //     echo "Une erreur s'est produite lors de la récupération de la liste des jeux : " . $e->getMessage();
-// // }
-
-// // // Test de la mise à jour du jeu
-// // try {
-// //     // Modifie les attributs du jeu d'essai si nécessaire
-// //     $jeu->setNom_jeu("Nouveau nom du jeu");
-// //     $jeu->setResum_jeu("Nouveau résumé du jeu");
-// //     $jeu->setImg_jeu("nouveau_lien_image_jeu.jpg");
-// //     $jeu->setMulti(false); // ou true si le jeu devient multijoueur
-// //     $dao->update($jeu, $studio, $editeur);
-// //     echo "Le jeu a été mis à jour avec succès !";
-// // } catch (DaoException $e) {
-// //     echo "Une erreur s'est produite lors de la mise à jour du jeu : " . $e->getMessage();
-// // }
-
-// // // Test de la suppression du jeu
-// // try {
-// //     $id_jeu_a_supprimer = null;
-// //     $dao->delete($id_jeu, a_supprimer);
-// //     echo "Le jeu a été supprimé avec succès !";
-// // } catch (DaoException $e) {
-// //     echo "Une erreur s'est produite lors de la suppression du jeu : " . $e->getMessage();
-// // }

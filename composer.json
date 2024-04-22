@@ -1,5 +1,5 @@
 {
-    "name": "lucian/nexus_gathering",
+    "name": "corentin/nexus_gathering",
     "autoload": {
         "psr-4": {
             "Nexus_gathering\\": "src/"
@@ -7,8 +7,8 @@
     },
     "authors": [
         {
-            "name": "Lucian LAFFONT",
-            "email": "Lucianlaffont31@gmail.com"
+            "name": "Corentin Malecki",
+            "email": "corentin.malecki@gmail.com"
         }
     ],
     "require-dev": {
