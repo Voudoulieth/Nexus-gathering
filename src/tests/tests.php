@@ -25,36 +25,36 @@ $result = $dao->createMessage($message);
 
 // Afficher le résultat
 if ($result) {
-    echo "Le message a été créé avec succès.";
+    echo "Le message a été créé avec succès. <br> <br>";
 } else {
-    echo "Erreur lors de la création du message.";
+    echo "Erreur lors de la création du message.<br> <br>";
 }
 
 
 // Test getConversationMessages
 $conversationMessages = $dao->getConversationMessages($message);
-echo "Conversation entre $idExped et $idDesti:\n";
+echo "Conversation entre $idExped et $idDesti:\n <br> <br>";
 print_r($conversationMessages);
 
 
-// Appeler la fonction getUserConversations
-$conversations = $dao->getUserConversations($message);
+// // Appeler la fonction getUserConversations
+// $conversations = $dao->getUserConversations($message);
 
-// Afficher les résultats
-echo "Conversations pour l'utilisateur $id_user:\n";
-foreach ($conversations as $conversation) {
-    echo "ID Utilisateur: " . $conversation['id_user'] . ", Nom: " . $conversation['nom_user'] . ", Dernier Message: " . $conversation['last_message_date'] . "\n <br><br>";
-}
+// // Afficher les résultats
+// echo "Conversations pour l'utilisateur $id_user:\n";
+// foreach ($conversations as $conversation) {
+//     echo "ID Utilisateur: " . $conversation['id_user'] . ", Nom: " . $conversation['nom_user'] . ", Dernier Message: " . $conversation['last_message_date'] . "\n <br><br>";
+// }
 
 
 // Test updateMessage
 $nouveauContenu = "Ceci est le contenu modifié.";
 $updateStatus = $dao->updateMessage($message);
-echo $updateStatus ? "Le message $messageId a été mis à jour.\n" : "Échec de la mise à jour du message $messageId.\n";
+echo $updateStatus ? "Le message $messageId a été mis à jour.\n" : "Échec de la mise à jour du message $messageId.\n <br> <br>";
 
 // Test deleteMessage
 $deleteStatus = $dao->deleteMessage($message);
-echo $deleteStatus ? "Le message 6 a été supprimé.\n" : "Échec de la suppression du message $messageId.\n";
+echo $deleteStatus ? "Le message 6 a été supprimé.\n" : "Échec de la suppression du message $messageId.\n <br>";
 
 
 // // Définir les données de test pour un jeu
