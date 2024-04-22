@@ -60,40 +60,33 @@ class CreationUser
 
 
     // on met en place les setters souhaités
-
-
     public function setNomUser(string $nom_user):self
     {
         $this->nom_user = $nom_user;
-
         return $this;
     }
 
     public function setPassword(string $password):self
     {
         $this->password = $password;
-
         return $this;
     }
 
     public function setAvatar(string $avatar):self
     {
         $this->avatar = $avatar;
-
         return $this;
     }
 
     public function setMail(string $mail):self
     {
         $this->mail = $mail;
-
         return $this;
     }
 
     public function setAge(int $age):self
     {
         $this->age = $age;
-
         return $this;
     }
 
