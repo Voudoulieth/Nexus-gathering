@@ -5,8 +5,6 @@ require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 use Nexus_gathering\dao\DaoNexus;
 use Nexus_gathering\metier\Messages;
 
-
-
 $dao = new DaoNexus();
 
 // Définir les données de test
@@ -15,7 +13,10 @@ $idExped = 2;
 $idDesti = 3;
 $id_user = 4;
 $messageId = 6;
+$modif = false;  // Supposition que modif est un booléen, initialisé à false
+$dateMessage = new DateTime(); // Initialise avec la date et l'heure actuelle
 
+// Création d'un objet Messages avec tous les paramètres requis
 $message = new Messages($messageId, $contenu, $modif, $idExped, $idDesti, $dateMessage);
 
 // Appeler la fonction createMessage
@@ -28,12 +29,10 @@ if ($result) {
     echo "Erreur lors de la création du message.";
 }
 
-
 // Test getConversationMessages
 $conversationMessages = $dao->getConversationMessages($idExped, $idDesti);
 echo "Conversation entre $idExped et $idDesti:\n";
 print_r($conversationMessages);
-
 
 // Appeler la fonction getUserConversations
 $conversations = $dao->getUserConversations($id_user);
@@ -41,7 +40,7 @@ $conversations = $dao->getUserConversations($id_user);
 // Afficher les résultats
 echo "Conversations pour l'utilisateur $id_user:\n";
 foreach ($conversations as $conversation) {
-    echo "ID Utilisateur: " . $conversation['id_user'] . ", Nom: " . $conversation['nom_user'] . ", Dernier Message: " . $conversation['last_message_date'] . "\n <br><br>";
+    echo "ID Utilisateur: " . $conversation['id_user'] . ", Nom: " . $conversation['nom_user'] . ", Dernier Message: " . $conversation['last_message_date'] . "\n<br><br>";
 }
 
 // Test updateMessage
@@ -52,3 +51,4 @@ echo $updateStatus ? "Le message $messageId a été mis à jour.\n" : "Échec de
 // Test deleteMessage
 $deleteStatus = $dao->deleteMessage($messageId);
 echo $deleteStatus ? "Le message 6 a été supprimé.\n" : "Échec de la suppression du message $messageId.\n";
+?>
