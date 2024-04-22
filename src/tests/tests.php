@@ -3,6 +3,7 @@
 require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 
 use Nexus_gathering\dao\DaoNexus;
+use Nexus_gathering\dao\DaoException;
 use Nexus_gathering\metier\Messages;
 use Nexus_gathering\metier\Jeu;
 
@@ -63,7 +64,7 @@ $id_user = 3; // ID de l'utilisateur
 $id_stu = 4; // ID du studio
 
 // Création de l'objet Jeu
-$jeu = new Jeu(null, $nom_jeu, $resum_jeu, $img_jeu, $multi, $id_ed, $id_user, $id_stu);
+$jeu = new Jeu(, $nom_jeu, $resum_jeu, $img_jeu, $multi, $id_ed, $id_user, $id_stu);
 
 // Test de la création du jeu
 try {
@@ -75,7 +76,7 @@ try {
 
 // Test de la récupération du jeu par ID
 try {
-    $id_jeu = /* ID du jeu créé précédemment */;
+    $id_jeu = ;
     $jeu_recupere = $dao->getById($id_jeu);
     if ($jeu_recupere) {
         echo "Le jeu récupéré : " . $jeu_recupere->getNom_jeu();
@@ -116,7 +117,7 @@ try {
 
 // Test de la suppression du jeu
 try {
-    $id_jeu_a_supprimer = /* ID du jeu à supprimer */;
+    $id_jeu_a_supprimer = null;
     $dao->delete($id_jeu_a_supprimer);
     echo "Le jeu a été supprimé avec succès !";
 } catch (DaoException $e) {
