@@ -9,14 +9,17 @@ use Nexus_gathering\metier\Jeu;
 
 $dao = new DaoNexus();
 
-// // Définir les données de test
-// $contenu = "Ceci est un message test.";
-// $idExped = 2;
-// $idDesti = 3;
-// $id_user = 4;
-// $messageId = 6;
+// Définir les données de test
+$contenu = "Ceci est un message test.";
+$idExped = 2;
+$idDesti = 3;
+$id_user = 4;
+$messageId = 6;
+$modif = false;  // Supposition que modif est un booléen, initialisé à false
+$dateMessage = new DateTime(); // Initialise avec la date et l'heure actuelle
 
-// $message = new Messages($messageId, $contenu, $modif, $idExped, $idDesti, $dateMessage);
+// Création d'un objet Messages avec tous les paramètres requis
+$message = new Messages($messageId, $contenu, $modif, $idExped, $idDesti, $dateMessage);
 
 // // Appeler la fonction createMessage
 // $result = $dao->createMessage($message);
@@ -28,12 +31,22 @@ $dao = new DaoNexus();
 //     echo "Erreur lors de la création du message.";
 // }
 
+// Afficher le résultat
+if ($result) {
+    echo "Le message a été créé avec succès.";
+} else {
+    echo "Erreur lors de la création du message.";
+}
 
 // // Test getConversationMessages
 // $conversationMessages = $dao->getConversationMessages($idExped, $idDesti);
 // echo "Conversation entre $idExped et $idDesti:\n";
 // print_r($conversationMessages);
 
+// Test getConversationMessages
+$conversationMessages = $dao->getConversationMessages($idExped, $idDesti);
+echo "Conversation entre $idExped et $idDesti:\n";
+print_r($conversationMessages);
 
 // // Appeler la fonction getUserConversations
 // $conversations = $dao->getUserConversations($id_user);
@@ -43,6 +56,11 @@ $dao = new DaoNexus();
 // foreach ($conversations as $conversation) {
 //     echo "ID Utilisateur: " . $conversation['id_user'] . ", Nom: " . $conversation['nom_user'] . ", Dernier Message: " . $conversation['last_message_date'] . "\n <br><br>";
 // }
+// Afficher les résultats
+echo "Conversations pour l'utilisateur $id_user:\n";
+foreach ($conversations as $conversation) {
+    echo "ID Utilisateur: " . $conversation['id_user'] . ", Nom: " . $conversation['nom_user'] . ", Dernier Message: " . $conversation['last_message_date'] . "\n<br><br>";
+}
 
 // // Test updateMessage
 // $nouveauContenu = "Ceci est le contenu modifié.";
