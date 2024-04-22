@@ -858,6 +858,7 @@ class DaoNexus {
             $stmt->bindValue(3, $quiz->getTitre_quiz(), PDO::PARAM_STR);
             $stmt->bindValue(4, $quiz->getId_quiz(), PDO::PARAM_INT);
             $stmt->execute();
+            return true;
         } catch (\Exception $e) {
             throw DaoException::fromUpdateQuiz($e);
         }
@@ -869,6 +870,7 @@ class DaoNexus {
             $stmt = $this->conn->prepare($query);
             $stmt->bindValue(1, $quiz->getId_quiz(), PDO::PARAM_INT);
             $stmt->execute();
+            return true;
         } catch (\Exception $e) {
             throw DaoException::fromDeleteQuiz($e);
         }
