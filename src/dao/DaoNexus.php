@@ -716,7 +716,6 @@ class DaoNexus {
             throw DaoException::fromSelectQuizByCat($e);
         }
     }
-
     // Mettre à jour un quiz
     public function updateQuiz(Quiz $quiz, CreationUser $creationUser) {
         $query = Requetes::UPDATE_QUIZ;
