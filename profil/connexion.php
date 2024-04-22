@@ -1,62 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Rejoignez une communauté de joueurs, trouvez vos coéquipiers et maintenez a jours vos collections!"
-    />
-    <link rel="stylesheet" href="../css/reset.css" />
-    <link rel="stylesheet" href="../css/style_global.css" />
+    <?php include '../src/view/head.inc.php' ?>
     <link rel="stylesheet" href="./css/profil.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Changa:wght@300;400;500;600&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="./css/connexion_style.css" />
     <script defer src="./assets/js/connexion.js"></script>
     
     <title>Votre profil</title>
-    <link rel="shortcut icon" href="../assets/logo/favicon.png" />
     <script defer src="./assets/js/script_edition.js"></script>
 
     
   </head>
   <body>
-    <header>
-      <a href="./index.html">
-          <img class="logo" src="../assets/logo/logo_nexus_white.svg" title="Accueil" alt="Logo Nexus">
-      </a>
-      <div id="menuburger">
-          <nav>
-              <ul>
-                  <li><a class="navlink" href="../bibliotheques/acceuil_biblio.html">Bibliothèque</a></li>
-                  <li><a class="navlink" href="../recherche_de_joueur/recherche_de_joueurs.html">Joueurs</a></li>
-                  <li><a class="navlink" href="../quiz/quiz-accueil.html">Quiz</a></li>
-                  <li><a class="navlink" href="../recherche_de_joueur/messagerie.html">Messagerie</a></li>
-              </ul>
-          </nav>
-          <div class="header-moitie">
-              <div class="rechercher">
-                  <input class="FormulaireRechercher navlink" type="text" placeholder="Rechercher">
-                  <button class="SubmitRecherche" type="submit"><img src="../assets/Icone/magnifying-glass-solid-blanc.svg"></button>
-              </div>
-              <button class="BoutonConnexion navlink"><a href="../Profil/connexion.html">Connexion</a></button>
-          </div>
-      </div>
-      <a href="#" id="openMenuBurger"><!--TODO javascript pour ouvrir le menu burger et afficher la navbar mobile-->
-          <span class="burger-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-      </a>
-  </header>
-      </a>
-  </header>
+    <?php include '../src/view/header.inc.php' ?>
     <main>
         <div class="container" id="container">
             <div class="form-container sign-up">
@@ -106,26 +62,7 @@
 
             </div>
         </div>
-
-
-
-
     </main>
-    <footer>
-      <div>
-        <a href="./index.html">
-          <img class="logo" src="../assets/logo/logo_long_nexus_white.svg" title="Acceuil" alt="Logo Nexus Blanc">
-        </a>
-        <nav>
-          <ul>
-            <li><a class="navlink" href="./cgu.html">CGU</a></li>
-            <li><a class="navlink" href="./mention_legale.html">Mention légale</a></li>
-            <li><a class="navlink" href="./confidentialite.html">Politique de confidentialité</a></li>
-            <li><a class="navlink" href="./contact.html">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-      <p class="copyright">COPYRIGHT @ 2024 TOUS DROITS RESERVE</p>
-    </footer>
+    <?php include '../src/view/footer.inc.php' ?>
   </body>
 </html>

@@ -696,18 +696,19 @@ class DaoNexus {
         }
     }
 
-    public function read(int $niveauId): ?NiveauUtilisateur
+    public function getNiveauById(int $niveauId): ?NiveauUtilisateur
     {
         $query = Requetes::READ_NIVEAU;
         try {
         $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':id_niveau', $niveauId);
+        $stmt->bindValue('id_niveau', $niveauId);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
             throw DaoException::fromReadNiveauPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromReadNiveauException($e);
         }
-
     }
 
     // Quiz //
@@ -962,5 +963,55 @@ class DaoNexus {
             throw DaoException::fromSelectJouerQuiz($e);
         }
     }
+    public function getAllNiveau(int $niveauId): ?NiveauUtilisateur
+    {
+        $query = Requetes::READ_ALL_NIVEAU;
+        try {
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue('id_niveau', $niveauId);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            throw DaoException::fromReadAllNiveauPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromReadAllNiveauException($e);
+        }
+    }
+
+    public function updateNiveau(NiveauUtilisateur $niveau)
+    {
+        $query = Requetes::UPDATE_NIVEAU;
+        try {
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':nom_niveau', $niveau->getNomNiveau());
+        $stmt->bindValue(':description', $niveau->getDescription());
+        $stmt->bindValue(':id_niveau', $niveau->getIdNiveau());
+        $stmt->execute();
+        } catch (\PDOException $e){
+            throw DaoException::fromUpdateNiveauPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromUpdateNiveauException($e);
+        }
+    }
+
+    public function deleteNiveau(int $niveauId)
+    {
+        $query = Requetes::DELETE_NIVEAU;
+        try {
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue('id_niveau', $niveauId);
+        $stmt->execute();
+        return true;
+        } catch (\PDOException $e){
+            throw DaoException::fromDeleteNiveauPDOException($e);
+        } catch (\Exception $e){
+            throw DaoException::fromDeleteNiveauException($e);
+        }
+    }
+
+    
+
+
+
 
 }
