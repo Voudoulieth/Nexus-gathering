@@ -40,13 +40,13 @@ class DaoNexus {
     
     //      ---MESSAGERIE---
  
-    public function createMessage(Messages $message) {
+    public function createMessage(Messages $messages) {
         $query = Requetes::INSERT_MESSAGE;
         try {
             $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(1, $message->getContenuMess(), PDO::PARAM_STR);
-            $stmt->bindValue(2, $message->getIdExped(), PDO::PARAM_INT);
-            $stmt->bindValue(3, $message->getIdDesti(), PDO::PARAM_INT);
+            $stmt->bindValue(1, $messages->getContenuMess(), PDO::PARAM_STR);
+            $stmt->bindValue(2, $messages->getIdExped(), PDO::PARAM_INT);
+            $stmt->bindValue(3, $messages->getIdDesti(), PDO::PARAM_INT);
             $stmt->execute();
     
             return true;
@@ -57,14 +57,14 @@ class DaoNexus {
         }
     }
     
-    public function getConversationMessages(Messages $message) {
+    public function getConversationMessages(Messages $messages) {
         $query = Requetes::SELECT_CONV;
         try{
             $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(1, $message->getIdExped(), \PDO::PARAM_INT);
-            $stmt->bindValue(2, $message->getIdDesti(), \PDO::PARAM_INT);
-            $stmt->bindValue(3, $message->getIdDesti(), \PDO::PARAM_INT);
-            $stmt->bindValue(4, $message->getIdExped(), \PDO::PARAM_INT);
+            $stmt->bindValue(1, $messages->getIdExped(), \PDO::PARAM_INT);
+            $stmt->bindValue(2, $messages->getIdDesti(), \PDO::PARAM_INT);
+            $stmt->bindValue(3, $messages->getIdDesti(), \PDO::PARAM_INT);
+            $stmt->bindValue(4, $messages->getIdExped(), \PDO::PARAM_INT);
             $stmt->execute();
 
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
@@ -90,12 +90,12 @@ class DaoNexus {
         }
     }
     
-    public function updateMessage(Messages $message) {
+    public function updateMessage(Messages $messages) {
         $query = Requetes::UPDATE_MESSAGE;
         try{
             $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(1, $message->getContenuMess(), \PDO::PARAM_STR);
-            $stmt->bindValue(2, $message->getIdMessage(), \PDO::PARAM_INT);
+            $stmt->bindValue(1, $messages->getContenuMess(), \PDO::PARAM_STR);
+            $stmt->bindValue(2, $messages->getIdMessage(), \PDO::PARAM_INT);
             $stmt->execute();
             
             return $stmt->rowCount() > 0;
@@ -106,11 +106,11 @@ class DaoNexus {
         }
     }
 
-    public function deleteMessage(Messages $message) {
+    public function deleteMessage(Messages $messages) {
         $query = Requetes::DELETE_MESSAGE;
         try{
             $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(1, $message->getIdMessage(), \PDO::PARAM_INT);
+            $stmt->bindValue(1, $messages->getIdMessage(), \PDO::PARAM_INT);
             $stmt->execute();
             
             return $stmt->rowCount() > 0;
