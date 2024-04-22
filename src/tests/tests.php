@@ -126,6 +126,7 @@ try {
     echo "Une erreur s'est produite lors de la suppression du jeu : " . $e->getMessage();
 }
 
+<<<<<<< Updated upstream
 
 // // Définir les données de test pour un jeu
 // $nom_jeu = "Nom du jeu d'essai";
@@ -196,3 +197,5 @@ try {
 // } catch (DaoException $e) {
 //     echo "Une erreur s'est produite lors de la suppression du jeu : " . $e->getMessage();
 // }
+=======
+>>>>>>> Stashed changes
