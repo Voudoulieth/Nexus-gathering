@@ -34,7 +34,7 @@ class Categorie {
      *
      * @return  self
      */ 
-    public function setNom_cat_quiz($nom_cat_quiz)
+    private function setNom_cat_quiz($nom_cat_quiz)
     {
         $this->nom_cat_quiz = $nom_cat_quiz;
         

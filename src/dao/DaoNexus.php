@@ -710,5 +710,257 @@ class DaoNexus {
 
     }
 
+    // Quiz //
+
+    // Insérer un nouveau quiz
+    public function createQuiz(Quiz $quiz) {
+        $query = Requetes::INSERT_QUIZ;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $quiz->getId_cat_quiz(), PDO::PARAM_INT);
+            $stmt->bindValue(2, $quiz->getIdUser(), PDO::PARAM_INT);
+            $stmt->bindValue(3, $quiz->getTitre_quiz(), PDO::PARAM_STR);
+            $stmt->bindValue(4, $quiz->getPhoto_quiz(), PDO::PARAM_STR);
+            $stmt->execute();
+            return true;
+        }
+        catch (\Exception $e) {
+            throw DaoException::fromCreateQuiz($e);
+        }
+    }
+    // Sélectionner un quiz par son identifiant
+    public function selectQuizById(Quiz $quiz) {
+        $query = Requetes::SELECT_QUIZ;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $quiz->getId_quiz(), PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            throw DaoException::fromSelectQuizById($e);
+        }
+    }
+        // Sélectionner un/des quiz par sa/leur catégorie/s
+    public function selectQuizByCat(Quiz $quiz) {
+        $query = Requetes::SELECT_CAT_QUIZ;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $quiz->getId_cat_quiz(), PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            throw DaoException::fromSelectQuizByCat($e);
+        }
+    }
+
+    // Mettre à jour un quiz
+    public function updateQuiz(Quiz $quiz) {
+        $query = Requetes::UPDATE_QUIZ;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $quiz->getId_cat_quiz(), PDO::PARAM_INT);
+            $stmt->bindValue(2, $quiz->getIdUser(), PDO::PARAM_INT);
+            $stmt->bindValue(3, $quiz->getTitre_quiz(), PDO::PARAM_STR);
+            $stmt->bindValue(4, $quiz->getId_quiz(), PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (\Exception $e) {
+            throw DaoException::fromUpdateQuiz($e);
+        }
+    }
+    // Supprimer un quiz
+    public function deleteQuiz(Quiz $quiz) {
+        $query = Requetes::DELETE_QUIZ;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $quiz->getId_quiz(), PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (\Exception $e) {
+            throw DaoException::fromDeleteQuiz($e);
+        }
+    }
+
+    // Insérer une nouvelle question
+    public function createQuestion(Question $question) {
+        $query = Requetes::INSERT_QUESTION;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $question->getId_quiz(), PDO::PARAM_INT);
+            $stmt->bindValue(2, $question->getQuestion_quiz(), PDO::PARAM_STR);
+            $stmt->execute();
+            return true;
+        } catch (\Exception $e) {
+            throw DaoException::fromCreateQuestion($e);
+        }
+    }
+    // Sélectionner une question par son identifiant
+    public function selectQuestionById(Question $question) {
+        $query = Requetes::SELECT_QUESTION;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $question->getId_question(), PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            throw DaoException::fromSelectQuestionById($e);
+        }
+    }
+    // Sélectionner toutes les questions d'un quiz spécifique
+    public function selectAllQuestionsFromQuiz(Question $question) {
+        $query = Requetes::SELECT_ALL_QUESTIONS_FROM_QUIZ;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $question->getId_quiz(), PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            throw DaoException::fromSelectAllQuestions($e);
+        }
+    }
+    // Mettre à jour une question
+    public function updateQuestion(Question $question) {
+        $query = Requetes::UPDATE_QUESTION;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $question->getQuestion_quiz(), PDO::PARAM_STR);
+            $stmt->bindValue(2, $question->getId_question(), PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        } catch (\Exception $e) {
+            throw DaoException::fromUpdateQuestion($e);
+        }
+    }
+    // Supprimer une question
+    public function deleteQuestion(Question $question) {
+        $query = Requetes::DELETE_QUESTION;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $question->getId_question(), PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        } catch (\Exception $e) {
+            throw DaoException::fromDeleteQuestion($e);
+        }
+    }
+
+    // Insérer une nouvelle réponse
+    public function createReponse(Reponse $reponse) {
+        $query = Requetes::INSERT_REPONSE;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $reponse->getId_question(), PDO::PARAM_INT);
+            $stmt->bindValue(2, $reponse->getReponse_quiz(), PDO::PARAM_STR);
+            $stmt->bindValue(3, $reponse->getReponse_vraie_quiz(), PDO::PARAM_BOOL);
+            $stmt->execute();
+            return true;
+        } catch (\Exception $e) {
+            throw DaoException::fromCreateReponse($e);
+        }
+    }
+    // Sélectionner une réponse par son identifiant
+    public function selectReponseById(Reponse $reponse) {
+        $query = Requetes::SELECT_REPONSE;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $reponse->getId_reponse(), PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            throw DaoException::fromSelectReponseById($e);
+        }
+    }
+    // Sélectionner toutes les réponses d'une question spécifique
+    public function selectAllReponsesFromQuestion(Reponse $reponse) {
+        $query = Requetes::SELECT_ALL_REPONSES_FROM_QUESTION;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $reponse->getId_question(), PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            throw DaoException::fromSelectAllReponse($e);
+        }
+    }
+    // Mettre à jour une réponse
+    public function updateReponse(Reponse $reponse) {
+        $query = Requetes::UPDATE_REPONSE;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $reponse->getReponse_quiz(), PDO::PARAM_STR);
+            $stmt->bindValue(2, $reponse->getReponse_vraie_quiz(), PDO::PARAM_BOOL);
+            $stmt->bindValue(3, $reponse->getId_reponse(), PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        } catch (\Exception $e) {
+            throw DaoException::fromUpdateReponse($e);
+        }
+    }
+    // Supprimer une réponse
+    public function deleteReponse(Reponse $reponse) {
+        $query = Requetes::DELETE_REPONSE;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $reponse->getId_reponse(), PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        } catch (\Exception $e) {
+            throw DaoException::fromDeleteReponse($e);
+        }
+    }
+
+    // Les catégories sont prédéfinies et non vouées à changer, donc pas de création, d'update ou de delete
+    // Sélectionner une catégorie par son identifiant 1 ou 2 :
+    public function selectCategorieById(Categorie $categorie) {
+        $query = Requetes::SELECT_CATEGORIE;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $categorie->getId_cat_quiz(), PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            throw DaoException::fromSelectCategorieById($e);
+        }
+    }
+    // Sélectionner toutes les catégories (2)
+    public function selectAllCategories() {
+        $query = Requetes::SELECT_ALL_CATEGORIES;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            throw DaoException::fromSelectAllCategorie($e);
+        }
+    }
+
+    // Pour les scores aux quiz, il n'est pas possible de supprimer un score. 
+    // Impossible de le modifier également, en revanche, on peut en ajouter autant qu'on veut car un utilisateur peut rejouer le quiz à volonté
+    // Donc ni update ni delete
+    // Insérer un nouveau record de jeu :
+    public function insertJouerQuiz(JouerQuiz $jouerquiz) {
+        $query = Requetes::INSERT_JOUERQUIZ;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $jouerquiz->getId_quiz(), PDO::PARAM_INT);
+            $stmt->bindValue(2, $jouerquiz->getIdUser(), PDO::PARAM_INT);
+            $stmt->bindValue(3, $jouerquiz->getScore_quiz(), PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        } catch (\Exception $e) {
+            throw DaoException::fromInsertJouerQuiz($e);
+        }
+    }
+    // Sélectionner un record spécifique par id_quiz et id_user
+    public function selectJouerQuiz(JouerQuiz $jouerquiz) {
+        $query = Requetes::SELECT_JOUERQUIZ;
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(1, $jouerquiz->getId_quiz(), PDO::PARAM_INT);
+            $stmt->bindValue(2, $jouerquiz->getIdUser(), PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            throw DaoException::fromSelectJouerQuiz($e);
+        }
+    }
 
 }

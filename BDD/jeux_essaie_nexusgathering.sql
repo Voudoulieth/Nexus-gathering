@@ -8,9 +8,8 @@ INSERT INTO NiveauUtilisateur (nom_niveau, descrip_niveau) VALUES ('Niveau 1', '
 INSERT INTO NiveauUtilisateur (nom_niveau, descrip_niveau) VALUES ('Niveau 2', 'Description du Niveau 2');
 INSERT INTO NiveauUtilisateur (nom_niveau, descrip_niveau) VALUES ('Niveau 3', 'Description du Niveau 3');
 
-INSERT INTO categorie (nom_cat_quiz) VALUES ('Categorie1');
-INSERT INTO categorie (nom_cat_quiz) VALUES ('Categorie2');
-INSERT INTO categorie (nom_cat_quiz) VALUES ('Categorie3');
+INSERT INTO categorie (nom_cat_quiz) VALUES ('Communautaire');
+INSERT INTO categorie (nom_cat_quiz) VALUES ('Officiel');
 
 INSERT INTO plateforme (nom_plat) VALUES ('Plateforme1');
 INSERT INTO plateforme (nom_plat) VALUES ('Plateforme2');

@@ -7,6 +7,7 @@ class Quiz {
     private int         $id_cat_quiz;
     private int         $id_user;
     private string      $titre_quiz;
+    private string      $photo_quiz;
     private \DateTime   $date_crea_quiz;
 
     public function __construct(int $id_quiz, string $id_cat_quiz, int $id_user, int $titre_quiz, \DateTime $date_crea_quiz) {
@@ -44,7 +45,7 @@ class Quiz {
      */ 
     public function getDate_quiz()
     {
-        return $this->date_quiz;
+        return $this->date_crea_quiz;
     }
     
     /**
@@ -54,7 +55,47 @@ class Quiz {
      */ 
     public function setDate_quiz($date_crea_quiz)
     {
-        $this->date_quiz = $date_crea_quiz;
+        $this->date_crea_quiz = $date_crea_quiz;
+        
+        return $this;
+    }
+    
+    /**
+     * Get the value of titre_quiz
+     */ 
+    public function getTitre_quiz()
+    {
+        return $this->titre_quiz;
+    }
+
+    /**
+     * Set the value of titre_quiz
+     *
+     * @return  self
+     */ 
+    public function setTitre_quiz($titre_quiz)
+    {
+        $this->titre_quiz = $titre_quiz;
+
+        return $this;
+    }
+    
+    /**
+     * Get the value of photo_quiz
+     */ 
+    public function getPhoto_quiz()
+    {
+        return $this->photo_quiz;
+    }
+    
+    /**
+     * Set the value of photo_quiz
+     *
+     * @return  self
+     */ 
+    public function setPhoto_quiz($photo_quiz)
+    {
+        $this->photo_quiz = $photo_quiz;
         
         return $this;
     }
