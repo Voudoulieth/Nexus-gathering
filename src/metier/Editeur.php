@@ -14,7 +14,7 @@ class Editeur {
     public function getId_ed(): int {
         return $this->id_ed;
     }
-    private function setId_ed(int $id_ed) {
+    public function setId_ed(int $id_ed) {
         $this->id_ed = $id_ed;
     }
     public function getNom_ed(): String {
@@ -24,6 +24,6 @@ class Editeur {
         $this->nom_ed = $nom_ed;
     }
     public function __toString() {
-        return '[Categorie : '.$this->id_ed . ',' . $this->nom_ed .']';
+        return '[Editeur : ' . $this->id_ed . ', ' . $this->nom_ed . ']';
     }
 }
