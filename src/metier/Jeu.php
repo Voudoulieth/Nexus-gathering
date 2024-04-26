@@ -50,9 +50,10 @@ class Jeu {
     public function getMulti(): bool {
         return $this->multi;
     }
-    public function setMulti(bool $multi) {
-        if ($multi !== 0 && $multi !== 1) {
-            throw new \InvalidArgumentException('La valeur de multi doit être soit 0 soit 1.');
+    public function setMulti(bool $multi): void
+    {
+        if (!is_bool($multi)) {
+            throw new \InvalidArgumentException('La valeur de $multi doit être un booléen.');
         }
         $this->multi = $multi;
     }
