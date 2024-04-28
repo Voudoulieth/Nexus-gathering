@@ -1,8 +1,8 @@
 <header>
-      <a href="../index.php">
+      <a href="/index.php">
         <img
           class="logo"
-          src="../assets/logo/logo_nexus_white.svg"
+          src="/assets/logo/logo_nexus_white.svg"
           title="Accueil"
           alt="Logo Nexus"
         />
@@ -11,22 +11,22 @@
         <nav>
           <ul>
             <li>
-              <a class="navlink" href="../bibliotheques/vacceuilbiblio.php"
+              <a class="navlink" href="/bibliotheques/vacceuilbiblio.php"
                 >Bibliothèque</a
               >
             </li>
             <li>
               <a
                 class="navlink"
-                href="../recherche_de_joueur/recherche_de_joueurs.php"
+                href="./recherche_de_joueurs.php"
                 >Joueurs</a
               >
             </li>
             <li>
-              <a class="navlink" href="../quiz/quiz-accueil.php">Quiz</a>
+              <a class="navlink" href="/quiz/quiz-accueil.php">Quiz</a>
             </li>
             <li>
-              <a class="navlink" href="../recherche_de_joueur/messagerie.php"
+              <a class="navlink" href="./messagerie.php"
                 >Messagerie</a
               >
             </li>
@@ -40,7 +40,7 @@
               placeholder="Rechercher"
             />
             <button class="SubmitRecherche" type="submit">
-              <img src="../assets/Icone/magnifying-glass-solid-blanc.svg" alt="recherche" />
+              <img src="/assets/Icone/magnifying-glass-solid-blanc.svg" alt="recherche" />
             </button>
           </div>
           <button class="BoutonConnexion navlink">Connexion</button>

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <?php include '../src/view/head.inc.php' ?>
-    <link rel="stylesheet" href="../dist/output.css">
+    <?php include './head.inc.php' ?>
+    <link rel="stylesheet" href="/dist/output.css">
     <title>Recherche de joueurs</title>
     <script defer src=""></script>
 </head>
 <body>
-<?php include '../src/view/header.inc.php' ?>
+<?php include './header.inc.php' ?>
     <main>
         <div class="flex">
             <section class="w-1/2 relative">
                 <a href="./recherche_rapide.php">
-                    <img src="../assets/Image/recherche rapide.png" alt="Recherche rapide" />
+                    <img src="/assets/Image/recherche rapide.png" alt="Recherche rapide" />
                     <div class="bg-[#F45A01]/95 absolute top-10 left-10 w-[26.5vw]  rounded-full">
                         <h1 class="text-[2.75em] font-['Changa'] font-bold text-[#f1f7f9] text-center">Recherche rapide</h1>
                     </div>
@@ -23,7 +23,7 @@
             </section>
             <section class="w-1/2 relative">
                 <a href="./recherche_par_annonce.php">
-                    <img src="../assets/Image/recherche par annonce.png" alt="Recherche par annonce" />
+                    <img src="/assets/Image/recherche par annonce.png" alt="Recherche par annonce" />
                     <div class="bg-[#F45A01]/95 absolute top-10 left-10 w-[34vw] rounded-full ">
                         <h1 class="text-[2.75em] font-['Changa'] font-bold text-[#f1f7f9] text-center ">Recherche par annonce</h1>
                     </div>
@@ -34,6 +34,6 @@
             </section>
         </div>
     </main>
-    <?php include '../src/view/footer.inc.php' ?>
+    <?php include './footer.inc.php' ?>
 </body>
 </html>

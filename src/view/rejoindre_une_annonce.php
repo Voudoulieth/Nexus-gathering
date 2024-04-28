@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <?php include '../src/view/head.inc.php' ?>
-    <link rel="stylesheet" href="./assets/css/rejoindre_une_annonce.css">
+    <?php include './head.inc.php' ?>
+    <link rel="stylesheet" href="/recherche_de_joueur/assets/css/rejoindre_une_annonce.css">
     <title>Recherche rapide</title>
   </head>
   <body>
-  <?php include '../src/view/header.inc.php' ?>
+  <?php include './header.inc.php' ?>
     <main>
         <div id="container">
             <section id="panneauFiltre">
                 <div id="filtreTitre">
                     <h2 class="titres">Les filtres</h2>
-                    <img src="../assets/Icone/sliders-solid orange.svg" alt="slider pour filtre">
+                    <img src="/assets/Icone/sliders-solid orange.svg" alt="slider pour filtre">
                 </div>
                 <div>
                     <input type="text" placeholder="Nom du jeu" class="formNom" id="rechercheJeu"/>
@@ -29,8 +29,8 @@
                       class="formNom"
                       id="nbjoueur"
                     />
-                    <div class="control-down"><img src="../assets/Icone/minus-solid blanc.svg" alt="-"></div>
-                    <div class="control-up"><img src="../assets/Icone/plus-solid blanc.svg" alt="+"></div>
+                    <div class="control-down"><img src="/assets/Icone/minus-solid blanc.svg" alt="-"></div>
+                    <div class="control-up"><img src="/assets/Icone/plus-solid blanc.svg" alt="+"></div>
                 </div>
                 <div id="containerButtonFiltre">
                     <button id="buttonFiltre" class="button buttonFiltre">Filtrer</button>
@@ -41,7 +41,7 @@
                 <div id="recherche">
                     <h1 class="titres">Rejoindre une annonce</h1>   
                     <input type="search" placeholder="Recherche ton annonce" id="searchbar">
-                    <button type="submit"><img src="../assets/Icone/magnifying-glass-solid-blanc.svg" id="loupe"></button>
+                    <button type="submit"><img src="/assets/Icone/magnifying-glass-solid-blanc.svg" id="loupe"></button>
                 </div>
                 <div class="tokenplace">
                     <div class="tokenAnnonce">
@@ -93,8 +93,8 @@
             </section>
         </div>    
     </main>
-    <?php include '../src/view/footer.inc.php' ?>
-    <script type="module" src="./assets/js/validation.js"></script>
-    <script type="module" src="./assets/js/rejoindre_une_annonce.js"></script>
+    <?php include './footer.inc.php' ?>
+    <script type="module" src="/recherche_de_joueur/assets/js/validation.js"></script>
+    <script type="module" src="/recherche_de_joueur/assets/js/rejoindre_une_annonce.js"></script>
     </body>
 </html>

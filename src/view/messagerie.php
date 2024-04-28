@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <?php include '../src/view/head.inc.php' ?>
-    <link rel="stylesheet" href="./assets/css/messagerie.css">
+    <?php include './head.inc.php' ?>
+    <link rel="stylesheet" href="/recherche_de_joueur/assets/css/messagerie.css">
     <title>Messagerie - Nexus Gathering</title>
   </head>
   <body>
-  <?php include '../src/view/header.inc.php' ?>
+  <?php include './header.inc.php' ?>
     <main>
         <div id="messagerieContainer">
             <section id="contactContainer">
                 <h1 class="titres">Contact</h1>
                 <div class="contact">
-                    <a href=""><img src="../assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
+                    <a href=""><img src="/assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
                     <p>Nom du joueur</p>
                     <button class="button">Contacter</button>
                 </div>
                 <div class="contact">
-                    <a href=""><img src="../assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
+                    <a href=""><img src="/assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
                     <p>Nom du joueur</p>
                     <button class="button">Contacter</button>
                 </div>
                 <div class="contact">
-                    <a href=""><img src="../assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
+                    <a href=""><img src="/assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
                     <p>Legluc</p>
                     <button class="button">Contacter</button>
                 </div>
                 <div class="contact">
-                    <a href=""><img src="../assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
+                    <a href=""><img src="/assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
                     <p>Lumiex</p>
                     <button class="button">Contacter</button>
                 </div>
                 <div class="contact">
-                    <a href=""><img src="../assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
+                    <a href=""><img src="/assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
                     <p>Kiwi</p>
                     <button class="button">Contacter</button>
                 </div>
                 <div class="contact">
-                    <a href=""><img src="../assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
+                    <a href=""><img src="/assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
                     <p>Voudou</p>
                     <button class="button">Contacter</button>
                 </div>
                 <div class="contact">
-                    <a href=""><img src="../assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
+                    <a href=""><img src="/assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
                     <p>Yurigorkha</p>
                     <button class="button">Contacter</button>
                 </div>
                 <div class="contact">
-                    <a href=""><img src="../assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
+                    <a href=""><img src="/assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
                     <p>Ezerya</p>
                     <button class="button">Contacter</button>
                 </div>
@@ -56,7 +56,7 @@
             <div id="affichageMessage">
                 <section>
                     <div id="contactEnCour">
-                        <a href=""><img src="../assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
+                        <a href=""><img src="/assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
                         <p>Nom du joueur</p>
                     </div>
                     <div id="blockMessage">
@@ -70,7 +70,7 @@
             </div>
         </div>
     </main>
-    <?php include '../src/view/footer.inc.php' ?>
-    <script src="./assets/js/messagerie.js"></script>
+    <?php include './footer.inc.php' ?>
+    <script src="/recherche_de_joueur/assets/js/messagerie.js"></script>
     </body>
 </html>

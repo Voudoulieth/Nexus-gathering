@@ -13,6 +13,6 @@
     rel="stylesheet"
     />
     <!-- Feuilles de style CSS -->
-    <link rel="stylesheet" href="../css/reset.css" />
-    <link rel="stylesheet" href="../css/style_global.css" />
-    <link rel="shortcut icon" href="../assets/logo/favicon.svg" />
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/style_global.css" />
+    <link rel="shortcut icon" href="/assets/logo/favicon.svg" />

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <?php include '../src/view/head.inc.php' ?>
-    <link rel="stylesheet" href="./assets/css/creation_annonce.css" />
+    <?php include './head.inc.php' ?>
+    <link rel="stylesheet" href="/recherche_de_joueur/assets/css/creation_annonce.css" />
     <title>Création d'annonce</title>
   </head>
   <body>
-  <?php include '../src/view/header.inc.php' ?>
+  <?php include './header.inc.php' ?>
     <main>
       <h1 class="titres" id="h1">Création de l'annonce</h1>
       <div id="form">
@@ -27,8 +27,8 @@
               class="formNom"
               id="nbjoueur"
             />
-            <div class="control-down"><img src="../assets/Icone/minus-solid blanc.svg" alt="-"></div>
-            <div class="control-up"><img src="../assets/Icone/plus-solid blanc.svg" alt="+"></div>
+            <div class="control-down"><img src="/assets/Icone/minus-solid blanc.svg" alt="-"></div>
+            <div class="control-up"><img src="/assets/Icone/plus-solid blanc.svg" alt="+"></div>
           </div>
           <div id="formBut">
             <button class="button" id="publishAnnonce" >
@@ -68,8 +68,8 @@
         </div>
       </section>
     </main>
-    <?php include '../src/view/footer.inc.php' ?>
-    <script type="module" src="./assets/js/creation_annonce.js"></script>
-    <script type="module" src="./assets/js/validation.js"></script>
+    <?php include './footer.inc.php' ?>
+    <script type="module" src="/recherche_de_joueur/assets/js/creation_annonce.js"></script>
+    <script type="module" src="/recherche_de_joueur/assets/js/validation.js"></script>
   </body>
 </html>
