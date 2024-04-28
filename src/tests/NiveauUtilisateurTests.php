@@ -8,7 +8,7 @@ use Nexus_gathering\metier\RechercheRapide;
 use Nexus_gathering\metier\CreationUser;    
 use Nexus_gathering\metier\Jeu;
 use PHPUnit\Framework\TestCase;
-use nexus_gathering\metier\NiveauUtilisateur;
+use Nexus_gathering\metier\NiveauUtilisateur;
 
 class NiveauUtilisateurTests extends TestCase
 {

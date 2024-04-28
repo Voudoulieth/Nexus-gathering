@@ -19,9 +19,11 @@ INSERT INTO formats (nom_form) VALUES ('physique');
 INSERT INTO formats (nom_form) VALUES ('physique');
 INSERT INTO formats (nom_form) VALUES ('dématérialisé');
 
-INSERT INTO editeur (nom_ed) VALUES ('Editeur1');
-INSERT INTO editeur (nom_ed) VALUES ('Editeur2');
-INSERT INTO editeur (nom_ed) VALUES ('Editeur3');
+
+INSERT INTO editeur (id_ed, nom_ed) VALUES (1, 'Editeur1');
+INSERT INTO editeur (id_ed, nom_ed) VALUES (2, 'Editeur2');
+INSERT INTO editeur (id_ed, nom_ed) VALUES (3, 'Editeur3');
+
 
 INSERT INTO dates (ddate, hdate) VALUES ('2023-03-21', '12:00:00');
 INSERT INTO dates (ddate, hdate) VALUES ('2023-03-22', '13:30:00');
