@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <?php include './head.inc.php' ?>
+    <?php include './view/head.inc.php' ?>
     <link rel="stylesheet" href="/recherche_de_joueur/assets/css/rejoindre_une_annonce.css">
     <title>Recherche rapide</title>
   </head>
   <body>
-  <?php include './header.inc.php' ?>
+  <?php include './view/header.inc.php' ?>
     <main>
         <div id="container">
             <section id="panneauFiltre">
@@ -93,7 +93,7 @@
             </section>
         </div>    
     </main>
-    <?php include './footer.inc.php' ?>
+    <?php include './view/footer.inc.php' ?>
     <script type="module" src="/recherche_de_joueur/assets/js/validation.js"></script>
     <script type="module" src="/recherche_de_joueur/assets/js/rejoindre_une_annonce.js"></script>
     </body>

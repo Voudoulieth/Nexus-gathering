@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <?php include './head.inc.php' ?>
+    <?php include './view/head.inc.php' ?>
     <link rel="stylesheet" href="/recherche_de_joueur/assets/css/recherche_par_annonce.css">
     <title>Recherche de joueurs</title>
   </head>
   <body>
-  <?php include './header.inc.php' ?>
+  <?php include './view/header.inc.php' ?>
     <main>
         <div class="main-container">
             <section class="search-section">
-              <a href="./rejoindre_une_annonce.php">
+              <a href="<?= APP_ROOT ?>/rejoindre_une_annonce">
                 <img src="/assets/Image/rejoindre une annonce.png" alt="Recherche rapide" />
                 <div class="encareTitre" >
                     <h1 class="titres">Rejoindre une annonce</h1>
@@ -21,7 +21,7 @@
               </a>
             </section>
             <section class="search-section">
-              <a href="./creation_annonce.php">
+              <a href="<?= APP_ROOT ?>/creation_annonce">
                 <img src="/assets/Image/créée une annonce.png" alt="Recherche par annonce" />
                 <div class="encareTitre" id="encareh2">
                     <h2 class="titres">Créer une annonce</h2>
@@ -33,6 +33,6 @@
             </section>
         </div>
     </main>
-    <?php include './footer.inc.php' ?>
+    <?php include './view/footer.inc.php' ?>
     </body>
   </html>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <?php include './head.inc.php' ?>
+    <?php include './view/head.inc.php' ?>
     <link rel="stylesheet" href="/recherche_de_joueur/assets/css/messagerie.css">
     <title>Messagerie - Nexus Gathering</title>
   </head>
   <body>
-  <?php include './header.inc.php' ?>
+  <?php include './view/header.inc.php' ?>
     <main>
         <div id="messagerieContainer">
             <section id="contactContainer">
@@ -70,7 +70,7 @@
             </div>
         </div>
     </main>
-    <?php include './footer.inc.php' ?>
+    <?php include './view/footer.inc.php' ?>
     <script src="/recherche_de_joueur/assets/js/messagerie.js"></script>
     </body>
 </html>

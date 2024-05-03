@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <?php include './head.inc.php' ?>
+    <?php include './view/head.inc.php' ?>
     <link rel="stylesheet" href="/recherche_de_joueur/assets/css/recherche_rapide_resultat.css">
     <title>Recherche rapide</title>
   </head>
   <body>
-  <?php include './header.inc.php' ?>
+  <?php include './view/header.inc.php' ?>
     <main>
         <h1 id="titre">Nom du jeu</h1>
         <div class="tokenplace">
@@ -63,7 +63,7 @@
             </div>
         </div>
     </main>
-    <?php include './footer.inc.php' ?>
+    <?php include './view/footer.inc.php' ?>
     <script src="/recherche_de_joueur/assets/js/recherche_rapide_resultat.js"></script>
     </body>
 </html>

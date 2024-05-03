@@ -7,34 +7,34 @@ let currentIndex = 0;
 
 
  // Met à jour le contenu du carrousel avec de nouveaux éléments.
-function updateCarousel() {
+ function updateCarousel() {
+  const appRoot = document.getElementById('config').getAttribute('data-app-root'); // Récupérer APP_ROOT
+
   // Effacement du contenu actuel du carrousel pour pouvoir afficher les nouveaux éléments.
   carouselContent.innerHTML = '';
 
   for (let i = 0; i < 5; i++) {
     let itemIndex = (currentIndex + i) % carouselData.length;
-    // Récupération de l'élément à afficher à partir des données du carrousel.
-    const item = carouselData[itemIndex];
+    const item = carouselData[itemIndex];  // Récupération de l'élément à afficher.
 
-    // Initialisation des attributs supplémentaires pour certains éléments, ici pour le troisième élément.
     let additionalAttributes = '';
     if (i === 2) {
-      additionalAttributes = ' id="imgspotlight"'; // Attribution d'un id spécial pour le mettre en évidence.
+      additionalAttributes = ' id="imgspotlight"';
     }
 
-    // Construction du contenu HTML pour chaque élément du carrousel en utilisant les données de l'élément.
-    const aTag = `<a href="${item.href}" class="carouselimg"${additionalAttributes} data-caption="${encodeURIComponent(item.caption)}">
+    // Utilisation de APP_ROOT dans l'URL
+    const aTag = `<a href="${appRoot}${item.href}" class="carouselimg"${additionalAttributes} data-caption="${encodeURIComponent(item.caption)}">
       <figure>
         <img src="${item.src}" alt="${item.alt}">
         <figcaption>${item.caption}</figcaption>
       </figure>
     </a>`;
 
-    // Ajout du contenu HTML généré au conteneur du carrousel.
     carouselContent.innerHTML += aTag;
   }
   attachClickEventToCarouselItems();
 }
+
 
  // Permet de naviguer vers l'élément précédent du carrousel.
 function navigateToPrevious() {

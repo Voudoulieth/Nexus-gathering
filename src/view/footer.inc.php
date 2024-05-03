@@ -1,6 +1,6 @@
 <footer>
         <div>
-          <a href="/index.php">
+          <a href="<?= APP_ROOT ?>/">
             <img class="logo" src="/assets/logo/logo_long_nexus_white.svg" title="Acceuil" alt="Logo Nexus Blanc">
           </a>
           <nav>

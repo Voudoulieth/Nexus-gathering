@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace Nexus_gathering\dao;
 
-require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
-
 use PDO;
 use Nexus_gathering\dao\Database;
 use Nexus_gathering\dao\DaoException;
@@ -333,10 +331,10 @@ class DaoNexus {
 
         public function getAll(): array {
             $query = Requetes::SELECT_ALL_JEU;
+            $jeux = [];
             try {
                 $stmt = $this->conn->prepare($query);
                 $stmt->execute(); // Exécuter la requête
-                $jeux = [];
                 while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
                     // Traitement des valeurs NULL pour les arguments de la construction de Jeu
                     $resume = isset($row['resum_jeu']) ? $row['resum_jeu'] : ''; // Valeur par défaut si le champ est NULL
@@ -347,12 +345,12 @@ class DaoNexus {
                     // Création de l'objet Jeu en prenant en compte les valeurs par défaut
                     $jeux[] = new Jeu($row['id_jeu'], $row['nom_jeu'], $resume, $img, (bool) $row['multi'], $id_ed, $id_user, $id_stu);
                 }
-                return $jeux;
             } catch (\PDOException $e) {
                 throw DaoException::fromFetchAllJeuxPDOException($e);
             } catch (\Exception $e) {
                 throw DaoException::fromFetchAllJeuxException($e);
             }
+            return $jeux;
         }
         
         

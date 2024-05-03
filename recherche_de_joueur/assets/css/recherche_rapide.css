@@ -31,6 +31,9 @@ h1{
     top: 25.7vh;
     left: 35.3vw;
 }
+#config{
+    display: none;
+}
 #carousel{
     display: flex;
     justify-content: space-around;

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <?php include './head.inc.php' ?>
+    <?php include './view/head.inc.php' ?>
     <link rel="stylesheet" href="/recherche_de_joueur/assets/css/creation_annonce.css" />
     <title>Création d'annonce</title>
   </head>
   <body>
-  <?php include './header.inc.php' ?>
+  <?php include './view/header.inc.php' ?>
     <main>
       <h1 class="titres" id="h1">Création de l'annonce</h1>
       <div id="form">
@@ -68,7 +68,7 @@
         </div>
       </section>
     </main>
-    <?php include './footer.inc.php' ?>
+    <?php include './view/footer.inc.php' ?>
     <script type="module" src="/recherche_de_joueur/assets/js/creation_annonce.js"></script>
     <script type="module" src="/recherche_de_joueur/assets/js/validation.js"></script>
   </body>

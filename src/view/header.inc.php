@@ -1,5 +1,5 @@
 <header>
-      <a href="/index.php">
+      <a href="<?= APP_ROOT ?>/">
         <img
           class="logo"
           src="/assets/logo/logo_nexus_white.svg"
@@ -18,7 +18,7 @@
             <li>
               <a
                 class="navlink"
-                href="./recherche_de_joueurs.php"
+                href="<?= APP_ROOT ?>/recherche-de-joueur"
                 >Joueurs</a
               >
             </li>
@@ -26,7 +26,7 @@
               <a class="navlink" href="/quiz/quiz-accueil.php">Quiz</a>
             </li>
             <li>
-              <a class="navlink" href="./messagerie.php"
+              <a class="navlink" href="<?= APP_ROOT ?>/messagerie"
                 >Messagerie</a
               >
             </li>
