@@ -4,20 +4,20 @@ namespace Nexus_gathering\metier;
 
 
 class Messages {
-    private int     $id_message;
+    private ?int     $id_message = null;
     private string  $contenu_mess;
     private bool    $modif;
     private int     $id_exped;
     private int     $id_desti;
     private \DateTime   $date_message;
 
-    public function __construct(int $id_message, string $contenu_mess, bool $modif, int $id_exped, int $id_desti, \DateTime $date_message) {
+    public function __construct(?int $id_message, string $contenu_mess, bool $modif, int $id_exped, int $id_desti, ?\DateTime $date_message) {
         $this->id_message       = $id_message;
         $this->contenu_mess     = $contenu_mess;
         $this->modif            = $modif;
         $this->id_exped         = $id_exped;
         $this->id_desti         = $id_desti;
-        $this->date_message     = $date_message;
+        $this->date_message     = $date_message ?? new \DateTime();
     }
 
     /**
@@ -86,6 +86,20 @@ class Messages {
     {
         return $this->id_exped;
     }
+
+       /**
+     * Set the value of id_exped
+     *
+     * @param int $id_exped
+     *
+     * @return self
+     */
+    public function setIdExped(int $id_exped): self
+    {
+        $this->id_exped = $id_exped;
+
+        return $this;
+    }
     
     /**
      * Get the value of id_desti
@@ -95,6 +109,20 @@ class Messages {
     public function getIdDesti(): int
     {
         return $this->id_desti;
+    }
+
+        /**
+     * Set the value of id_desti
+     *
+     * @param int $id_desti
+     *
+     * @return self
+     */
+    public function setIdDesti(int $id_desti): self
+    {
+        $this->id_desti = $id_desti;
+
+        return $this;
     }
     
 
@@ -112,7 +140,4 @@ class Messages {
     public function __toString(){
         return '[Message : ' . $this->id_message . ', ' . $this->contenu_mess . ', ' . $this->modif . ', ' . $this->id_exped . ', ' . $this->id_desti . ', ' . $this->date_message . ']';
     }
-    
-    
-
 }

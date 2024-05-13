@@ -41,22 +41,39 @@ class DaoNexus {
     
     //      ---MESSAGERIE---
  
-    public function createMessage(Messages $messages) {
-        $query = Requetes::INSERT_MESSAGE;
+    // public function createMessage(Messages $messages) {
+    //     $query = Requetes::INSERT_MESSAGE;
+    //     try {
+    //         $stmt = $this->conn->prepare($query);
+    //         $stmt->bindValue(1, $messages->getContenuMess(), PDO::PARAM_STR);
+    //         $stmt->bindValue(2, $messages->getIdExped(), PDO::PARAM_INT);
+    //         $stmt->bindValue(3, $messages->getIdDesti(), PDO::PARAM_INT);
+    //         $stmt->execute();
+    
+    //         return true;
+    //     } catch (\PDOException $e) {
+    //         throw DaoException::fromCreateMessagePDOException($e);
+    //     } catch (\Exception $e) {
+    //         throw DaoException::fromCreateMessageException($e);
+    //     }
+    // }
+
+    public function createMessage(Messages $message) {
+        $query = "INSERT INTO Messages (contenu_mess, id_exped, id_desti, modif) VALUES (?, ?, ?, ?)";
         try {
             $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(1, $messages->getContenuMess(), PDO::PARAM_STR);
-            $stmt->bindValue(2, $messages->getIdExped(), PDO::PARAM_INT);
-            $stmt->bindValue(3, $messages->getIdDesti(), PDO::PARAM_INT);
+            $stmt->bindValue(1, $message->getContenuMess(), PDO::PARAM_STR);
+            $stmt->bindValue(2, $message->getIdExped(), PDO::PARAM_INT);
+            $stmt->bindValue(3, $message->getIdDesti(), PDO::PARAM_INT);
+            $stmt->bindValue(4, $message->getModif(), PDO::PARAM_BOOL);
             $stmt->execute();
-    
-            return true;
         } catch (\PDOException $e) {
-            throw DaoException::fromCreateMessagePDOException($e);
-        } catch (\Exception $e) {
-            throw DaoException::fromCreateMessageException($e);
+            error_log('Insert Message Error: ' . $e->getMessage());
+            return false;
         }
+        return true;
     }
+    
     
     public function getConversationMessages($idUser, $idContact) {
         $query = Requetes::SELECT_CONV;

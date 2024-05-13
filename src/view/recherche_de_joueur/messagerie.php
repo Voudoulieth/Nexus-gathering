@@ -47,10 +47,15 @@
                         <?php } ?>
                     </div>
                 </section>
-                <section id="saisieMessage">
+                <!-- <section id="saisieMessage">
                     <textarea id="inputMessage" placeholder="Envoyer un message"></textarea>
                     <button type="button" class="button" id="sendButton">Envoyer</button>
-                </section>
+                </section> -->
+                <form id="saisieMessage" method="POST" action="<?= APP_ROOT ?>/messagerie/create-message">
+                    <input type="hidden" name="dest_id" value="<?= $idContact ?>">
+                    <textarea id="inputMessage" name="message" placeholder="Envoyer un message"></textarea>
+                    <button type="submit" class="button">Envoyer</button>
+                </form>
             </div>
         </div>
     </main>

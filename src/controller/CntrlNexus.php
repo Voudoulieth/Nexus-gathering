@@ -6,6 +6,7 @@ namespace Nexus_gathering\controller;
 
 use Nexus_gathering\dao\DaoNexus;
 use Nexus_gathering\metier\CreationUser;
+use Nexus_gathering\metier\Messages;
 use SebastianBergmann\Type\NullType;
 
 class CntrlNexus{
@@ -60,6 +61,7 @@ class CntrlNexus{
         $contacts = $this->DaoNexus->getUserConversations($creationUser);
         require './view/recherche_de_joueur/messagerie.php';
     }
+    
     public function getConversation()
     {
         $creationUser = $_SESSION["user"];
@@ -81,5 +83,66 @@ class CntrlNexus{
         }
         require './view/recherche_de_joueur/messagerie.php';
     }
+    
 
+    // public function createMessage() {
+    //     header('Content-Type: application/json');  // S'assurer que la réponse est en JSON
+    
+    //     // Vérification de la session de l'utilisateur
+    //     if (!isset($_SESSION['user'])) {
+    //         echo json_encode(['status' => 'error', 'message' => 'Utilisateur non authentifié.']);
+    //         exit;
+    //     }
+    
+    //     // Récupération des valeurs nécessaires depuis $_POST
+    //     $idExpediteur = $_SESSION['user']->getId();  // Assure-toi que l'objet user a une méthode getId()
+    //     $contenu_mess = $_POST['message'] ?? '';
+    //     $idDestinataire = isset($_POST['dest_id']) ? (int) $_POST['dest_id'] : null;
+    
+    //     // Vérification des données
+    //     if (!empty($contenu_mess) && $idExpediteur && $idDestinataire) {
+    //         $message = new Messages(null, $contenu_mess, false, $idExpediteur, $idDestinataire, null);
+    //         $result = $this->DaoNexus->createMessage($message);
+    
+    //         if ($result) {
+    //             echo json_encode(['status' => 'success', 'message' => 'Message envoyé avec succès.']);
+    //         } else {
+    //             echo json_encode(['status' => 'error', 'message' => 'Erreur lors de l\'envoi du message.']);
+    //         }
+    //         exit;
+    //     }
+    // }
+
+    public function createMessage() {
+        header('Content-Type: application/json');
+    
+        if (!isset($_SESSION['user'])) {
+            echo json_encode(['status' => 'error', 'message' => 'Utilisateur non authentifié.']);
+            exit;
+        }
+    
+        $idExpediteur = $_SESSION['user']->getId();
+        $nomUtilisateur = $_SESSION['user']->getNom(); // Assure-toi que cette méthode existe et retourne le nom
+    
+        $contenu_mess = $_POST['message'] ?? '';
+        $idDestinataire = isset($_POST['dest_id']) ? (int) $_POST['dest_id'] : null;
+    
+        if (!empty($contenu_mess) && $idExpediteur && $idDestinataire) {
+            $message = new Messages(null, $contenu_mess, false, $idExpediteur, $idDestinataire, null);
+            $result = $this->DaoNexus->createMessage($message);
+    
+            if ($result) {
+                echo json_encode(['status' => 'success', 'message' => 'Message envoyé avec succès.', 'nomUtilisateur' => $nomUtilisateur]);
+            } else {
+                echo json_encode(['status' => 'error', 'message' => 'Erreur lors de l\'envoi du message.']);
+            }
+            exit;
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'Le message ne peut pas être vide, et les ID de l\'expéditeur et du destinataire doivent être fournis.']);
+            exit;
+        }
+    }
+    
+    
+    
 }
