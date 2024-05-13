@@ -34,8 +34,8 @@
                             </div>
                                 <p class="message"><?= htmlspecialchars($message['contenu_mess']) ?></p>
                                 <div class="messageIcons">
-                                    <img src="/assets/Icone/pen-solid orange.svg" class="edit-icon" alt="Modifier">
-                                    <img src="/assets/Icone/trash-solid orange.svg" class="delete-icon" alt="Supprimer">
+                                    <img src="/assets/Icone/pen-solid orange.svg" class="edit-icon" alt="Modifier" data-id="<?= $message['id_message'] ?>">
+                                    <img src="/assets/Icone/trash-solid orange.svg" class="delete-icon" alt="Supprimer" data-id="<?= $message['id_message'] ?>">
                                 </div>
                                 <p class="messageModified" style="display: none;">Modifié</p>
                             </div>

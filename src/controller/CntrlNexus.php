@@ -142,6 +142,53 @@ class CntrlNexus{
             exit;
         }
     }
+
+    // public function deleteMessage() {
+    //     header('Content-Type: application/json');
+    //     $data = json_decode(file_get_contents('php://input'), true);
+    //     $messageId = $data['id'];
+    
+    //     try {
+    //         $message = new Messages($messageId, '', false, 0, 0, null);  // Assure-toi que l'ID est le seul nécessaire pour construire l'objet
+    //         $result = $this->DaoNexus->deleteMessage($message);
+    
+    //         if ($result) {
+    //             echo json_encode(['status' => 'success', 'message' => 'Message supprimé avec succès.']);
+    //         } else {
+    //             echo json_encode(['status' => 'error', 'message' => 'La suppression du message a échoué.']);
+    //         }
+    //     } catch (\Exception $e) {
+    //         http_response_code(500); // Code d'état HTTP approprié
+    //         echo json_encode(['status' => 'error', 'message' => 'Erreur interne du serveur']);
+    //         exit;
+    //     }
+    // }
+
+    public function deleteMessage() {
+        header('Content-Type: application/json');
+
+        $data = json_decode(file_get_contents('php://input'), true);
+        $messageId = $data['id'] ?? null;
+        
+        if ($messageId) {
+            try {
+                // Supposons que tu crées une instance de message et que tu appelles la méthode delete
+                $message = new Messages($messageId, '', false, 0, 0, null);
+                $result = $this->DaoNexus->deleteMessage($message);
+        
+                if ($result) {
+                    echo json_encode(['status' => 'success', 'message' => 'Message supprimé avec succès.']);
+                } else {
+                    echo json_encode(['status' => 'error', 'message' => 'La suppression du message a échoué.']);
+                }
+            } catch (\Exception $e) {
+                echo json_encode(['status' => 'error', 'message' => 'Erreur serveur: ' . $e->getMessage()]);
+            }
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'ID de message manquant.']);
+        }
+        
+    }
     
     
     

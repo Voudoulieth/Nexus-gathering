@@ -55,6 +55,8 @@ if ($method == 'get') {
 } elseif ($method == 'post') {
     match ($route) {
         APP_ROOT . '/messagerie/create-message' => $cntrlNexus->createMessage(),
+        APP_ROOT . '/messagerie/delete-message' => $cntrlNexus->deleteMessage(),
+
         default                                 => $cntrlNexus->getIndex(),
     };
 } else {
