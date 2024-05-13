@@ -2,10 +2,12 @@
 
 namespace Nexus_gathering;
 
-use Nexus_gathering\controller\CntrlNexus;
-
 require_once dirname(__DIR__, 1) . '/vendor/autoload.php';
 
+use Nexus_gathering\controller\CntrlNexus;
+use Nexus_gathering\metier\DTOUser;
+use Nexus_gathering\metier\RoleUtilisateur;
+use Nexus_gathering\metier\Utilisateur;
 
 if (file_exists("./param.ini")) {
     $param = parse_ini_file("./param.ini", true);
@@ -14,6 +16,14 @@ if (file_exists("./param.ini")) {
 
 define('APP_ROOT', $app_root_phpserver);
 define('PUBLIC_ROOT', $public_root_phpserver);
+
+// simulation d'un utilisateur en session
+$role = new RoleUtilisateur(2, "Utilisateur");
+$user = new DTOUser(1, "Michel", "user-solid blanc.svg", $role);
+
+ session_start();
+$_SESSION["user"] = $user;
+
 
 $cntrlNexus = new CntrlNexus();
 
@@ -39,6 +49,7 @@ if ($method == 'get') {
         APP_ROOT . '/rejoindre_une_annonce'     => $cntrlNexus->getRejoindreUneAnnonce(),
         APP_ROOT . '/creation_annonce'          => $cntrlNexus->getCreationAnnonce(),
         APP_ROOT . '/messagerie'                => $cntrlNexus->getMessagerie(),
+        APP_ROOT . '/messagerie/contact'        => $cntrlNexus->getConversation(),
         default                                 => $cntrlNexus->getIndex(),
     };
 } elseif ($method == 'post') {

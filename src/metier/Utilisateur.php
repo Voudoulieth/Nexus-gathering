@@ -7,9 +7,9 @@ namespace Nexus_gathering\metier;
 class Utilisateur extends CreationUser
 {
     private RoleUtilisateur $role;
-    private NiveauUtilisateur $niveau;
+    private ?NiveauUtilisateur $niveau;
     
-    public function __construct(int $id_user, string $nom_user, string $password, string $avatar, string $mail, int $age, RoleUtilisateur $role, NiveauUtilisateur $niveau)
+    public function __construct(int $id_user, string $nom_user, string $password, string $avatar, string $mail, int $age, RoleUtilisateur $role, ?NiveauUtilisateur $niveau)
     {
         parent::__construct($id_user, $nom_user, $password, $avatar, $mail, $age);
         $this->role = $role;
@@ -24,7 +24,7 @@ class Utilisateur extends CreationUser
         return $this->role;
     }
 
-    public function getNiveau(): NiveauUtilisateur
+    public function getNiveau(): ?NiveauUtilisateur
     {
         return $this->niveau;
     }

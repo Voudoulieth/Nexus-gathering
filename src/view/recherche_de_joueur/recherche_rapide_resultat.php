@@ -8,7 +8,7 @@
   <body>
   <?php include './view/header.inc.php' ?>
     <main>
-        <h1 id="titre">Nom du jeu</h1>
+        <h1 id="titre"></h1>
         <div class="tokenplace">
             <div class="tokenjoueur">
                 <a href="" class="photoProfil"><img src="/assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>

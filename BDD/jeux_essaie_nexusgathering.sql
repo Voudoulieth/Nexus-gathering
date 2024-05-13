@@ -1,8 +1,8 @@
 -- Active: 1710969956952@@127.0.0.1@3306@nexusgathering
 use nexusgathering;
-INSERT INTO roleUser (nom_role) VALUES ('Role 1');
-INSERT INTO roleUser (nom_role) VALUES ('Role 2');
-INSERT INTO roleUser (nom_role) VALUES ('Role 3');
+INSERT INTO roleUser (id_role, nom_role) VALUES (1, 'Admin');
+INSERT INTO roleUser (id_role, nom_role) VALUES (2, 'Utilisateur');
+INSERT INTO roleUser (id_role, nom_role) VALUES (3, 'Contributeur');
 
 INSERT INTO NiveauUtilisateur (nom_niveau, descrip_niveau) VALUES ('Niveau 1', 'Description du Niveau 1');
 INSERT INTO NiveauUtilisateur (nom_niveau, descrip_niveau) VALUES ('Niveau 2', 'Description du Niveau 2');

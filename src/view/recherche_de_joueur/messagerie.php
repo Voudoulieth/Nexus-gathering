@@ -11,47 +11,13 @@
         <div id="messagerieContainer">
             <section id="contactContainer">
                 <h1 class="titres">Contact</h1>
+                <?php foreach ($contacts as $contact){ ?>
                 <div class="contact">
-                    <a href=""><img src="/assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
-                    <p>Nom du joueur</p>
-                    <button class="button">Contacter</button>
+                    <a href="lien vers la page de profil"><img src="<?= $contact->getAvatar()?>" alt="photo de profil du joueurs"></a>
+                    <p><?= $contact->getNomUser() ?></p>
+                    <button class="button" href="<?=APP_ROOT ?>messagerie/contact?id=<?= $contact->getIdUser()?>">Contacter</button>
                 </div>
-                <div class="contact">
-                    <a href=""><img src="/assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
-                    <p>Nom du joueur</p>
-                    <button class="button">Contacter</button>
-                </div>
-                <div class="contact">
-                    <a href=""><img src="/assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
-                    <p>Legluc</p>
-                    <button class="button">Contacter</button>
-                </div>
-                <div class="contact">
-                    <a href=""><img src="/assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
-                    <p>Lumiex</p>
-                    <button class="button">Contacter</button>
-                </div>
-                <div class="contact">
-                    <a href=""><img src="/assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
-                    <p>Kiwi</p>
-                    <button class="button">Contacter</button>
-                </div>
-                <div class="contact">
-                    <a href=""><img src="/assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
-                    <p>Voudou</p>
-                    <button class="button">Contacter</button>
-                </div>
-                <div class="contact">
-                    <a href=""><img src="/assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
-                    <p>Yurigorkha</p>
-                    <button class="button">Contacter</button>
-                </div>
-                <div class="contact">
-                    <a href=""><img src="/assets/Icone/user-solid blanc.svg" alt="photo de profil du joueurs"></a>
-                    <p>Ezerya</p>
-                    <button class="button">Contacter</button>
-                </div>
-
+                <?php } ?>
             </section>
             <div id="affichageMessage">
                 <section>

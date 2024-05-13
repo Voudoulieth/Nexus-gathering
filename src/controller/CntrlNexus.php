@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Nexus_gathering\controller;
 
 use Nexus_gathering\dao\DaoNexus;
+use Nexus_gathering\metier\CreationUser;
 
 class CntrlNexus{
 
@@ -28,6 +29,12 @@ class CntrlNexus{
     }
     public function getRechercheRapideResultat()
     {
+        // $id_jeu             = htmlspecialchars(trim($_GET['id']));
+
+        // $id_jeu = (int)$id_jeu;     // conversion en int
+
+        // $jeu = $this->DaoNexus->getById($id_jeu);
+
         require './view/recherche_de_joueur/recherche_rapide_resultat.php';
     }
     public function getRechercheParAnnonce()
@@ -43,7 +50,26 @@ class CntrlNexus{
         require './view/recherche_de_joueur/creation_annonce.php';
     }
     public function getMessagerie()
-    {
+    {      
+        $creationUser = $_SESSION["user"];
+        if (!isset($creationUser)) { 
+            header('Location: login.php'); 
+            exit;
+        }
+        $contacts = $this->DaoNexus->getUserConversations($creationUser);
+        //var_dump($contacts);
         require './view/recherche_de_joueur/messagerie.php';
+    }
+    public function getConversation()
+    {
+        // if (!isset($idUser)) {
+        //     // Récupére l'utilisateur de la session
+        //     $idUser = $this->DaoNexus->getLoggedUser();
+        // }
+        // if (isset($_GET['id'])) {
+        //     $idContact             = htmlspecialchars(trim($_GET['id']));
+        //     $idContact = (int)$idContact;     // conversion en int
+        //     $rubrique = $this->DaoNexus->getConversationMessages($idUser, $idContact);
+        // }
     }
 }

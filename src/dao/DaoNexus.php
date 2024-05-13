@@ -26,7 +26,10 @@ use Nexus_gathering\metier\Quiz;
 use Nexus_gathering\metier\Question;
 use Nexus_gathering\metier\Reponse;
 use Nexus_gathering\metier\Categorie;
-use Nexus_gathering\metier\JouerQuiz;   
+use Nexus_gathering\metier\DTOUser;
+use Nexus_gathering\metier\JouerQuiz;
+use Nexus_gathering\metier\Conversation;   
+
 
 class DaoNexus {
     
@@ -55,16 +58,17 @@ class DaoNexus {
         }
     }
     
-    public function getConversationMessages(Messages $messages) {
+    public function getConversationMessages($idUser, $idContact) {
         $query = Requetes::SELECT_CONV;
-        try{
+        try {
             $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(1, $messages->getIdExped(), \PDO::PARAM_INT);
-            $stmt->bindValue(2, $messages->getIdDesti(), \PDO::PARAM_INT);
-            $stmt->bindValue(3, $messages->getIdDesti(), \PDO::PARAM_INT);
-            $stmt->bindValue(4, $messages->getIdExped(), \PDO::PARAM_INT);
+            // Liaison des paramètres pour les deux sens de la conversation
+            $stmt->bindValue(1, $idUser, \PDO::PARAM_INT);
+            $stmt->bindValue(2, $idContact, \PDO::PARAM_INT);
+            $stmt->bindValue(3, $idContact, \PDO::PARAM_INT);
+            $stmt->bindValue(4, $idUser, \PDO::PARAM_INT);
             $stmt->execute();
-
+    
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
             throw DaoException::fromFetchConversationsPDOException($e);
@@ -72,21 +76,48 @@ class DaoNexus {
             throw DaoException::fromFetchConversationsException($e);
         }
     }
+    
 
-    public function getUserConversations(CreationUser $creationUser) {
+    // public function getUserConversations(DTOUser $creationUser) {
+    //     $query = Requetes::SELECT_CONTACT;
+    //     try{
+    //         $stmt = $this->conn->prepare($query);
+    //         $stmt->bindValue(':userId', $creationUser->getId(), \PDO::PARAM_INT);  // Binder le même paramètre trois fois
+    //         $stmt->execute();
+
+    //         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            
+    //     } catch (\PDOException $e) {
+    //         throw DaoException::fromFetchUserConversationsException($e);
+    //     } catch (\Exception $e) {
+    //         throw DaoException::fromFetchUserConversationsException($e);
+    //     }
+    // }
+
+    public function getUserConversations(DTOUser $creationUser) {
         $query = Requetes::SELECT_CONTACT;
-        try{
+        $conversations = array();  // Tableau pour stocker les objets Conversation
+        try {
             $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(':userId', $creationUser->getIdUser(), \PDO::PARAM_INT);  // Binder le même paramètre trois fois
+            $stmt->bindValue(':userId', $creationUser->getId(), \PDO::PARAM_INT);
             $stmt->execute();
+    
+            while ($row = $stmt->fetch(\PDO::FETCH_OBJ)) {
+                // Création d'un objet Conversation à partir de la ligne de la base de données
+                //public function __construct( private int $id_message, private string $contact, private \DateTime $date_message)
 
-            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+                $conversation = new Conversation($row->id_user, $row->nom_user, $row->last_message_date);  // Adapter les propriétés selon les champs de ta table
+                array_push($conversations, $conversation);
+            }
+    
+            return $conversations;
         } catch (\PDOException $e) {
             throw DaoException::fromFetchUserConversationsException($e);
         } catch (\Exception $e) {
             throw DaoException::fromFetchUserConversationsException($e);
         }
     }
+    
     
     public function updateMessage(Messages $messages) {
         $query = Requetes::UPDATE_MESSAGE;
