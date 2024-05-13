@@ -6,6 +6,7 @@ namespace Nexus_gathering\controller;
 
 use Nexus_gathering\dao\DaoNexus;
 use Nexus_gathering\metier\CreationUser;
+use SebastianBergmann\Type\NullType;
 
 class CntrlNexus{
 
@@ -57,7 +58,6 @@ class CntrlNexus{
             exit;
         }
         $contacts = $this->DaoNexus->getUserConversations($creationUser);
-        //var_dump($contacts);
         require './view/recherche_de_joueur/messagerie.php';
     }
     public function getConversation()
@@ -67,10 +67,19 @@ class CntrlNexus{
             header('Location: login.php'); 
             exit;
         }
+        $selectedContactName = "";
+        $selectedContactAvatar = "";
+        $messages = [];
         if (isset($_GET['id'])) {
-            $idContact             = htmlspecialchars(trim($_GET['id']));
-            $idContact = (int)$idContact;     // conversion en int
-            $rubrique = $this->DaoNexus->getConversationMessages($creationUser, $idContact);
+            $contacts = $this->DaoNexus->getUserConversations($creationUser);
+            $idContact = htmlspecialchars(trim($_GET['id']));
+            $idContact = (int)$idContact;  // conversion en int
+            $messages = $this->DaoNexus->getConversationMessages($creationUser->getId(), $idContact);
+            $selectedContactName = $this->DaoNexus->getContactNameById($idContact);
+            $selectedContactAvatar = $this->DaoNexus->getContactAvatarById($idContact);
+
         }
+        require './view/recherche_de_joueur/messagerie.php';
     }
+
 }

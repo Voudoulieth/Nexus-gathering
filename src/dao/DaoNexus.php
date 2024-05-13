@@ -76,6 +76,26 @@ class DaoNexus {
             throw DaoException::fromFetchConversationsException($e);
         }
     }
+
+    //TODO a remettre au propre 
+
+    public function getContactNameById($idContact) {
+        $stmt = $this->conn->prepare("SELECT nom_user FROM Utilisateur WHERE id_user = :idContact");
+        $stmt->bindParam(':idContact', $idContact, \PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+        return $result ? $result['nom_user'] : "Nom inconnu"; // Retourner le nom ou une valeur par défaut
+    }
+
+        //TODO a remettre au propre 
+
+    public function getContactAvatarById($idContact) {
+        $stmt = $this->conn->prepare("SELECT avatar FROM Utilisateur WHERE id_user = :idContact");
+        $stmt->bindParam(':idContact', $idContact, \PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+        return $result ? $result['nom_user'] : "Nom inconnu"; // Retourner le nom ou une valeur par défaut
+    }
     
 
     public function getUserConversations(DTOUser $creationUser) {

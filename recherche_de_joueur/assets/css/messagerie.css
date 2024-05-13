@@ -25,7 +25,7 @@ main{
     margin-left: 1vw;
     margin-bottom: 1vh;
 }
-.contact a{
+.avatar{
     background-color: #F45A01;
     width: 7.5vh;
     height: 7.5vh;
@@ -124,6 +124,21 @@ main{
 }
 .messageContainer:hover{
     background-color: rgb(18, 9, 23,0.3);
+}
+.messageHeader{
+    position: absolute;
+    top: 0%; /* Centre verticalement */
+    transform: translateY(-50%); /* Ajuste précisément au centre */
+    left: 1%;
+    height: 2vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    border-radius: 30px;
+    font-size: 0.8em;
+    background-color: #F45A01;
 }
 .messageIcons{
     position: absolute;

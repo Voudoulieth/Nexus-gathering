@@ -98,25 +98,25 @@ function resetSendButtonEvent() {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Sélectionne tous les boutons "Contacter" et leur ajoute un écouteur d'événement
-    const contactButtons = document.querySelectorAll('#contactContainer .button');
+// document.addEventListener('DOMContentLoaded', () => {
+//     // Sélectionne tous les boutons "Contacter" et leur ajoute un écouteur d'événement
+//     const contactButtons = document.querySelectorAll('#contactContainer .button');
 
-    contactButtons.forEach(button => {
-        button.addEventListener('click', updateCurrentContact);
-    });
+//     contactButtons.forEach(button => {
+//         button.addEventListener('click', updateCurrentContact);
+//     });
 
-    function updateCurrentContact(event) {
-        // Récupère le div "contact" parent
-        const contactDiv = event.target.closest('.contact');
+//     function updateCurrentContact(event) {
+//         // Récupère le div "contact" parent
+//         const contactDiv = event.target.closest('.contact');
         
-        // Récupère les informations du contact
-        const imgSrc = contactDiv.querySelector('img').src;
-        const playerName = contactDiv.querySelector('p').textContent;
+//         // Récupère les informations du contact
+//         const imgSrc = contactDiv.querySelector('img').src;
+//         const playerName = contactDiv.querySelector('p').textContent;
         
-        // Met à jour le "contactEnCour"
-        const currentContactDiv = document.getElementById('contactEnCour');
-        currentContactDiv.querySelector('img').src = imgSrc;
-        currentContactDiv.querySelector('p').textContent = playerName;
-    }
-});
+//         // Met à jour le "contactEnCour"
+//         const currentContactDiv = document.getElementById('contactEnCour');
+//         currentContactDiv.querySelector('img').src = imgSrc;
+//         currentContactDiv.querySelector('p').textContent = playerName;
+//     }
+// });
