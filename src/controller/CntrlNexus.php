@@ -62,14 +62,15 @@ class CntrlNexus{
     }
     public function getConversation()
     {
-        // if (!isset($idUser)) {
-        //     // Récupére l'utilisateur de la session
-        //     $idUser = $this->DaoNexus->getLoggedUser();
-        // }
-        // if (isset($_GET['id'])) {
-        //     $idContact             = htmlspecialchars(trim($_GET['id']));
-        //     $idContact = (int)$idContact;     // conversion en int
-        //     $rubrique = $this->DaoNexus->getConversationMessages($idUser, $idContact);
-        // }
+        $creationUser = $_SESSION["user"];
+        if (!isset($creationUser)) { 
+            header('Location: login.php'); 
+            exit;
+        }
+        if (isset($_GET['id'])) {
+            $idContact             = htmlspecialchars(trim($_GET['id']));
+            $idContact = (int)$idContact;     // conversion en int
+            $rubrique = $this->DaoNexus->getConversationMessages($creationUser, $idContact);
+        }
     }
 }

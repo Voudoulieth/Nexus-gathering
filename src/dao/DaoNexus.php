@@ -78,22 +78,6 @@ class DaoNexus {
     }
     
 
-    // public function getUserConversations(DTOUser $creationUser) {
-    //     $query = Requetes::SELECT_CONTACT;
-    //     try{
-    //         $stmt = $this->conn->prepare($query);
-    //         $stmt->bindValue(':userId', $creationUser->getId(), \PDO::PARAM_INT);  // Binder le même paramètre trois fois
-    //         $stmt->execute();
-
-    //         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-            
-    //     } catch (\PDOException $e) {
-    //         throw DaoException::fromFetchUserConversationsException($e);
-    //     } catch (\Exception $e) {
-    //         throw DaoException::fromFetchUserConversationsException($e);
-    //     }
-    // }
-
     public function getUserConversations(DTOUser $creationUser) {
         $query = Requetes::SELECT_CONTACT;
         $conversations = array();  // Tableau pour stocker les objets Conversation
@@ -104,9 +88,8 @@ class DaoNexus {
     
             while ($row = $stmt->fetch(\PDO::FETCH_OBJ)) {
                 // Création d'un objet Conversation à partir de la ligne de la base de données
-                //public function __construct( private int $id_message, private string $contact, private \DateTime $date_message)
 
-                $conversation = new Conversation($row->id_user, $row->nom_user, $row->last_message_date);  // Adapter les propriétés selon les champs de ta table
+                $conversation = new Conversation($row->id_user, $row->nom_user, $row->avatar, $row->last_message_date);
                 array_push($conversations, $conversation);
             }
     

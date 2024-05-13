@@ -2,7 +2,7 @@
 namespace Nexus_gathering\metier;
 
 class Conversation{
-    public function __construct( private int $id_user, private string $nom_user, private string $last_message_date)
+    public function __construct( private int $id_user, private string $nom_user, private ?string $avatar, private string $last_message_date)
     {
     }
 
@@ -22,6 +22,14 @@ class Conversation{
         return $this->nom_user;
     }
 
+        /**
+     * Get the value of avatar
+     */
+    public function getAvatar()
+    {
+        return $this->avatar = $avatar ?? '/assets/Icone/user-solid blanc.svg';
+    }
+
     /**
      * Get the value of last_message_date
      */
@@ -29,4 +37,5 @@ class Conversation{
     {
         return $this->last_message_date;
     }
+
 }

@@ -7,12 +7,14 @@ require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 class Requetes {
     public const INSERT_MESSAGE = "INSERT INTO Messages (contenu_mess, modif, id_exped, id_desti, date_message) VALUES (?, false, ?, ?, CURRENT_TIMESTAMP)";
     public const SELECT_CONV = "SELECT * FROM Messages WHERE (id_exped = ? AND id_desti = ?) OR (id_exped = ? AND id_desti = ?) ORDER BY date_message ASC";
-    public const SELECT_CONTACT = "SELECT u.id_user, u.nom_user, MAX(m.date_message) AS last_message_date
+       
+    public const SELECT_CONTACT = "SELECT u.id_user, u.nom_user, u.avatar, MAX(m.date_message) AS last_message_date
     FROM Messages m
     JOIN Utilisateur u ON u.id_user = m.id_exped OR u.id_user = m.id_desti
     WHERE (m.id_exped = :userId OR m.id_desti = :userId) AND u.id_user != :userId
-    GROUP BY u.id_user, u.nom_user
-    ORDER BY last_message_date DESC";    
+    GROUP BY u.id_user, u.nom_user, u.avatar
+    ORDER BY last_message_date DESC";
+
     public const UPDATE_MESSAGE = "UPDATE Messages SET contenu_mess = ?, modif = true WHERE id_message = ?";
     public const DELETE_MESSAGE = "DELETE FROM Messages WHERE id_message = ?";
 
