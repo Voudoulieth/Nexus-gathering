@@ -5,7 +5,7 @@ namespace Nexus_gathering\dao;
 require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
 
 class Requetes {
-    public const INSERT_MESSAGE = "INSERT INTO Messages (contenu_mess, modif, id_exped, id_desti, date_message) VALUES (?, false, ?, ?, CURRENT_TIMESTAMP)";
+    public const INSERT_MESSAGE = "INSERT INTO Messages (contenu_mess, id_exped, id_desti, modif) VALUES (?, ?, ?, ?)";
     public const SELECT_CONV = "SELECT Messages.*, Utilisateur.nom_user FROM Messages 
     JOIN Utilisateur ON Messages.id_exped = Utilisateur.id_user
     WHERE (id_exped = ? AND id_desti = ?) OR (id_exped = ? AND id_desti = ?) 

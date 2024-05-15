@@ -143,52 +143,49 @@ class CntrlNexus{
         }
     }
 
-    // public function deleteMessage() {
-    //     header('Content-Type: application/json');
-    //     $data = json_decode(file_get_contents('php://input'), true);
-    //     $messageId = $data['id'];
-    
-    //     try {
-    //         $message = new Messages($messageId, '', false, 0, 0, null);  // Assure-toi que l'ID est le seul nécessaire pour construire l'objet
-    //         $result = $this->DaoNexus->deleteMessage($message);
-    
-    //         if ($result) {
-    //             echo json_encode(['status' => 'success', 'message' => 'Message supprimé avec succès.']);
-    //         } else {
-    //             echo json_encode(['status' => 'error', 'message' => 'La suppression du message a échoué.']);
-    //         }
-    //     } catch (\Exception $e) {
-    //         http_response_code(500); // Code d'état HTTP approprié
-    //         echo json_encode(['status' => 'error', 'message' => 'Erreur interne du serveur']);
-    //         exit;
-    //     }
-    // }
 
     public function deleteMessage() {
-        header('Content-Type: application/json');
-
-        $data = json_decode(file_get_contents('php://input'), true);
-        $messageId = $data['id'] ?? null;
-        
-        if ($messageId) {
-            try {
-                // Supposons que tu crées une instance de message et que tu appelles la méthode delete
-                $message = new Messages($messageId, '', false, 0, 0, null);
-                $result = $this->DaoNexus->deleteMessage($message);
-        
-                if ($result) {
-                    echo json_encode(['status' => 'success', 'message' => 'Message supprimé avec succès.']);
-                } else {
-                    echo json_encode(['status' => 'error', 'message' => 'La suppression du message a échoué.']);
-                }
-            } catch (\Exception $e) {
-                echo json_encode(['status' => 'error', 'message' => 'Erreur serveur: ' . $e->getMessage()]);
+        if (isset($_POST['message_id'], $_POST['conversation_id'])) {
+            $messageId = (int) $_POST['message_id'];
+            $conversationId = (int) $_POST['conversation_id'];
+            $message = new Messages($messageId, '', false, 0, 0, null);
+    
+            if ($this->DaoNexus->deleteMessage($message)) {
+                // Redirection vers la conversation actuelle
+                header('Location: ' . APP_ROOT . '/messagerie/contact?id=' . $conversationId . '&status=success&message=Message supprimé');
+            } else {
+                // Gestion de l'erreur, rester sur la même page
+                header('Location: ' . APP_ROOT . '/messagerie/contact?id=' . $conversationId . '&status=error&message=Erreur lors de la suppression');
             }
         } else {
-            echo json_encode(['status' => 'error', 'message' => 'ID de message manquant.']);
+            // ID de message ou de conversation non fourni
+            header('Location: ' . APP_ROOT . '/messagerie?status=error&message=Informations manquantes');
         }
-        
+        exit;
     }
+    
+    public function updateMessage() {
+        header('Content-Type: application/json');
+        if (isset($_POST['message_id'], $_POST['message'])) {
+            $messageId = (int) $_POST['message_id'];
+            $contenu_mess = trim($_POST['message']);
+            $idExpediteur = $_SESSION['user']->getId();
+            $idDestinataire = isset($_POST['dest_id']) ? (int) $_POST['dest_id'] : null;
+            $modif = false;
+    
+            $message = new Messages($messageId, $contenu_mess, $modif, $idExpediteur, $idDestinataire, null);
+    
+            if ($this->DaoNexus->updateMessage($message)) {
+                echo json_encode(['success' => true]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Erreur lors de la mise à jour']);
+            }
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Informations manquantes']);
+        }
+        exit;
+    }
+    
     
     
     

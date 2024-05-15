@@ -32,10 +32,18 @@
                             <div class="messageHeader">
                                 <p><?= htmlspecialchars($message['nom_user']) ?></p> <!-- Afficher le nom de l'auteur -->
                             </div>
-                                <p class="message"><?= htmlspecialchars($message['contenu_mess']) ?></p>
-                                <div class="messageIcons">
-                                    <img src="/assets/Icone/pen-solid orange.svg" class="edit-icon" alt="Modifier" data-id="<?= $message['id_message'] ?>">
-                                    <img src="/assets/Icone/trash-solid orange.svg" class="delete-icon" alt="Supprimer" data-id="<?= $message['id_message'] ?>">
+                            <p class="message" id="message-content-<?= $message['id_message'] ?>"><?= htmlspecialchars($message['contenu_mess']) ?></p>
+                            <div class="messageIcons">                                   
+                            <button type="button" class="edit-icon" data-id="<?= $message['id_message'] ?>" data-action-url="<?= APP_ROOT ?>/messagerie/update-message" onclick="prepareEdit(this)">
+                                <img src="/assets/Icone/pen-solid orange.svg" alt="Modifier">
+                            </button>
+                                    <form action="<?= APP_ROOT ?>/messagerie/delete-message" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce message ?');">
+                                        <input type="hidden" name="message_id" value="<?= $message['id_message'] ?>">
+                                        <input type="hidden" name="conversation_id" value="<?= $idContact ?>"> <!-- ID de la conversation en cours -->
+                                        <button type="submit" class="delete-icon">
+                                            <img src="/assets/Icone/trash-solid orange.svg" alt="Supprimer">
+                                        </button>
+                                    </form>
                                 </div>
                                 <p class="messageModified" style="display: none;">Modifié</p>
                             </div>
@@ -47,19 +55,19 @@
                         <?php } ?>
                     </div>
                 </section>
-                <!-- <section id="saisieMessage">
-                    <textarea id="inputMessage" placeholder="Envoyer un message"></textarea>
-                    <button type="button" class="button" id="sendButton">Envoyer</button>
-                </section> -->
-                <form id="saisieMessage" method="POST" action="<?= APP_ROOT ?>/messagerie/create-message">
+                <form id="saisieMessage" method="POST" action="<?= APP_ROOT ?>/messagerie/create-message" data-mode="create">
                     <input type="hidden" name="dest_id" value="<?= $idContact ?>">
+                    <input type="hidden" name="message_id" id="messageId">
                     <textarea id="inputMessage" name="message" placeholder="Envoyer un message"></textarea>
-                    <button type="submit" class="button">Envoyer</button>
+                    <button type="submit" class="button">Envoyer/Modifier</button>
                 </form>
             </div>
         </div>
     </main>
     <?php include './view/footer.inc.php' ?>
+    <script>
+        var appRoot = '<?= APP_ROOT ?>/messagerie/delete-message';
+    </script>
     <script src="/recherche_de_joueur/assets/js/messagerie.js"></script>
     </body>
 </html>

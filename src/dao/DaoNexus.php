@@ -41,25 +41,8 @@ class DaoNexus {
     
     //      ---MESSAGERIE---
  
-    // public function createMessage(Messages $messages) {
-    //     $query = Requetes::INSERT_MESSAGE;
-    //     try {
-    //         $stmt = $this->conn->prepare($query);
-    //         $stmt->bindValue(1, $messages->getContenuMess(), PDO::PARAM_STR);
-    //         $stmt->bindValue(2, $messages->getIdExped(), PDO::PARAM_INT);
-    //         $stmt->bindValue(3, $messages->getIdDesti(), PDO::PARAM_INT);
-    //         $stmt->execute();
-    
-    //         return true;
-    //     } catch (\PDOException $e) {
-    //         throw DaoException::fromCreateMessagePDOException($e);
-    //     } catch (\Exception $e) {
-    //         throw DaoException::fromCreateMessageException($e);
-    //     }
-    // }
-
     public function createMessage(Messages $message) {
-        $query = "INSERT INTO Messages (contenu_mess, id_exped, id_desti, modif) VALUES (?, ?, ?, ?)";
+        $query = Requetes::INSERT_MESSAGE;
         try {
             $stmt = $this->conn->prepare($query);
             $stmt->bindValue(1, $message->getContenuMess(), PDO::PARAM_STR);
@@ -111,7 +94,7 @@ class DaoNexus {
         $stmt->bindParam(':idContact', $idContact, \PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetch(\PDO::FETCH_ASSOC);
-        return $result ? $result['nom_user'] : "Nom inconnu"; // Retourner le nom ou une valeur par défaut
+        return $result ? $result['avatar'] : '/assets/Icone/user-solid blanc.svg'; // Retourner le nom ou une valeur par défaut
     }
     
 

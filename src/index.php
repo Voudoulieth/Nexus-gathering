@@ -56,7 +56,7 @@ if ($method == 'get') {
     match ($route) {
         APP_ROOT . '/messagerie/create-message' => $cntrlNexus->createMessage(),
         APP_ROOT . '/messagerie/delete-message' => $cntrlNexus->deleteMessage(),
-
+        APP_ROOT . '/messagerie/update-message' => $cntrlNexus->updateMessage(),
         default                                 => $cntrlNexus->getIndex(),
     };
 } else {
