@@ -37,7 +37,6 @@ $method = strtolower($_SERVER['REQUEST_METHOD']);
 // /recherche-rapide/resultat   get page recherche rapide résultat
 
 
-
 if ($method == 'get') {
     match ($route) {
         APP_ROOT                                => $cntrlNexus->getIndex(),

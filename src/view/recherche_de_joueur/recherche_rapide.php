@@ -7,12 +7,7 @@
   </head>
   <body>
   <?php include './view/header.inc.php' ?>
-    <main>
-      <!-- <?php 
-      foreach($jeux as $jeu){?>
-        <img src="<?=PUBLIC_ROOT?>/assets/Image/<?=$jeu->getImg_jeu()?>" alt="">
-      <?php } ?> -->
-      
+    <main>      
         <div id="recherche">
             <input type="search" placeholder="Recherche ton jeu" id="searchbar">
             <button type="submit"><img src="../assets/Icone/magnifying-glass-solid-blanc.svg" id="loupe"></button>
@@ -23,7 +18,18 @@
             <button>
                 <img src="../assets/Icone/arrow-left-solid orange.svg" alt="bouton fleche gauche" class="arrow" id="suivant">
               </button>
-              <div id="carousel-content"></div>
+              <div id="carousel-content">
+              <?php 
+                foreach($jeux as $jeu){?>
+                <a href=" "class= carouselimg>
+                  <figure>
+                    <img src="<?=PUBLIC_ROOT?>/assets/Image/<?=$jeu->getImg_jeu()?>" alt="<?=$jeu->getNom_jeu()?>">                    
+                    <figcaption><?=$jeu->getNom_jeu()?></figcaption>
+                  </figure>
+                </a>
+                  <!-- <img src="<?=PUBLIC_ROOT?>/assets/Image/<?=$jeu->getImg_jeu()?>" alt="<?=$jeu->getNom_jeu()?>"> -->
+                <?php } ?>
+              </div>
             <button>
                 <img src="../assets/Icone/arrow-right-solid orange.svg" alt="bouton fleche droite" class="arrow" id="precedent">
               </button> 

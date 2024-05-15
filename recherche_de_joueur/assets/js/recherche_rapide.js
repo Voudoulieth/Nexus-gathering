@@ -1,39 +1,49 @@
-import { carouselData } from './data.js';
-
 const carouselContent = document.getElementById("carousel-content");
-
-// Initialisation de l'indice de l'élément actuellement affiché dans le carrousel à 0.
 let currentIndex = 0;
 
+function updateCarousel() {
+    const appRoot = document.getElementById('config').getAttribute('data-app-root'); // Assurez-vous que l'élément 'config' existe avec un attribut 'data-app-root'
+    carouselContent.innerHTML = ''; // Efface le contenu actuel du carrousel
 
- // Met à jour le contenu du carrousel avec de nouveaux éléments.
- function updateCarousel() {
-  const appRoot = document.getElementById('config').getAttribute('data-app-root'); // Récupérer APP_ROOT
+    // Boucle sur les données du carrousel pour créer les éléments HTML
+    carouselData.forEach((item, index) => {
+        let additionalAttributes = index === 2 ? ' id="imgspotlight"' : ''; // Spotlight pour l'élément central
 
-  // Effacement du contenu actuel du carrousel pour pouvoir afficher les nouveaux éléments.
-  carouselContent.innerHTML = '';
+        const aTag = `<a href="${appRoot}/jeu/${item.id_jeu}" class="carouselimg"${additionalAttributes}>
+            <figure>
+                <img src="${item.img_jeu}" alt="${item.nom_jeu}">
+                <figcaption>${item.nom_jeu}</figcaption>
+            </figure>
+        </a>`;
 
-  for (let i = 0; i < 5; i++) {
-    let itemIndex = (currentIndex + i) % carouselData.length;
-    const item = carouselData[itemIndex];  // Récupération de l'élément à afficher.
+        carouselContent.innerHTML += aTag;
+    });
 
-    let additionalAttributes = '';
-    if (i === 2) {
-      additionalAttributes = ' id="imgspotlight"';
-    }
-
-    // Utilisation de APP_ROOT dans l'URL
-    const aTag = `<a href="${appRoot}${item.href}" class="carouselimg"${additionalAttributes} data-caption="${encodeURIComponent(item.caption)}">
-      <figure>
-        <img src="${item.src}" alt="${item.alt}">
-        <figcaption>${item.caption}</figcaption>
-      </figure>
-    </a>`;
-
-    carouselContent.innerHTML += aTag;
-  }
-  attachClickEventToCarouselItems();
+    attachClickEventToCarouselItems();
 }
+
+function attachClickEventToCarouselItems() {
+    document.querySelectorAll('.carouselimg').forEach(item => {
+        item.addEventListener('click', function(event) {
+            localStorage.setItem('selectedGameId', item.querySelector('figure img').getAttribute('src'));
+        });
+    });
+}
+
+// Ajout des écouteurs pour les boutons de navigation, s'ils existent
+document.getElementById('precedent')?.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + carouselData.length) % carouselData.length;
+    updateCarousel();
+});
+
+document.getElementById('suivant')?.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % carouselData.length;
+    updateCarousel();
+});
+
+// Initialisation du carrousel au chargement de la page
+updateCarousel();
+
 
 
  // Permet de naviguer vers l'élément précédent du carrousel.

@@ -28,6 +28,9 @@ class Requetes {
     WHERE rr.id_jeu = ? AND (rr.fin_session IS NULL OR rr.fin_session >= NOW())
     AND (rr.fin_session IS NULL OR TIMESTAMPDIFF(HOUR, rr.deb_session, rr.fin_session) <= 6)
     ORDER BY rr.id_session DESC";
+    
+    public const SELECT_CARROUSSEL = "SELECT id_jeu, nom_jeu, img_jeu FROM jeu ORDER BY id_jeu DESC LIMIT 5";
+
     public const UPDATE_RECHERCHE_RAPIDE = "UPDATE rechercheRapide SET id_jeu = ?, fin_session = CASE
     WHEN TIMESTAMPDIFF(HOUR, deb_session, NOW()) <= 6 THEN fin_session
     ELSE NOW()

@@ -43,6 +43,7 @@ class DaoNexus {
  
     public function createMessage(Messages $message) {
         $query = Requetes::INSERT_MESSAGE;
+        $id_message = 0;
         try {
             $stmt = $this->conn->prepare($query);
             $stmt->bindValue(1, $message->getContenuMess(), PDO::PARAM_STR);
@@ -50,11 +51,12 @@ class DaoNexus {
             $stmt->bindValue(3, $message->getIdDesti(), PDO::PARAM_INT);
             $stmt->bindValue(4, $message->getModif(), PDO::PARAM_BOOL);
             $stmt->execute();
+            $id_message = $this->conn -> lastInsertId();
         } catch (\PDOException $e) {
             error_log('Insert Message Error: ' . $e->getMessage());
             return false;
         }
-        return true;
+        return [true, $id_message];
     }
     
     
@@ -184,6 +186,34 @@ class DaoNexus {
             throw DaoException::fromFetchRechercheRapideException($e);
         }
     }
+
+    //TODO a clear
+
+    public function getAllGamesForCarousel(): array {
+        $query = Requetes::SELECT_CARROUSSEL;
+        $jeux = [];
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute(); // Exécuter la requête
+            while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                // Traitement des valeurs NULL pour les arguments de la construction de Jeu
+                $resume = isset($row['resum_jeu']) ? $row['resum_jeu'] : ''; // Valeur par défaut si le champ est NULL
+                $img = isset($row['img_jeu']) ? $row['img_jeu'] : ''; // Valeur par défaut si le champ est NULL
+                $id_ed = isset($row['id_ed']) ? (int)$row['id_ed'] : 0; // Valeur par défaut si le champ est NULL
+                $id_user = isset($row['id_user']) ? (int)$row['id_user'] : 0; // Valeur par défaut si le champ est NULL
+                $id_stu = isset($row['id_stu']) ? (int)$row['id_stu'] : 0; // Valeur par défaut si le champ est NULL
+                $multi = isset($row['multi']) ? (bool)$row['multi'] : false; // Valeur par défaut si le champ est NULL
+                // Création de l'objet Jeu en prenant en compte les valeurs par défaut
+                $jeux[] = new Jeu($row['id_jeu'], $row['nom_jeu'], $resume, $img, $multi, $id_ed, $id_user, $id_stu);
+            }
+        } catch (\PDOException $e) {
+            throw DaoException::fromFetchAllJeuxPDOException($e);
+        } catch (\Exception $e) {
+            throw DaoException::fromFetchAllJeuxException($e);
+        }
+        return $jeux;
+    }
+    
 
     public function updateRechercheRapide(Jeu $jeu, RechercheRapide $rechercheRapide) {
         $query = Requetes::UPDATE_RECHERCHE_RAPIDE;

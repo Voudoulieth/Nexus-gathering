@@ -52,7 +52,7 @@
 //     });
 // });
 
-// var appRoot = document.body.getAttribute('data-approot');
+var appRoot = document.location.origin + '/src/messagerie/delete-message';
 document.getElementById('saisieMessage').addEventListener('submit', function(event) {
     event.preventDefault();  // Empêcher le formulaire de s'envoyer normalement
 
@@ -73,19 +73,20 @@ document.getElementById('saisieMessage').addEventListener('submit', function(eve
         return response.json();  // Traiter la réponse comme JSON
     })
     .then(data => {
-        if (data.status === "success") {
+        console.log(data);
+        if (data.success) {
             var htmlContent = `<div class="messageContainer">
                                 <div class="messageHeader">
                                     <p>${data.nomUtilisateur}</p> <!-- Afficher le nom de l'auteur -->
                                 </div>
-                                <p class="message">${this.inputMessage.value}</p>
+                                <p class="message" id="message-content-${data.message_id}">${this.inputMessage.value}</p>
                                 <div class="messageIcons">                                   
                                     <button type="button" class="edit-icon" data-id="${data.message_id}" data-action-url="${url}">
                                         <img src="/assets/Icone/pen-solid orange.svg" alt="Modifier">
                                     </button>
                                     <form action="${appRoot}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce message ?');">
-                                        <input type="hidden" name="message_id" value="<?= $message['id_message'] ?>">
-                                        <input type="hidden" name="conversation_id" value="<?= $idContact ?>"> <!-- ID de la conversation en cours -->
+                                        <input type="hidden" name="message_id" value="${data.message_id}">
+                                        <input type="hidden" name="conversation_id" value="${data.destinataire}"> <!-- ID de la conversation en cours -->
                                         <button type="submit" class="delete-icon">
                                             <img src="/assets/Icone/trash-solid orange.svg" alt="Supprimer">
                                         </button>
@@ -97,8 +98,11 @@ document.getElementById('saisieMessage').addEventListener('submit', function(eve
             if (mode === 'create') {
                 document.getElementById('blockMessage').innerHTML += htmlContent;  // Ajouter le nouveau message à la fin
             } else {
-                let messageId = formData.get('message_id');
-                document.getElementById('message-content-' + messageId).parentNode.innerHTML = htmlContent;
+                // let messageId = formData.get('message_id');
+                // document.getElementById('message-content-' + messageId).parentNode.innerHTML = htmlContent;
+                console.log(data.message_id);
+                console.log(this.inputMessage.value);
+                document.getElementById('message-content-' + data.message_id).textContent = this.inputMessage.value;
             }
             document.getElementById('inputMessage').value = '';  // Vider le champ de saisie
             this.setAttribute('data-mode', 'create');  // Réinitialiser le mode à 'create'

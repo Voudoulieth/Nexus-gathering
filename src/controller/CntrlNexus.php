@@ -26,7 +26,9 @@ class CntrlNexus{
     }
     public function getRechercheRapide()
     {
-        $jeux = $this->DaoNexus->getAll();
+        $jeux = $this->DaoNexus->getAllGamesForCarousel();
+
+        // $jeux = $this->DaoNexus->getAll();
         require './view/recherche_de_joueur/recherche_rapide.php';
     }
     public function getRechercheRapideResultat()
@@ -120,6 +122,7 @@ class CntrlNexus{
             echo json_encode(['status' => 'error', 'message' => 'Utilisateur non authentifié.']);
             exit;
         }
+
     
         $idExpediteur = $_SESSION['user']->getId();
         $nomUtilisateur = $_SESSION['user']->getNom(); // Assure-toi que cette méthode existe et retourne le nom
@@ -131,14 +134,14 @@ class CntrlNexus{
             $message = new Messages(null, $contenu_mess, false, $idExpediteur, $idDestinataire, null);
             $result = $this->DaoNexus->createMessage($message);
     
-            if ($result) {
-                echo json_encode(['status' => 'success', 'message' => 'Message envoyé avec succès.', 'nomUtilisateur' => $nomUtilisateur]);
+            if ($result [0]) {
+                echo json_encode(['success' => true, 'message' => 'Message envoyé avec succès.', 'nomUtilisateur' => $nomUtilisateur, 'destinataire' => $idDestinataire, 'message_id' => $result[1]]);
             } else {
-                echo json_encode(['status' => 'error', 'message' => 'Erreur lors de l\'envoi du message.']);
+                echo json_encode(['success' => false, 'message' => 'Erreur lors de l\'envoi du message.']);
             }
             exit;
         } else {
-            echo json_encode(['status' => 'error', 'message' => 'Le message ne peut pas être vide, et les ID de l\'expéditeur et du destinataire doivent être fournis.']);
+            echo json_encode(['success' => false, 'message' => 'Le message ne peut pas être vide, et les ID de l\'expéditeur et du destinataire doivent être fournis.']);
             exit;
         }
     }
@@ -176,7 +179,7 @@ class CntrlNexus{
             $message = new Messages($messageId, $contenu_mess, $modif, $idExpediteur, $idDestinataire, null);
     
             if ($this->DaoNexus->updateMessage($message)) {
-                echo json_encode(['success' => true]);
+                echo json_encode(['success' => true, 'message_id' => $messageId, 'contenu_mess' => $contenu_mess]);
             } else {
                 echo json_encode(['success' => false, 'message' => 'Erreur lors de la mise à jour']);
             }
