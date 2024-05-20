@@ -44,20 +44,21 @@ export class Jeu {
     // get format() {return this.#format}
 
     getJeu = function () {
-        return `<div
-    class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] font-semibold flex m-5">\
-    <img class="rounded-full p-1 w-20" src="${this.image}" alt="Image du jeu"/>\
-    <div class="grid grid-cols-5 h-16">\
-    <h3 class="font-['Changa'] text-[1.68em] font-bold place-self-center">${this.nom}</h3>\
-    <p class="place-self-center text-[0.875em]">${this.dateSortie}</p>\
-    <p class="place-self-center text-[0.875em]">${this.style}</p>\
-        <p class="text-clip overflow-hidden text-[0.875em] mt-2">${this.resume}</p>\
-        <div class="flex justify-end mr-5">\
-    <a href="./vpagejeu.php" class="rounded-full font-['Open Sans'] bg-[#733790]/95 place-self-center text-center text-[1.06em] p-2 pl-5 pr-5">Voir</a>\
-        </div>\
-    </div>\
-</div>`;
-    };
+        return `
+        <div class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] font-semibold flex m-5">\
+            <img class="rounded-full p-1 w-20" src="${this.image}" alt="Image du jeu"/>\
+            <div class="grid grid-cols-5 h-16">\
+                <h3 class="font-['Changa'] text-[1.68em] font-bold place-self-center">${this.nom}</h3>\
+                <p class="place-self-center text-[0.875em]">${this.dateSortie}</p>\
+                <p class="place-self-center text-[0.875em]">${this.style}</p>\
+                <p class="text-clip overflow-hidden text-[0.875em] mt-2">${this.resume}</p>\
+                <div class="flex justify-end mr-5">\
+                    <a href="./bibliotheques/vpagejeu.php" class="rounded-full font-['Open Sans'] bg-[#733790]/95 place-self-center text-center text-[1.06em] p-2 pl-5 pr-5">Voir</a>\
+                </div>\
+            </div>\
+        </div>
+    `;
+};
 }
 
 let hoi4 = new Jeu("../assets/image/Hoi4.jpg", "Hearts of iron 4", "06 juin 2016", "jeu de grande stratégie", "Le joueur prend le contrôle d'une nation, et gère les aspects économique, militaire, et politique de son pays. Les pays ont chacun un arbre de priorités nationales qui octroie divers avantages et définit ainsi la direction et le rôle que prend le pays pendant le conflit.", "PC", "oui");

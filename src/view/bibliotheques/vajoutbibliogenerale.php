@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <?php include '../src/view/head.inc.php' ?>
+    <?php include './view/head.inc.php' ?>
     <!-- Feuilles de style CSS -->
     <script defer type="module" src="./JS/script-ajout.js"></script>
     <link rel="stylesheet" href="../dist/output.css" />
@@ -14,7 +14,7 @@
     <!-- <div id="qunit"></div>
     <div id="qunit-fixture"></div>
     <script src="https://code.jquery.com/qunit/qunit-2.20.0.js"></script> -->
-    <?php include '../src/view/header.inc.php' ?>
+    <?php include './view/header.inc.php' ?>
     <main>
       <div class="text-center pt-5">
         <h1 class="font-['Changa'] text-[4.5em] p-5">

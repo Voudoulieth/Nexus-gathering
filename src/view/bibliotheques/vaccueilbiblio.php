@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <?php include '../src/view/head.inc.php' ?>
+    <?php include './view/head.inc.php' ?>
     <!-- Feuilles de style CSS -->
-    <link rel="stylesheet" href="./css/acceuil_biblio.css" />
+    <link rel="stylesheet" href="../../../css/acceuil_biblio.css" />
     <title>Accueil Bibliothèques - Nexus Gathering</title>
   </head>
   <body>
-    <?php include '../src/view/header.inc.php' ?>
+    <?php include './view/header.inc.php' ?>
     <main>
-      <!--TODO regler le probleme overflow et marge header/footer -->
       <article class="main-container">
         <a
-          href="./vbibliogenerale.php"
+          href="<?= APP_ROOT ?>/bibliotheque-generale"
           class="liens"
           title="Accéder a la bibliothèque générale"
         >
           <section>
             <img
               class="img"
-              src="../assets/image/magasin_de_jeux.png"
+              src="/assets/image/magasin_de_jeux.png"
               alt="Bibliothèque Générale"
             />
             <div class="text">
@@ -30,7 +29,7 @@
               </p>
             </div>
           </section>
-        </a>
+        </href=>
 
         <a
           href="./ajout_biblio_privee.html"
@@ -39,7 +38,7 @@
         >
           <section>
             <img
-              src="../assets/image/gaming_room_1.png"
+              src="/assets/image/gaming_room_1.png"
               alt="Bibliothèque Privée"
               title="Accéder a la bibliothèque privée"
             />
@@ -54,6 +53,6 @@
         </a>
       </article>
     </main>
-    <?php include '../src/view/footer.inc.php' ?>
+    <?php include './view/footer.inc.php' ?>
   </body>
 </html>

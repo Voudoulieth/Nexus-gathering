@@ -11,11 +11,11 @@ use Nexus_gathering\metier\Utilisateur;
 
 if (file_exists("./param.ini")) {
     $param = parse_ini_file("./param.ini", true);
-    extract($param['APPWEB']);       
+    extract($param['APPWEB']);
 }
+    define('APP_ROOT', $app_root_phpserver);
+    define('PUBLIC_ROOT', $public_root_phpserver);
 
-define('APP_ROOT', $app_root_phpserver);
-define('PUBLIC_ROOT', $public_root_phpserver);
 
 // simulation d'un utilisateur en session
 $role = new RoleUtilisateur(2, "Utilisateur");
@@ -49,6 +49,10 @@ if ($method == 'get') {
         APP_ROOT . '/creation_annonce'          => $cntrlNexus->getCreationAnnonce(),
         APP_ROOT . '/messagerie'                => $cntrlNexus->getMessagerie(),
         APP_ROOT . '/messagerie/contact'        => $cntrlNexus->getConversation(),
+        APP_ROOT . '/accueil-bibliotheque'      => $cntrlNexus->getAccueilBibliotheque(),
+        APP_ROOT . '/bibliotheque-generale'     => $cntrlNexus->getBibliothequeGenerale(),
+        APP_ROOT . '/ajout-biblio-generale'     => $cntrlNexus->getAjoutBiblioGenerale(),
+        //APP_ROOT . '/page-jeu'                  => $cntrlNexus->getPageJeu(),
         default                                 => $cntrlNexus->getIndex(),
     };
 } elseif ($method == 'post') {

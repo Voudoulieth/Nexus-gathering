@@ -11,7 +11,7 @@
         <nav>
           <ul>
             <li>
-              <a class="navlink" href="/bibliotheques/vacceuilbiblio.php"
+              <a class="navlink" href="<?= APP_ROOT ?>/accueil-bibliotheque"
                 >Bibliothèque</a
               >
             </li>

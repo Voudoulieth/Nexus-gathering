@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <head>
-  <?php include '../src/view/head.inc.php' ?>
+  <?php include './src/view/head.inc.php' ?>
   <!-- Feuilles de style CSS -->
   <script defer type="module" src="./JS/page_jeu.js"></script>
   <link rel="stylesheet" href="../dist/output.css">
@@ -10,9 +10,8 @@
 </head>
 
 <body>
-  <?php include '../src/view/header.inc.php' ?>
+  <?php include './view/header.inc.php' ?>
   <main>
-
     <div class="text-center pt-5">
       <h1 class="font-['Changa'] text-[4.5em] p-5">Page du jeu !</h1>
       <p class="text-[0.875em]">
