@@ -31,16 +31,11 @@ class CntrlNexus{
     {
         $jeux = $this->DaoNexus->getAllGamesForCarousel();
 
-        // $jeux = $this->DaoNexus->getAll();
         require './view/recherche_de_joueur/recherche_rapide.php';
     }
     public function getRechercheRapideResultat()
     {
-        // $id_jeu             = htmlspecialchars(trim($_GET['id']));
 
-        // $id_jeu = (int)$id_jeu;     // conversion en int
-
-        // $jeu = $this->DaoNexus->getById($id_jeu);
 
         require './view/recherche_de_joueur/recherche_rapide_resultat.php';
     }
@@ -90,34 +85,6 @@ class CntrlNexus{
     }
     
 
-    // public function createMessage() {
-    //     header('Content-Type: application/json');  // S'assurer que la réponse est en JSON
-    
-    //     // Vérification de la session de l'utilisateur
-    //     if (!isset($_SESSION['user'])) {
-    //         echo json_encode(['status' => 'error', 'message' => 'Utilisateur non authentifié.']);
-    //         exit;
-    //     }
-    
-    //     // Récupération des valeurs nécessaires depuis $_POST
-    //     $idExpediteur = $_SESSION['user']->getId();  // Assure-toi que l'objet user a une méthode getId()
-    //     $contenu_mess = $_POST['message'] ?? '';
-    //     $idDestinataire = isset($_POST['dest_id']) ? (int) $_POST['dest_id'] : null;
-    
-    //     // Vérification des données
-    //     if (!empty($contenu_mess) && $idExpediteur && $idDestinataire) {
-    //         $message = new Messages(null, $contenu_mess, false, $idExpediteur, $idDestinataire, null);
-    //         $result = $this->DaoNexus->createMessage($message);
-    
-    //         if ($result) {
-    //             echo json_encode(['status' => 'success', 'message' => 'Message envoyé avec succès.']);
-    //         } else {
-    //             echo json_encode(['status' => 'error', 'message' => 'Erreur lors de l\'envoi du message.']);
-    //         }
-    //         exit;
-    //     }
-    // }
-
     public function createMessage() {
         header('Content-Type: application/json');
     
@@ -126,7 +93,6 @@ class CntrlNexus{
             exit;
         }
 
-    
         $idExpediteur = $_SESSION['user']->getId();
         $nomUtilisateur = $_SESSION['user']->getNom(); // Assure-toi que cette méthode existe et retourne le nom
     
@@ -157,14 +123,11 @@ class CntrlNexus{
             $message = new Messages($messageId, '', false, 0, 0, null);
     
             if ($this->DaoNexus->deleteMessage($message)) {
-                // Redirection vers la conversation actuelle
                 header('Location: ' . APP_ROOT . '/messagerie/contact?id=' . $conversationId . '&status=success&message=Message supprimé');
             } else {
-                // Gestion de l'erreur, rester sur la même page
                 header('Location: ' . APP_ROOT . '/messagerie/contact?id=' . $conversationId . '&status=error&message=Erreur lors de la suppression');
             }
         } else {
-            // ID de message ou de conversation non fourni
             header('Location: ' . APP_ROOT . '/messagerie?status=error&message=Informations manquantes');
         }
         exit;

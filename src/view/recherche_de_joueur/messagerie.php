@@ -66,9 +66,6 @@
         </div>
     </main>
     <?php include './view/footer.inc.php' ?>
-    <!-- <script>
-        var appRoot = '<?= APP_ROOT ?>/messagerie/delete-message';
-    </script> -->
     <script src="/recherche_de_joueur/assets/js/messagerie.js"></script>
     </body>
 </html>

@@ -82,21 +82,23 @@ class DaoNexus {
     //TODO a remettre au propre 
 
     public function getContactNameById($idContact) {
-        $stmt = $this->conn->prepare("SELECT nom_user FROM Utilisateur WHERE id_user = :idContact");
+        $query = Requetes::SELECT_CONTACT_NAME;
+        $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':idContact', $idContact, \PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetch(\PDO::FETCH_ASSOC);
-        return $result ? $result['nom_user'] : "Nom inconnu"; // Retourner le nom ou une valeur par défaut
+        return $result ? $result['nom_user'] : "Nom inconnu"; // Retourne le nom par défaut
     }
 
         //TODO a remettre au propre 
 
     public function getContactAvatarById($idContact) {
-        $stmt = $this->conn->prepare("SELECT avatar FROM Utilisateur WHERE id_user = :idContact");
+        $query = Requetes::SELECT_CONTACT_AVATAR;
+        $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':idContact', $idContact, \PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetch(\PDO::FETCH_ASSOC);
-        return $result ? $result['avatar'] : '/assets/Icone/user-solid blanc.svg'; // Retourner le nom ou une valeur par défaut
+        return $result ? $result['avatar'] : '/assets/Icone/user-solid blanc.svg'; // Retourne l'avatar par défaut
     }
     
 

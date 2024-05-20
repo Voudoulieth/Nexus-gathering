@@ -18,6 +18,10 @@ class Requetes {
     GROUP BY u.id_user, u.nom_user, u.avatar
     ORDER BY last_message_date DESC";
 
+    public const SELECT_CONTACT_NAME = "SELECT nom_user FROM Utilisateur WHERE id_user = :idContact";
+    public const SELECT_CONTACT_AVATAR = "SELECT avatar FROM Utilisateur WHERE id_user = :idContact";
+
+
     public const UPDATE_MESSAGE = "UPDATE Messages SET contenu_mess = ?, modif = true WHERE id_message = ?";
     public const DELETE_MESSAGE = "DELETE FROM Messages WHERE id_message = ?";
 
