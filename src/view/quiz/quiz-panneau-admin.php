@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <?php include '../src/view/head.inc.php' ?>
+    <?php include '../head.inc.php' ?>
     <!-- Feuilles de style CSS -->
     <link rel="stylesheet" href="quiz-css/quiz-officiels-et-communautaires.css">
     <link repages-de-quiz-exemplesl="stylesheet" href="quiz-css/quiz-communautaires.css">
     <link rel="stylesheet" href="quiz-css/panneau-admin-quiz.css">
     <!--scripts-->
-    <script defer src="./quiz-js/data.js"></script>
-    <script defer type="module" src="./quiz-js/admin.js"></script>
+    <script defer src="../../../quiz/quiz-js/data.js"></script>
+    <script defer type="module" src="../../../quiz/quiz-js/admin.js"></script>
     <title>Accueil Quiz - Nexus Gathering</title>
   </head>
   <body>
-  <?php include '../src/view/header.inc.php' ?>
+  <?php include '../header.inc.php' ?>
     <main>
       <h1 class="titres">Panneau Administrateur</h1>
       <div class="panneauAdmin" id="panneauAdmin">
@@ -38,6 +38,6 @@
         <!--Les quiz sont gérés de façon dynamique, ils se situent pour l'instant dans le fichier data.js-->
       </div>
     </main>
-    <?php include '../src/view/footer.inc.php' ?>
+    <?php include '../footer.inc.php' ?>
   </body>
 </html>

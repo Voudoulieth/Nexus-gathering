@@ -2,7 +2,7 @@
       <a href="<?= APP_ROOT ?>/">
         <img
           class="logo"
-          src="/assets/logo/logo_nexus_white.svg"
+          src="../../assets/logo/logo_nexus_white.svg"
           title="Accueil"
           alt="Logo Nexus"
         />
@@ -23,7 +23,7 @@
               >
             </li>
             <li>
-              <a class="navlink" href="/quiz/quiz-accueil.php">Quiz</a>
+              <a class="navlink" href="./quiz/quiz-accueil.php">Quiz</a>
             </li>
             <li>
               <a class="navlink" href="<?= APP_ROOT ?>/messagerie"

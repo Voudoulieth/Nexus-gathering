@@ -977,31 +977,7 @@ class DaoNexus {
             throw DaoException::fromSelectAllQuestions($e);
         }
     }
-    // Mettre à jour une question
-    public function updateQuestion(Question $question) {
-        $query = Requetes::UPDATE_QUESTION;
-        try {
-            $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(1, $question->getQuestion_quiz(), PDO::PARAM_STR);
-            $stmt->bindValue(2, $question->getId_question(), PDO::PARAM_INT);
-            $stmt->execute();
-            return true;
-        } catch (\Exception $e) {
-            throw DaoException::fromUpdateQuestion($e);
-        }
-    }
-    // Supprimer une question
-    public function deleteQuestion(Question $question) {
-        $query = Requetes::DELETE_QUESTION;
-        try {
-            $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(1, $question->getId_question(), PDO::PARAM_INT);
-            $stmt->execute();
-            return true;
-        } catch (\Exception $e) {
-            throw DaoException::fromDeleteQuestion($e);
-        }
-    }
+
 
     // Insérer une nouvelle réponse
     public function createReponse(Reponse $reponse) {
@@ -1041,32 +1017,7 @@ class DaoNexus {
             throw DaoException::fromSelectAllReponse($e);
         }
     }
-    // Mettre à jour une réponse
-    public function updateReponse(Reponse $reponse) {
-        $query = Requetes::UPDATE_REPONSE;
-        try {
-            $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(1, $reponse->getReponse_quiz(), PDO::PARAM_STR);
-            $stmt->bindValue(2, $reponse->getReponse_vraie_quiz(), PDO::PARAM_BOOL);
-            $stmt->bindValue(3, $reponse->getId_reponse(), PDO::PARAM_INT);
-            $stmt->execute();
-            return true;
-        } catch (\Exception $e) {
-            throw DaoException::fromUpdateReponse($e);
-        }
-    }
-    // Supprimer une réponse
-    public function deleteReponse(Reponse $reponse) {
-        $query = Requetes::DELETE_REPONSE;
-        try {
-            $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(1, $reponse->getId_reponse(), PDO::PARAM_INT);
-            $stmt->execute();
-            return true;
-        } catch (\Exception $e) {
-            throw DaoException::fromDeleteReponse($e);
-        }
-    }
+  
 
     // Les catégories sont prédéfinies et non vouées à changer, donc pas de création, d'update ou de delete
     // Sélectionner une catégorie par son identifiant 1 ou 2 :
