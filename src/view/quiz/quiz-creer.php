@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <?php include '../src/view/head.inc.php' ?>
-    <link rel="stylesheet" href="quiz-css/creer-quiz.css">
+    <?php include '../head.inc.php' ?>
+    <link rel="stylesheet" href="../../../quiz/quiz-css/creer-quiz.css">
     <!--scripts-->
-    <script defer src="./quiz-js/data.js"></script>
-    <script defer type="module" src="./quiz-js/creer-quiz.js"></script>
+    <script defer src="../../../quiz/quiz-js/data.js"></script>
+    <script defer type="module" src="../../../quiz/quiz-js/creer-quiz.js"></script>
     <!-- tests QUnit-->
     <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.20.0.css">
     <script defer src="https://code.jquery.com/qunit/qunit-2.20.0.js"></script> 
-    <script defer type="module" src="./quiz-js/test-QUnit.js"></script>
+    <script defer type="module" src="../../../quiz/quiz-js/test-QUnit.js"></script>
     <!-- fin tests -->
     <title>Créer un quiz - Nexus Gathering</title>
   </head>
@@ -18,7 +18,7 @@
 
       <!-- <div id="qunit"></div>
       <div id="qunit-fixture"></div> -->
-    <?php include '../src/view/header.inc.php' ?>
+    <?php include '../header.inc.php' ?>
     <main>
       <form id="formulaireQuiz" action="#" method="post" enctype="multipart/form-data">
         <div class="couverture">
@@ -36,6 +36,6 @@
         </div>
       </form>
     </main>
-    <?php include '../src/view/footer.inc.php' ?>
+    <?php include '../footer.inc.php' ?>
   </body>
 </html>
