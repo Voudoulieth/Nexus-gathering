@@ -52,7 +52,7 @@ if ($method == 'get') {
         APP_ROOT . '/accueil-bibliotheque'      => $cntrlNexus->getAccueilBibliotheque(),
         APP_ROOT . '/bibliotheque-generale'     => $cntrlNexus->getBibliothequeGenerale(),
         APP_ROOT . '/ajout-biblio-generale'     => $cntrlNexus->getAjoutBiblioGenerale(),
-        //APP_ROOT . '/page-jeu'                  => $cntrlNexus->getPageJeu(),
+        APP_ROOT . '/page-jeu'                  => $cntrlNexus->getPageJeu(),
         default                                 => $cntrlNexus->getIndex(),
     };
 } elseif ($method == 'post') {

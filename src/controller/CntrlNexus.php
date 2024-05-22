@@ -172,10 +172,10 @@ class CntrlNexus{
         require '.\view\bibliotheques\vajoutbibliogenerale.php';
     }
 
-    // public function getPageJeu()
-    // {
-    //     require '.\view\bibliotheques\vpagejeu.php';
-    // }
+    public function getPageJeu()
+    {
+        require '.\view\bibliotheques\vpagejeu.php';
+    }
 
 // Actions pour les jeux
 

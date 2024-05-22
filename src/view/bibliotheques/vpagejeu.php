@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <head>
-  <?php include './src/view/head.inc.php' ?>
+  <?php include './view/head.inc.php' ?>
   <!-- Feuilles de style CSS -->
   <script defer type="module" src="./JS/page_jeu.js"></script>
   <link rel="stylesheet" href="../dist/output.css">
@@ -266,6 +266,6 @@
       </button>
     </div>
   </main>
-  <?php include '../src/view/footer.inc.php' ?>
+  <?php include './view/footer.inc.php' ?>
 </body>
 </html>
