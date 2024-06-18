@@ -23,9 +23,14 @@
     <link rel="stylesheet" href="./css/connexion_style.css" />
     <title>Votre profil</title>
 <<<<<<< HEAD:profil/connexion.php
+<<<<<<< HEAD:profil/connexion.php
     <script defer src="./assets/js/script_edition.js"></script>
 
     
+=======
+    <link rel="shortcut icon" href="assets/logo/favicon.svg" />
+    <script defer src="./assets/js/connexion.js"></script>
+>>>>>>> parent of 75da1ad (ajout des tests + controles de saisies):Profil/connexion.html
   </head>
   <body>
     <?php include '../src/view/header.inc.php' ?>
@@ -63,6 +68,9 @@
           </span>
       </a>
   </header>
+<<<<<<< HEAD:profil/connexion.php
+>>>>>>> parent of 75da1ad (ajout des tests + controles de saisies):Profil/connexion.html
+=======
 >>>>>>> parent of 75da1ad (ajout des tests + controles de saisies):Profil/connexion.html
     <main>
         <div class="container" id="container">
