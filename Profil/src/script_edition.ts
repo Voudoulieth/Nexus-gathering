@@ -1,5 +1,3 @@
-import { Voudoulieth } from "./data";
-
 const edit = document.getElementById('btnedit');
 const display = document.getElementById("bio");
 const editable = document.getElementById("editableBioText") as HTMLTextAreaElement;
