@@ -4,7 +4,7 @@
 <head>
   <?php include './view/head.inc.php' ?>
   <!-- Feuilles de style CSS -->
-  <script defer type="module" src="./JS/page_jeu.js"></script>
+  <script defer type="module" src="../../../bibliotheques/JS/page_jeu.js"></script>
   <link rel="stylesheet" href="../dist/output.css">
   <title>Page jeu - Nexus Gathering</title>
 </head>

@@ -3,7 +3,7 @@
   <head>
     <?php include './view/head.inc.php' ?>
     <!-- Feuilles de style CSS -->
-    <link rel="stylesheet" href="./css/acceuil_biblio.css" />
+    <link rel="stylesheet" href="../../../css/acceuil_biblio.css" />
     <script defer type="module" src="../../../bibliotheques/JS/script_biblio_generale.js"></script>
     <link rel="stylesheet" href="../dist/output.css" />
     <title>Bibliothèque générale - Nexus Gathering</title>

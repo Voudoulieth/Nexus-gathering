@@ -3,7 +3,7 @@
   <head>
     <?php include './view/head.inc.php' ?>
     <!-- Feuilles de style CSS -->
-    <script defer type="module" src="./JS/script-ajout.js"></script>
+    <script defer type="module" src="../../../bibliotheques/JS/script-ajout.js"></script>
     <link rel="stylesheet" href="../dist/output.css" />
     <title>Ajout générale - Nexus Gathering</title>    
     <!-- Test Qunit -->
