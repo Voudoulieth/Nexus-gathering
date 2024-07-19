@@ -40,7 +40,7 @@ class DaoNexus {
     }
     
     //      ---MESSAGERIE---
- 
+
     public function createMessage(Messages $message) {
         $query = Requetes::INSERT_MESSAGE;
         $id_message = 0;
@@ -418,9 +418,6 @@ class DaoNexus {
             }
             return $jeux;
         }
-        
-        
-        
         
 
     // Mise à jour d'un jeu

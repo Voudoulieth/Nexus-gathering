@@ -10,7 +10,7 @@ class Requetes {
     JOIN Utilisateur ON Messages.id_exped = Utilisateur.id_user
     WHERE (id_exped = ? AND id_desti = ?) OR (id_exped = ? AND id_desti = ?) 
     ORDER BY date_message ASC";
-           
+
     public const SELECT_CONTACT = "SELECT u.id_user, u.nom_user, u.avatar, MAX(m.date_message) AS last_message_date
     FROM Messages m
     JOIN Utilisateur u ON u.id_user = m.id_exped OR u.id_user = m.id_desti

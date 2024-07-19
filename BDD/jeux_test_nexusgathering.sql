@@ -193,9 +193,6 @@ INSERT INTO Messages (contenu_mess, modif, id_exped, id_desti) VALUES ('Message 
 -- Insertion avec un id_desti qui n'existe pas
 INSERT INTO Messages (contenu_mess, modif, id_exped, id_desti) VALUES ('Message 6', FALSE, 1, 999);
 
-
---- ON EN EST ICIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
-
 INSERT INTO jeu (id_ed, id_user, id_stu, nom_jeu, resum_jeu, img_jeu, multi) VALUES (1, 1, 1, 'JeuTest1', 'Résumé du jeu 1', 'image1.jpg', 0);
 INSERT INTO jeu (id_ed, id_user, id_stu, nom_jeu, resum_jeu, img_jeu, multi) VALUES (2, 2, 2, 'JeuTest2', 'Résumé du jeu 2', 'image2.jpg', 1);
 INSERT INTO jeu (id_ed, id_user, id_stu, nom_jeu, resum_jeu, img_jeu, multi) VALUES (3, 3, 3, 'JeuTest3', 'Résumé du jeu 3', 'image3.jpg', 0);

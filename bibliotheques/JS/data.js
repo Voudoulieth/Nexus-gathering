@@ -70,7 +70,9 @@ let mab2b = new Jeu("../assets/image/mab2b.jpg", "Mount & Blade II : Bannerlord"
 export let jeu = [hoi4, cyberpunk, mtw2, mab2b];
 
 export function afficherListeJeu() {
+    console.log(jeu);
     let listejeu = document.querySelector('#listejeu');
+    console.log(listejeu);
     listejeu.innerHTML = "";
     jeu.forEach(function(jeu){
         let jeuElement = document.createElement("div");

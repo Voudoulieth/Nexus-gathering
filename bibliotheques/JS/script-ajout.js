@@ -1,5 +1,5 @@
 import * as data from './data.js';
-import {Jeu} from './data.js';
+import {Jeu, afficherListeJeu} from './data.js';
 
 let formulaireAjout = document.querySelector("#ajoutJeu");
 
@@ -53,6 +53,7 @@ formulaireAjout.addEventListener("submit", function(event){
 
     //si il n'y a pas d'erreur alors je créer le jeu
     if (alert.textContent === "") {
+        console.log("coucou");
         let jeu = new Jeu (image, nom, dateSortie, style, resume, consoles, multijoueur);
         // constructor (image, nom, dateSortie, resume, consoles, multijoueur) {
         data.jeu.push(jeu);
@@ -64,11 +65,11 @@ formulaireAjout.addEventListener("submit", function(event){
 
 
 
-function afficherListeJeu() {
-    data.jeu.forEach(function(jeu){
-        console.log(jeu)
-    });
-}
+// function afficherListeJeu() {
+//     data.jeu.forEach(function(jeu){
+//         console.log(jeu)
+//     });
+// }
 // console.log(Jeu)
 // console.dir(Jeu)
 

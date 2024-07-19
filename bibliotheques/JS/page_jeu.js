@@ -19,11 +19,18 @@ Modifier.addEventListener('click', () => {
 
 
 const supprimer = document.getElementById("supprimerContenu")
+const APP_ROOT = 'http://localhost:3000/src/';
+
 
 supprimer.addEventListener("click", function() {
     const confirmation = confirm("Êtes-vous sûr de vouloir supprimer le contenu de la page ?");
     if (confirmation) {
-    const contenu = document.getElementById("contenu");
-        contenu.remove();
+        // Suppression du contenu de l'élément avec id "contenu"
+        const contenu = document.getElementById("contenu");
+        if (contenu) {
+            contenu.remove();
+        }
+        // Redirection vers la page /bibliotheque-generale
+        window.location.href = APP_ROOT + 'bibliotheque-generale';
     }
 });

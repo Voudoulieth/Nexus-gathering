@@ -12,6 +12,8 @@ use Nexus_gathering\metier\Jeu;
 use Nexus_gathering\metier\Studio;
 use Nexus_gathering\metier\Editeur;
 
+// require_once './src/models/jeuxModel.php';
+
 class CntrlNexus{
 
     public function __construct(
