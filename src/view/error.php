@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $error_message = 'Une erreur inconnue est survenue.';
 
 if (isset($_GET['error'])) {
@@ -39,10 +43,27 @@ if (isset($_GET['error'])) {
         case 'editeur_not_found':
             $error_message = 'Éditeur non trouvé.';
             break;
+        case 'missing_fields':
+            $error_message = 'Veuillez remplir tous les champs obligatoires.';
+            break;
         default:
             $error_message = 'Une erreur inconnue est survenue.';
             break;
     }
 }
 ?>
-
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Erreur</title>
+    <link rel="stylesheet" href="../dist/output.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Erreur</h1>
+        <p><?= $error_message ?></p>
+        <a href="<?= APP_ROOT ?>/ajout-biblio-generale">Retour au formulaire</a>
+    </div>
+</body>
+</html>

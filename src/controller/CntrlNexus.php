@@ -12,7 +12,6 @@ use Nexus_gathering\metier\Jeu;
 use Nexus_gathering\metier\Studio;
 use Nexus_gathering\metier\Editeur;
 
-// require_once './src/models/jeuxModel.php';
 
 class CntrlNexus{
 
@@ -183,21 +182,45 @@ class CntrlNexus{
 
 public function createJeu() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Validation des champs de formulaire
+        $nom_jeu = $_POST['nom_jeu'] ?? '';
+        $resum_jeu = $_POST['resum_jeu'] ?? '';
+        $img_jeu = $_FILES['img_jeu']['name'] ?? '';
+        $multi = isset($_POST['multi']) && $_POST['multi'] === '1';
+
+        // Vérification des champs obligatoires
+        if (empty($nom_jeu) || empty($resum_jeu) || empty($img_jeu)) {
+            header('Location: ' . APP_ROOT . '/view/error.php?error=missing_fields');
+            exit;
+        }
+
+        // Déplacer l'image téléchargée vers le répertoire approprié
+        $target_dir = "uploads/";
+        $target_file = $target_dir . basename($img_jeu);
+
+        if (!move_uploaded_file($_FILES['img_jeu']['tmp_name'], $target_file)) {
+            error_log("Échec du téléchargement du fichier: " . $_FILES['img_jeu']['error']);
+            header('Location: ' . APP_ROOT . '/view/error.php?error=upload_failed');
+            exit;
+        }
+
+        // Création de l'objet Jeu
         $jeu = new Jeu(
-            null,
-            $_POST['nom_jeu'],
-            $_POST['resum_jeu'],
-            $_POST['img_jeu'],
-            isset($_POST['multi']) && $_POST['multi'] === '1',
-            (int)$_POST['id_ed'],
-            (int)$_POST['id_user'],
-            (int)$_POST['id_stu']
+            0, // Remplacez null par 0 ou une autre valeur par défaut
+            $nom_jeu,
+            $multi,
+            $resum_jeu,
+            $target_file,
+            0, // ID éditeur par défaut
+            0, // ID utilisateur par défaut
+            0  // ID studio par défaut
         );
 
-        if ($this->DaoNexus->create($jeu, new Studio($_POST['id_stu']), new Editeur($_POST['id_ed']))) {
-            header('Location: ./success.php');
+        // Appel à la méthode create du DAO
+        if ($this->DaoNexus->create($jeu)) {
+            header('Location: ' . APP_ROOT . '/view/success.php');
         } else {
-            header('Location: ./error.php?error=creation_jeu_failed');
+            header('Location: ' . APP_ROOT . '/view/error.php?error=creation_jeu_failed');
         }
         exit;
     }
@@ -208,7 +231,7 @@ public function getJeuById(int $id_jeu) {
     if ($jeu) {
         require './view/jeu_detail.php';
     } else {
-        header('Location: ./error.php?error=jeu_not_found');
+        header('Location: ' . APP_ROOT . '/view/error.php?error=jeu_not_found');
         exit;
     }
 }
@@ -223,41 +246,42 @@ public function updateJeu() {
         $jeu = new Jeu(
             (int)$_POST['id_jeu'],
             $_POST['nom_jeu'],
+            isset($_POST['multi']) && $_POST['multi'] === '1',
             $_POST['resum_jeu'],
             $_POST['img_jeu'],
-            isset($_POST['multi']) && $_POST['multi'] === '1',
             (int)$_POST['id_ed'],
             (int)$_POST['id_user'],
             (int)$_POST['id_stu']
         );
 
         if ($this->DaoNexus->update($jeu, new Studio($_POST['id_stu']), new Editeur($_POST['id_ed']))) {
-            header('Location: ./success.php');
+            header('Location: ' . APP_ROOT . '/view/success.php');
         } else {
-            header('Location: ./error.php?error=update_jeu_failed');
+            header('Location: ' . APP_ROOT . '/view/error.php?error=update_jeu_failed');
         }
         exit;
     }
 }
 
-public function deleteJeu(int $id_jeu) {
+public function deleteJeu() {
+    $id_jeu = $_POST['id_jeu']; // Récupère l'ID du jeu à partir des données POST
     if ($this->DaoNexus->delete($id_jeu)) {
-        header('Location: ./success.php');
+        header('Location: ' . APP_ROOT . '/view/success.php');
     } else {
-        header('Location: ./error.php?error=delete_jeu_failed');
+        header('Location: ' . APP_ROOT . '/view/error.php?error=delete_jeu_failed');
     }
     exit;
 }
 
-// Actions pour les studios
-
+// Commenté : Méthodes liées aux studios et éditeurs
+/*
 public function createStudio() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $studio = new Studio(null, $_POST['nom_stu'], (int)$_POST['id_ed']);
         if ($this->DaoNexus->createStudio($studio)) {
-            header('Location: ./success.php');
+            header('Location: ' . APP_ROOT . '/view/success.php');
         } else {
-            header('Location: ./error.php?error=creation_studio_failed');
+            header('Location: ' . APP_ROOT . '/view/error.php?error=creation_studio_failed');
         }
         exit;
     }
@@ -268,7 +292,7 @@ public function getStudioById(int $id_stu) {
     if ($studio) {
         require './view/studio_detail.php';
     } else {
-        header('Location: ./error.php?error=studio_not_found');
+        header('Location: ' . APP_ROOT . '/view/error.php?error=studio_not_found');
         exit;
     }
 }
@@ -282,9 +306,9 @@ public function updateStudio() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $studio = new Studio((int)$_POST['id_stu'], $_POST['nom_stu'], (int)$_POST['id_ed']);
         if ($this->DaoNexus->updateStudio($studio)) {
-            header('Location: ./success.php');
+            header('Location: ' . APP_ROOT . '/view/success.php');
         } else {
-            header('Location: ./error.php?error=update_studio_failed');
+            header('Location: ' . APP_ROOT . '/view/error.php?error=update_studio_failed');
         }
         exit;
     }
@@ -292,22 +316,20 @@ public function updateStudio() {
 
 public function deleteStudio(int $id_stu) {
     if ($this->DaoNexus->deleteStudio($id_stu)) {
-        header('Location: ./success.php');
+        header('Location: ' . APP_ROOT . '/view/success.php');
     } else {
-        header('Location: ./error.php?error=delete_studio_failed');
+        header('Location: ' . APP_ROOT . '/view/error.php?error=delete_studio_failed');
     }
     exit;
 }
-
-// Actions pour les éditeurs
 
 public function createEditeur() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $editeur = new Editeur(null, $_POST['nom_ed']);
         if ($this->DaoNexus->createEditeur($editeur)) {
-            header('Location: ./success.php');
+            header('Location: ' . APP_ROOT . '/view/success.php');
         } else {
-            header('Location: ./error.php?error=creation_editeur_failed');
+            header('Location: ' . APP_ROOT . '/view/error.php?error=creation_editeur_failed');
         }
         exit;
     }
@@ -318,7 +340,7 @@ public function getEditeurById(int $id_ed) {
     if ($editeur) {
         require './view/editeur_detail.php';
     } else {
-        header('Location: ./error.php?error=editeur_not_found');
+        header('Location: ' . APP_ROOT . '/view/error.php?error=editeur_not_found');
         exit;
     }
 }
@@ -332,9 +354,9 @@ public function updateEditeur() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $editeur = new Editeur((int)$_POST['id_ed'], $_POST['nom_ed']);
         if ($this->DaoNexus->updateEditeur($editeur)) {
-            header('Location: ./success.php');
+            header('Location: ' . APP_ROOT . '/view/success.php');
         } else {
-            header('Location: ./error.php?error=update_editeur_failed');
+            header('Location: ' . APP_ROOT . '/view/error.php?error=update_editeur_failed');
         }
         exit;
     }
@@ -342,11 +364,11 @@ public function updateEditeur() {
 
 public function deleteEditeur(int $id_ed) {
     if ($this->DaoNexus->deleteEditeur($id_ed)) {
-        header('Location: ./success.php');
+        header('Location: ' . APP_ROOT . '/view/success.php');
     } else {
-        header('Location: ./error.php?error=delete_editeur_failed');
+        header('Location: ' . APP_ROOT . '/view/error.php?error=delete_editeur_failed');
     }
     exit;
 }
-
+*/
 }

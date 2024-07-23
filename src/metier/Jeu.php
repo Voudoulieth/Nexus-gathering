@@ -12,12 +12,12 @@ class Jeu {
     private int     $id_user;
     private int     $id_stu;
 
-    public function __construct(int $id_jeu, string $nom_jeu, string $resum_jeu ='', string $img_jeu = '', bool $multi, int $id_ed, int $id_user, int $id_stu) {
+    public function __construct(int $id_jeu, string $nom_jeu, bool $multi, string $resum_jeu = '', string $img_jeu = '', int $id_ed = 0, int $id_user = 0, int $id_stu = 0) {
         $this->id_jeu       = $id_jeu;
-        $this->nom_jeu	    = $nom_jeu;
-        $this->resum_jeu	= $resum_jeu;
-        $this->img_jeu	    = $img_jeu;
-        $this->multi	    = $multi;
+        $this->nom_jeu      = $nom_jeu;
+        $this->resum_jeu    = $resum_jeu;
+        $this->img_jeu      = $img_jeu;
+        $this->multi        = $multi;
         $this->id_ed        = $id_ed;
         $this->id_user      = $id_user;
         $this->id_stu       = $id_stu;

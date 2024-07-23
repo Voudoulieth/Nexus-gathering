@@ -1,19 +1,19 @@
 <?php return array(
     'root' => array(
-        'name' => 'fauri/nexus_gathering',
+        'name' => 'corentin/nexus_gathering',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '62fa96fefab48a28732df1eb9b67b3d86bda22ed',
+        'reference' => '10643dbfd9e0fdc8e52aaeb70493d3183a32fb1c',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        'fauri/nexus_gathering' => array(
+        'corentin/nexus_gathering' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '62fa96fefab48a28732df1eb9b67b3d86bda22ed',
+            'reference' => '10643dbfd9e0fdc8e52aaeb70493d3183a32fb1c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

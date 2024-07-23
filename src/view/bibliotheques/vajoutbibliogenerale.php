@@ -3,7 +3,7 @@
   <head>
     <?php include './view/head.inc.php' ?>
     <!-- Feuilles de style CSS -->
-    <script defer type="module" src="../../../bibliotheques/JS/script-ajout.js"></script>
+    <!-- <script defer type="module" src="../../../bibliotheques/JS/script-ajout.js"></script> -->
     <link rel="stylesheet" href="../dist/output.css" />
     <title>Ajout générale - Nexus Gathering</title>    
     <!-- Test Qunit -->
@@ -26,7 +26,7 @@
         <p id="alert" class="text-[0.875em]"></p>
       </div>
 
-      <form id="ajoutJeu" action="" method="post">
+      <form id="ajoutJeu" action="<?= APP_ROOT ?>/ajout-biblio-generale/create-jeu" method="post" enctype="multipart/form-data">
         <div class="flex pt-5">
           <div class="flex-col w-2/3">
             <div class="flex">
@@ -37,8 +37,8 @@
                 <input
                   class="mt-2"
                   type="file"
-                  id="image"
-                  name="image"
+                  id="img_jeu"
+                  name="img_jeu"
                   accept="image/*"
                   required
                 />
@@ -50,10 +50,11 @@
                 <label for="nom">Nom du Jeu :</label><br>
                 <input
                   type="text"
-                  id="nom"
-                  name="nom"
+                  id="nom_jeu"
+                  name="nom_jeu"
                   placeholder="Saisissez ici"
                   class="hover:bg-white hover:text-black rounded-full mt-2 border focus:border-purple-800 focus:border-2"
+                  required
                 />
               </div>
             </div>
@@ -64,12 +65,13 @@
               >
                 <label for="resume">Résumé :</label><br>
                 <textarea
-                  id="resume"
-                  name="resume"
+                  id="resum_jeu"
+                  name="resum_jeu"
                   placeholder="Saisissez ici"
                   rows="15"
                   cols="150"
                   class="hover:bg-white hover:text-black rounded-full m-4 pt-2 w-[90%] resize-y border focus:border-purple-800 focus:border-2"
+                  required
                 ></textarea>
               </div>
             </div>
@@ -104,8 +106,8 @@
               <label for="editeur">Éditeur :</label><br>
               <input
                 type="text"
-                id="editeur"
-                name="editeur"
+                id="id_ed"
+                name="id_ed"
                 placeholder="Saisissez ici"
                 class="hover:bg-white hover:text-black rounded-full mt-1 border focus:border-purple-800 focus:border-2"
               />
@@ -117,8 +119,8 @@
               <label for="studio">Studio :</label><br>
               <input
                 type="text"
-                id="studio"
-                name="studio"
+                id="id_stu"
+                name="id_stu"
                 placeholder="Saisissez ici"
                 class="hover:bg-white hover:text-black rounded-full mt-1 border focus:border-purple-800 focus:border-2"
               />
@@ -227,6 +229,6 @@
         </section>
       </form>
     </main>
-    <?php include '../src/view/footer.inc.php' ?>
+    <?php include './view/footer.inc.php' ?>
   </body>
 </html>

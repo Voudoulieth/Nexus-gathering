@@ -353,18 +353,14 @@ class DaoNexus {
 
         // Création d'un jeu
 
-    public function create(Jeu $jeu, Studio $studio, Editeur $editeur): bool {
-        $query = Requetes::INSERT_JEU;
-        try{
+    public function create(Jeu $jeu): bool {
+        $query = Requetes::INSERT_JEU; // Assurez-vous que cette requête est correcte
+        try {
             $stmt = $this->conn->prepare($query);
             $stmt->bindValue(':nom_jeu', $jeu->getNom_jeu());
             $stmt->bindValue(':resum_jeu', $jeu->getResum_jeu());
             $stmt->bindValue(':img_jeu', $jeu->getImg_jeu());
             $stmt->bindValue(':multi', $jeu->getMulti() ? 1 : 0, \PDO::PARAM_INT);
-            $stmt->bindValue(':id_ed', $editeur->getId_ed(), \PDO::PARAM_INT);
-            $stmt->bindValue(':id_user', $jeu->getIdUser(), \PDO::PARAM_INT);
-            $stmt->bindValue(':id_stu', $studio->getId_stu(), \PDO::PARAM_INT);
-
             return $stmt->execute();
         } catch (\PDOException $e) {
             throw DaoException::fromCreateJeuPDOException($e);
@@ -430,9 +426,8 @@ class DaoNexus {
             $stmt->bindValue(':resum_jeu', $jeu->getResum_jeu());
             $stmt->bindValue(':img_jeu', $jeu->getImg_jeu());
             $stmt->bindValue(':multi', $jeu->getMulti() ? 1 : 0, \PDO::PARAM_INT);
-            $stmt->bindValue(':id_ed', $editeur->getId_ed(), \PDO::PARAM_INT);
-            $stmt->bindValue(':id_user', $jeu->getIdUser(), \PDO::PARAM_INT);
-            $stmt->bindValue(':id_stu', $studio->getId_stu(), \PDO::PARAM_INT);
+            // Commenté : $stmt->bindValue(':id_ed', $editeur->getId_ed(), \PDO::PARAM_INT);
+            // Commenté : $stmt->bindValue(':id_stu', $studio->getId_stu(), \PDO::PARAM_INT);
             $stmt->bindValue(':id_jeu', $jeu->getId_jeu(), \PDO::PARAM_INT);
             return $stmt->execute();
         } catch (\PDOException $e) {
@@ -547,7 +542,7 @@ class DaoNexus {
 
     public function createEditeur(Editeur $editeur): bool {
         $query = Requetes::INSERT_EDITEUR;
-        try{
+        try {
             $stmt = $this->conn->prepare($query);
             $stmt->bindValue(':nom_ed', $editeur->getNom_ed());
             return $stmt->execute();

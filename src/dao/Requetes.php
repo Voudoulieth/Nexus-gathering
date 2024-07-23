@@ -49,7 +49,7 @@ class Requetes {
     public const UPDATE_ANNONCE = "UPDATE Annonce SET nom_annonce = ?, nb_user = ?, desc_annonce = ?, id_user = ?, id_jeu = ? WHERE id_annonce = ?";
     public const DELETE_ANNONCE = "DELETE FROM Annonce WHERE id_annonce = ?";
 
-    public const INSERT_JEU = "INSERT INTO jeu (nom_jeu, resum_jeu, img_jeu, multi, id_ed, id_user, id_stu) VALUES (:nom_jeu, :resum_jeu, :img_jeu, :multi, :id_ed, :id_user, :id_stu)";
+    public const INSERT_JEU = "INSERT INTO jeu (nom_jeu, resum_jeu, img_jeu, multi) VALUES (:nom_jeu, :resum_jeu, :img_jeu, :multi)";
     public const SELECT_jEU = "SELECT * FROM jeu WHERE id_jeu = :id_jeu";
     public const SELECT_ALL_JEU = "SELECT * FROM jeu";
     public const UPDATE_JEU = "UPDATE jeu SET nom_jeu = :nom_jeu, resum_jeu = :resum_jeu, img_jeu = :img_jeu, multi = :multi, id_ed = :id_ed, id_user = :id_user, id_stu = :id_stu WHERE id_jeu = :id_jeu";
@@ -135,4 +135,3 @@ class Requetes {
     public const SELECT_ALL_JOUERQUIZ_BY_USER = "SELECT * FROM jouerQuiz WHERE id_user = ? ORDER BY date_jouerQuiz DESC";
 
 }
-
