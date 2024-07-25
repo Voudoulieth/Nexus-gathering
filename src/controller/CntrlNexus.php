@@ -165,7 +165,8 @@ class CntrlNexus{
     
     public function getBibliothequeGenerale()
     {
-        require '.\view\bibliotheques\vbibliogenerale.php';
+        $jeux = $this->DaoNexus->getAllJeux(); // Récupérer tous les jeux
+        require './view/bibliotheques/vbibliogenerale.php'; // Charger la vue
     }
 
     public function getAjoutBiblioGenerale()
@@ -175,23 +176,56 @@ class CntrlNexus{
 
     public function getPageJeu()
     {
-        require '.\view\bibliotheques\vpagejeu.php';
+        $id_jeu = $_GET['id']; // Récupérer l'ID du jeu depuis l'URL
+        $id_jeu = (int)$id_jeu; // Convertir l'ID en entier
+        $jeu = $this->DaoNexus->getById($id_jeu); // Récupérer le jeu depuis la base de données
+        if ($jeu) {
+            require './view/bibliotheques/vpagejeu.php'; // Charger la vue
+        } else {
+            header('Location: ' . APP_ROOT . '/view/error.php?error=jeu_not_found');
+            exit;
+        }
     }
 
 // Actions pour les jeux
 
 public function createJeu() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Initialisation des messages d'erreur
+        $errors = [];
+        
         // Validation des champs de formulaire
         $nom_jeu = $_POST['nom_jeu'] ?? '';
         $resum_jeu = $_POST['resum_jeu'] ?? '';
         $img_jeu = $_FILES['img_jeu']['name'] ?? '';
         $multi = isset($_POST['multi']) && $_POST['multi'] === '1';
+        $date_sortie = $_POST['dateSortie'] ?? '';
+        $style = $_POST['choixS'] ?? []; // Récupérer les styles comme un tableau
 
         // Vérification des champs obligatoires
-        if (empty($nom_jeu) || empty($resum_jeu) || empty($img_jeu)) {
-            header('Location: ' . APP_ROOT . '/view/error.php?error=missing_fields');
-            exit;
+        if (empty($nom_jeu)) {
+            $errors[] = "Le nom du jeu est requis.";
+        }
+        if (empty($resum_jeu)) {
+            $errors[] = "Le résumé du jeu est requis.";
+        }
+        if (empty($img_jeu)) {
+            $errors[] = "L'image du jeu est requise.";
+        }
+        if (empty($date_sortie)) {
+            $errors[] = "La date de sortie est requise.";
+        }
+        if (empty($style)) {
+            $errors[] = "Au moins un style doit être sélectionné.";
+        } else {
+            $style = implode(", ", $style); // Imploser le tableau en une chaîne
+        }
+
+        // Si des erreurs existent, les renvoyer à la vue du formulaire
+        if (!empty($errors)) {
+            // Inclure la vue du formulaire avec les erreurs
+            require './view/bibliotheques/vajoutbibliogenerale.php';
+            return;
         }
 
         // Déplacer l'image téléchargée vers le répertoire approprié
@@ -213,12 +247,15 @@ public function createJeu() {
             $target_file,
             0, // ID éditeur par défaut
             0, // ID utilisateur par défaut
-            0  // ID studio par défaut
+            0, // ID studio par défaut
+            $date_sortie, // Passer la date de sortie
+            $style // Passer le style
         );
 
         // Appel à la méthode create du DAO
         if ($this->DaoNexus->create($jeu)) {
-            header('Location: ' . APP_ROOT . '/view/success.php');
+            // Rediriger vers vbibliogenerale.php au lieu de success.php
+            header('Location: ' . APP_ROOT . '/view/bibliotheques/vbibliogenerale.php');
         } else {
             header('Location: ' . APP_ROOT . '/view/error.php?error=creation_jeu_failed');
         }
@@ -237,7 +274,7 @@ public function getJeuById(int $id_jeu) {
 }
 
 public function getAllJeux() {
-    $jeux = $this->DaoNexus->getAll();
+    $jeux = $this->DaoNexus->getAllJeux();
     require './view/jeux_list.php';
 }
 
@@ -251,7 +288,9 @@ public function updateJeu() {
             $_POST['img_jeu'],
             (int)$_POST['id_ed'],
             (int)$_POST['id_user'],
-            (int)$_POST['id_stu']
+            (int)$_POST['id_stu'],
+            $_POST['date_sortie'], // Ajouter la date de sortie
+            $_POST['style'] // Ajouter le style
         );
 
         if ($this->DaoNexus->update($jeu, new Studio($_POST['id_stu']), new Editeur($_POST['id_ed']))) {

@@ -1,11 +1,16 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
   <?php include './view/head.inc.php' ?>
   <!-- Feuilles de style CSS -->
-  <script defer type="module" src="../../../bibliotheques/JS/page_jeu.js"></script>
-  <link rel="stylesheet" href="../dist/output.css">
+  <!-- <script defer type="module" src="../../../bibliotheques/JS/page_jeu.js"></script> -->
+  <link rel="stylesheet" href="/dist/output.css" />
   <title>Page jeu - Nexus Gathering</title>
 </head>
 
@@ -23,10 +28,10 @@
       <div id="pageJeu" class="flex pt-5">
         <div class="flex-col w-2/3">
           <div class="flex">
-            <img class="rounded-full h-50 w-50 ml-4" src="../assets/image/tlof.jpg" alt="image" />
+            <img class="rounded-full h-50 w-50 ml-4" src="<?= htmlspecialchars($jeu->getImg_jeu()) ?>" alt="image" />
 
             <div class="grid content-center bg-[#f45a01]/95 rounded-full text-[#f1f7f9] font-['Changa'] text-center text-[2.75em] mt-4 ml-12 h-20 w-2/3">
-              <h2 class="pt-14 font-bold">The last of us</h2>
+              <h2 class="pt-14 font-bold"><?= htmlspecialchars($jeu->getNom_jeu()) ?></h2>
               <br />
             </div>
           </div>
@@ -35,14 +40,7 @@
             <div class="bg-[#f45a01]/95 rounded-full text-[#f1f7f9] text-center text-[0.875em] font-semibold pt-2 m-4 pb-5 w-full">
               <h3 class="font-['Changa'] text-[1.68em] font-bold">Résumé :</h3>
               <p class="p-2 indent-10">
-                The Last of Us se passe dans un monde post-apocalyptique, après
-                qu'une épidémie ayant échappé à tout contrôle a ravagé la
-                civilisation humaine 20 ans plus tôt. Les deux personnages
-                principaux, Joel et Ellie, doivent récupérer munitions et vivres
-                pour avancer dans leur quête et triompher des infectés et des
-                survivants hostiles qu'ils croisent. Le comic The Last of Us:
-                American Dreams apprend au lecteur que l’épidémie s’est
-                déclenchée six ans avant la naissance d'Ellie.
+                <?= htmlspecialchars($jeu->getResum_jeu()) ?>
               </p>
             </div>
           </div>
@@ -51,26 +49,26 @@
         <aside class="flex-col w-1/3">
           <div class="bg-[#f45a01]/95 rounded-full text-center text-[0.875em] font-semibold p-2 m-4">
             <h3 class="font-['Changa'] text-[1.68em] font-bold">Éditeur :</h3>
-            <p class="mt-2">Sony Computer Entertainment</p>
+            <p class="mt-2"><?= htmlspecialchars($jeu->getEditeur()) ?></p>
           </div>
 
           <div class="bg-[#f45a01]/95 rounded-full text-center text-[0.875em] font-semibold p-2 m-4">
             <h3 class="font-['Changa'] text-[1.68em] font-bold">Studio :</h3>
-            <p class="mt-2">Naughty Dog</p>
+            <p class="mt-2"><?= htmlspecialchars($jeu->getStudio()) ?></p>
           </div>
 
           <div class="bg-[#f45a01]/95 rounded-full text-center text-[0.875em] font-semibold p-2 m-4">
             <h3 class="font-['Changa'] text-[1.68em] font-bold">
               Début du développement :
             </h3>
-            <p class="mt-2">2009</p>
+            <p class="mt-2"><?= htmlspecialchars($jeu->getDateDebutDev()) ?></p>
           </div>
 
           <div class="bg-[#f45a01]/95 rounded-full text-center text-[0.875em] font-semibold p-2 m-4">
             <h3 class="font-['Changa'] text-[1.68em] font-bold">
               Date de sortie :
             </h3>
-            <p class="mt-2">14 juin 2013</p>
+            <p class="mt-2"><?= htmlspecialchars($jeu->getDateSortie()) ?></p>
           </div>
 
           <div class="bg-[#f45a01]/95 rounded-full text-center text-[0.875em] font-semibold p-2 m-4">
@@ -78,7 +76,7 @@
               Consoles disponibles :
             </h3>
             <p class="mt-2">
-              PlayStation 3, PlayStation 4, PlayStation 5, Microsoft Windows
+              <?= htmlspecialchars($jeu->getConsoles()) ?>
             </p>
           </div>
 
@@ -86,21 +84,21 @@
             <h3 class="font-['Changa'] text-[1.68em] font-bold">
               Multijoueur :
             </h3>
-            <p class="mt-2">oui</p>
+            <p class="mt-2"><?= $jeu->getMulti() ? 'Oui' : 'Non' ?></p>
           </div>
 
           <div class="bg-[#f45a01]/95 rounded-full text-center text-[0.875em] font-semibold p-2 m-4">
             <h3 class="font-['Changa'] text-[1.68em] font-bold">
               Cross-Platform :
             </h3>
-            <p class="mt-2">non</p>
+            <p class="mt-2"><?= $jeu->getCrossPlatform() ? 'Oui' : 'Non' ?></p>
           </div>
 
           <div class="bg-[#f45a01]/95 rounded-full text-center text-[0.875em] font-semibold p-2 m-4">
             <h3 class="font-['Changa'] text-[1.68em] font-bold">
               Format physique/dématérialisé:
             </h3>
-            <p class="mt-2">Physique et dématérialisé</p>
+            <p class="mt-2"><?= htmlspecialchars($jeu->getFormat()) ?></p>
           </div>
         </aside>
       </div>

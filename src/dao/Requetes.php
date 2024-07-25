@@ -49,10 +49,10 @@ class Requetes {
     public const UPDATE_ANNONCE = "UPDATE Annonce SET nom_annonce = ?, nb_user = ?, desc_annonce = ?, id_user = ?, id_jeu = ? WHERE id_annonce = ?";
     public const DELETE_ANNONCE = "DELETE FROM Annonce WHERE id_annonce = ?";
 
-    public const INSERT_JEU = "INSERT INTO jeu (nom_jeu, resum_jeu, img_jeu, multi) VALUES (:nom_jeu, :resum_jeu, :img_jeu, :multi)";
-    public const SELECT_jEU = "SELECT * FROM jeu WHERE id_jeu = :id_jeu";
+    public const INSERT_JEU = "INSERT INTO jeu (nom_jeu, resum_jeu, img_jeu, multi, date_sortie, style) VALUES (:nom_jeu, :resum_jeu, :img_jeu, :multi, :date_sortie, :style)";
+    public const SELECT_JEU = "SELECT * FROM jeu WHERE id_jeu = :id_jeu";
     public const SELECT_ALL_JEU = "SELECT * FROM jeu";
-    public const UPDATE_JEU = "UPDATE jeu SET nom_jeu = :nom_jeu, resum_jeu = :resum_jeu, img_jeu = :img_jeu, multi = :multi, id_ed = :id_ed, id_user = :id_user, id_stu = :id_stu WHERE id_jeu = :id_jeu";
+    public const UPDATE_JEU = "UPDATE jeu SET nom_jeu = :nom_jeu, resum_jeu = :resum_jeu, img_jeu = :img_jeu, multi = :multi, date_sortie = :date_sortie, style = :style WHERE id_jeu = :id_jeu";
     public const DELETE_JEU = "DELETE FROM jeu WHERE id_jeu = :id_jeu";
 
     public const INSERT_STUDIO = "INSERT INTO studio (nom_stu, id_ed) VALUES (:nom_stu, :id_ed)";

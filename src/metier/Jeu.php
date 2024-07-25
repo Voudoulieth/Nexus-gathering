@@ -11,8 +11,14 @@ class Jeu {
     private int     $id_ed;
     private int     $id_user;
     private int     $id_stu;
+    private string  $date_sortie;
+    private string  $style;
+    private string  $date_debut_dev;
+    private string $consoles;
+    private bool $crossPlatform;
+    private string $format; // Added this line
 
-    public function __construct(int $id_jeu, string $nom_jeu, bool $multi, string $resum_jeu = '', string $img_jeu = '', int $id_ed = 0, int $id_user = 0, int $id_stu = 0) {
+    public function __construct(int $id_jeu, string $nom_jeu, bool $multi, string $resum_jeu = '', string $img_jeu = '', int $id_ed = 0, int $id_user = 0, int $id_stu = 0, string $date_sortie = '', string $style = '', string $date_debut_dev = '', string $consoles = '', bool $crossPlatform = false, string $format = '') { // Added $format parameter
         $this->id_jeu       = $id_jeu;
         $this->nom_jeu      = $nom_jeu;
         $this->resum_jeu    = $resum_jeu;
@@ -21,6 +27,12 @@ class Jeu {
         $this->id_ed        = $id_ed;
         $this->id_user      = $id_user;
         $this->id_stu       = $id_stu;
+        $this->date_sortie  = $date_sortie;
+        $this->style       = $style;
+        $this->date_debut_dev = $date_debut_dev;
+        $this->consoles = $consoles;
+        $this->crossPlatform = $crossPlatform;
+        $this->format = $format; // Added this line
     }
 
     public function getId_jeu(): int {
@@ -58,7 +70,7 @@ class Jeu {
         $this->multi = $multi;
     }
 
-    public function getIdEditeur(): int {
+    public function getEditeur(): int {
         return $this->id_ed;
     }
 
@@ -72,12 +84,44 @@ class Jeu {
     public function setIdUser(int $id_user) {
         $this->id_user = $id_user;
     }
-    public function getIdStudio(): int {
+    public function getStudio(): int {
         return $this->id_stu;
     }
 
     public function setIdStudio(int $id_stu) {
         $this->id_stu = $id_stu;
+    }
+
+    public function getDateSortie(): string {
+        return $this->date_sortie;
+    }
+
+    public function setDateSortie(string $date_sortie): void {
+        $this->date_sortie = $date_sortie;
+    }
+
+    public function getStyle(): string {
+        return $this->style;
+    }
+
+    public function setStyle(string $style): void {
+        $this->style = $style;
+    }
+
+    public function getDateDebutDev(): string {
+        return $this->date_debut_dev; 
+    }
+
+    public function getConsoles(): string {
+        return $this->consoles;
+    }
+
+    public function getCrossPlatform(): bool {
+        return $this->crossPlatform;
+    }
+
+    public function getFormat(): string {
+        return $this->format;
     }
 
     public function __toString() {

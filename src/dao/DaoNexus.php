@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Nexus_gathering\dao;
@@ -204,9 +205,9 @@ class DaoNexus {
                 $id_ed = isset($row['id_ed']) ? (int)$row['id_ed'] : 0; // Valeur par défaut si le champ est NULL
                 $id_user = isset($row['id_user']) ? (int)$row['id_user'] : 0; // Valeur par défaut si le champ est NULL
                 $id_stu = isset($row['id_stu']) ? (int)$row['id_stu'] : 0; // Valeur par défaut si le champ est NULL
-                $multi = isset($row['multi']) ? (bool)$row['multi'] : false; // Valeur par défaut si le champ est NULL
+                $multi = isset($row['multi']) ? (bool)$row['multi'] : false; // Assurez-vous que c'est un booléen
                 // Création de l'objet Jeu en prenant en compte les valeurs par défaut
-                $jeux[] = new Jeu($row['id_jeu'], $row['nom_jeu'], $resume, $img, $multi, $id_ed, $id_user, $id_stu);
+                $jeux[] = new Jeu($row['id_jeu'], $row['nom_jeu'], $multi, $resume, $img, $id_ed, $id_user, $id_stu);
             }
         } catch (\PDOException $e) {
             throw DaoException::fromFetchAllJeuxPDOException($e);
@@ -360,7 +361,9 @@ class DaoNexus {
             $stmt->bindValue(':nom_jeu', $jeu->getNom_jeu());
             $stmt->bindValue(':resum_jeu', $jeu->getResum_jeu());
             $stmt->bindValue(':img_jeu', $jeu->getImg_jeu());
-            $stmt->bindValue(':multi', $jeu->getMulti() ? 1 : 0, \PDO::PARAM_INT);
+            $stmt->bindValue(':multi', $jeu->getMulti() ? 1 : 0, \PDO::PARAM_INT); // Conversion pour la base de données
+            $stmt->bindValue(':date_sortie', $jeu->getDateSortie()); // Assurez-vous que ce champ est lié
+            $stmt->bindValue(':style', $jeu->getStyle()); // Assurez-vous que ce champ est lié
             return $stmt->execute();
         } catch (\PDOException $e) {
             throw DaoException::fromCreateJeuPDOException($e);
@@ -372,8 +375,8 @@ class DaoNexus {
     // Lecture d'un jeu par ID
 
     public function getById(int $id_jeu): ?Jeu {
-        $query = Requetes::SELECT_jEU;
-        try{
+        $query = Requetes::SELECT_JEU; // Assurez-vous que cette requête est correcte
+        try {
             $stmt = $this->conn->prepare($query);
             $stmt->bindValue(':id_jeu', $id_jeu, \PDO::PARAM_INT);
             $stmt->execute();
@@ -381,7 +384,22 @@ class DaoNexus {
             if (!$row) {
                 return null;
             }
-            return new Jeu($row['id_jeu'], $row['nom_jeu'], $row['resum_jeu'], $row['img_jeu'], (bool) $row['multi'], $row['id_ed'], $row['id_user'], $row['id_stu']);
+            $multi = isset($row['multi']) ? (bool)$row['multi'] : false; // Assurez-vous que c'est un booléen
+            $id_ed = isset($row['id_ed']) ? (int)$row['id_ed'] : 0; // Valeur par défaut si le champ est NULL
+            $id_user = isset($row['id_user']) ? (int)$row['id_user'] : 0; // Valeur par défaut si le champ est NULL
+            $id_stu = isset($row['id_stu']) ? (int)$row['id_stu'] : 0; // Valeur par défaut si le champ est NULL
+            return new Jeu(
+                $row['id_jeu'],
+                $row['nom_jeu'],
+                $multi,
+                $row['resum_jeu'],
+                $row['img_jeu'],
+                $id_ed,
+                $id_user,
+                $id_stu,
+                $row['date_sortie'],
+                $row['style']
+            );
         } catch (\PDOException $e) {
             throw DaoException::fromFetchJeuPDOException($e);
         } catch (\Exception $e) {
@@ -391,7 +409,7 @@ class DaoNexus {
 
         // Lecture de touts les jeux
 
-        public function getAll(): array {
+        public function getAllJeux(): array {
             $query = Requetes::SELECT_ALL_JEU;
             $jeux = [];
             try {
@@ -404,8 +422,11 @@ class DaoNexus {
                     $id_ed = isset($row['id_ed']) ? (int)$row['id_ed'] : 0; // Valeur par défaut si le champ est NULL
                     $id_user = isset($row['id_user']) ? (int)$row['id_user'] : 0; // Valeur par défaut si le champ est NULL
                     $id_stu = isset($row['id_stu']) ? (int)$row['id_stu'] : 0; // Valeur par défaut si le champ est NULL
+                    $multi = isset($row['multi']) ? (bool)$row['multi'] : false; // Assurez-vous que c'est un booléen
+                    $date_sortie = isset($row['date_sortie']) ? $row['date_sortie'] : ''; // Valeur par défaut si le champ est NULL
+                    $style = isset($row['style']) ? $row['style'] : ''; // Valeur par défaut si le champ est NULL
                     // Création de l'objet Jeu en prenant en compte les valeurs par défaut
-                    $jeux[] = new Jeu($row['id_jeu'], $row['nom_jeu'], $resume, $img, (bool) $row['multi'], $id_ed, $id_user, $id_stu);
+                    $jeux[] = new Jeu($row['id_jeu'], $row['nom_jeu'], $multi, $resume, $img, $id_ed, $id_user, $id_stu, $date_sortie, $style);
                 }
             } catch (\PDOException $e) {
                 throw DaoException::fromFetchAllJeuxPDOException($e);
@@ -425,7 +446,7 @@ class DaoNexus {
             $stmt->bindValue(':nom_jeu', $jeu->getNom_jeu());
             $stmt->bindValue(':resum_jeu', $jeu->getResum_jeu());
             $stmt->bindValue(':img_jeu', $jeu->getImg_jeu());
-            $stmt->bindValue(':multi', $jeu->getMulti() ? 1 : 0, \PDO::PARAM_INT);
+            $stmt->bindValue(':multi', $jeu->getMulti() ? 1 : 0, \PDO::PARAM_INT); // Conversion pour la base de données
             // Commenté : $stmt->bindValue(':id_ed', $editeur->getId_ed(), \PDO::PARAM_INT);
             // Commenté : $stmt->bindValue(':id_stu', $studio->getId_stu(), \PDO::PARAM_INT);
             $stmt->bindValue(':id_jeu', $jeu->getId_jeu(), \PDO::PARAM_INT);
