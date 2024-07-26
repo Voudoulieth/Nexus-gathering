@@ -1,36 +1,36 @@
-// Sélection du bouton "Modifier"
-const Modifier = document.querySelector('button[name="button"]');
-// Sélection du bouton "Valider"
-const Valider = document.querySelector('button[name="submit"]');
-// Sélection page du jeu
-const PageJeu = document.querySelector('#pageJeu');
-// Sélection formulaire
-const AjoutJeu = document.querySelector('#ajoutJeu');
+document.addEventListener('DOMContentLoaded', () => {
+    const Modifier = document.querySelector('button[name="action"][value="modifier"]');
+    const Valider = document.querySelector('button[name="submit"]');
+    const PageJeu = document.querySelector('#pageJeu');
+    const AjoutJeu = document.querySelector('#ajoutJeu');
 
-// Ajout d'un écouteur d'événement pour le clic sur le bouton "Modifier"
-Modifier.addEventListener('click', () => {
-    // Affichage
-    Valider.style.display = 'block';
-    AjoutJeu.style.display = 'block';
-    // Masquage
-    Modifier.style.display = 'none';
-    PageJeu.style.display = 'none';
-});
+    Modifier.addEventListener('click', () => {
+        Valider.style.display = 'block';
+        AjoutJeu.style.display = 'block';
+        Modifier.style.display = 'none';
+        PageJeu.style.display = 'none';
 
+        // Récupérer les données du jeu à partir des éléments existants
+        const jeuData = {
+            nom: document.getElementById('nom_jeu').textContent || '',
+            resume: document.getElementById('resume_jeu').textContent || '',
+            img: document.getElementById('img_jeu').src || '',
+            dateSortie: document.getElementById('date_sortie').textContent || '',
+            style: document.getElementById('style_jeu').textContent.split(', ') || []
+        };
 
-const supprimer = document.getElementById("supprimerContenu")
-const APP_ROOT = 'http://localhost:3000/src/';
+        // Remplir le formulaire avec les données existantes
+        document.querySelector('#nom_jeu').value = jeuData.nom;
+        document.querySelector('#resume_jeu').value = jeuData.resume;
+        document.querySelector('#img_jeu').value = jeuData.img;
+        document.querySelector('#dateSortie').value = jeuData.dateSortie;
 
-
-supprimer.addEventListener("click", function() {
-    const confirmation = confirm("Êtes-vous sûr de vouloir supprimer le contenu de la page ?");
-    if (confirmation) {
-        // Suppression du contenu de l'élément avec id "contenu"
-        const contenu = document.getElementById("contenu");
-        if (contenu) {
-            contenu.remove();
-        }
-        // Redirection vers la page /bibliotheque-generale
-        window.location.href = APP_ROOT + 'bibliotheque-generale';
-    }
+        // Cocher les styles correspondants
+        jeuData.style.forEach(style => {
+            const checkbox = document.querySelector(`input[name="choixS[]"][value="${style}"]`);
+            if (checkbox) {
+                checkbox.checked = true;
+            }
+        });
+    });
 });

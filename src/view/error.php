@@ -7,21 +7,21 @@ if (isset($_GET['error'])) {
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Erreur</title>
     <link rel="stylesheet" href="/dist/output.css" />
-    <?php include '../view/head.inc.php'; ?>
+    <title>Erreur - Nexus Gathering</title>
 </head>
 <body>
-    <?php include '../view/header.inc.php'; ?>
-    <div class="container">
-        <h1>Erreur</h1>
-        <p><?= $error_message ?></p>
-        <a href="<?= APP_ROOT ?>/ajout-biblio-generale">Retour au formulaire</a>
-    </div>
-    <?php include '../view/footer.inc.php'; ?>
+    <main>
+        <div class="text-center pt-5">
+            <h1 class="font-['Changa'] text-[4.5em] p-5">Une erreur est survenue</h1>
+            <p class="text-[0.875em]">
+                <?= htmlspecialchars($_GET['error'] ?? 'Erreur inconnue') ?>
+            </p>
+        </div>
+    </main>
 </body>
 </html>

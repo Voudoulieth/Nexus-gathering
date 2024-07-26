@@ -461,11 +461,12 @@ class DaoNexus {
     // Suppression d'un jeu
 
     public function delete(int $id_jeu): bool {
-        $query = Requetes::DELETE_JEU;
-        try{
+        $query = "DELETE FROM jeu WHERE id_jeu = :id_jeu"; // Assurez-vous que cette requête est correcte
+        try {
             $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(':id_jeu', $id_jeu, \PDO::PARAM_INT);
-            return $stmt->execute();
+            $stmt->bindValue(':id_jeu', $id_jeu, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->rowCount() > 0;
         } catch (\PDOException $e) {
             throw DaoException::fromDeleteJeuPDOException($e);
         } catch (\Exception $e) {

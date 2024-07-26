@@ -254,8 +254,8 @@ public function createJeu() {
 
         // Appel à la méthode create du DAO
         if ($this->DaoNexus->create($jeu)) {
-            // Rediriger vers vbibliogenerale.php au lieu de success.php
-            header('Location: ' . APP_ROOT . '/view/bibliotheques/vbibliogenerale.php');
+            // Rediriger vers la bibliothèque générale
+            header('Location: ' . APP_ROOT . '/view/success.php');
         } else {
             header('Location: ' . APP_ROOT . '/view/error.php?error=creation_jeu_failed');
         }
@@ -283,14 +283,15 @@ public function updateJeu() {
         $jeu = new Jeu(
             (int)$_POST['id_jeu'],
             $_POST['nom_jeu'],
-            isset($_POST['multi']) && $_POST['multi'] === '1',
+            isset($_POST['optionsM']) && $_POST['optionsM'] === '1',
             $_POST['resum_jeu'],
-            $_POST['img_jeu'],
+            $_FILES['img_jeu']['name'] ?? '', 
             (int)$_POST['id_ed'],
             (int)$_POST['id_user'],
             (int)$_POST['id_stu'],
-            $_POST['date_sortie'], // Ajouter la date de sortie
-            $_POST['style'] // Ajouter le style
+            $_POST['date_sortie'],
+            $_POST['choixS'], 
+            $_POST['style']
         );
 
         if ($this->DaoNexus->update($jeu, new Studio($_POST['id_stu']), new Editeur($_POST['id_ed']))) {
@@ -303,13 +304,15 @@ public function updateJeu() {
 }
 
 public function deleteJeu() {
-    $id_jeu = $_POST['id_jeu']; // Récupère l'ID du jeu à partir des données POST
-    if ($this->DaoNexus->delete($id_jeu)) {
-        header('Location: ' . APP_ROOT . '/view/success.php');
-    } else {
-        header('Location: ' . APP_ROOT . '/view/error.php?error=delete_jeu_failed');
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_jeu'])) {
+        $id_jeu = (int)$_POST['id_jeu']; // Récupère l'ID du jeu à partir des données POST
+        if ($this->DaoNexus->delete($id_jeu)) {
+            header('Location: ' . APP_ROOT . '/view/success.php');
+        } else {
+            header('Location: ' . APP_ROOT . '/view/error.php?error=delete_jeu_failed');
+        }
+        exit;
     }
-    exit;
 }
 
 // Commenté : Méthodes liées aux studios et éditeurs
