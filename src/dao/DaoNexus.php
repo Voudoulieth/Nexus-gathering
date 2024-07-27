@@ -439,22 +439,20 @@ class DaoNexus {
 
     // Mise à jour d'un jeu
 
-    public function update(Jeu $jeu, Studio $studio, Editeur $editeur): bool {
+    public function update(Jeu $jeu): bool {
         $query = Requetes::UPDATE_JEU;
-        try{
+        try {
             $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(':nom_jeu', $jeu->getNom_jeu());
-            $stmt->bindValue(':resum_jeu', $jeu->getResum_jeu());
-            $stmt->bindValue(':img_jeu', $jeu->getImg_jeu());
-            $stmt->bindValue(':multi', $jeu->getMulti() ? 1 : 0, \PDO::PARAM_INT); // Conversion pour la base de données
-            // Commenté : $stmt->bindValue(':id_ed', $editeur->getId_ed(), \PDO::PARAM_INT);
-            // Commenté : $stmt->bindValue(':id_stu', $studio->getId_stu(), \PDO::PARAM_INT);
-            $stmt->bindValue(':id_jeu', $jeu->getId_jeu(), \PDO::PARAM_INT);
+            $stmt->bindValue(':id_jeu', $jeu->getId_jeu(), PDO::PARAM_INT);
+            $stmt->bindValue(':nom_jeu', $jeu->getNom_jeu(), PDO::PARAM_STR);
+            $stmt->bindValue(':resum_jeu', $jeu->getResum_jeu(), PDO::PARAM_STR);
+            $stmt->bindValue(':img_jeu', $jeu->getImg_jeu(), PDO::PARAM_STR);
+            $stmt->bindValue(':multi', $jeu->getMulti(), PDO::PARAM_BOOL);
+            $stmt->bindValue(':date_sortie', $jeu->getDateSortie(), PDO::PARAM_STR);
+            $stmt->bindValue(':style', $jeu->getStyle(), PDO::PARAM_STR);
             return $stmt->execute();
         } catch (\PDOException $e) {
-            throw DaoException::fromUpdateJeuPDOException($e);
-        } catch (\Exception $e) {
-            throw DaoException::fromUpdateJeuException($e);
+            throw new DaoException("Erreur lors de la mise à jour du jeu: " . $e->getMessage());
         }
     }
 

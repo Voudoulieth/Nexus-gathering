@@ -62,7 +62,7 @@ if ($method == 'get') {
         APP_ROOT . '/messagerie/update-message' => $cntrlNexus->updateMessage(),
         APP_ROOT . '/ajout-biblio-generale/create-jeu' => $cntrlNexus->createJeu(),
         APP_ROOT . '/page-jeu/delete-jeu'       => $cntrlNexus->deleteJeu($id_jeu),
-        APP_ROOT . '/page-jeu/update-message'   => $cntrlNexus->updateJeu(),
+        APP_ROOT . '/page-jeu/update-jeu'   => $cntrlNexus->updateJeu(),
         default                                 => $cntrlNexus->getIndex(),
     };
 } else {
