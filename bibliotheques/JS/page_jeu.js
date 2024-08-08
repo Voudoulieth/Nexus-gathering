@@ -2,37 +2,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const Modifier = document.querySelector('button[name="action"][value="modifier"]');
     const Valider = document.querySelector('button[name="submit"]');
     const PageJeu = document.querySelector('#pageJeu');
-    const ModifJeu = document.querySelector('#updateJeu');
+    const AjoutJeu = document.querySelector('#ajoutJeu');
 
-    Modifier.addEventListener('click', (event) => {
-        event.preventDefault();
+    Modifier.addEventListener('click', () => {
         Valider.style.display = 'block';
-        ModifJeu.style.display = 'block';
+        AjoutJeu.style.display = 'block';
         Modifier.style.display = 'none';
         PageJeu.style.display = 'none';
 
         // Récupérer les données du jeu à partir des éléments existants
         const jeuData = {
-            id: document.querySelector('input[name="id_jeu"]').value,
-            nom: document.getElementById('nom_jeu')?.value || '',
-            resume: document.getElementById('resum_jeu')?.value || '',
-            img: document.getElementById('img_jeu')?.src || '',
-            date_Sortie: document.getElementById('date_sortie')?.value || '',
-            style: []
+            nom: document.getElementById('nom_jeu').textContent || '',
+            resume: document.getElementById('resume_jeu').textContent || '',
+            img: document.getElementById('img_jeu').src || '',
+            dateSortie: document.getElementById('date_sortie').textContent || '',
+            style: document.getElementById('style_jeu').textContent.split(', ') || []
         };
-
-        // Récupérer les styles sélectionnés
-        const styleCheckboxes = document.querySelectorAll('input[name="choixS[]"]:checked');
-        jeuData.style = Array.from(styleCheckboxes).map(checkbox => checkbox.value);
 
         // Remplir le formulaire avec les données existantes
         document.querySelector('#nom_jeu').value = jeuData.nom;
-        document.querySelector('#resum_jeu').value = jeuData.resume;
+        document.querySelector('#resume_jeu').value = jeuData.resume;
         document.querySelector('#img_jeu').value = jeuData.img;
-        const dateSortieElement = document.querySelector('#date_sortie');
-        if (dateSortieElement) {
-            dateSortieElement.value = jeuData.date_Sortie;
-        }
+        document.querySelector('#dateSortie').value = jeuData.dateSortie;
 
         // Cocher les styles correspondants
         jeuData.style.forEach(style => {

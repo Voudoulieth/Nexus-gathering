@@ -280,28 +280,21 @@ public function getAllJeux() {
 
 public function updateJeu() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $id_jeu = (int)$_POST['id_jeu'];
-        $nom_jeu = $_POST['nom_jeu'] ?? '';
-        $resum_jeu = $_POST['resum_jeu'] ?? '';
-        $img_jeu = $_FILES['img_jeu']['name'] ?? '';
-        $multi = isset($_POST['multi']) && $_POST['multi'] === '1';
-        $date_sortie = $_POST['dateSortie'] ?? '';
-        $style = $_POST['choixS'] ?? [];
-        $style = implode(", ", $style);
+        $jeu = new Jeu(
+            (int)$_POST['id_jeu'],
+            $_POST['nom_jeu'],
+            isset($_POST['optionsM']) && $_POST['optionsM'] === '1',
+            $_POST['resum_jeu'],
+            $_FILES['img_jeu']['name'] ?? '', 
+            (int)$_POST['id_ed'],
+            (int)$_POST['id_user'],
+            (int)$_POST['id_stu'],
+            $_POST['date_sortie'],
+            $_POST['choixS'], 
+            $_POST['style']
+        );
 
-        // Déplacer l'image téléchargée vers le répertoire approprié
-        $target_dir = "uploads/";
-        $target_file = $target_dir . basename($img_jeu);
-
-        if (!move_uploaded_file($_FILES['img_jeu']['tmp_name'], $target_file)) {
-            error_log("Échec du téléchargement du fichier: " . $_FILES['img_jeu']['error']);
-            header('Location: ' . APP_ROOT . '/view/error.php?error=upload_failed');
-            exit;
-        }
-
-        $jeu = new Jeu($id_jeu, $nom_jeu, $multi, $resum_jeu, $target_file, 0, 0, 0, $date_sortie, $style);
-
-        if ($this->DaoNexus->update($jeu)) {
+        if ($this->DaoNexus->update($jeu, new Studio($_POST['id_stu']), new Editeur($_POST['id_ed']))) {
             header('Location: ' . APP_ROOT . '/view/success.php');
         } else {
             header('Location: ' . APP_ROOT . '/view/error.php?error=update_jeu_failed');
