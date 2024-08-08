@@ -216,7 +216,6 @@
             </div>
           </aside>
         </div>
-
         <button class="font-['Changa'] text-[#f1f7f9] bg-[#f45a01]/95 rounded-full w-[20%] text-center text-[1.06em] p-2 m-5 ring ring-offset-2 ring-purple-500 ring-offset-purple-100/30 hover:ring-red-700 hover:ring-offset-red-700 shadow-lg shadow-indigo-500/50" type="submit" name="submit">Valider</button>
       </form>
     </div>
